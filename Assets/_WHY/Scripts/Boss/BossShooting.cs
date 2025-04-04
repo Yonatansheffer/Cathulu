@@ -1,7 +1,53 @@
-﻿namespace _WHY.Scripts.Boss
+﻿using _WHY.Scripts.Enemies;
+using GameHandlers;
+using UnityEngine;
+
+namespace _WHY.Scripts.Boss
 {
-    public class BossShooting
+    public class BossShooting :WHYBaseMono
     {
+        [SerializeField] private Enemy flyingEnemyPrefab;
+        [SerializeField] private Enemy groundEnemyPrefab;
+        [SerializeField] private float minSpawnForce = 2f;
+        [SerializeField] private float maxSpawnForce = 4f;
+        [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
+        
+        
+        private void OnEnable()
+        {
+            GameEvents.BossShoots += Shoot;
+            GameEvents.ToSpawnEnemy += EnemySpawn;
+        }
+        
+        private void OnDisable()
+        {
+            GameEvents.ToSpawnEnemy -= EnemySpawn;
+            GameEvents.BossShoots -= Shoot;
+        }
+        
+        private void EnemySpawn(bool isFlyingEnemy)
+        {
+            if (isFlyingEnemy)
+            {
+                
+            }
+            Enemy spawnedEnemy = EnemyPool.Instance.Get();
+            spawnedEnemy.transform.position = transform.position + spawnOffset;
+            ApplyRandomForce(spawnedEnemy);
+        }
+        
+        private void ApplyRandomForce(Enemy enemy)
+        {
+            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+            Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-0.5f, 1f)).normalized;
+            float force = Random.Range(minSpawnForce, maxSpawnForce);
+            rb.AddForce(randomDirection * force, ForceMode2D.Impulse);
+        }
+
+        private void Shoot()
+        {
+            
+        }
         
     }
 }

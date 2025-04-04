@@ -16,7 +16,6 @@ namespace MainPlayer
         private Rigidbody2D _rb;
         private PlayerInputs _inputActions;
         private Vector2 _moveInput;
-        private Animator _animator;
         private bool _isRight; // To determine the direction of the player
         private bool _isDashing; // Flag to know whether dashing
         private float _lastDashTime = -1f; // For dash cooldown
@@ -27,7 +26,6 @@ namespace MainPlayer
             _isRight = false;
             _isDashing = false;
             _rb = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
             _inputActions = new PlayerInputs();
             InitializeInputCallbacks();
         }

@@ -181,8 +181,8 @@ namespace UI
             life2.gameObject.SetActive(false);
             locationText.gameObject.SetActive(false);
             stageText.gameObject.SetActive(false);
-            hiText.gameObject.SetActive(false);
-            pointsText.gameObject.SetActive(false);*/
+            hiText.gameObject.SetActive(false);*/
+            pointsText.gameObject.SetActive(false);
             BossHealthBar.gameObject.SetActive(false);
         }
         
@@ -194,8 +194,8 @@ namespace UI
             player2Text.gameObject.SetActive(true);
             locationText.gameObject.SetActive(true);
             stageText.gameObject.SetActive(true);
-            hiText.gameObject.SetActive(true);
-            pointsText.gameObject.SetActive(true);*/
+            hiText.gameObject.SetActive(true);*/
+            pointsText.gameObject.SetActive(true);
             BossHealthBar.gameObject.SetActive(true);
         }
     }

@@ -44,15 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7c33556524a1c9208461454da343e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  readyText: {fileID: 0}
-  timeDisplayText: {fileID: 0}
-  life1: {fileID: 0}
-  life2: {fileID: 0}
+  BossHealthBar: {fileID: 0}
   pointsText: {fileID: 0}
-  stickyHarpoonCollected: {fileID: 0}
-  lightGunCollected: {fileID: 0}
-  doubleHarpoonCollected: {fileID: 0}
-  blinkInterval: 0.2
 --- !u!1 &3469458833890359047
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ce33c4579d4249a154a9e914a69218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  licenseImage: {fileID: 0}
-  pangLogo: {fileID: 0}
+  startImage: {fileID: 0}
   pressEnterText: {fileID: 0}
-  licenseDisplayDuration: 4
   blinkInterval: 0.5
 --- !u!1 &8404671299695735744
 GameObject:
@@ -180,12 +171,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871369fe56e64349b8e92a4f95a1c3de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage1Text: {fileID: 0}
-  timeBonusText: {fileID: 0}
-  nextExtendText: {fileID: 0}
-  pressEnterText: {fileID: 0}
-  endScreen: {fileID: 0}
-  timeOver: {fileID: 0}
-  continueText: {fileID: 0}
-  gameOverCountdownText: {fileID: 0}
-  gameOverText: {fileID: 0}
