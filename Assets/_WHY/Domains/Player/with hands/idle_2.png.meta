@@ -106,12 +106,12 @@ TextureImporter:
       name: idle_2_0
       rect:
         serializedVersion: 2
-        x: 757
-        y: 262
-        width: 485
-        height: 641
+        x: 705
+        y: 213
+        width: 598
+        height: 717
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -124,33 +124,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: idle_2_1
-      rect:
-        serializedVersion: 2
-        x: 1119
-        y: 310
-        width: 136
-        height: 139
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08e06104bae809e20800000000000000
-      internalID: 3355338588556758656
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2cc959588fe2cdf489e6269a776a18a1
     internalID: 0
     vertices: []
     indices: 
@@ -159,7 +137,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      idle_2_0: -4357705645274307756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

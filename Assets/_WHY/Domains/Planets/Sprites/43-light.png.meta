@@ -103,12 +103,12 @@ TextureImporter:
       name: 43-light_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 52
-        width: 919
-        height: 919
+        x: 0
+        y: 0
+        width: 1001
+        height: 1001
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,11 +121,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: 43-light_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 693
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0668febe44faadb4ab5ebe724e0e4b8f
+      internalID: 1692953586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 91cc34f813bbd0149bc919b0a74c658b
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +156,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      43-light_0: 8024692030756291606
+      43-light_1: 1692953586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

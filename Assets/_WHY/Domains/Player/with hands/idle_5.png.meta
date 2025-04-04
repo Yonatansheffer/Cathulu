@@ -109,12 +109,12 @@ TextureImporter:
       name: idle_5_0
       rect:
         serializedVersion: 2
-        x: 764
-        y: 263
-        width: 480
-        height: 658
+        x: 712
+        y: 187
+        width: 589
+        height: 835
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -127,55 +127,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: idle_5_1
-      rect:
-        serializedVersion: 2
-        x: 927
-        y: 262
-        width: 93
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b4e0eb9000f4c1a0800000000000000
-      internalID: -6790038452761992010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle_5_2
-      rect:
-        serializedVersion: 2
-        x: 1118
-        y: 321
-        width: 137
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3244bb3399f694250800000000000000
-      internalID: 5929393088198558755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2688a063e0031834896862a897b2d424
     internalID: 0
     vertices: []
     indices: 
@@ -184,7 +140,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      idle_5_0: -3726265232208835741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
