@@ -4,7 +4,7 @@ namespace GameHandlers
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private float initialCountDownTime = 100f; // Initial countdown time in seconds
+        [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
         [SerializeField] private const int InitialBossHealth = 100;
         [SerializeField] private int initialPlayerLives = 3;
         private float _countDownTime; // Stores the current time left

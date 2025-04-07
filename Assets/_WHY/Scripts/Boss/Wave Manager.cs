@@ -1,41 +1,68 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using GameHandlers;
+using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Boss
 {
     public class WaveManager : MonoBehaviour
     {
-        [SerializeField] private float startDelay = 2f;
-        [SerializeField] private float initialInterval = 5f;
-        [SerializeField] private float minInterval = 1f;
-        [SerializeField] private float intervalDecreaseRate = 0.1f;
-        private float currentInterval;
+        [Serializable]
+        public class WaveConfig
+        {
+            public float startDelay = 2f;
+            public float initialInterval = 5f;
+            public float minInterval = 1f;
+            public float intervalDecreaseRate = 0.1f;
+
+            [HideInInspector] public float currentInterval;
+        }
+
+        [SerializeField] private WaveConfig enemyWaveConfig = new WaveConfig();
+        [SerializeField] private WaveConfig bossShootConfig = new WaveConfig();
 
         private void Start()
         {
-            currentInterval = initialInterval;
-            StartCoroutine(HandleWaves());
+            enemyWaveConfig.currentInterval = enemyWaveConfig.initialInterval;
+            bossShootConfig.currentInterval = bossShootConfig.initialInterval;
+
+            StartCoroutine(EnemySpawnWaves());
+            StartCoroutine(BossShootingWaves());
         }
 
-        private IEnumerator HandleWaves()
+        private IEnumerator BossShootingWaves()
         {
-            yield return new WaitForSeconds(startDelay);
+            yield return new WaitForSeconds(bossShootConfig.startDelay);
 
             while (true)
             {
-                // Trigger enemy spawn
+                GameEvents.BossShoots?.Invoke();
+
+                yield return new WaitForSeconds(bossShootConfig.currentInterval);
+
+                bossShootConfig.currentInterval = Mathf.Max(
+                    bossShootConfig.minInterval,
+                    bossShootConfig.currentInterval - bossShootConfig.intervalDecreaseRate
+                );
+            }
+        }
+
+        private IEnumerator EnemySpawnWaves()
+        {
+            yield return new WaitForSeconds(enemyWaveConfig.startDelay);
+
+            while (true)
+            {
                 bool spawnFlying = Random.value > 0.5f;
                 GameEvents.ToSpawnEnemy?.Invoke(spawnFlying);
 
-                // Trigger boss shooting
-                GameEvents.BossShoots?.Invoke();
+                yield return new WaitForSeconds(enemyWaveConfig.currentInterval);
 
-                // Wait before next wave
-                yield return new WaitForSeconds(currentInterval);
-
-                // Speed up
-                currentInterval = Mathf.Max(minInterval, currentInterval - intervalDecreaseRate);
+                enemyWaveConfig.currentInterval = Mathf.Max(
+                    enemyWaveConfig.minInterval,
+                    enemyWaveConfig.currentInterval - enemyWaveConfig.intervalDecreaseRate
+                );
             }
         }
     }

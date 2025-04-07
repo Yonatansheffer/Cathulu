@@ -6,12 +6,11 @@ namespace _WHY.Scripts.Boss
 {
     public class BossShooting :WHYBaseMono
     {
-        [SerializeField] private Enemy flyingEnemyPrefab;
-        [SerializeField] private Enemy groundEnemyPrefab;
         [SerializeField] private float minSpawnForce = 2f;
         [SerializeField] private float maxSpawnForce = 4f;
         [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
-        
+        [SerializeField] private float rotationSpeed = 30f; // degrees per second
+
         
         private void OnEnable()
         {
@@ -50,7 +49,7 @@ namespace _WHY.Scripts.Boss
 
         private void Shoot()
         {
-            
+            transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
         }
         
     }
