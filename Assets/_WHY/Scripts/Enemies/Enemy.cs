@@ -19,13 +19,7 @@ namespace _WHY.Scripts.Enemies
         
         protected abstract void Move();
 
-        protected virtual void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Weapon"))
-            {
-                EnemyPool.Instance.Return(gameObject.GetComponent<Enemy>());
-            }
-        }
+
     }
 }
 

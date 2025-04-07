@@ -18,5 +18,13 @@ namespace _WHY.Scripts.Enemies
             transform.position = Vector3.MoveTowards(transform.position, _playerTransform.position, moveSpeed * Time.deltaTime);
         }
         
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Weapon"))
+            {
+                FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
+            }
+        }
+        
     }
 }

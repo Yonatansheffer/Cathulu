@@ -27,11 +27,15 @@ namespace _WHY.Scripts.Boss
         
         private void EnemySpawn(bool isFlyingEnemy)
         {
+            Enemy spawnedEnemy;
             if (isFlyingEnemy)
             {
-                
+                spawnedEnemy = FlyingEnemyPool.Instance.Get();
             }
-            Enemy spawnedEnemy = EnemyPool.Instance.Get();
+            else
+            {
+                spawnedEnemy = CrawlingEnemyPool.Instance.Get();
+            }
             spawnedEnemy.transform.position = transform.position + spawnOffset;
             ApplyRandomForce(spawnedEnemy);
         }

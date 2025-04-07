@@ -7,8 +7,8 @@ namespace MainPlayer
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Vector3 startingPosition; // Starting position of the player
-        [SerializeField] private float leftBound = -8f;
-        [SerializeField] private float rightBound = 8f;
+        //[SerializeField] private float leftBound = -8f;
+        //[SerializeField] private float rightBound = 8f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float dashSpeed = 8f;
         [SerializeField] private float dashDuration = 0.1f; // Duration of the dash
@@ -20,6 +20,12 @@ namespace MainPlayer
         private bool _isDashing; // Flag to know whether dashing
         private float _lastDashTime = -1f; // For dash cooldown
         [SerializeField] private GameObject gun;
+        [SerializeField] private float jumpForce = 12f;
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private float groundCheckRadius = 0.2f;
+        [SerializeField] private LayerMask groundLayer;
+        private bool _isGrounded;
+
 
         private void Awake()
         {
@@ -44,8 +50,9 @@ namespace MainPlayer
         {
             if (!_rb.simulated) 
                 return;
+            CheckGrounded();
             HandleMovement();
-            KeepInBounds();
+            //KeepInBounds();
         }
 
         private void InitializeInputCallbacks()
@@ -54,6 +61,7 @@ namespace MainPlayer
             _inputActions.Movement.Move.canceled += _ => _moveInput = Vector2.zero;
             _inputActions.Movement.Shoot.performed += _ => Shoot();
             _inputActions.Movement.Dash.performed += _ => Dash();
+            _inputActions.Movement.Jump.performed += _ => Jump();
         }
 
         private void OnMovePerformed(Vector2 input)
@@ -68,7 +76,19 @@ namespace MainPlayer
             GameEvents.Shoot?.Invoke(gun.transform);
         }
         
-        private void KeepInBounds()
+        private void CheckGrounded()
+        {
+            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
+
+        private void Jump()
+        {
+            if (!_isGrounded || !_rb.simulated) return;
+            _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
+        }
+
+        
+        /*private void KeepInBounds()
         {
             if (transform.position.x > rightBound)
             {
@@ -78,7 +98,7 @@ namespace MainPlayer
             {
                 transform.position = new Vector3(leftBound, transform.position.y, transform.position.z);
             }
-        }
+        }*/
         
         private void Dash()
         {

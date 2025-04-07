@@ -28,6 +28,14 @@ namespace _WHY.Scripts.Enemies
         {
             FlipDirection();
         }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Weapon"))
+            {
+                CrawlingEnemyPool.Instance.Return(gameObject.GetComponent<CrawlingEnemy>());
+            }
+        }
 
         private void FlipDirection()
         {
