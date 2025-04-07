@@ -1,0 +1,617 @@
+fileFormatVersion: 2
+guid: aaf12c92caf08e24d8f40d2b6a0cb325
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2284509901054136419
+    second: PC Computer - MapleStory - Black Dragon - Copy_0
+  - first:
+      213: -1715984835350264238
+    second: PC Computer - MapleStory - Black Dragon - Copy_1
+  - first:
+      213: 6436800361903417259
+    second: PC Computer - MapleStory - Black Dragon - Copy_2
+  - first:
+      213: -6644763695739739719
+    second: PC Computer - MapleStory - Black Dragon - Copy_3
+  - first:
+      213: 1511217913712693753
+    second: PC Computer - MapleStory - Black Dragon - Copy_4
+  - first:
+      213: -730110986088614744
+    second: PC Computer - MapleStory - Black Dragon - Copy_5
+  - first:
+      213: 6508334994340928264
+    second: PC Computer - MapleStory - Black Dragon - Copy_6
+  - first:
+      213: -2870347200366845299
+    second: PC Computer - MapleStory - Black Dragon - Copy_7
+  - first:
+      213: 7661057191214860588
+    second: PC Computer - MapleStory - Black Dragon - Copy_8
+  - first:
+      213: -5678812399874709617
+    second: PC Computer - MapleStory - Black Dragon - Copy_9
+  - first:
+      213: -2059690318939854721
+    second: PC Computer - MapleStory - Black Dragon - Copy_10
+  - first:
+      213: -3577122486259411020
+    second: PC Computer - MapleStory - Black Dragon - Copy_11
+  - first:
+      213: -5718528625062895306
+    second: PC Computer - MapleStory - Black Dragon - Copy_12
+  - first:
+      213: -7426737957720412226
+    second: PC Computer - MapleStory - Black Dragon - Copy_13
+  - first:
+      213: -8924754017499032269
+    second: PC Computer - MapleStory - Black Dragon - Copy_14
+  - first:
+      213: 7886659473918990401
+    second: PC Computer - MapleStory - Black Dragon - Copy_15
+  - first:
+      213: -6670886079991883800
+    second: PC Computer - MapleStory - Black Dragon - Copy_16
+  - first:
+      213: 5157002421099823427
+    second: PC Computer - MapleStory - Black Dragon - Copy_17
+  - first:
+      213: 1857344527050999629
+    second: PC Computer - MapleStory - Black Dragon - Copy_18
+  - first:
+      213: -4061112767620896432
+    second: PC Computer - MapleStory - Black Dragon - Copy_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_0
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 164
+        width: 63
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f2ecd495acb40e0800000000000000
+      internalID: -2284509901054136419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_1
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 159
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2568df842e89f28e0800000000000000
+      internalID: -1715984835350264238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_2
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 158
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7eb5553db145950800000000000000
+      internalID: 6436800361903417259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_3
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 164
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1650bcf9e09c3a0800000000000000
+      internalID: -6644763695739739719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_4
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 164
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f15d0d8face8f410800000000000000
+      internalID: 1511217913712693753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_5
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 87
+        width: 63
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a4f39b2def1ed5f0800000000000000
+      internalID: -730110986088614744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 82
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b5fe8d130425a50800000000000000
+      internalID: 6508334994340928264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_7
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 81
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82e814dd6a7a28d0800000000000000
+      internalID: -2870347200366845299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_8
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 87
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c294056ecea815a60800000000000000
+      internalID: 7661057191214860588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_9
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 87
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f87626fb53ec031b0800000000000000
+      internalID: -5678812399874709617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_10
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 87
+        width: 63
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f78674051928a63e0800000000000000
+      internalID: -2059690318939854721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_11
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 82
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b712781d028b5ec0800000000000000
+      internalID: -3577122486259411020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_12
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 81
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63129397384b3a0b0800000000000000
+      internalID: -5718528625062895306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_13
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 87
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf2a2e0d2deee890800000000000000
+      internalID: -7426737957720412226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_14
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 87
+        width: 64
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335da37a187e42480800000000000000
+      internalID: -8924754017499032269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_15
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 12
+        width: 66
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1481967910b037d60800000000000000
+      internalID: 7886659473918990401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_16
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 6
+        width: 68
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e75cf044704c63a0800000000000000
+      internalID: -6670886079991883800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_17
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 5
+        width: 67
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3410c77016a519740800000000000000
+      internalID: 5157002421099823427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_18
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 12
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d470468b10d96c910800000000000000
+      internalID: 1857344527050999629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Black Dragon - Copy_19
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 12
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 059272d547704a7c0800000000000000
+      internalID: -4061112767620896432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
