@@ -56,9 +56,7 @@ namespace _WHY.Scripts.Boss
             {
                 bool spawnFlying = Random.value > 0.5f;
                 GameEvents.ToSpawnEnemy?.Invoke(spawnFlying);
-
                 yield return new WaitForSeconds(enemyWaveConfig.currentInterval);
-
                 enemyWaveConfig.currentInterval = Mathf.Max(
                     enemyWaveConfig.minInterval,
                     enemyWaveConfig.currentInterval - enemyWaveConfig.intervalDecreaseRate
