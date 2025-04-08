@@ -1,0 +1,3892 @@
+fileFormatVersion: 2
+guid: 214a91d303e3693488b04e627784d80d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4731360159044724945
+    second: PC Computer - MapleStory - Barnard Grey Morph_0
+  - first:
+      213: 3002318830337570846
+    second: PC Computer - MapleStory - Barnard Grey Morph_1
+  - first:
+      213: 7620700388205758638
+    second: PC Computer - MapleStory - Barnard Grey Morph_2
+  - first:
+      213: -4283580862461519802
+    second: PC Computer - MapleStory - Barnard Grey Morph_3
+  - first:
+      213: -2395485266709033842
+    second: PC Computer - MapleStory - Barnard Grey Morph_4
+  - first:
+      213: -8299376132047062978
+    second: PC Computer - MapleStory - Barnard Grey Morph_5
+  - first:
+      213: 1877665745308110837
+    second: PC Computer - MapleStory - Barnard Grey Morph_6
+  - first:
+      213: 8582579932191369614
+    second: PC Computer - MapleStory - Barnard Grey Morph_7
+  - first:
+      213: -3186371639216549336
+    second: PC Computer - MapleStory - Barnard Grey Morph_8
+  - first:
+      213: 7443023981431109056
+    second: PC Computer - MapleStory - Barnard Grey Morph_9
+  - first:
+      213: 6989506750349486522
+    second: PC Computer - MapleStory - Barnard Grey Morph_10
+  - first:
+      213: 7935508996865382288
+    second: PC Computer - MapleStory - Barnard Grey Morph_11
+  - first:
+      213: -3132701462884929735
+    second: PC Computer - MapleStory - Barnard Grey Morph_12
+  - first:
+      213: -6038915497980650042
+    second: PC Computer - MapleStory - Barnard Grey Morph_13
+  - first:
+      213: -893316643295411562
+    second: PC Computer - MapleStory - Barnard Grey Morph_14
+  - first:
+      213: -7222758341280792350
+    second: PC Computer - MapleStory - Barnard Grey Morph_15
+  - first:
+      213: -1674656714714095830
+    second: PC Computer - MapleStory - Barnard Grey Morph_16
+  - first:
+      213: -8833510164031447866
+    second: PC Computer - MapleStory - Barnard Grey Morph_17
+  - first:
+      213: -4142688824166252735
+    second: PC Computer - MapleStory - Barnard Grey Morph_18
+  - first:
+      213: -1950082559631069185
+    second: PC Computer - MapleStory - Barnard Grey Morph_19
+  - first:
+      213: 1850557682563052221
+    second: PC Computer - MapleStory - Barnard Grey Morph_20
+  - first:
+      213: 632391526694887059
+    second: PC Computer - MapleStory - Barnard Grey Morph_21
+  - first:
+      213: 8274572276675248953
+    second: PC Computer - MapleStory - Barnard Grey Morph_22
+  - first:
+      213: -7038167931369602810
+    second: PC Computer - MapleStory - Barnard Grey Morph_23
+  - first:
+      213: -4165112638618284636
+    second: PC Computer - MapleStory - Barnard Grey Morph_24
+  - first:
+      213: -4293571801189755527
+    second: PC Computer - MapleStory - Barnard Grey Morph_25
+  - first:
+      213: 8672788780855575391
+    second: PC Computer - MapleStory - Barnard Grey Morph_26
+  - first:
+      213: 6055111887010351502
+    second: PC Computer - MapleStory - Barnard Grey Morph_27
+  - first:
+      213: -8364407164141882407
+    second: PC Computer - MapleStory - Barnard Grey Morph_28
+  - first:
+      213: 7389995647289742151
+    second: PC Computer - MapleStory - Barnard Grey Morph_29
+  - first:
+      213: -3898030020232852678
+    second: PC Computer - MapleStory - Barnard Grey Morph_30
+  - first:
+      213: 5747798285829016927
+    second: PC Computer - MapleStory - Barnard Grey Morph_31
+  - first:
+      213: -7817037733253987522
+    second: PC Computer - MapleStory - Barnard Grey Morph_32
+  - first:
+      213: 1309596342763021428
+    second: PC Computer - MapleStory - Barnard Grey Morph_33
+  - first:
+      213: -6254071002265872998
+    second: PC Computer - MapleStory - Barnard Grey Morph_34
+  - first:
+      213: 7183757582065162842
+    second: PC Computer - MapleStory - Barnard Grey Morph_35
+  - first:
+      213: -765367945853473176
+    second: PC Computer - MapleStory - Barnard Grey Morph_36
+  - first:
+      213: -7745334756144613666
+    second: PC Computer - MapleStory - Barnard Grey Morph_37
+  - first:
+      213: 5048016519592518639
+    second: PC Computer - MapleStory - Barnard Grey Morph_38
+  - first:
+      213: 5701915271803735151
+    second: PC Computer - MapleStory - Barnard Grey Morph_39
+  - first:
+      213: -287608240136600741
+    second: PC Computer - MapleStory - Barnard Grey Morph_40
+  - first:
+      213: 6448223869253153353
+    second: PC Computer - MapleStory - Barnard Grey Morph_41
+  - first:
+      213: 1460918468318548211
+    second: PC Computer - MapleStory - Barnard Grey Morph_42
+  - first:
+      213: 7513629372505019866
+    second: PC Computer - MapleStory - Barnard Grey Morph_43
+  - first:
+      213: -1156266364389373071
+    second: PC Computer - MapleStory - Barnard Grey Morph_44
+  - first:
+      213: 7298388966131755187
+    second: PC Computer - MapleStory - Barnard Grey Morph_45
+  - first:
+      213: -3184012262077638358
+    second: PC Computer - MapleStory - Barnard Grey Morph_46
+  - first:
+      213: 4763198588539161193
+    second: PC Computer - MapleStory - Barnard Grey Morph_47
+  - first:
+      213: 6175005318224498826
+    second: PC Computer - MapleStory - Barnard Grey Morph_48
+  - first:
+      213: 2481339446801670172
+    second: PC Computer - MapleStory - Barnard Grey Morph_49
+  - first:
+      213: 9185754624239170596
+    second: PC Computer - MapleStory - Barnard Grey Morph_50
+  - first:
+      213: -4001421705515813182
+    second: PC Computer - MapleStory - Barnard Grey Morph_51
+  - first:
+      213: 4120012246562745809
+    second: PC Computer - MapleStory - Barnard Grey Morph_52
+  - first:
+      213: -6929901585235863568
+    second: PC Computer - MapleStory - Barnard Grey Morph_53
+  - first:
+      213: 804996131423912724
+    second: PC Computer - MapleStory - Barnard Grey Morph_54
+  - first:
+      213: 1394732328932783191
+    second: PC Computer - MapleStory - Barnard Grey Morph_55
+  - first:
+      213: -3352166353248048672
+    second: PC Computer - MapleStory - Barnard Grey Morph_56
+  - first:
+      213: 7619015852315569609
+    second: PC Computer - MapleStory - Barnard Grey Morph_57
+  - first:
+      213: 1138979447016907697
+    second: PC Computer - MapleStory - Barnard Grey Morph_58
+  - first:
+      213: 4628724169911573847
+    second: PC Computer - MapleStory - Barnard Grey Morph_59
+  - first:
+      213: -2633104391045518803
+    second: PC Computer - MapleStory - Barnard Grey Morph_60
+  - first:
+      213: -8806852365708550955
+    second: PC Computer - MapleStory - Barnard Grey Morph_61
+  - first:
+      213: 9043433021246672790
+    second: PC Computer - MapleStory - Barnard Grey Morph_62
+  - first:
+      213: 3775415841818274399
+    second: PC Computer - MapleStory - Barnard Grey Morph_63
+  - first:
+      213: -7753905367330425929
+    second: PC Computer - MapleStory - Barnard Grey Morph_64
+  - first:
+      213: -8827117515822752387
+    second: PC Computer - MapleStory - Barnard Grey Morph_65
+  - first:
+      213: 1006578620223320331
+    second: PC Computer - MapleStory - Barnard Grey Morph_66
+  - first:
+      213: 1091394697286201144
+    second: PC Computer - MapleStory - Barnard Grey Morph_67
+  - first:
+      213: -37650738674084590
+    second: PC Computer - MapleStory - Barnard Grey Morph_68
+  - first:
+      213: -9038896051165487996
+    second: PC Computer - MapleStory - Barnard Grey Morph_69
+  - first:
+      213: 3906080339673922855
+    second: PC Computer - MapleStory - Barnard Grey Morph_70
+  - first:
+      213: -3106771806055155245
+    second: PC Computer - MapleStory - Barnard Grey Morph_71
+  - first:
+      213: 5703670071397335376
+    second: PC Computer - MapleStory - Barnard Grey Morph_72
+  - first:
+      213: 2628402805286649005
+    second: PC Computer - MapleStory - Barnard Grey Morph_73
+  - first:
+      213: -1802190467633343886
+    second: PC Computer - MapleStory - Barnard Grey Morph_74
+  - first:
+      213: 4072064688198958845
+    second: PC Computer - MapleStory - Barnard Grey Morph_75
+  - first:
+      213: 8943959947493128643
+    second: PC Computer - MapleStory - Barnard Grey Morph_76
+  - first:
+      213: 1654290231284753629
+    second: PC Computer - MapleStory - Barnard Grey Morph_77
+  - first:
+      213: 8253957250279757638
+    second: PC Computer - MapleStory - Barnard Grey Morph_78
+  - first:
+      213: -7209817416339109202
+    second: PC Computer - MapleStory - Barnard Grey Morph_79
+  - first:
+      213: 9189418022378890506
+    second: PC Computer - MapleStory - Barnard Grey Morph_80
+  - first:
+      213: 3685960888360995686
+    second: PC Computer - MapleStory - Barnard Grey Morph_81
+  - first:
+      213: -2782404632233479557
+    second: PC Computer - MapleStory - Barnard Grey Morph_82
+  - first:
+      213: 7880199075087875143
+    second: PC Computer - MapleStory - Barnard Grey Morph_83
+  - first:
+      213: 8668149563649423659
+    second: PC Computer - MapleStory - Barnard Grey Morph_84
+  - first:
+      213: -9202607709259791679
+    second: PC Computer - MapleStory - Barnard Grey Morph_85
+  - first:
+      213: -3522780202326190271
+    second: PC Computer - MapleStory - Barnard Grey Morph_86
+  - first:
+      213: -4878449554501516951
+    second: PC Computer - MapleStory - Barnard Grey Morph_87
+  - first:
+      213: -616814473922582418
+    second: PC Computer - MapleStory - Barnard Grey Morph_88
+  - first:
+      213: 8040717936666211243
+    second: PC Computer - MapleStory - Barnard Grey Morph_89
+  - first:
+      213: -1435333758555687281
+    second: PC Computer - MapleStory - Barnard Grey Morph_90
+  - first:
+      213: -4883198594189470570
+    second: PC Computer - MapleStory - Barnard Grey Morph_91
+  - first:
+      213: 496441637882880616
+    second: PC Computer - MapleStory - Barnard Grey Morph_92
+  - first:
+      213: 6105242684972520875
+    second: PC Computer - MapleStory - Barnard Grey Morph_93
+  - first:
+      213: -5590603509588190712
+    second: PC Computer - MapleStory - Barnard Grey Morph_94
+  - first:
+      213: 8325975398341027097
+    second: PC Computer - MapleStory - Barnard Grey Morph_95
+  - first:
+      213: 2529164395904061842
+    second: PC Computer - MapleStory - Barnard Grey Morph_96
+  - first:
+      213: 2936534485226665888
+    second: PC Computer - MapleStory - Barnard Grey Morph_97
+  - first:
+      213: 5955973734740879633
+    second: PC Computer - MapleStory - Barnard Grey Morph_98
+  - first:
+      213: -8616707795685863764
+    second: PC Computer - MapleStory - Barnard Grey Morph_99
+  - first:
+      213: -738258145298737132
+    second: PC Computer - MapleStory - Barnard Grey Morph_100
+  - first:
+      213: -1039095754340446649
+    second: PC Computer - MapleStory - Barnard Grey Morph_101
+  - first:
+      213: 1847050464597634474
+    second: PC Computer - MapleStory - Barnard Grey Morph_102
+  - first:
+      213: -3845578341368208096
+    second: PC Computer - MapleStory - Barnard Grey Morph_103
+  - first:
+      213: 8966246217113329253
+    second: PC Computer - MapleStory - Barnard Grey Morph_104
+  - first:
+      213: -7741018657335425893
+    second: PC Computer - MapleStory - Barnard Grey Morph_105
+  - first:
+      213: -7816748641838608163
+    second: PC Computer - MapleStory - Barnard Grey Morph_106
+  - first:
+      213: -4529660128147258899
+    second: PC Computer - MapleStory - Barnard Grey Morph_107
+  - first:
+      213: -1991599037669399201
+    second: PC Computer - MapleStory - Barnard Grey Morph_108
+  - first:
+      213: -456349993850490883
+    second: PC Computer - MapleStory - Barnard Grey Morph_109
+  - first:
+      213: -3780813077049101641
+    second: PC Computer - MapleStory - Barnard Grey Morph_110
+  - first:
+      213: -306761730894639230
+    second: PC Computer - MapleStory - Barnard Grey Morph_111
+  - first:
+      213: -4482805855637745526
+    second: PC Computer - MapleStory - Barnard Grey Morph_112
+  - first:
+      213: 5968501931046962102
+    second: PC Computer - MapleStory - Barnard Grey Morph_113
+  - first:
+      213: 440221579279694569
+    second: PC Computer - MapleStory - Barnard Grey Morph_114
+  - first:
+      213: 2826881856045963605
+    second: PC Computer - MapleStory - Barnard Grey Morph_115
+  - first:
+      213: -411175918329476600
+    second: PC Computer - MapleStory - Barnard Grey Morph_116
+  - first:
+      213: 86024312330532744
+    second: PC Computer - MapleStory - Barnard Grey Morph_117
+  - first:
+      213: 4350788113285173974
+    second: PC Computer - MapleStory - Barnard Grey Morph_118
+  - first:
+      213: -8447795849705138415
+    second: PC Computer - MapleStory - Barnard Grey Morph_119
+  - first:
+      213: 5856891408589150057
+    second: PC Computer - MapleStory - Barnard Grey Morph_120
+  - first:
+      213: -5145775064791319321
+    second: PC Computer - MapleStory - Barnard Grey Morph_121
+  - first:
+      213: 9219654048221142648
+    second: PC Computer - MapleStory - Barnard Grey Morph_122
+  - first:
+      213: -2614784390367423041
+    second: PC Computer - MapleStory - Barnard Grey Morph_123
+  - first:
+      213: 793770095170814540
+    second: PC Computer - MapleStory - Barnard Grey Morph_124
+  - first:
+      213: -6881629827633173352
+    second: PC Computer - MapleStory - Barnard Grey Morph_125
+  - first:
+      213: -7448925485888074385
+    second: PC Computer - MapleStory - Barnard Grey Morph_126
+  - first:
+      213: 8573637447189020925
+    second: PC Computer - MapleStory - Barnard Grey Morph_127
+  - first:
+      213: 1819785753427371494
+    second: PC Computer - MapleStory - Barnard Grey Morph_128
+  - first:
+      213: 587078523760809095
+    second: PC Computer - MapleStory - Barnard Grey Morph_129
+  - first:
+      213: -4197807777438668467
+    second: PC Computer - MapleStory - Barnard Grey Morph_130
+  - first:
+      213: -6119558699600682939
+    second: PC Computer - MapleStory - Barnard Grey Morph_131
+  - first:
+      213: -1829698257893349263
+    second: PC Computer - MapleStory - Barnard Grey Morph_132
+  - first:
+      213: -7268565887056543509
+    second: PC Computer - MapleStory - Barnard Grey Morph_133
+  - first:
+      213: -2429667913151515641
+    second: PC Computer - MapleStory - Barnard Grey Morph_134
+  - first:
+      213: 6552942557092535098
+    second: PC Computer - MapleStory - Barnard Grey Morph_135
+  - first:
+      213: -4492290086634171349
+    second: PC Computer - MapleStory - Barnard Grey Morph_136
+  - first:
+      213: 4132388833138906487
+    second: PC Computer - MapleStory - Barnard Grey Morph_137
+  - first:
+      213: -1566916658353447162
+    second: PC Computer - MapleStory - Barnard Grey Morph_138
+  - first:
+      213: -3796838555762981134
+    second: PC Computer - MapleStory - Barnard Grey Morph_139
+  - first:
+      213: -243587139329392207
+    second: PC Computer - MapleStory - Barnard Grey Morph_140
+  - first:
+      213: -8838590742266044735
+    second: PC Computer - MapleStory - Barnard Grey Morph_141
+  - first:
+      213: 5672744809903606380
+    second: PC Computer - MapleStory - Barnard Grey Morph_142
+  - first:
+      213: 7432592691193375241
+    second: PC Computer - MapleStory - Barnard Grey Morph_143
+  - first:
+      213: -7235244485450319368
+    second: PC Computer - MapleStory - Barnard Grey Morph_144
+  - first:
+      213: 2147901515623185069
+    second: PC Computer - MapleStory - Barnard Grey Morph_145
+  - first:
+      213: 328334284545049287
+    second: PC Computer - MapleStory - Barnard Grey Morph_146
+  - first:
+      213: 4526929253748064566
+    second: PC Computer - MapleStory - Barnard Grey Morph_147
+  - first:
+      213: -1344214467895444313
+    second: PC Computer - MapleStory - Barnard Grey Morph_148
+  - first:
+      213: 1568371593687499031
+    second: PC Computer - MapleStory - Barnard Grey Morph_149
+  - first:
+      213: -8962800144267961849
+    second: PC Computer - MapleStory - Barnard Grey Morph_150
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 159
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2714bfc005d65eb0800000000000000
+      internalID: -4731360159044724945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_1
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 239
+        width: 132
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e18bcb8b1116aa920800000000000000
+      internalID: 3002318830337570846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_2
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 259
+        width: 60
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea88faa70aa22c960800000000000000
+      internalID: 7620700388205758638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 259
+        width: 60
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648d156a6e9ad84c0800000000000000
+      internalID: -4283580862461519802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_4
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 259
+        width: 60
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c402d77d681ced0800000000000000
+      internalID: -2395485266709033842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_5
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 259
+        width: 60
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e38baff3161b2dc80800000000000000
+      internalID: -8299376132047062978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_6
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 259
+        width: 60
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff420c0c0fce0a10800000000000000
+      internalID: 1877665745308110837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_7
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 259
+        width: 60
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e89a9a2d9f27b1770800000000000000
+      internalID: 8582579932191369614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_8
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 259
+        width: 60
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8225e1250ebb7c3d0800000000000000
+      internalID: -3186371639216549336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_9
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 259
+        width: 68
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c53ae350eeea4760800000000000000
+      internalID: 7443023981431109056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_10
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 259
+        width: 69
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9a6c18b57bff060800000000000000
+      internalID: 6989506750349486522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_11
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 259
+        width: 68
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097d3167367902e60800000000000000
+      internalID: 7935508996865382288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_12
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 259
+        width: 60
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93fa5650e986684d0800000000000000
+      internalID: -3132701462884929735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd1342a956713ca0800000000000000
+      internalID: -6038915497980650042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_14
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692ce64fe3d4a93f0800000000000000
+      internalID: -893316643295411562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_15
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e008717e8b93cb90800000000000000
+      internalID: -7222758341280792350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_16
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f5eb6379c62c8e0800000000000000
+      internalID: -1674656714714095830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_17
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc5a19ce41196580800000000000000
+      internalID: -8833510164031447866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_18
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ff69c96763286c0800000000000000
+      internalID: -4142688824166252735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_19
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff61867e3aefe4e0800000000000000
+      internalID: -1950082559631069185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_20
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db27a8958608ea910800000000000000
+      internalID: 1850557682563052221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_21
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e9d933eb4b6c800800000000000000
+      internalID: 632391526694887059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_22
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933068325af25d270800000000000000
+      internalID: 8274572276675248953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_23
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6014b256e87635e90800000000000000
+      internalID: -7038167931369602810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_24
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4adcaa57f1c8236c0800000000000000
+      internalID: -4165112638618284636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_25
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9755374f13b2a64c0800000000000000
+      internalID: -4293571801189755527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_26
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f53c3ee127feb5870800000000000000
+      internalID: 8672788780855575391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_27
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e894f7c0e24180450800000000000000
+      internalID: 6055111887010351502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_28
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d337903008abeb80800000000000000
+      internalID: -8364407164141882407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_29
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 743536823e98e8660800000000000000
+      internalID: 7389995647289742151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_30
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3b4638695a67e9c0800000000000000
+      internalID: -3898030020232852678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_31
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d007b761844cf40800000000000000
+      internalID: 5747798285829016927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_32
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e334299199d448390800000000000000
+      internalID: -7817037733253987522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_33
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4746a896fee9c2210800000000000000
+      internalID: 1309596342763021428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_34
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a951fd51f831539a0800000000000000
+      internalID: -6254071002265872998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_35
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a538fa575d1b360800000000000000
+      internalID: 7183757582065162842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_36
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86eeee888edd065f0800000000000000
+      internalID: -765367945853473176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_37
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed67389631b038490800000000000000
+      internalID: -7745334756144613666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_38
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3ad9e67482e0640800000000000000
+      internalID: 5048016519592518639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_39
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c8c3bcab5412f40800000000000000
+      internalID: 5701915271803735151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_40
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53ce2454d5320cf0800000000000000
+      internalID: -287608240136600741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_41
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9427707e171bc7950800000000000000
+      internalID: 6448223869253153353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_42
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f05fed4b99364410800000000000000
+      internalID: 1460918468318548211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_43
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad55a1afa16c54860800000000000000
+      internalID: 7513629372505019866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_44
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17bc6d42edd14ffe0800000000000000
+      internalID: -1156266364389373071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_45
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8e9ee9816194560800000000000000
+      internalID: 7298388966131755187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_46
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a29df5e97bd10d3d0800000000000000
+      internalID: -3184012262077638358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_47
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96ac48831e74a1240800000000000000
+      internalID: 4763198588539161193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_48
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a805beece9602b550800000000000000
+      internalID: 6175005318224498826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_49
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1027c5841d7f6220800000000000000
+      internalID: 2481339446801670172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_50
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4247dab992b5a7f70800000000000000
+      internalID: 9185754624239170596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_51
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c63136c8281878c0800000000000000
+      internalID: -4001421705515813182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_52
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dda1aa3f493d2930800000000000000
+      internalID: 4120012246562745809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_53
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f79993793b04df90800000000000000
+      internalID: -6929901585235863568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_54
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 413061b67bbeb2b00800000000000000
+      internalID: 804996131423912724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_55
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754baced9a51b5310800000000000000
+      internalID: 1394732328932783191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_56
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e922a65676ba71d0800000000000000
+      internalID: -3352166353248048672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_57
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cde657ec8e2cb960800000000000000
+      internalID: 7619015852315569609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_58
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b3e9e1c5c77ecf00800000000000000
+      internalID: 1138979447016907697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_59
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d18d6cb188c3040800000000000000
+      internalID: 4628724169911573847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_60
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2ae533d185557bd0800000000000000
+      internalID: -2633104391045518803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_61
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc12a02f66c7c580800000000000000
+      internalID: -8806852365708550955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_62
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69f027d2b6ab08d70800000000000000
+      internalID: 9043433021246672790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_63
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ae5f284b8f46430800000000000000
+      internalID: 3775415841818274399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_64
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3764e7628946490800000000000000
+      internalID: -7753905367330425929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_65
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d91ce2367cf7580800000000000000
+      internalID: -8827117515822752387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_66
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b01f9e80ce518fd00800000000000000
+      internalID: 1006578620223320331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_67
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f2d79d1b9652f00800000000000000
+      internalID: 1091394697286201144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_68
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215dcc74adc3a7ff0800000000000000
+      internalID: -37650738674084590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_69
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c999c7ee36f8280800000000000000
+      internalID: -9038896051165487996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_70
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72db666af5f253630800000000000000
+      internalID: 3906080339673922855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_71
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d932e5b08782e4d0800000000000000
+      internalID: -3106771806055155245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_72
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0514aa9e5b1872f40800000000000000
+      internalID: 5703670071397335376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_73
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dac30cfec66f97420800000000000000
+      internalID: 2628402805286649005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_74
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2729e1f61555df6e0800000000000000
+      internalID: -1802190467633343886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_75
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfeb28a5241e28830800000000000000
+      internalID: 4072064688198958845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_76
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c936a36f245f1c70800000000000000
+      internalID: 8943959947493128643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_77
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd46027533835f610800000000000000
+      internalID: 1654290231284753629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_78
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 239
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6475f264362fb8270800000000000000
+      internalID: 8253957250279757638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_79
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaacea3524591fb90800000000000000
+      internalID: -7209817416339109202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_80
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 239
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a056774f00f578f70800000000000000
+      internalID: 9189418022378890506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_81
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 239
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b8dbe16e9272330800000000000000
+      internalID: 3685960888360995686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_82
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 239
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7272529ab9e269d0800000000000000
+      internalID: -2782404632233479557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_83
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 239
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74c79f5ce471c5d60800000000000000
+      internalID: 7880199075087875143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_84
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 79
+        width: 80
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b29f7413a147b4870800000000000000
+      internalID: 8668149563649423659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_85
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 79
+        width: 77
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c28c42cb05c94080800000000000000
+      internalID: -9202607709259791679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_86
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 80
+        width: 70
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147919a02129c1fc0800000000000000
+      internalID: -3522780202326190271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_87
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 79
+        width: 82
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96146413af34c4cb0800000000000000
+      internalID: -4878449554501516951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_88
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 79
+        width: 72
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6866850182a077f0800000000000000
+      internalID: -616814473922582418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_89
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 79
+        width: 72
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3f912ac5e569f60800000000000000
+      internalID: 8040717936666211243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_90
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 79
+        width: 60
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8679232d8ba41ce0800000000000000
+      internalID: -1435333758555687281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_91
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 89
+        width: 73
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69456a930c46b3cb0800000000000000
+      internalID: -4883198594189470570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_92
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 89
+        width: 61
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862e8b51a07b3e600800000000000000
+      internalID: 496441637882880616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_93
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 89
+        width: 61
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5d65100ed2ab450800000000000000
+      internalID: 6105242684972520875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_94
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 89
+        width: 61
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80a91f27abf2a62b0800000000000000
+      internalID: -5590603509588190712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_95
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 89
+        width: 61
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91522ca038ecb8370800000000000000
+      internalID: 8325975398341027097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_96
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 59
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2915d643e95691320800000000000000
+      internalID: 2529164395904061842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_97
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 59
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a7be9e4e8aa0c820800000000000000
+      internalID: 2936534485226665888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_98
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11969ce3e8ed7a250800000000000000
+      internalID: 5955973734740879633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_99
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cae0ec0c9ed4b6880800000000000000
+      internalID: -8616707795685863764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_100
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 59
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4181ee8d02e21c5f0800000000000000
+      internalID: -738258145298737132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_101
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 59
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74ecbe2bae36491f0800000000000000
+      internalID: -1039095754340446649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_102
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aadef888c9a02a910800000000000000
+      internalID: 1847050464597634474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_103
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025efce8fd2c1aac0800000000000000
+      internalID: -3845578341368208096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_104
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 59
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56edab3ed618e6c70800000000000000
+      internalID: 8966246217113329253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_105
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 59
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b94c9d97b80629490800000000000000
+      internalID: -7741018657335425893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_106
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd051b07684558390800000000000000
+      internalID: -7816748641838608163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_107
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de14884dc1a6321c0800000000000000
+      internalID: -4529660128147258899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_108
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 59
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55a4b82a3b6c54e0800000000000000
+      internalID: -1991599037669399201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_109
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 59
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff2a433918baa9f0800000000000000
+      internalID: -456349993850490883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_110
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b2365cb98ad78bc0800000000000000
+      internalID: -3780813077049101641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_111
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28f475fb4d92ebbf0800000000000000
+      internalID: -306761730894639230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_112
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 59
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80dba143dfd9c1c0800000000000000
+      internalID: -4482805855637745526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_113
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 57
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b3894142e064d250800000000000000
+      internalID: 5968501931046962102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_114
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea7d67a13bfb1600800000000000000
+      internalID: 440221579279694569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_115
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 59
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 559dd93121a1b3720800000000000000
+      internalID: 2826881856045963605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_116
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 57
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80ac6c74ea53b4af0800000000000000
+      internalID: -411175918329476600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_117
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 887328208ae913100800000000000000
+      internalID: 86024312330532744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_118
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 59
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d2da51dcba116c30800000000000000
+      internalID: 4350788113285173974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_119
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1175e4bde6663ca80800000000000000
+      internalID: -8447795849705138415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_120
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 59
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9675ef874bbd74150800000000000000
+      internalID: 5856891408589150057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_121
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 57
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ecfc0197d88698b0800000000000000
+      internalID: -5145775064791319321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_122
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e9630528ac2ff70800000000000000
+      internalID: 9219654048221142648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_123
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 59
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb5d9ef537b66bbd0800000000000000
+      internalID: -2614784390367423041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_124
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c420cfb22b9040b00800000000000000
+      internalID: 793770095170814540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_125
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c2138d12a8f70a0800000000000000
+      internalID: -6881629827633173352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_126
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d89479cb910a890800000000000000
+      internalID: -7448925485888074385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_127
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df040b845ddabf670800000000000000
+      internalID: 8573637447189020925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_128
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e5ea58408d214910800000000000000
+      internalID: 1819785753427371494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_129
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78416009ec8b52800800000000000000
+      internalID: 587078523760809095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_130
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49656e31146eb5c0800000000000000
+      internalID: -4197807777438668467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_131
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540662819c5f21ba0800000000000000
+      internalID: -6119558699600682939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_132
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 59
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 178ad1ce02b9b96e0800000000000000
+      internalID: -1829698257893349263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_133
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0097316ddd02b90800000000000000
+      internalID: -7268565887056543509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_134
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704707ae7e5184ed0800000000000000
+      internalID: -2429667913151515641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_135
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3b5a05698ab0fa50800000000000000
+      internalID: 6552942557092535098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_136
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b245926a7fd28a1c0800000000000000
+      internalID: -4492290086634171349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_137
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 59
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7751909dfb1395930800000000000000
+      internalID: 4132388833138906487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_138
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f5332e991314ae0800000000000000
+      internalID: -1566916658353447162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_139
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 59
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f68d36337bee4bc0800000000000000
+      internalID: -3796838555762981134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_140
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b10b6099ca9e9cf0800000000000000
+      internalID: -243587139329392207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_141
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 58
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce1d2c7c84075580800000000000000
+      internalID: -8838590742266044735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_142
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 58
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6acebf5953a9be40800000000000000
+      internalID: 5672744809903606380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_143
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 56
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90aeebe4cafd52760800000000000000
+      internalID: 7432592691193375241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_144
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 58
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f931a5797f379b90800000000000000
+      internalID: -7235244485450319368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_145
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 58
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daa3e336c01eecd10800000000000000
+      internalID: 2147901515623185069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_146
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 59
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2c3edca4a7e8400800000000000000
+      internalID: 328334284545049287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_147
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6314afceb22e2de30800000000000000
+      internalID: 4526929253748064566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_148
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 57
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7acb62b3014685de0800000000000000
+      internalID: -1344214467895444313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_149
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 59
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7118e85a7a9f3c510800000000000000
+      internalID: 1568371593687499031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - MapleStory - Barnard Grey Morph_150
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 59
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a961871ccbd9380800000000000000
+      internalID: -8962800144267961849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
