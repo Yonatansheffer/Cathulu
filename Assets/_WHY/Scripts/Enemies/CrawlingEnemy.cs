@@ -1,17 +1,51 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace _WHY.Scripts.Enemies
 {
     public class CrawlingEnemy : Enemy
     {
+        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         [SerializeField] private float moveSpeed = 2f;
         private Vector2 _moveDirection = Vector2.right;
         private Rigidbody2D _rb;
+        private bool _isMoving;
+        private Animator _animator;
+        private SpriteRenderer _spriteRenderer;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _spriteRenderer = GetComponent<SpriteRenderer>(); 
         }
+        
+        private void Start()
+        {
+            StartCoroutine(WaitBeforeMoving());
+        }
+        
+        private void Update()
+        {
+            UpdateAnimation();
+        }
+        
+        private void UpdateAnimation()
+        {
+            _animator.SetFloat(MoveSpeed, _rb.linearVelocity.magnitude);
+            _spriteRenderer.flipX = _moveDirection.x < 0f;
+        }
+        
+        private IEnumerator WaitBeforeMoving()
+        {
+            yield return new WaitForSeconds(5f);
+            _isMoving = true;
+        }
+
+        public override void Reset()
+        {
+            _isMoving = false;
+        } 
 
         private void OnEnable()
         {
@@ -21,6 +55,7 @@ namespace _WHY.Scripts.Enemies
 
         protected override void Move()
         {
+            if (!_isMoving) return;
             _rb.linearVelocity = _moveDirection * moveSpeed;
         }
 

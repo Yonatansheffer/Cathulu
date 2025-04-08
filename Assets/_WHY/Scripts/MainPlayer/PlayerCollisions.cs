@@ -53,19 +53,21 @@ namespace MainPlayer
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Balloon") && !_isShieldActive)
+            if (other.gameObject.CompareTag("Enemy") && !_isShieldActive)
             {
-                StartCoroutine(OnPlayerHit());
+                //StartCoroutine(OnPlayerHit());
+                GameEvents.PlayerHit?.Invoke(2);
+                SoundManager.Instance.PlaySound("Lost Life", transform);
             }
         }
 
-        private IEnumerator OnPlayerHit()
+        /*private IEnumerator OnPlayerHit()
         {
             GameEvents.FreezeStage?.Invoke();
             yield return new WaitForSeconds(1f); // 1 second delay
             SoundManager.Instance.PlaySound("Lost Life", transform);
             GameEvents.PlayerHit?.Invoke();
             GameEvents.ResetWeaponUI?.Invoke(); // reset weapon
-        }
+        }*/
     }
 }

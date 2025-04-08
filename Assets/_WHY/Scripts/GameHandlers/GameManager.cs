@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameHandlers
 {
@@ -6,12 +7,12 @@ namespace GameHandlers
     {
         [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
         [SerializeField] private const int InitialBossHealth = 100;
-        [SerializeField] private int initialPlayerLives = 3;
+        [SerializeField] private int initialPlayerHealth = 3;
         private float _countDownTime; // Stores the current time left
         private int _currentPoints; // Stores the current points
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
         private bool _isCountingDown; // Flag to know if the countdown is active
-        private int _currentLives; // Stores the current lives of the player
+        private int _currentPlayerHealth; // Stores the current lives of the player
 
         private void Awake()
         {
@@ -62,7 +63,7 @@ namespace GameHandlers
     
         private void ResetStats()
         {
-            _currentLives = initialPlayerLives;
+            _currentPlayerHealth = initialPlayerHealth;
             _currentPoints = 0;
             _timeBonus = 0;
         }
@@ -71,7 +72,7 @@ namespace GameHandlers
         {
             ResetCountDown();
             GameEvents.UpdatePointsUI?.Invoke(_currentPoints);
-            GameEvents.UpdateLifeUI?.Invoke(_currentLives);
+            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
             GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
             _isCountingDown = true;
         }
@@ -125,17 +126,17 @@ namespace GameHandlers
     
         private void ReducePlayerLife()
         {
-            _currentLives--;
+            _currentPlayerHealth--;
             CheckGameOver();
         }
     
         private void CheckGameOver() {
-            if (_currentLives <= 0)
+            if (_currentPlayerHealth <= 0)
                 GameEvents.GameOver?.Invoke();
             else
             {
                 GameEvents.ReadyStage?.Invoke();
-                GameEvents.UpdateLifeUI?.Invoke(_currentLives);
+                GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
             }
         }
     
@@ -146,10 +147,10 @@ namespace GameHandlers
     
         private void AddLife()
         {
-            if (_currentLives >= initialPlayerLives)
+            if (_currentPlayerHealth >= initialPlayerHealth)
                 return;
-            _currentLives++;
-            GameEvents.UpdateLifeUI?.Invoke(_currentLives);
+            _currentPlayerHealth++;
+            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
         }
     }
 }

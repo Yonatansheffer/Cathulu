@@ -23,7 +23,7 @@ namespace Frame
             GameEvents.PlayerHit -= OnPlayerHit;
         }
         
-        private void OnPlayerHit()
+        private void OnPlayerHit(int dummy)
         {
             _animator.SetTrigger(Activate);
         }

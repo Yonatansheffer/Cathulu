@@ -6,8 +6,8 @@ namespace _WHY.Scripts.Boss
 {
     public class BossShooting :WHYBaseMono
     {
-        [SerializeField] private float minSpawnForce = 2f;
-        [SerializeField] private float maxSpawnForce = 4f;
+        [SerializeField] private float minSpawnForce = 4f;
+        [SerializeField] private float maxSpawnForce = 10f;
         [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
         [SerializeField] private float rotationSpeed = 30f; // degrees per second
 

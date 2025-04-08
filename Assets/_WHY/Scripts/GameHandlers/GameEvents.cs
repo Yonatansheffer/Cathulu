@@ -36,7 +36,7 @@ namespace GameHandlers
         public static Action EnemyStopperCollected;
         public static Action ShieldCollected;
         public static Action ShieldHit;
-        public static Action PlayerHit;
+        public static Action<int> PlayerHit;
         public static Action PlayerLostLife;
         public static Action BossDestroyed;
         public static Action<int> BossDamaged;

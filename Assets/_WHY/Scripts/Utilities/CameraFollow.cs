@@ -26,13 +26,13 @@ public class CameraFollow : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.PlayerHit += CameraShake;
-        GameEvents.BossShoots += zoomOutToCenter;
+        //GameEvents.BossShoots += zoomOutToCenter;
     }
 
     private void OnDisable()
     {
         GameEvents.PlayerHit -= CameraShake;
-        GameEvents.BossShoots -= zoomOutToCenter;
+        //GameEvents.BossShoots -= zoomOutToCenter;
     }
 
     private void Start()
@@ -83,7 +83,7 @@ public class CameraFollow : MonoBehaviour
         transform.localPosition = originalPos;
     }
 
-    private void CameraShake()
+    private void CameraShake(int dummy)
     {
         StartCoroutine(Shake(_shakeDuration, _shakeMagnitude));
     }

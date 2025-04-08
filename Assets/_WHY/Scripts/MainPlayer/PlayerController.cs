@@ -86,7 +86,6 @@ namespace MainPlayer
             if (!_isGrounded || !_rb.simulated) return;
             _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
         }
-
         
         /*private void KeepInBounds()
         {
