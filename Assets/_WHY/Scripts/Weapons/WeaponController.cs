@@ -70,7 +70,6 @@ namespace Weapons
         {
             if (_currentWeaponConfig == null || _activeProjectiles.Count >= _currentWeaponConfig.maxProjectileCount)
                 return;
-
             SoundManager.Instance.PlaySound(
                 _currentWeaponConfig.weaponType == WeaponType.LightGun ? "Light Shot" : "Shoot", transform);
             shootingLight.gameObject.SetActive(true);

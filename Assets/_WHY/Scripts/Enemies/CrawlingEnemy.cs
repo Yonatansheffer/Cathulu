@@ -20,26 +20,17 @@ namespace _WHY.Scripts.Enemies
             _spriteRenderer = GetComponent<SpriteRenderer>(); 
         }
         
-        private void Start()
-        {
-            StartCoroutine(WaitBeforeMoving());
-        }
-        
-        private void Update()
+        private new void Update()
         {
             UpdateAnimation();
+            if (!_isMoving) return;
+            Move();
         }
         
         private void UpdateAnimation()
         {
             _animator.SetFloat(MoveSpeed, _rb.linearVelocity.magnitude);
             _spriteRenderer.flipX = _moveDirection.x < 0f;
-        }
-        
-        private IEnumerator WaitBeforeMoving()
-        {
-            yield return new WaitForSeconds(5f);
-            _isMoving = true;
         }
 
         public override void Reset()
@@ -49,27 +40,43 @@ namespace _WHY.Scripts.Enemies
 
         private void OnEnable()
         {
-            // Set random direction when spawned (left or right)
             _moveDirection = Random.value < 0.5f ? Vector2.left : Vector2.right;
         }
 
         protected override void Move()
         {
-            if (!_isMoving) return;
             _rb.linearVelocity = _moveDirection * moveSpeed;
-        }
+            _spriteRenderer.flipX = _moveDirection.x > 0f;
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            FlipDirection();
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Weapon"))
             {
-                CrawlingEnemyPool.Instance.Return(gameObject.GetComponent<CrawlingEnemy>());
+                ReturnToPool();
             }
+            if (other.CompareTag("Boundary"))
+            {
+                FlipDirection();
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                ReturnToPool();
+            }
+            if (other.gameObject.CompareTag("Step")  ||other.gameObject.CompareTag("Floor"))
+            {
+                _isMoving = true;
+            }
+        }
+        
+        private void ReturnToPool()
+        {
+            CrawlingEnemyPool.Instance.Return(gameObject.GetComponent<CrawlingEnemy>());
         }
 
         private void FlipDirection()

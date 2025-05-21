@@ -15,7 +15,7 @@ namespace _WHY.Scripts.Enemies
         {
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             _animator = GetComponent<Animator>();
-            _spriteRenderer = GetComponent<SpriteRenderer>(); // Optional: for flipping sprite
+            _spriteRenderer = GetComponent<SpriteRenderer>(); 
         }
 
         protected override void Move()
@@ -29,6 +29,14 @@ namespace _WHY.Scripts.Enemies
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Weapon"))
+            {
+                FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
             {
                 FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
             }

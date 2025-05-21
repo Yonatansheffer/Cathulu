@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 70d6932a56d03e34f98a4da81ec4b1ea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5304145595010401708
+    second: Food Collectibles_0
+  - first:
+      213: -5358659475678478176
+    second: Food Collectibles_1
+  - first:
+      213: -1383844947561544110
+    second: Food Collectibles_2
+  - first:
+      213: 4115099119511313512
+    second: Food Collectibles_3
+  - first:
+      213: 828157317257610352
+    second: Food Collectibles_4
+  - first:
+      213: 6388582004970116730
+    second: Food Collectibles_5
+  - first:
+      213: -5023236504212175785
+    second: Food Collectibles_6
+  - first:
+      213: -5132314072016274821
+    second: Food Collectibles_7
+  - first:
+      213: 1395768711736175074
+    second: Food Collectibles_8
+  - first:
+      213: 3106550528846459143
+    second: Food Collectibles_9
+  - first:
+      213: 8108299747107896219
+    second: Food Collectibles_10
+  - first:
+      213: -2536122089926136206
+    second: Food Collectibles_11
+  - first:
+      213: 292368348168995481
+    second: Food Collectibles_12
+  - first:
+      213: 7127003076246184120
+    second: Food Collectibles_13
+  - first:
+      213: 3199823817286461160
+    second: Food Collectibles_14
+  - first:
+      213: -4891798997721998316
+    second: Food Collectibles_15
+  - first:
+      213: -2444073889870667953
+    second: Food Collectibles_16
+  - first:
+      213: 4308859567209870103
+    second: Food Collectibles_17
+  - first:
+      213: -5692872294678498377
+    second: Food Collectibles_18
+  - first:
+      213: 8813824552623992065
+    second: Food Collectibles_19
+  - first:
+      213: -3405692343018867163
+    second: Food Collectibles_20
+  - first:
+      213: 2340846135855625901
+    second: Food Collectibles_21
+  - first:
+      213: 8850384024253505861
+    second: Food Collectibles_22
+  - first:
+      213: 2559481159119799868
+    second: Food Collectibles_23
+  - first:
+      213: -4382080799551038606
+    second: Food Collectibles_24
+  - first:
+      213: -4974573969333483312
+    second: Food Collectibles_25
+  - first:
+      213: 8263862619400214628
+    second: Food Collectibles_26
+  - first:
+      213: -5925759810274888427
+    second: Food Collectibles_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Food Collectibles_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 74
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ab3741fa3e366b0800000000000000
+      internalID: -5304145595010401708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 74
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a047e7299732a5b0800000000000000
+      internalID: -5358659475678478176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 74
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25600642a589bcce0800000000000000
+      internalID: -1383844947561544110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 74
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c9ef1b8d4cb1930800000000000000
+      internalID: 4115099119511313512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 74
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074c74931b43e7b00800000000000000
+      internalID: 828157317257610352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 74
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7652b04c7dc8a850800000000000000
+      internalID: 6388582004970116730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_6
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 74
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75488af7301e94ab0800000000000000
+      internalID: -5023236504212175785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 74
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7a3bbd2b8b56c8b0800000000000000
+      internalID: -5132314072016274821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 74
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e9a3ab8f34ce5310800000000000000
+      internalID: 1395768711736175074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 74
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701f1bc2f3fac1b20800000000000000
+      internalID: 3106550528846459143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_10
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 42
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9b71ce09a7768070800000000000000
+      internalID: 8108299747107896219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_11
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 42
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e6eea6562edccd0800000000000000
+      internalID: -2536122089926136206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_12
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 42
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9924e20b673be0400800000000000000
+      internalID: 292368348168995481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 42
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b025c0998338e260800000000000000
+      internalID: 7127003076246184120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_14
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 42
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e6a135fece086c20800000000000000
+      internalID: 3199823817286461160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_15
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 42
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c1b2cbab6dc1cb0800000000000000
+      internalID: -4891798997721998316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_16
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 42
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4f93751fb7e41ed0800000000000000
+      internalID: -2444073889870667953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_17
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 42
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 713769272f42ccb30800000000000000
+      internalID: 4308859567209870103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_18
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 42
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b376046fcadef0b0800000000000000
+      internalID: -5692872294678498377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_19
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 42
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10de4c3abbef05a70800000000000000
+      internalID: 8813824552623992065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_20
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 526b710bbdc8cb0d0800000000000000
+      internalID: -3405692343018867163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_21
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 6
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da63581882b5c7020800000000000000
+      internalID: 2340846135855625901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_22
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 6
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5412c63f061e2da70800000000000000
+      internalID: 8850384024253505861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_23
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 6
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3604a2bd8a158320800000000000000
+      internalID: 2559481159119799868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_24
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 6
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b53b5eab8bf23c0800000000000000
+      internalID: -4382080799551038606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_25
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 6
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d809f0d453c6fab0800000000000000
+      internalID: -4974573969333483312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_26
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 6
+        width: 34
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4689afdb4432fa270800000000000000
+      internalID: 8263862619400214628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food Collectibles_27
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 6
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 515774c39d873cda0800000000000000
+      internalID: -5925759810274888427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Food Collectibles_0: -5304145595010401708
+      Food Collectibles_1: -5358659475678478176
+      Food Collectibles_10: 8108299747107896219
+      Food Collectibles_11: -2536122089926136206
+      Food Collectibles_12: 292368348168995481
+      Food Collectibles_13: 7127003076246184120
+      Food Collectibles_14: 3199823817286461160
+      Food Collectibles_15: -4891798997721998316
+      Food Collectibles_16: -2444073889870667953
+      Food Collectibles_17: 4308859567209870103
+      Food Collectibles_18: -5692872294678498377
+      Food Collectibles_19: 8813824552623992065
+      Food Collectibles_2: -1383844947561544110
+      Food Collectibles_20: -3405692343018867163
+      Food Collectibles_21: 2340846135855625901
+      Food Collectibles_22: 8850384024253505861
+      Food Collectibles_23: 2559481159119799868
+      Food Collectibles_24: -4382080799551038606
+      Food Collectibles_25: -4974573969333483312
+      Food Collectibles_26: 8263862619400214628
+      Food Collectibles_27: -5925759810274888427
+      Food Collectibles_3: 4115099119511313512
+      Food Collectibles_4: 828157317257610352
+      Food Collectibles_5: 6388582004970116730
+      Food Collectibles_6: -5023236504212175785
+      Food Collectibles_7: -5132314072016274821
+      Food Collectibles_8: 1395768711736175074
+      Food Collectibles_9: 3106550528846459143
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

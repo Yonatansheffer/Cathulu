@@ -9,11 +9,14 @@ namespace Collectibles
     public class CollectibleManager : MonoBehaviour
     {
         [SerializeField] private GameObject[] powerUpCollectibles;
-        //[SerializeField] private GameObject[] foodCollectibles;
+        [SerializeField] private GameObject[] foodCollectibles;
         [SerializeField] private float powerUpDropChance = 30f; // Chance of dropping a power up collectible
-        /*[SerializeField] private float foodDropChance = 10f; // Chance of dropping a food collectible
+        [SerializeField] private float foodDropChance = 10f; // Chance of dropping a food collectible
         [SerializeField] private float foodDropInterval = 5f; // Interval between possible food collectible drops*/
         private List<Collectible> _activeCollectibles; // List of all active collectibles
+        [SerializeField] private float ceilingHeight = 5f; // Height at which food collectibles are dropped
+        [SerializeField] private float ceilingXStart = -8f; // Left bound for food collectible drop
+        [SerializeField] private float ceilingXEnd = 8f; // Right bound for food collectible drop
 
         private void Awake()
         {
@@ -24,7 +27,7 @@ namespace Collectibles
         {
             GameEvents.BeginGamePlay += DestroyAllCollectibles;
             GameEvents.FreezeStage += StopCollectiblesMovement;
-            //GameEvents.StartStage += StartDropFoodCoroutine;
+            GameEvents.StartStage += StartDropFoodCoroutine;
             GameEvents.StartGame += DestroyAllCollectibles;
             GameEvents.ReadyStage += DestroyAllCollectibles;
             GameEvents.GameOver += DestroyAllCollectibles;
@@ -34,7 +37,7 @@ namespace Collectibles
         {
             GameEvents.BeginGamePlay -= DestroyAllCollectibles;
             GameEvents.FreezeStage -= StopCollectiblesMovement;
-            //GameEvents.StartStage -= StartDropFoodCoroutine;
+            GameEvents.StartStage -= StartDropFoodCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;
             GameEvents.GameOver -= DestroyAllCollectibles;
             GameEvents.StartGame -= DestroyAllCollectibles;
@@ -50,7 +53,7 @@ namespace Collectibles
             }
         }
         
-        /*private void StartDropFoodCoroutine()
+        private void StartDropFoodCoroutine()
         {
             StartCoroutine(FoodDropCoroutine());
         }
@@ -74,7 +77,7 @@ namespace Collectibles
                     Instantiate(selectedFood, new Vector3(randomX, ceilingHeight, 0), Quaternion.identity);
                 _activeCollectibles.Add(foodCollectibleObject.GetComponent<Collectible>());
             }
-        }*/
+        }
     
         private void StopCollectiblesMovement()
         {

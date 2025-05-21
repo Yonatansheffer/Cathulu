@@ -49,12 +49,11 @@ namespace GameHandlers
             {
                 print("Adding 1 life");
                 GameEvents.AddLife?.Invoke();
-
             }
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {
                 print("Destroying shots and returning to default weapon");
-                GameEvents.DefaultWeapon?.Invoke();
+                GameEvents.BossShoots?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {

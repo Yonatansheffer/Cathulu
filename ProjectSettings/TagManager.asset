@@ -7,6 +7,12 @@ TagManager:
   - Weapon
   - UI
   - Planet
+  - Enemy
+  - Background
+  - Boundary
+  - FoodCollectible
+  - Floor
+  - Step
   layers:
   - Default
   - TransparentFX
@@ -16,8 +22,8 @@ TagManager:
   - UI
   - Player
   - Ground
-  - 
-  - 
+  - Enemy
+  - Boss
   - 
   - 
   - 

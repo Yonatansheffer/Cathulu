@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using GameHandlers;
 using UnityEngine;
@@ -51,12 +52,14 @@ namespace MainPlayer
             _isShieldActive = false;
         }
         
-        private void OnTriggerEnter2D(Collider2D other)
+
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Enemy") && !_isShieldActive)
             {
+                Debug.Log("Player hit by enemy");
                 //StartCoroutine(OnPlayerHit());
-                GameEvents.PlayerHit?.Invoke(2);
+                GameEvents.PlayerLostLife?.Invoke();
                 SoundManager.Instance.PlaySound("Lost Life", transform);
             }
         }

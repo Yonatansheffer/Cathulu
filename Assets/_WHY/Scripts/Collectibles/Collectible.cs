@@ -15,7 +15,7 @@ namespace Collectibles
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Floor"))
+            if (other.CompareTag("Floor") || other.CompareTag("Step"))
             {
                 StopMovement();
                 StartCoroutine(DestroyAfterDelay());
@@ -26,12 +26,11 @@ namespace Collectibles
             }
         }
 
-        // This method will be implemented in the child classes for specific behavior
         protected abstract void HandlePickup();
         
         private IEnumerator DestroyAfterDelay()
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(30f);
             StartCoroutine(Blink(3f));
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);

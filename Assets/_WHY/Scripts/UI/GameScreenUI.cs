@@ -12,6 +12,7 @@ namespace UI
     {
         [SerializeField] private Slider BossHealthBar;
         [SerializeField] private TextMeshProUGUI pointsText;
+        [SerializeField] private TextMeshProUGUI playerLifeText;
 
         private void Awake()
         {
@@ -27,6 +28,7 @@ namespace UI
         private void OnEnable()
         {
             GameEvents.UpdatePointsUI += UpdatePoints;
+            GameEvents.UpdateLifeUI += UpdateLife;
             GameEvents.StartGame += ShowGameScreen;
             GameEvents.BossDamaged += UpdateBossHealth;
         }
@@ -34,6 +36,7 @@ namespace UI
         private void OnDisable()
         {
             GameEvents.UpdatePointsUI -= UpdatePoints;
+            GameEvents.UpdateLifeUI -= UpdateLife;
             GameEvents.StartGame -= ShowGameScreen;
             GameEvents.BossDamaged -= UpdateBossHealth;
         }
@@ -47,15 +50,18 @@ namespace UI
         {
             pointsText.text = points.ToString();
         }
-
         
+        private void UpdateLife(int numLives)
+        {
+            playerLifeText.text = numLives.ToString();
 
+        }
+        
 
         /*
         [SerializeField] private Image readyText;
         [SerializeField] private TextMeshProUGUI timeDisplayText;
         [SerializeField] private TextMeshProUGUI timeText;
-        [SerializeField] private TextMeshProUGUI player1Text;
         [SerializeField] private TextMeshProUGUI locationText;
         [SerializeField] private Image life1;
         [SerializeField] private Image life2;
@@ -84,7 +90,6 @@ namespace UI
             GameEvents.DefaultWeapon += InitializeCollectables;
             GameEvents.ResetWeaponUI += InitializeCollectables;
             GameEvents.HideGameUI += HideGameScreen;
-            GameEvents.UpdateLifeUI += UpdateLife;
             GameEvents.UpdateTimeUI += UpdateTime;
             GameEvents.ReadyStage += ShowReadyText;
             GameEvents.WeaponCollected += AddWeaponCollected;
@@ -159,12 +164,7 @@ namespace UI
             GameEvents.StartStage?.Invoke(); // Start the stage
         }
 
-        private void UpdateLife(int numLives)
-        {
-            life2.gameObject.SetActive(numLives >= 3);
-            life1.gameObject.SetActive(numLives >= 2);
-            InitializeCollectables();
-        }
+
         
         private void HideScore()
         {

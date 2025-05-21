@@ -7,7 +7,7 @@ namespace GameHandlers
     {
         [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
         [SerializeField] private const int InitialBossHealth = 100;
-        [SerializeField] private int initialPlayerHealth = 3;
+        [SerializeField] private int initialPlayerHealth = 10;
         private float _countDownTime; // Stores the current time left
         private int _currentPoints; // Stores the current points
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
