@@ -25,7 +25,7 @@ namespace MainPlayer
         private void OnDisable()
         {
             GameEvents.BossDestroyed -= UnActivateShield;
-            GameEvents.ShieldCollected -= UnActivateShield;
+            GameEvents.ShieldCollected -= ActivateShield;
         }
     
         private void OnTriggerEnter2D(Collider2D other)

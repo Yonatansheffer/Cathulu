@@ -25,22 +25,18 @@ namespace Collectibles
 
         private void OnEnable()
         {
-            GameEvents.BeginGamePlay += DestroyAllCollectibles;
-            GameEvents.FreezeStage += StopCollectiblesMovement;
-            GameEvents.StartStage += StartDropFoodCoroutine;
-            GameEvents.StartGame += DestroyAllCollectibles;
+            GameEvents.BeginGameLoop += DestroyAllCollectibles;
+            GameEvents.FreezeLevel += StopCollectiblesMovement;
+            GameEvents.RestartLevel += StartDropFoodCoroutine;
             GameEvents.ReadyStage += DestroyAllCollectibles;
-            GameEvents.GameOver += DestroyAllCollectibles;
         }
 
         private void OnDisable()
         {
-            GameEvents.BeginGamePlay -= DestroyAllCollectibles;
-            GameEvents.FreezeStage -= StopCollectiblesMovement;
-            GameEvents.StartStage -= StartDropFoodCoroutine;
+            GameEvents.BeginGameLoop -= DestroyAllCollectibles;
+            GameEvents.FreezeLevel -= StopCollectiblesMovement;
+            GameEvents.RestartLevel -= StartDropFoodCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;
-            GameEvents.GameOver -= DestroyAllCollectibles;
-            GameEvents.StartGame -= DestroyAllCollectibles;
         }
 
         private void DropPowerUpCollectible(Transform t, int numHits)

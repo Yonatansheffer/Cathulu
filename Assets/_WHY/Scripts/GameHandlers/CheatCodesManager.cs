@@ -16,13 +16,13 @@ namespace GameHandlers
                 print("Restarting gameplay");
                 GameEvents.HideGameUI?.Invoke();
                 GameEvents.StopMusicCheat?.Invoke();
-                GameEvents.FreezeStage?.Invoke();
-                GameEvents.BeginGamePlay?.Invoke();
+                GameEvents.FreezeLevel?.Invoke();
+                GameEvents.BeginGameLoop?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 print("Restarting stage");
-                GameEvents.FreezeStage?.Invoke();
+                GameEvents.FreezeLevel?.Invoke();
                 GameEvents.ReadyStage?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -48,7 +48,7 @@ namespace GameHandlers
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
                 print("Adding 1 life");
-                GameEvents.AddLife?.Invoke();
+                GameEvents.AddLifeToPlayer?.Invoke(1);
             }
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {

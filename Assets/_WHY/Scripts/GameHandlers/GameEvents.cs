@@ -7,14 +7,14 @@ namespace GameHandlers
 {
     public class GameEvents 
     {
-        // General Events
-        public static Action BeginGamePlay;
-        public static Action StartGame;
-        public static Action FreezeStage;
-        public static Action StartStage;
+        // GameLoop events
+        public static Action BeginGameLoop;
+        public static Action FreezeLevel;
+        public static Action RestartLevel;
         public static Action<int,int> PassedStage; // present score and time bonus
         public static Action TimeOver;
-        public static Action GameOver;
+        public static Action<bool> GameOver;
+
 
         // UI Events
         public static Action ReadyStage;
@@ -37,14 +37,14 @@ namespace GameHandlers
         public static Action ShieldCollected;
         public static Action ShieldHit;
         public static Action<int> PlayerHit;
-        public static Action PlayerLostLife;
+        public static Action<int>  PlayerLivesChanged;
         public static Action BossDestroyed;
-        public static Action<int> BossDamaged;
+        public static Action<int> BossLivesChanged;
         public static Action<int> AddPoints;
     
         // Cheat Codes Events
         public static Action<int> AddTime;
-        public static Action AddLife;
+        public static Action<int> AddLifeToPlayer;
         public static Action StopMusicCheat;
         public static Action DefaultWeapon;
         public static Action KillAllEnemies;

@@ -7,8 +7,6 @@ namespace MainPlayer
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Vector3 startingPosition; // Starting position of the player
-        //[SerializeField] private float leftBound = -8f;
-        //[SerializeField] private float rightBound = 8f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float dashSpeed = 8f;
         [SerializeField] private float dashDuration = 0.1f; // Duration of the dash
@@ -52,7 +50,6 @@ namespace MainPlayer
                 return;
             CheckGrounded();
             HandleMovement();
-            //KeepInBounds();
         }
 
         private void InitializeInputCallbacks()
@@ -86,18 +83,6 @@ namespace MainPlayer
             if (!_isGrounded || !_rb.simulated) return;
             _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
         }
-        
-        /*private void KeepInBounds()
-        {
-            if (transform.position.x > rightBound)
-            {
-                transform.position = new Vector3(rightBound, transform.position.y, transform.position.z);
-            }
-            else if (transform.position.x < leftBound)
-            {
-                transform.position = new Vector3(leftBound, transform.position.y, transform.position.z);
-            }
-        }*/
         
         private void Dash()
         {

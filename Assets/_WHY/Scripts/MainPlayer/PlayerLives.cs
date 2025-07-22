@@ -7,10 +7,13 @@ using Weapons;
 
 namespace MainPlayer
 {
-    public class PlayerCollisions : MonoBehaviour
+    public class PlayerLives : MonoBehaviour
     {
+        [SerializeField] private int initialPlayerHealth = 10;
         private bool _isShieldActive;
         private SpriteRenderer _spriteRenderer;
+        private int _currentPlayerHealth; // Stores the current lives of the player
+
         
         private void Awake()
         {
@@ -20,12 +23,14 @@ namespace MainPlayer
         
         private void OnEnable()
         {
+            GameEvents.AddLifeToPlayer += AdjustLives;
             GameEvents.ShieldCollected += ActivateShield;
             GameEvents.ShieldHit += UnActivateShield;
         }
         
         private void OnDisable()
         {
+            GameEvents.AddLifeToPlayer -= AdjustLives;
             GameEvents.ShieldCollected -= ActivateShield;
             GameEvents.ShieldHit -= UnActivateShield;
         }
@@ -57,13 +62,23 @@ namespace MainPlayer
         {
             if (other.gameObject.CompareTag("Enemy") && !_isShieldActive)
             {
-                Debug.Log("Player hit by enemy");
                 //StartCoroutine(OnPlayerHit());
-                GameEvents.PlayerLostLife?.Invoke();
+                AdjustLives(-1);
                 SoundManager.Instance.PlaySound("Lost Life", transform);
             }
         }
-
+        
+        private void AdjustLives(int amount)
+        {
+            _currentPlayerHealth+= amount;
+            if (_currentPlayerHealth >= initialPlayerHealth)
+            {
+                _currentPlayerHealth = initialPlayerHealth;
+            }
+            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
+            GameEvents.PlayerLivesChanged?.Invoke(_currentPlayerHealth);
+        }
+        
         /*private IEnumerator OnPlayerHit()
         {
             GameEvents.FreezeStage?.Invoke();

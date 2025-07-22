@@ -1,69 +1,54 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameHandlers
 {
-    public class GameManager : MonoBehaviour
+    public class GameLoopManager : MonoBehaviour
     {
         [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
-        [SerializeField] private const int InitialBossHealth = 100;
-        [SerializeField] private int initialPlayerHealth = 10;
         private float _countDownTime; // Stores the current time left
         private int _currentPoints; // Stores the current points
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
         private bool _isCountingDown; // Flag to know if the countdown is active
-        private int _currentPlayerHealth; // Stores the current lives of the player
 
         private void Awake()
         {
             ResetStats();
             ResetCountDown();
-            StopCountDown();
-        }
-
-        private void Start()
-        {
-            GameEvents.BeginGamePlay?.Invoke(); 
-        }
-        
-        public static int GetInitialBossHealth()
-        {
-            return InitialBossHealth;
+            DontDestroyOnLoad(this);
         }
 
         private void OnEnable()
         {
-            GameEvents.AddLife += AddLife;
             GameEvents.AddTime += AddTime;  
-            GameEvents.FreezeStage += StopCountDown;
-            GameEvents.StartGame += OnGameStart;
-            GameEvents.PlayerLostLife += ReducePlayerLife;
-            GameEvents.StartStage += OnStageStart;
+            GameEvents.FreezeLevel += StopCountDown;
+            GameEvents.RestartLevel += OnStageStart;
             GameEvents.BossDestroyed += PassedStage;
+            GameEvents.PlayerLivesChanged += CheckGameOver;
+            GameEvents.BossLivesChanged += CheckGameOver;
             GameEvents.AddPoints += AddPoints;
         }
     
         private void OnDisable()
         {
-            GameEvents.AddLife -= AddLife;
             GameEvents.AddTime -= AddTime;
-            GameEvents.FreezeStage -= StopCountDown;
-            GameEvents.StartGame -= OnGameStart;
-            GameEvents.PlayerLostLife -= ReducePlayerLife;
-            GameEvents.StartStage -= OnStageStart;
+            GameEvents.FreezeLevel -= StopCountDown;
+            GameEvents.RestartLevel -= OnStageStart;
             GameEvents.BossDestroyed -= PassedStage;
+            GameEvents.PlayerLivesChanged -= CheckGameOver;
+            GameEvents.BossLivesChanged -= CheckGameOver;
             GameEvents.AddPoints -= AddPoints;
         }
-
-        private void OnGameStart()
+        
+        private void Update()
         {
-            ResetStats();
-            GameEvents.StartStage?.Invoke();
+            if (!_isCountingDown) 
+                return;
+            UpdateCountdown();
+            GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
         }
     
         private void ResetStats()
         {
-            _currentPlayerHealth = initialPlayerHealth;
             _currentPoints = 0;
             _timeBonus = 0;
         }
@@ -72,7 +57,6 @@ namespace GameHandlers
         {
             ResetCountDown();
             GameEvents.UpdatePointsUI?.Invoke(_currentPoints);
-            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
             GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
             _isCountingDown = true;
         }
@@ -86,17 +70,9 @@ namespace GameHandlers
         private void PassedStage()
         {
             _timeBonus = Mathf.FloorToInt(_countDownTime) * 30;
-            GameEvents.FreezeStage?.Invoke();
+            GameEvents.FreezeLevel?.Invoke();
             GameEvents.HideGameUI?.Invoke();
             GameEvents.PassedStage?.Invoke(_timeBonus, _currentPoints);
-        }
-    
-        private void Update()
-        {
-            if (!_isCountingDown) 
-                return;
-            UpdateCountdown();
-            GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
         }
     
         private void ResetCountDown()
@@ -119,25 +95,15 @@ namespace GameHandlers
             }
             else
             {
-                GameEvents.FreezeStage?.Invoke();
-                GameEvents.TimeOver.Invoke();
+                GameEvents.FreezeLevel?.Invoke();
+                GameEvents.GameOver.Invoke(false);
             }
         }
     
-        private void ReducePlayerLife()
-        {
-            _currentPlayerHealth--;
-            CheckGameOver();
-        }
-    
-        private void CheckGameOver() {
-            if (_currentPlayerHealth <= 0)
-                GameEvents.GameOver?.Invoke();
-            else
-            {
-                GameEvents.ReadyStage?.Invoke();
-                GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
-            }
+        private void CheckGameOver(int lives) 
+        { 
+            if (lives <= 0)
+                GameEvents.GameOver?.Invoke(false);
         }
     
         private void AddTime(int timeToAdd)
@@ -145,12 +111,6 @@ namespace GameHandlers
             _countDownTime += timeToAdd;
         }
     
-        private void AddLife()
-        {
-            if (_currentPlayerHealth >= initialPlayerHealth)
-                return;
-            _currentPlayerHealth++;
-            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
-        }
+        
     }
 }

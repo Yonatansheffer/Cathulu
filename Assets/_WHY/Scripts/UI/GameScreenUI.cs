@@ -19,26 +19,21 @@ namespace UI
             HideGameScreen();
             //InitializeCollectables();
         }
-        
-        private void Start()
-        {
-            UpdateBossHealth(GameManager.GetInitialBossHealth());
-        }
 
         private void OnEnable()
         {
             GameEvents.UpdatePointsUI += UpdatePoints;
-            GameEvents.UpdateLifeUI += UpdateLife;
-            GameEvents.StartGame += ShowGameScreen;
-            GameEvents.BossDamaged += UpdateBossHealth;
+            GameEvents.PlayerLivesChanged += UpdateLife;
+            GameEvents.RestartLevel += ShowGameScreen;
+            GameEvents.BossLivesChanged += UpdateBossHealth;
         }
         
         private void OnDisable()
         {
             GameEvents.UpdatePointsUI -= UpdatePoints;
-            GameEvents.UpdateLifeUI -= UpdateLife;
-            GameEvents.StartGame -= ShowGameScreen;
-            GameEvents.BossDamaged -= UpdateBossHealth;
+            GameEvents.PlayerLivesChanged -= UpdateLife;
+            GameEvents.RestartLevel -= ShowGameScreen;
+            GameEvents.BossLivesChanged -= UpdateBossHealth;
         }
         
         private void UpdateBossHealth(int newHealth)

@@ -26,18 +26,18 @@ namespace Weapons
             GameEvents.Shoot += Shoot;
             GameEvents.DefaultWeapon += ResetWeapons;
             GameEvents.ReadyStage += ResetWeapons;
-            GameEvents.StartGame += ResetWeapons;
+            GameEvents.RestartLevel += ResetWeapons;
             GameEvents.WeaponCollected += SwitchWeapon;
-            GameEvents.FreezeStage += StopAllProjectiles;
+            GameEvents.FreezeLevel += StopAllProjectiles;
         }
         private void OnDisable()
         {
             GameEvents.Shoot -= Shoot;
             GameEvents.DefaultWeapon -= ResetWeapons;
             GameEvents.ReadyStage -= ResetWeapons;
-            GameEvents.StartGame -= ResetWeapons;
+            GameEvents.RestartLevel -= ResetWeapons;
             GameEvents.WeaponCollected -= SwitchWeapon;
-            GameEvents.FreezeStage -= StopAllProjectiles;
+            GameEvents.FreezeLevel -= StopAllProjectiles;
         }
         
         private void ResetWeapons()

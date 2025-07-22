@@ -5,11 +5,13 @@ namespace _WHY.Scripts.Boss
 {
     public class BossHealth : WHYBaseMono
     {
+        [SerializeField] private const int InitialBossHealth = 100;
         private int currentHealth;
         
         private void Start()
         {
-            currentHealth = GameManager.GetInitialBossHealth();
+            currentHealth = InitialBossHealth;
+            GameEvents.BossLivesChanged?.Invoke(currentHealth);
         }
         
         private void OnTriggerEnter2D(Collider2D other)
@@ -17,12 +19,7 @@ namespace _WHY.Scripts.Boss
             if (other.CompareTag("Weapon"))
             {
                 currentHealth -= 2;
-                GameEvents.BossDamaged?.Invoke(currentHealth);
-                if (currentHealth <= 0)
-                {
-                    Destroy(gameObject);
-                    GameEvents.BossDestroyed?.Invoke();
-                }
+                GameEvents.BossLivesChanged?.Invoke(currentHealth);
             }
         }
     }

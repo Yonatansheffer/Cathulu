@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _WHY.Scripts.Enemies
 {
-    public class CrawlingEnemy : Enemy
+    public class WalkingEnemy : Enemy
     {
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         [SerializeField] private float moveSpeed = 2f;
@@ -76,7 +76,7 @@ namespace _WHY.Scripts.Enemies
         
         private void ReturnToPool()
         {
-            CrawlingEnemyPool.Instance.Return(gameObject.GetComponent<CrawlingEnemy>());
+            WalkingEnemyPool.Instance.Return(gameObject.GetComponent<WalkingEnemy>());
         }
 
         private void FlipDirection()

@@ -33,7 +33,6 @@ Transform:
   m_LocalScale: {x: 0.99003273, y: 0.9159871, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5579665810887330959}
   - {fileID: 1056090685514174963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,57 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dfdcba93ee4502bb7dfdce3b5110f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingEnemyPrefab: {fileID: 0}
-  groundEnemyPrefab: {fileID: 0}
   minSpawnForce: 2
   maxSpawnForce: 4
   spawnOffset: {x: 0.8, y: 0, z: 0}
---- !u!1 &6821047847051484314
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5579665810887330959}
-  - component: {fileID: 593784378432589998}
-  m_Layer: 0
-  m_Name: Enemy Pool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5579665810887330959
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6821047847051484314}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3148893894478018942}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &593784378432589998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6821047847051484314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34df038542248f99fe014e8c6f62630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialPoolSize: 10
-  prefab: {fileID: 2750206899018685126, guid: d07c51a84f5d9ce438d5bb093bc4c01d, type: 3}
+  rotationSpeed: 30
+  bulletsPerSecond: 5
+  bulletForce: 20
+  shootingDuration: 8
 --- !u!1001 &1835749881932388771
 PrefabInstance:
   m_ObjectHideFlags: 0

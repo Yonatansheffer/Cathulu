@@ -23,12 +23,12 @@ namespace UI
 
         private void OnEnable()
         {
-            GameEvents.BeginGamePlay += ShowStartScreen;
+            GameEvents.BeginGameLoop += ShowStartScreen;
         }
         
         private void OnDisable()
         {
-            GameEvents.BeginGamePlay -= ShowStartScreen;
+            GameEvents.BeginGameLoop -= ShowStartScreen;
         }
 
         /*private void ShowLicenseImage()
@@ -71,7 +71,7 @@ namespace UI
                 pressEnterText.gameObject.SetActive(false);
                 startImage.gameObject.SetActive(false);
                 //mitchellText.gameObject.SetActive(false);
-                GameEvents.StartGame?.Invoke(); 
+                //GameEvents.StartGame?.Invoke(); 
             }
         }
     }

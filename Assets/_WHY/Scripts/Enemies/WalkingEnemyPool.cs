@@ -2,7 +2,7 @@
 
 namespace _WHY.Scripts.Enemies
 {
-    public class CrawlingEnemyPool : MonoPool<CrawlingEnemy>
+    public class WalkingEnemyPool : MonoPool<WalkingEnemy>
     {
 
     }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameHandlers;
 using UnityEngine;
@@ -7,33 +9,30 @@ namespace Sound
 {
     public class SoundManager : MonoSingleton<SoundManager>
     {
+        private readonly List<AudioSourceWrapper> _activeSounds = new();
         [SerializeField] private AudioSettings settings;
-        private AudioSourceWrapper _backgroundMusic;
-        private AudioSourceWrapper _continueMusic;
+        private static AudioSourceWrapper _openingMusic;
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+        }
+
+        private void Start()
+        {
+            PlayOpeningMusic();
+        }
 
         private void OnEnable()
         {
-            GameEvents.StopMusicCheat += StopBackgroundMusic;
-            GameEvents.StartGame += StopContinueMusic;
-            GameEvents.StartStage += PlayBackgroundMusic;
-            GameEvents.BossDestroyed += StopBackgroundMusic;
-            GameEvents.ReadyStage += StopBackgroundMusic;
-            GameEvents.GameOver += StopBackgroundMusic;
-            GameEvents.GameOver += PlayContinueMusic;
-            GameEvents.BossDestroyed += PlayPassedStageSound;
+            GameEvents.BeginGameLoop += PlayOpeningMusic;
+            GameEvents.StopMusicCheat += ReturnAllSoundWrappersToPool;
         }
     
         private void OnDisable()
         {   
-            GameEvents.StopMusicCheat -= StopBackgroundMusic;
-            GameEvents.StartGame -= StopContinueMusic;
-            GameEvents.StartStage -= PlayBackgroundMusic;
-            GameEvents.BossDestroyed -= StopBackgroundMusic;
-            GameEvents.ReadyStage -= StopBackgroundMusic;
-            GameEvents.GameOver -= StopBackgroundMusic;
-            GameEvents.GameOver -= PlayContinueMusic;
-            GameEvents.BossDestroyed -= PlayPassedStageSound;
+            GameEvents.BeginGameLoop -= PlayOpeningMusic;
+            GameEvents.StopMusicCheat -= ReturnAllSoundWrappersToPool;
         }
 
         public void PlaySound(string audioName, Transform spawnTransform)
@@ -42,56 +41,46 @@ namespace Sound
             if (config == null)
                 return;
             var soundObject = SoundPool.Instance.Get();
+            _activeSounds.Add(soundObject);
             soundObject.transform.position = spawnTransform.position;
             soundObject.Play(config.clip, config.volume,config.loop);
         }
-    
-        private void PlayBackgroundMusic()
-        {
-            var config = FindAudioConfig("Background");
-            if (config == null)
-                return;
-            _backgroundMusic = SoundPool.Instance.Get();
-            _backgroundMusic.Play(config.clip, config.volume,config.loop);
-        }
-    
         
-        private void PlayPassedStageSound()
+        private void PlayOpeningMusic()
         {
-            var config = FindAudioConfig("Passed Stage");
+            var config = FindAudioConfig("Opening");
             if (config == null)
                 return;
-            _backgroundMusic = SoundPool.Instance.Get();
-            _backgroundMusic.Play(config.clip, config.volume,config.loop);
+            _openingMusic = SoundPool.Instance.Get();
+            _activeSounds.Add(_openingMusic);
+            _openingMusic.Play(config.clip, config.volume,config.loop);
         }
-    
-        private void PlayContinueMusic()
+        
+        
+        public static void StopOpeningMusic()
         {
-            var config = FindAudioConfig("Continue");
-            if (config == null)
+            if (_openingMusic == null)
                 return;
-            _continueMusic = SoundPool.Instance.Get();
-            _continueMusic.Play(config.clip, config.volume,config.loop);
-        }
-
-    
-        private void StopBackgroundMusic()
-        {
-            if (_backgroundMusic == null)
-                return;
-            _backgroundMusic.Reset();
-        }
-    
-        private void StopContinueMusic()
-        {
-            if (_continueMusic == null)
-                return;
-            _continueMusic.Reset();
+            _openingMusic.Reset();
         }
 
         private AudioConfig FindAudioConfig(string audioName)
         {
             return settings.audioConfigs.FirstOrDefault(config => config.name == audioName);
         }
+        
+        private void ReturnAllSoundWrappersToPool()
+        {
+            foreach (var sound in _activeSounds)
+            {
+                if (sound != null)
+                    sound.Reset();
+                SoundPool.Instance.Return(sound);
+
+            }
+            _activeSounds.Clear();
+            _openingMusic = null;
+        }
+
     }
 }
