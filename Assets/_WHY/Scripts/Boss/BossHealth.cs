@@ -20,6 +20,7 @@ namespace _WHY.Scripts.Boss
             {
                 currentHealth -= 2;
                 GameEvents.BossLivesChanged?.Invoke(currentHealth);
+                GameEvents.UpdateHealthUI?.Invoke(currentHealth, false);
             }
         }
     }

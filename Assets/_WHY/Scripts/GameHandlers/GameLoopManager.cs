@@ -91,6 +91,7 @@ namespace GameHandlers
             if (_countDownTime > 0)
             {
                 _countDownTime -= Time.deltaTime;
+                GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
                 _countDownTime = Mathf.Max(0, _countDownTime);
             }
             else
@@ -102,6 +103,7 @@ namespace GameHandlers
     
         private void CheckGameOver(int lives) 
         { 
+            print(lives);   
             if (lives <= 0)
                 GameEvents.GameOver?.Invoke(false);
         }

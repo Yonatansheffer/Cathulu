@@ -4,41 +4,52 @@ using System.Collections;
 using GameHandlers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class GameScreenUI : MonoBehaviour
+    public class GamePlayUI : MonoBehaviour
     {
         [SerializeField] private Slider BossHealthBar;
+        [SerializeField] private TextMeshProUGUI bossHealthText;
         [SerializeField] private TextMeshProUGUI pointsText;
-        [SerializeField] private TextMeshProUGUI playerLifeText;
+        [SerializeField] private TextMeshProUGUI timeCountText;
+        [SerializeField] private TextMeshProUGUI playerHealthText;
+        [SerializeField] private Slider playerHealthBar;
 
         private void Awake()
         {
-            HideGameScreen();
             //InitializeCollectables();
         }
 
         private void OnEnable()
         {
             GameEvents.UpdatePointsUI += UpdatePoints;
-            GameEvents.PlayerLivesChanged += UpdateLife;
-            GameEvents.RestartLevel += ShowGameScreen;
-            GameEvents.BossLivesChanged += UpdateBossHealth;
+            GameEvents.UpdateHealthUI += UpdateHealth;
+            GameEvents.UpdateTimeUI += UpdateTime;
         }
         
         private void OnDisable()
         {
             GameEvents.UpdatePointsUI -= UpdatePoints;
-            GameEvents.PlayerLivesChanged -= UpdateLife;
-            GameEvents.RestartLevel -= ShowGameScreen;
-            GameEvents.BossLivesChanged -= UpdateBossHealth;
+            GameEvents.UpdateHealthUI -= UpdateHealth;
+            GameEvents.UpdateTimeUI -= UpdateTime;
         }
         
-        private void UpdateBossHealth(int newHealth)
+        private void UpdateHealth(int amount, bool isPlayer)
         {
-            BossHealthBar.value = newHealth;
+            if (isPlayer)
+            {
+                playerHealthBar.value = amount;
+                playerHealthText.text = amount.ToString();
+
+            }
+            else
+            {
+                BossHealthBar.value = amount;
+                bossHealthText.text = amount.ToString();
+            } 
         }
         
         private void UpdatePoints(int points)
@@ -46,12 +57,10 @@ namespace UI
             pointsText.text = points.ToString();
         }
         
-        private void UpdateLife(int numLives)
+        private void UpdateTime(int time)
         {
-            playerLifeText.text = numLives.ToString();
-
+            timeCountText.text = $"Time: {time}";
         }
-        
 
         /*
         [SerializeField] private Image readyText;
@@ -166,32 +175,5 @@ namespace UI
             pointsText.gameObject.SetActive(false);
         }*/
         
-        private void HideGameScreen()
-        {
-            /*timeText.gameObject.SetActive(false);
-            timeDisplayText.gameObject.SetActive(false);
-            player1Text.gameObject.SetActive(false);
-            player2Text.gameObject.SetActive(false);
-            life1.gameObject.SetActive(false);
-            life2.gameObject.SetActive(false);
-            locationText.gameObject.SetActive(false);
-            stageText.gameObject.SetActive(false);
-            hiText.gameObject.SetActive(false);*/
-            pointsText.gameObject.SetActive(false);
-            BossHealthBar.gameObject.SetActive(false);
-        }
-        
-        private void ShowGameScreen()
-        {
-            /*timeText.gameObject.SetActive(true);
-            timeDisplayText.gameObject.SetActive(true);
-            player1Text.gameObject.SetActive(true);
-            player2Text.gameObject.SetActive(true);
-            locationText.gameObject.SetActive(true);
-            stageText.gameObject.SetActive(true);
-            hiText.gameObject.SetActive(true);*/
-            pointsText.gameObject.SetActive(true);
-            BossHealthBar.gameObject.SetActive(true);
-        }
     }
 }

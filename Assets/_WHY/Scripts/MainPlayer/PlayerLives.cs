@@ -19,6 +19,7 @@ namespace MainPlayer
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _isShieldActive = false;
+            _currentPlayerHealth = initialPlayerHealth; 
         }
         
         private void OnEnable()
@@ -70,12 +71,12 @@ namespace MainPlayer
         
         private void AdjustLives(int amount)
         {
-            _currentPlayerHealth+= amount;
+            _currentPlayerHealth += amount;
             if (_currentPlayerHealth >= initialPlayerHealth)
             {
                 _currentPlayerHealth = initialPlayerHealth;
             }
-            GameEvents.UpdateLifeUI?.Invoke(_currentPlayerHealth);
+            GameEvents.UpdateHealthUI?.Invoke(_currentPlayerHealth, true);
             GameEvents.PlayerLivesChanged?.Invoke(_currentPlayerHealth);
         }
         

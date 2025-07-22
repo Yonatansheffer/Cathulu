@@ -108,7 +108,7 @@ TextureImporter:
         width: 1001
         height: 1001
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,12 +125,12 @@ TextureImporter:
       name: 43-light_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 693
-        width: 39
+        x: 564
+        y: 490
+        width: 135
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

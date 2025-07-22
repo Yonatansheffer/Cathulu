@@ -18,7 +18,7 @@ namespace GameHandlers
 
         // UI Events
         public static Action ReadyStage;
-        public static Action<int> UpdateLifeUI;
+        public static Action<int, bool> UpdateHealthUI;
         public static Action<int> UpdatePointsUI;
         public static Action<int> UpdateTimeUI;
         public static Action ResetWeaponUI;
@@ -37,7 +37,7 @@ namespace GameHandlers
         public static Action ShieldCollected;
         public static Action ShieldHit;
         public static Action<int> PlayerHit;
-        public static Action<int>  PlayerLivesChanged;
+        public static Action<int> PlayerLivesChanged;
         public static Action BossDestroyed;
         public static Action<int> BossLivesChanged;
         public static Action<int> AddPoints;

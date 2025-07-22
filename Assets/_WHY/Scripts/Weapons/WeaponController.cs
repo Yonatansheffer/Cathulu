@@ -20,12 +20,12 @@ namespace Weapons
         private void Awake()
         {
             _activeProjectiles = new List<Projectile>();
+            ResetWeapons();
         }
         private void OnEnable()
         {
             GameEvents.Shoot += Shoot;
             GameEvents.DefaultWeapon += ResetWeapons;
-            GameEvents.ReadyStage += ResetWeapons;
             GameEvents.RestartLevel += ResetWeapons;
             GameEvents.WeaponCollected += SwitchWeapon;
             GameEvents.FreezeLevel += StopAllProjectiles;
@@ -34,7 +34,6 @@ namespace Weapons
         {
             GameEvents.Shoot -= Shoot;
             GameEvents.DefaultWeapon -= ResetWeapons;
-            GameEvents.ReadyStage -= ResetWeapons;
             GameEvents.RestartLevel -= ResetWeapons;
             GameEvents.WeaponCollected -= SwitchWeapon;
             GameEvents.FreezeLevel -= StopAllProjectiles;
@@ -68,6 +67,7 @@ namespace Weapons
 
         private void Shoot(Transform t)
         {
+            print("jh");
             if (_currentWeaponConfig == null || _activeProjectiles.Count >= _currentWeaponConfig.maxProjectileCount)
                 return;
             SoundManager.Instance.PlaySound(

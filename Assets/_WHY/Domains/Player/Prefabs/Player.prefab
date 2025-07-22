@@ -107,13 +107,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPosition: {x: -0.42, y: -5.05, z: -0.1458877}
-  leftBound: -9.72
-  rightBound: 9.72
   speed: 5
   dashSpeed: 8
   dashDuration: 0.1
   dashCooldown: 1
   gun: {fileID: 5620532213597378835}
+  jumpForce: 12
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6745092092634289308
 Rigidbody2D:
   serializedVersion: 5
@@ -129,7 +133,7 @@ Rigidbody2D:
   m_Mass: 0.1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
