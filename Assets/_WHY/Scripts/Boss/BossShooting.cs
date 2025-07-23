@@ -1,7 +1,9 @@
-﻿using _WHY.Scripts.Enemies;
+﻿using System;
+using _WHY.Scripts.Enemies;
 using GameHandlers;
 using UnityEngine;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Boss
 {
@@ -31,6 +33,12 @@ namespace _WHY.Scripts.Boss
         private Vector3 startPosition;
         private Vector3 targetPosition;
 
+        private void Start()
+        {
+            startPosition = transform.position;
+            PickNewTargetPosition();
+        }
+
         private void OnEnable()
         {
             GameEvents.BossShoots += StartShooting;
@@ -42,13 +50,7 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots -= StartShooting;
             GameEvents.ToSpawnEnemy -= EnemySpawn;
         }
-
-        private void Start()
-        {
-            startPosition = transform.position;
-            PickNewTargetPosition();
-        }
-
+        
         private void Update()
         {
             if (isShooting)
@@ -66,7 +68,6 @@ namespace _WHY.Scripts.Boss
         private void StartShooting()
         {
             if (isShooting) return;
-
             isShooting = true;
             shootTimer = 0f;
             totalRotation = 0f;
@@ -86,7 +87,6 @@ namespace _WHY.Scripts.Boss
                 isShooting = false;
                 return;
             }
-
             transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
         }
 

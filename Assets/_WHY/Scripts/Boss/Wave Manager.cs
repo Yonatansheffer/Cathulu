@@ -14,7 +14,7 @@ namespace _WHY.Scripts.Boss
             public float startDelay = 5f;
             public float initialInterval = 5f;
             public float minInterval = 1f;
-            public float intervalDecreaseRate = 0.1f;
+            public float intervalDecreaseRate = 0.02f;
             [HideInInspector] public float currentInterval;
         }
 

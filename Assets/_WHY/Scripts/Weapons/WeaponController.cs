@@ -67,7 +67,6 @@ namespace Weapons
 
         private void Shoot(Transform t)
         {
-            print("jh");
             if (_currentWeaponConfig == null || _activeProjectiles.Count >= _currentWeaponConfig.maxProjectileCount)
                 return;
             SoundManager.Instance.PlaySound(

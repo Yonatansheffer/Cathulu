@@ -292,6 +292,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Light Gun_3
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 29
+        width: 44
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98053c18d901db34599fbdd29cf05028
+      internalID: -1031828540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Light Gun_5
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 19
+        width: 54
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8b800737845924ea32468977d1e7fd
+      internalID: -356589024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -307,6 +351,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Light Gun_3: -1031828540
+      Light Gun_5: -356589024
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

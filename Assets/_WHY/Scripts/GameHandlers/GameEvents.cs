@@ -28,7 +28,7 @@ namespace GameHandlers
         // GamePlay Events
         public static Action<Transform> Shoot;
         public static Action<Enemy,int> EnemyHit;
-        public static Action<Enemy> EnemyDestroy;
+        public static Action<Vector3> EnemyDestroyed;
         public static Action<WeaponType> WeaponCollected;
         public static Action BossShoots;
         public static Action<bool> ToSpawnEnemy;
@@ -36,7 +36,6 @@ namespace GameHandlers
         public static Action EnemyStopperCollected;
         public static Action ShieldCollected;
         public static Action ShieldHit;
-        public static Action<int> PlayerHit;
         public static Action<int> PlayerLivesChanged;
         public static Action BossDestroyed;
         public static Action<int> BossLivesChanged;

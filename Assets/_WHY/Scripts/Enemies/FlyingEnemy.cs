@@ -1,4 +1,5 @@
 ﻿using System;
+using GameHandlers;
 using UnityEngine;
 
 namespace _WHY.Scripts.Enemies
@@ -30,6 +31,7 @@ namespace _WHY.Scripts.Enemies
         {
             if (other.CompareTag("Weapon"))
             {
+                GameEvents.EnemyDestroyed?.Invoke(transform.position);
                 FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using GameHandlers;
 using UnityEngine;
@@ -10,24 +11,27 @@ namespace Collectibles
     {
         [SerializeField] private GameObject[] powerUpCollectibles;
         [SerializeField] private GameObject[] foodCollectibles;
-        [SerializeField] private float powerUpDropChance = 30f; // Chance of dropping a power up collectible
-        [SerializeField] private float foodDropChance = 10f; // Chance of dropping a food collectible
-        [SerializeField] private float foodDropInterval = 5f; // Interval between possible food collectible drops*/
+        [SerializeField] private float powerUptoFoodPercentRatio = 17f; // Interval between possible power up drops
+        [SerializeField] private float dropInterval = 5f; // Interval between possible food collectible drops*/
         private List<Collectible> _activeCollectibles; // List of all active collectibles
-        [SerializeField] private float ceilingHeight = 5f; // Height at which food collectibles are dropped
-        [SerializeField] private float ceilingXStart = -8f; // Left bound for food collectible drop
-        [SerializeField] private float ceilingXEnd = 8f; // Right bound for food collectible drop
-
+        [SerializeField] private Transform[] positionsForDrop;
+        [SerializeField] private float yOffset = -0.5f; // Offset for the collectible spawn position
         private void Awake()
         {
             _activeCollectibles = new List<Collectible>();
+        }
+
+        private void Start()
+        {
+            StartDropCoroutine();
         }
 
         private void OnEnable()
         {
             GameEvents.BeginGameLoop += DestroyAllCollectibles;
             GameEvents.FreezeLevel += StopCollectiblesMovement;
-            GameEvents.RestartLevel += StartDropFoodCoroutine;
+            GameEvents.EnemyDestroyed += DropCollectible;
+            GameEvents.RestartLevel += StartDropCoroutine;
             GameEvents.ReadyStage += DestroyAllCollectibles;
         }
 
@@ -35,44 +39,58 @@ namespace Collectibles
         {
             GameEvents.BeginGameLoop -= DestroyAllCollectibles;
             GameEvents.FreezeLevel -= StopCollectiblesMovement;
-            GameEvents.RestartLevel -= StartDropFoodCoroutine;
+            GameEvents.EnemyDestroyed -= DropCollectible;
+            GameEvents.RestartLevel -= StartDropCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;
         }
-
-        private void DropPowerUpCollectible(Transform t, int numHits)
+        
+        private void DropCollectible(Vector3 position)
         {
-            if (numHits != 4 && Random.Range(0, 100) < powerUpDropChance)
+            if (Random.value > 0.5f)
             {
-                var selectedPowerUp = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
-                var powerUpCollectibleObject = Instantiate(selectedPowerUp, t.position, Quaternion.identity);
-                _activeCollectibles.Add(powerUpCollectibleObject.GetComponent<Collectible>());
+                return;
+            }
+            if (position == Vector3.zero)
+            {
+                position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position;
+            }
+            if (Random.Range(0, 100) > powerUptoFoodPercentRatio)
+            {
+                DropFoodCollectible(position);
+            }
+            else
+            {
+                DropPowerUpCollectible(position);
             }
         }
-        
-        private void StartDropFoodCoroutine()
+
+        private void DropPowerUpCollectible(Vector3 position)
         {
-            StartCoroutine(FoodDropCoroutine());
+            var selectedPowerUp = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
+            Vector3 spawnPosition = position + new Vector3(0f, yOffset, 0f);
+            var powerUpCollectibleObject = Instantiate(selectedPowerUp, spawnPosition, Quaternion.identity);
+            _activeCollectibles.Add(powerUpCollectibleObject.GetComponent<Collectible>());
+        }
+        
+        private void StartDropCoroutine()
+        {
+            StartCoroutine(DropCoroutine());
         }
     
-        private IEnumerator FoodDropCoroutine()
+        private IEnumerator DropCoroutine()
         {
             while (true)
             {
-                yield return new WaitForSeconds(foodDropInterval); // Wait for the specified interval
-                DropFoodCollectible();
+                yield return new WaitForSeconds(dropInterval); // Wait for the specified interval
+                DropCollectible(Vector3.zero);
             }
         }
     
-        private void DropFoodCollectible()
+        private void DropFoodCollectible(Vector3 position)
         {
-            if (Random.Range(0, 100) < foodDropChance)
-            {
-                var selectedFood = foodCollectibles[Random.Range(0, foodCollectibles.Length)]; 
-                var randomX = Random.Range(ceilingXStart, ceilingXEnd);
-                var foodCollectibleObject =
-                    Instantiate(selectedFood, new Vector3(randomX, ceilingHeight, 0), Quaternion.identity);
-                _activeCollectibles.Add(foodCollectibleObject.GetComponent<Collectible>());
-            }
+            var selectedFood = foodCollectibles[Random.Range(0, foodCollectibles.Length)]; 
+            var foodCollectibleObject = Instantiate(selectedFood, position, Quaternion.identity);
+            _activeCollectibles.Add(foodCollectibleObject.GetComponent<Collectible>());
         }
     
         private void StopCollectiblesMovement()
