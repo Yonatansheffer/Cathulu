@@ -12,10 +12,12 @@ namespace GameHandlers
 
         private void Awake()
         {
+            _isCountingDown = true; 
             ResetStats();
             ResetCountDown();
             DontDestroyOnLoad(this);
         }
+        
 
         private void OnEnable()
         {

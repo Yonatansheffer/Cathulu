@@ -3,6 +3,7 @@ using _WHY.Scripts.Enemies;
 using GameHandlers;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Boss
@@ -13,6 +14,7 @@ namespace _WHY.Scripts.Boss
         [SerializeField] private float minSpawnForce = 4f;
         [SerializeField] private float maxSpawnForce = 40f;
         [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
+        [SerializeField] private Transform[] enemyTargetPositions;
 
         [Header("Shooting")]
         [SerializeField] private float rotationSpeed = 30f;
@@ -42,13 +44,11 @@ namespace _WHY.Scripts.Boss
         private void OnEnable()
         {
             GameEvents.BossShoots += StartShooting;
-            GameEvents.ToSpawnEnemy += EnemySpawn;
         }
 
         private void OnDisable()
         {
             GameEvents.BossShoots -= StartShooting;
-            GameEvents.ToSpawnEnemy -= EnemySpawn;
         }
         
         private void Update()
@@ -68,12 +68,20 @@ namespace _WHY.Scripts.Boss
         private void StartShooting()
         {
             if (isShooting) return;
+            StartCoroutine(StartShootingWithDelay(0.8f));
+        }
+
+        private IEnumerator StartShootingWithDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
             isShooting = true;
             shootTimer = 0f;
             totalRotation = 0f;
             lastAngle = transform.eulerAngles.z;
             transform.rotation = Quaternion.identity;
         }
+
 
         private void HandleShootingRotation()
         {
@@ -133,28 +141,26 @@ namespace _WHY.Scripts.Boss
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
         
-        private void EnemySpawn(bool isFlyingEnemy)
+        public void EnemySpawn()
         {
-            Enemy spawnedEnemy;
-            if (isFlyingEnemy)
-            {
-                spawnedEnemy = FlyingEnemyPool.Instance.Get();
-            }
-            else
-            {
-                spawnedEnemy = WalkingEnemyPool.Instance.Get();
-            }
-
+            bool isFlyingEnemy = Random.value > 0.5f;
+            Enemy spawnedEnemy = false ? FlyingEnemyPool.Instance.Get() : WalkingEnemyPool.Instance.Get();
             spawnedEnemy.transform.position = transform.position + spawnOffset;
-            ApplyRandomForce(spawnedEnemy);
+            Vector3 enemyTargetPosition = isFlyingEnemy
+                ? enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)].position : Vector3.zero;
+            ApplyRandomForce(spawnedEnemy, enemyTargetPosition);
         }
 
-        private void ApplyRandomForce(Enemy enemy)
+        private void ApplyRandomForce(Enemy enemy, Vector3 enemyTargetPosition)
         {
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            Vector2 direction = enemyTargetPosition == Vector3.zero
+                ? Random.insideUnitCircle.normalized
+                : (enemyTargetPosition - enemy.transform.position).normalized;
             float force = Random.Range(minSpawnForce, maxSpawnForce);
-            rb.AddForce(randomDirection * force, ForceMode2D.Impulse);
+            rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
+        
+        
     }
 }

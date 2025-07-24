@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using GameHandlers;
-using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Boss
 {
@@ -12,55 +11,60 @@ namespace _WHY.Scripts.Boss
         public class WaveConfig
         {
             public float startDelay = 5f;
-            public float initialInterval = 5f;
-            public float minInterval = 1f;
-            public float intervalDecreaseRate = 0.02f;
-            [HideInInspector] public float currentInterval;
+            public float initialSpawnDuration = 20f;
+            public float initialSpawnInterval = 5f;
+            public float minSpawnDuration = 5f;
+            public float minSpawnInterval = 1f;
+            public float durationDecreaseRate = 1f;
+            public float intervalDecreaseRate = 0.2f;
+
+            [HideInInspector] public float currentSpawnDuration;
+            [HideInInspector] public float currentSpawnInterval;
         }
 
-        [SerializeField] private WaveConfig enemyWaveConfig = new WaveConfig();
-        [SerializeField] private WaveConfig bossShootConfig = new WaveConfig();
+        [SerializeField] private WaveConfig waveConfig = new WaveConfig();
+
+        private bool bossIsShooting = false;
 
         private void Start()
         {
-            enemyWaveConfig.currentInterval = enemyWaveConfig.initialInterval;
-            bossShootConfig.currentInterval = bossShootConfig.initialInterval;
+            waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
+            waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
 
-            StartCoroutine(EnemySpawnWaves());
-            StartCoroutine(BossShootingWaves());
+            StartCoroutine(CombinedWaveRoutine());
         }
 
-        private IEnumerator BossShootingWaves()
+        private IEnumerator CombinedWaveRoutine()
         {
-            yield return new WaitForSeconds(bossShootConfig.startDelay);
-
+            yield return new WaitForSeconds(waveConfig.startDelay);
             while (true)
             {
+                float elapsed = 0f;
+                while (elapsed < waveConfig.currentSpawnDuration)
+                {
+                    GameEvents.ToSpawnEnemy?.Invoke();
+                    yield return new WaitForSeconds(waveConfig.currentSpawnInterval);
+                    elapsed += waveConfig.currentSpawnInterval;
+                }
+
+                bossIsShooting = true;
                 GameEvents.BossShoots?.Invoke();
+                yield return new WaitUntil(() => !bossIsShooting);
+                waveConfig.currentSpawnDuration = Mathf.Max(
+                    waveConfig.minSpawnDuration,
+                    waveConfig.currentSpawnDuration - waveConfig.durationDecreaseRate
+                );
 
-                yield return new WaitForSeconds(bossShootConfig.currentInterval);
-
-                bossShootConfig.currentInterval = Mathf.Max(
-                    bossShootConfig.minInterval,
-                    bossShootConfig.currentInterval - bossShootConfig.intervalDecreaseRate
+                waveConfig.currentSpawnInterval = Mathf.Max(
+                    waveConfig.minSpawnInterval,
+                    waveConfig.currentSpawnInterval - waveConfig.intervalDecreaseRate
                 );
             }
         }
 
-        private IEnumerator EnemySpawnWaves()
+        public void BossFinishedShooting()
         {
-            yield return new WaitForSeconds(enemyWaveConfig.startDelay);
-
-            while (true)
-            {
-                bool spawnFlying = Random.value > 0.5f;
-                GameEvents.ToSpawnEnemy?.Invoke(spawnFlying);
-                yield return new WaitForSeconds(enemyWaveConfig.currentInterval);
-                enemyWaveConfig.currentInterval = Mathf.Max(
-                    enemyWaveConfig.minInterval,
-                    enemyWaveConfig.currentInterval - enemyWaveConfig.intervalDecreaseRate
-                );
-            }
+            bossIsShooting = false;
         }
     }
 }

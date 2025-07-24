@@ -59,6 +59,7 @@ namespace UI
         
         private void UpdateTime(int time)
         {
+            print("Time updated: " + time);
             timeCountText.text = $"Time: {time}";
         }
 

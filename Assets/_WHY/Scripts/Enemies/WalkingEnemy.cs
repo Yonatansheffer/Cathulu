@@ -49,16 +49,23 @@ namespace _WHY.Scripts.Enemies
             _spriteRenderer.flipX = _moveDirection.x > 0f;
 
         }
-        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Weapon"))
             {
                 ReturnToPool();
             }
+
             if (other.CompareTag("Boundary"))
             {
                 FlipDirection();
+            }
+
+            if (other.CompareTag("Step Center"))
+            {
+                print("step center");
+                _isMoving = true;
             }
         }
 
@@ -67,10 +74,6 @@ namespace _WHY.Scripts.Enemies
             if (other.gameObject.CompareTag("Player"))
             {
                 ReturnToPool();
-            }
-            if (other.gameObject.CompareTag("Step")  ||other.gameObject.CompareTag("Floor"))
-            {
-                _isMoving = true;
             }
         }
         

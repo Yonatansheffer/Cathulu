@@ -13,6 +13,8 @@ TagManager:
   - FoodCollectible
   - Floor
   - Step
+  - WeaponCollectible
+  - Step Center
   layers:
   - Default
   - TransparentFX

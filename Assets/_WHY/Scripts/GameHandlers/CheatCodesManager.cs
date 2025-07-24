@@ -58,7 +58,7 @@ namespace GameHandlers
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 print("spawning enemy");
-                GameEvents.ToSpawnEnemy?.Invoke(true);
+                GameEvents.ToSpawnEnemy?.Invoke();
             }
         }
     }

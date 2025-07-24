@@ -52,7 +52,8 @@ namespace Collectibles
             }
             if (position == Vector3.zero)
             {
-                position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position;
+                position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position
+                           + new Vector3(0f, yOffset, 0f);
             }
             if (Random.Range(0, 100) > powerUptoFoodPercentRatio)
             {
@@ -67,7 +68,7 @@ namespace Collectibles
         private void DropPowerUpCollectible(Vector3 position)
         {
             var selectedPowerUp = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
-            Vector3 spawnPosition = position + new Vector3(0f, yOffset, 0f);
+            Vector3 spawnPosition = position;
             var powerUpCollectibleObject = Instantiate(selectedPowerUp, spawnPosition, Quaternion.identity);
             _activeCollectibles.Add(powerUpCollectibleObject.GetComponent<Collectible>());
         }

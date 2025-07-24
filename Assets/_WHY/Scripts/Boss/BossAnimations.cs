@@ -21,14 +21,14 @@ namespace _WHY.Scripts.Boss
         private void OnEnable()
         {
             GameEvents.BossShoots += TriggerShootAnimation;
-            //GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
+            GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
             //GameEvents.BossLivesChanged += TriggerDamageAnimation;
         }
         
         private void OnDisable()
         {
             GameEvents.BossShoots -= TriggerShootAnimation;
-            //GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
+            GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
             //GameEvents.BossLivesChanged -= TriggerDamageAnimation;
         }
 
@@ -38,7 +38,7 @@ namespace _WHY.Scripts.Boss
             _animator.SetTrigger(Shoot);
         }
 
-        private void TriggerSpawnAnimation(bool dummy)
+        private void TriggerSpawnAnimation()
         {
             _animator.SetTrigger(Spawn);
         }
