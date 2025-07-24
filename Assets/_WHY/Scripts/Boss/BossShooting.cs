@@ -144,19 +144,17 @@ namespace _WHY.Scripts.Boss
         public void EnemySpawn()
         {
             bool isFlyingEnemy = Random.value > 0.5f;
-            Enemy spawnedEnemy = false ? FlyingEnemyPool.Instance.Get() : WalkingEnemyPool.Instance.Get();
+            Enemy spawnedEnemy = isFlyingEnemy ? FlyingEnemyPool.Instance.Get() : WalkingEnemyPool.Instance.Get();
             spawnedEnemy.transform.position = transform.position + spawnOffset;
             Vector3 enemyTargetPosition = Vector3.zero;
             if (!isFlyingEnemy)
             {
-                int index = Random.Range(0, enemyTargetPositions.Length);
-                Transform targetTransform = enemyTargetPositions[index];
-
-                // Convert to world position explicitly (safe even if already in world)
+                Transform targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
                 enemyTargetPosition = targetTransform.parent != null
                     ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
                     : targetTransform.position;
             }
+            print("Spawning enemy at position: " + enemyTargetPosition);
             ApplyRandomForce(spawnedEnemy, enemyTargetPosition);
         }
 
