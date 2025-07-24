@@ -39,6 +39,7 @@ namespace _WHY.Scripts.Boss
             yield return new WaitForSeconds(waveConfig.startDelay);
             while (true)
             {
+                print("entered");
                 float elapsed = 0f;
                 while (elapsed < waveConfig.currentSpawnDuration)
                 {
