@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2149393485863936391}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21ffc7b6f345868ad3860abe2fbfb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialBossHealth: 100
 --- !u!114 &7424182012075156277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   minSpawnForce: 2
   maxSpawnForce: 4
   spawnOffset: {x: 0.8, y: 0, z: 0}
+  enemyTargetPositions: []
   rotationSpeed: 40
   bulletsPerSecond: 5
   bulletForce: 20

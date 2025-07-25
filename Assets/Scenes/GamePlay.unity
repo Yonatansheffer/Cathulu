@@ -3319,6 +3319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpCollectibles:
   - {fileID: 7243705939785312639, guid: 469fed0c67dd94045806f0799ccaa821, type: 3}
+  - {fileID: 5914186823804367052, guid: 4c328747a83a5e94aacfd5f3908504bf, type: 3}
+  - {fileID: 5914186823804367052, guid: 4c328747a83a5e94aacfd5f3908504bf, type: 3}
+  - {fileID: 5914186823804367052, guid: 4c328747a83a5e94aacfd5f3908504bf, type: 3}
   foodCollectibles:
   - {fileID: 6103997191756900264, guid: 4231660966c54534794f42f83aba2e82, type: 3}
   - {fileID: 617349783037387087, guid: 79ba94c062f22004985b1055cc4f35cb, type: 3}

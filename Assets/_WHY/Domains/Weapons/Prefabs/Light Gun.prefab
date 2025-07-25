@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fbc11c31bfbe8418afc92ee1a8c527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orangeStarsParticles: {fileID: 2307528430244752201, guid: c6e34865eac9a462ebae0a9a63fd7495, type: 3}
+  pinkStarsParticles: {fileID: 2307528430244752201, guid: 18e27ec306ac740479a1c2dd426c1293, type: 3}
 --- !u!61 &4382210117089188642
 BoxCollider2D:
   m_ObjectHideFlags: 0

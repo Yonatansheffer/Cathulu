@@ -22,19 +22,18 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
-            //GameEvents.BossLivesChanged += TriggerDamageAnimation;
+            GameEvents.BossLivesChanged += TriggerDamageAnimation;
         }
         
         private void OnDisable()
         {
             GameEvents.BossShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
-            //GameEvents.BossLivesChanged -= TriggerDamageAnimation;
+            GameEvents.BossLivesChanged -= TriggerDamageAnimation;
         }
 
         private void TriggerShootAnimation()
         {
-            print("sdsd");
             _animator.SetTrigger(Shoot);
         }
 

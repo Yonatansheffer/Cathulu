@@ -15,6 +15,7 @@ TagManager:
   - Step
   - WeaponCollectible
   - Step Center
+  - Boss
   layers:
   - Default
   - TransparentFX

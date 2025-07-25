@@ -5,22 +5,22 @@ namespace _WHY.Scripts.Boss
 {
     public class BossHealth : WHYBaseMono
     {
-        [SerializeField] private const int InitialBossHealth = 100;
-        private int currentHealth;
+        [SerializeField] private int initialBossHealth = 100;
+        private int _currentHealth;
         
         private void Start()
         {
-            currentHealth = InitialBossHealth;
-            GameEvents.BossLivesChanged?.Invoke(currentHealth);
+            _currentHealth = initialBossHealth;
+            GameEvents.BossLivesChanged?.Invoke(_currentHealth);
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Weapon"))
             {
-                currentHealth -= 2;
-                GameEvents.BossLivesChanged?.Invoke(currentHealth);
-                GameEvents.UpdateHealthUI?.Invoke(currentHealth, false);
+                _currentHealth -= 2;
+                GameEvents.BossLivesChanged?.Invoke(_currentHealth);
+                GameEvents.UpdateHealthUI?.Invoke(_currentHealth, false);
             }
         }
     }
