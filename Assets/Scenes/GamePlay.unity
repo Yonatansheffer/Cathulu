@@ -1728,7 +1728,7 @@ MonoBehaviour:
   smoothSpeed: 5
   rightxBound: 20
   leftxBound: -14.4
-  yBound: 15
+  yBound: 8
   _shakeDuration: 0.3
   _shakeMagnitude: 0.2
   startZoomSize: 30

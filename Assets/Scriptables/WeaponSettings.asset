@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WeaponSettings
   m_EditorClassIdentifier: 
   weaponConfigs:
-  - weaponType: 0
+  - weaponType: 1
     projectilePrefab: {fileID: 4166432125833302022, guid: 3a886b143ef58964f913681dc230fe98, type: 3}
     shotSpeed: 6
     maxProjectileCount: 46

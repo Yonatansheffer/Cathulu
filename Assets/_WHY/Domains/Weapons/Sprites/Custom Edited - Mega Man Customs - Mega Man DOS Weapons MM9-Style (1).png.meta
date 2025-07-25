@@ -1,0 +1,634 @@
+fileFormatVersion: 2
+guid: 6b95f04c19075764b9a60488203adcfd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5333797812248453084
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_0
+  - first:
+      213: -4669096790218389206
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_1
+  - first:
+      213: -3557252121841421045
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_2
+  - first:
+      213: -1853544429314718471
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_3
+  - first:
+      213: 3523415461501879933
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_4
+  - first:
+      213: 5135892498969409100
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_5
+  - first:
+      213: 8946331263298919605
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_6
+  - first:
+      213: 606371019249701387
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_7
+  - first:
+      213: -8249607440370646152
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_8
+  - first:
+      213: 3194512492615298542
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_9
+  - first:
+      213: 6568728743209757486
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_10
+  - first:
+      213: -1155712853096271996
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_11
+  - first:
+      213: -7647459135966115447
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_12
+  - first:
+      213: 7813384705085965043
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_13
+  - first:
+      213: -2626972854676130710
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_14
+  - first:
+      213: -1492091804017033152
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_15
+  - first:
+      213: -8605830665320158551
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_16
+  - first:
+      213: 4026746158524528733
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_17
+  - first:
+      213: -2738058734347937757
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_18
+  - first:
+      213: 1201066584319492778
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_19
+  - first:
+      213: -3050864970957533847
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_20
+  - first:
+      213: -6890828787808603197
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_21
+  - first:
+      213: -1124746865929228618
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_22
+  - first:
+      213: -355461056127504073
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_23
+  - first:
+      213: -3115291784790255494
+    second: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 116
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdf13deb9d4750a40800000000000000
+      internalID: 5333797812248453084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 126
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a29cd1d0539043fb0800000000000000
+      internalID: -4669096790218389206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_5
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 89
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c463aa5440b564740800000000000000
+      internalID: 5135892498969409100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 61
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 873c944cdb1838d80800000000000000
+      internalID: -8249607440370646152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_11
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 60
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48fe7d8884516ffe0800000000000000
+      internalID: -1155712853096271996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 46
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9898c6e0f64ced590800000000000000
+      internalID: -7647459135966115447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_13
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 53
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f28e100ef7be6c60800000000000000
+      internalID: 7813384705085965043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_14
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 30
+        width: 10
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a647f626b1e1b8bd0800000000000000
+      internalID: -2626972854676130710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_15
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 37
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0400b41e8660b4be0800000000000000
+      internalID: -1492091804017033152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_16
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 31
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aaad640b92f19880800000000000000
+      internalID: -8605830665320158551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_17
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 36
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58f58beb40e1e730800000000000000
+      internalID: 4026746158524528733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_18
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 16
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32819058616700ad0800000000000000
+      internalID: -2738058734347937757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_19
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 17
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa284f5e1bb0ba010800000000000000
+      internalID: 1201066584319492778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_20
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96dc46c197629a5d0800000000000000
+      internalID: -3050864970957533847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_21
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 18
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3f1a60abbde50a0800000000000000
+      internalID: -6890828787808603197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_22
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6beed024fa81460f0800000000000000
+      internalID: -1124746865929228618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_23
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731f8028d06211bf0800000000000000
+      internalID: -355461056127504073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_24
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7852e390a244c4d0800000000000000
+      internalID: -3115291784790255494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 76
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbea6e026cfec44fa490a6d30e03832
+      internalID: 343300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 91
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f89d909ce3f134abaea66f640134bc
+      internalID: -1547575072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e38ed66307170b942b4932a8e272938d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_2: 343300006
+      Custom Edited - Mega Man Customs - Mega Man DOS Weapons MM9-Style (1)_3: -1547575072
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
