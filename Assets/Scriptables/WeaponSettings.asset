@@ -17,3 +17,7 @@ MonoBehaviour:
     projectilePrefab: {fileID: 4166432125833302022, guid: 3a886b143ef58964f913681dc230fe98, type: 3}
     shotSpeed: 6
     maxProjectileCount: 46
+  - weaponType: 0
+    projectilePrefab: {fileID: 4166432125833302022, guid: 36b9412dd2cffb744932996cb348d43c, type: 3}
+    shotSpeed: 6
+    maxProjectileCount: 46

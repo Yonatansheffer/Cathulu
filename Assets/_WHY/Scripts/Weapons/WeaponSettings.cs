@@ -19,6 +19,7 @@ namespace Weapons
     }
     public enum WeaponType
     {
-        LightGun=0
+        SpellGun,
+        LightGun
     }
 }

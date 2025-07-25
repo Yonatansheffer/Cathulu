@@ -9,7 +9,8 @@ namespace Weapons
         // This method is called when the projectile hits a solid object and the weapon has special behavior
         protected override void HandleHit(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Planet"))
+            if (other.gameObject.CompareTag("Planet") ||
+                other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Boundary"))
             {
                 Stop();
                 Animator.SetTrigger(HitCeiling);

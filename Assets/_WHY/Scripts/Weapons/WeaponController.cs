@@ -46,7 +46,7 @@ namespace Weapons
                 Destroy(projectile.gameObject);
             }
             _activeProjectiles.Clear();
-            SwitchWeapon(WeaponType.LightGun);   
+            SwitchWeapon(WeaponType.SpellGun);   
         }
         
         private void SwitchWeapon(WeaponType weaponType)
