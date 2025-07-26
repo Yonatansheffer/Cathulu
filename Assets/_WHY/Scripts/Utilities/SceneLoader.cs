@@ -29,19 +29,17 @@ namespace Managers
         private void OnEnable()
         {
             GameEvents.GameOver += EndGame;
-            GameEvents.RestartLevel += LoadGamePlay;
         }
         
         private void OnDisable()
         {
             GameEvents.GameOver -= EndGame;
-            GameEvents.RestartLevel -= LoadGamePlay;
         }
         private void Update()
         {
+            if(_InLevel) return;
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
-                if(_InLevel) return;
                 _InLevel = true;
                 SoundManager.StopOpeningMusic();
                 LoadGamePlay();
@@ -57,18 +55,12 @@ namespace Managers
             SceneManager.LoadScene(GamePlaySceneName);
         }
 
-        private void RestartGame()
+        private void EndGame(GameState dummy1, int dummy2)
         {
-            //GameEvents.RestartGame?.Invoke();
-            SceneManager.LoadScene(OpeningSceneName);
+            StartCoroutine(DelayedGameOver());
         }
 
-        private void EndGame(bool didPlayerWin)
-        {
-            StartCoroutine(DelayedGameOver(didPlayerWin));
-        }
-
-        private IEnumerator DelayedGameOver(bool didPlayerWin)
+        private IEnumerator DelayedGameOver()
         {
             yield return new WaitForSeconds(0.1f); 
             SceneManager.LoadScene(EndingSceneName);

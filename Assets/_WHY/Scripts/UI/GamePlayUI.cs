@@ -11,56 +11,100 @@ namespace UI
 {
     public class GamePlayUI : MonoBehaviour
     {
+        [SerializeField] private WeaponSettings settings;
         [SerializeField] private Slider BossHealthBar;
         [SerializeField] private TextMeshProUGUI bossHealthText;
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
         [SerializeField] private TextMeshProUGUI playerHealthText;
         [SerializeField] private Slider playerHealthBar;
+        [SerializeField] private Image spellGunImage;
+        [SerializeField] private Image lightGunImage;
+        [SerializeField] private Image fireGunImage;
+        [SerializeField] private Image shieldImage;
+        private WeaponType? _currentWeaponType;
 
-        private void Awake()
+        private void Start()
         {
-            //InitializeCollectables();
+            AddWeaponCollected(settings.defaultWeapon);
         }
 
         private void OnEnable()
         {
-            GameEvents.UpdatePointsUI += UpdatePoints;
-            GameEvents.UpdateHealthUI += UpdateHealth;
+            GameEvents.BossLivesChanged += UpdateHealth;
+            GameEvents.UpdateScoreUI += UpdateScore;
+            GameEvents.BossLivesChanged += UpdateHealth;
             GameEvents.UpdateTimeUI += UpdateTime;
+            GameEvents.WeaponCollected += AddWeaponCollected;
+            GameEvents.ShieldUpdated += UpdateShield;
         }
         
         private void OnDisable()
         {
-            GameEvents.UpdatePointsUI -= UpdatePoints;
-            GameEvents.UpdateHealthUI -= UpdateHealth;
+            GameEvents.UpdateScoreUI -= UpdateScore;
+            GameEvents.BossLivesChanged -= UpdateHealth;
             GameEvents.UpdateTimeUI -= UpdateTime;
+            GameEvents.WeaponCollected -= AddWeaponCollected;
+            GameEvents.ShieldUpdated -= UpdateShield;
         }
         
-        private void UpdateHealth(int amount, bool isPlayer)
+        private void UpdateShield(bool isActive)
         {
-            if (isPlayer)
-            {
-                playerHealthBar.value = amount;
-                playerHealthText.text = amount.ToString();
-
-            }
-            else
-            {
-                BossHealthBar.value = amount;
-                bossHealthText.text = amount.ToString();
-            } 
+            shieldImage.gameObject.SetActive(isActive);
         }
         
-        private void UpdatePoints(int points)
+        private void UpdateHealth(int amount)
+        {
+            BossHealthBar.value = amount;
+            bossHealthText.text = amount.ToString();
+        }
+        
+        private void UpdateScore(int points)
         {
             pointsText.text = points.ToString();
         }
         
         private void UpdateTime(int time)
         {
-            print("Time updated: " + time);
             timeCountText.text = $"Time: {time}";
+        }
+        
+        private void AddWeaponCollected(WeaponType weaponType)
+        {
+            RemoveLastWeapon();
+            switch (weaponType)
+            {
+                case WeaponType.SpellGun:
+                    spellGunImage.gameObject.SetActive(true);
+                    _currentWeaponType = WeaponType.SpellGun;
+                    break;
+                case WeaponType.LightGun:
+                    lightGunImage.gameObject.SetActive(true);
+                    _currentWeaponType = WeaponType.LightGun;
+                    break;
+                case WeaponType.FireGun:
+                    fireGunImage.gameObject.SetActive(true);
+                    _currentWeaponType = WeaponType.FireGun;
+                    break;
+            }
+        }
+
+        private void RemoveLastWeapon()
+        {
+            switch (_currentWeaponType)
+            {
+                case null:
+                    return;
+                case WeaponType.SpellGun:
+                    spellGunImage.gameObject.SetActive(false);
+                    break;
+                case WeaponType.LightGun:
+                    lightGunImage.gameObject.SetActive(false);
+                    break;
+                case WeaponType.FireGun:
+                    fireGunImage.gameObject.SetActive(false);
+                    break;
+            }
         }
 
         /*
@@ -121,22 +165,7 @@ namespace UI
             timeDisplayText.text = time.ToString();
         }
         
-        private void AddWeaponCollected(WeaponType weaponType)
-        {
-            InitializeCollectables();
-            switch (weaponType)
-            {
-                case WeaponType.StickyHarpoon:
-                    stickyHarpoonCollected.gameObject.SetActive(true);
-                    break;
-                case WeaponType.LightGun:
-                    lightGunCollected.gameObject.SetActive(true);
-                    break;
-                case WeaponType.DoubleHarpoon:
-                    doubleHarpoonCollected.gameObject.SetActive(true);
-                    break;
-            }
-        }
+        
 
         private void ShowReadyText()
         {

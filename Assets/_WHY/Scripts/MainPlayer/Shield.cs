@@ -14,40 +14,30 @@ namespace MainPlayer
         {
             _capsuleCollider = GetComponent<CapsuleCollider2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            UnActivateShield();
         }
         private void OnEnable()
         {
-            GameEvents.BossDestroyed += UnActivateShield;
-            GameEvents.ShieldCollected += ActivateShield;
+            GameEvents.ShieldUpdated += UpdateShield;
         }
         
         private void OnDisable()
         {
-            GameEvents.BossDestroyed -= UnActivateShield;
-            GameEvents.ShieldCollected -= ActivateShield;
+            GameEvents.ShieldUpdated -= UpdateShield;
         }
     
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.CompareTag("Enemy") || other.CompareTag("Boss"))
             {
                 SoundManager.Instance.PlaySound("Shield Hit", transform);
-                GameEvents.ShieldHit?.Invoke();
-                UnActivateShield();
+                GameEvents.ShieldUpdated?.Invoke(false);
             }
         }
     
-        private void ActivateShield()
+        private void UpdateShield(bool isActive)
         {
-            _capsuleCollider.enabled = true;
-            _spriteRenderer.enabled = true;
-        }
-    
-        private void UnActivateShield()
-        {
-            _capsuleCollider.enabled = false;
-            _spriteRenderer.enabled = false;
+            _capsuleCollider.enabled = isActive;
+            _spriteRenderer.enabled = isActive;
         }
         
     }

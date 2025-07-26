@@ -2,30 +2,35 @@ using UnityEngine;
 
 namespace GameHandlers
 {
+    public enum GameState
+    {
+        Playing,
+        Defeated,
+        TimeOver,
+        PlayerWon
+    }
     public class GameLoopManager : MonoBehaviour
     {
         [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
         private float _countDownTime; // Stores the current time left
-        private int _currentPoints; // Stores the current points
+        private int _currentScore; // Stores the current points
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
         private bool _isCountingDown; // Flag to know if the countdown is active
-
+        private GameState _currentGameState; // Stores the current game state
+        
         private void Start()
         {
-            ResetStats();
-            ResetCountDown();
             DontDestroyOnLoad(this);
+            OnLevelStart();
         }
         
-
         private void OnEnable()
         {
             GameEvents.AddTime += AddTime;  
             GameEvents.FreezeLevel += StopCountDown;
-            GameEvents.RestartLevel += OnStageStart;
+            GameEvents.RestartLevel += OnLevelStart;
             GameEvents.BossDestroyed += PassedStage;
             GameEvents.PlayerLivesChanged += CheckGameOver;
-            GameEvents.BossLivesChanged += CheckGameOver;
             GameEvents.AddPoints += AddPoints;
         }
     
@@ -33,10 +38,9 @@ namespace GameHandlers
         {
             GameEvents.AddTime -= AddTime;
             GameEvents.FreezeLevel -= StopCountDown;
-            GameEvents.RestartLevel -= OnStageStart;
+            GameEvents.RestartLevel -= OnLevelStart;
             GameEvents.BossDestroyed -= PassedStage;
             GameEvents.PlayerLivesChanged -= CheckGameOver;
-            GameEvents.BossLivesChanged -= CheckGameOver;
             GameEvents.AddPoints -= AddPoints;
         }
         
@@ -48,43 +52,52 @@ namespace GameHandlers
             GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
         }
     
-        private void ResetStats()
+        private void OnLevelStart()
         {
-            _currentPoints = 0;
-            _timeBonus = 0;
-        }
-
-        private void OnStageStart()
-        {
+            _currentGameState = GameState.Playing;
             ResetCountDown();
-            GameEvents.UpdatePointsUI?.Invoke(_currentPoints);
+            ResetStats();
+            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
             GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
         }
-    
-        private void AddPoints(int pointsToAdd)
+        
+        private void ResetStats()
         {
-            _currentPoints += pointsToAdd;
-            GameEvents.UpdatePointsUI?.Invoke(_currentPoints);
+            _currentScore = 0;
+            _timeBonus = 0;
         }
-
-        private void PassedStage()
-        {
-            _timeBonus = Mathf.FloorToInt(_countDownTime) * 30;
-            GameEvents.FreezeLevel?.Invoke();
-            GameEvents.HideGameUI?.Invoke();
-            GameEvents.PassedStage?.Invoke(_timeBonus, _currentPoints);
-        }
-    
+        
         private void ResetCountDown()
         {
             StopCountDown();
             _countDownTime = initialCountDownTime;
             _isCountingDown = true;
         }
+        
+        private void AddPoints(int pointsToAdd)
+        {
+            _currentScore += pointsToAdd;
+            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
+        }
+
+        private void PassedStage()
+        {
+            _timeBonus = Mathf.FloorToInt(_countDownTime) * 30;
+            AddPoints(_timeBonus);
+            _currentGameState = GameState.PlayerWon;
+            GameEvents.FreezeLevel?.Invoke();
+            GameEvents.GameOver?.Invoke(_currentGameState, _currentScore);
+        }
 
         private void StopCountDown()
         {
             _isCountingDown = false;
+        }
+        
+        private void AddTime(float timeToAdd)
+        {
+            _countDownTime += timeToAdd;
+            _countDownTime = Mathf.Max(0, _countDownTime);
         }
 
         private void UpdateCountdown()
@@ -98,22 +111,21 @@ namespace GameHandlers
             else
             {
                 GameEvents.FreezeLevel?.Invoke();
-                GameEvents.GameOver.Invoke(false);
+                _currentGameState = GameState.TimeOver;
+                GameEvents.GameOver.Invoke(_currentGameState, _currentScore);
             }
         }
     
-        private void CheckGameOver(int lives) 
-        { 
-            print(lives);   
-            if (lives <= 0)
-                GameEvents.GameOver?.Invoke(false);
+        private void CheckGameOver(int lives)
+        {
+            if (lives > 0) return;
+            _currentGameState = GameState.Defeated;
+            GameEvents.GameOver?.Invoke(_currentGameState, _currentScore);
         }
-    
+
         private void AddTime(int timeToAdd)
         {
             _countDownTime += timeToAdd;
         }
-    
-        
     }
 }

@@ -5,8 +5,13 @@ namespace Collectibles
 {
     public abstract class Collectible : MonoBehaviour
     {
-        [SerializeField] protected SpriteRenderer spriteRenderer;
+        private SpriteRenderer spriteRenderer;
         [SerializeField] protected float fallSpeed = 2f;
+        
+        protected virtual void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
     
         protected virtual void Update()
         {

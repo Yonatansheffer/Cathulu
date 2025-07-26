@@ -8,7 +8,7 @@ namespace Collectibles
         protected override void HandlePickup() 
         { 
             SoundManager.Instance.PlaySound("Collected", transform);
-            GameEvents.ShieldCollected?.Invoke(); 
+            GameEvents.ShieldUpdated?.Invoke(true); 
             Destroy(gameObject);
         }
     }

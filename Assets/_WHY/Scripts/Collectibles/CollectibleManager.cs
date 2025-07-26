@@ -3,19 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using GameHandlers;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Weapons;
 using Random = UnityEngine.Random;
 
 namespace Collectibles
 {
     public class CollectibleManager : MonoBehaviour
     {
+        [SerializeField] private WeaponSettings settings;
         [SerializeField] private GameObject[] powerUpCollectibles;
-        [SerializeField] private GameObject[] foodCollectibles;
-        [SerializeField] private float powerUptoFoodPercentRatio = 17f; // Interval between possible power up drops
-        [SerializeField] private float dropInterval = 5f; // Interval between possible food collectible drops*/
+        [SerializeField] private GameObject[] pointCollectibles;
+        [SerializeField] private float powerUptoPointPercentRatio = 17f; // Interval between possible power up drops
+        [SerializeField] private float dropInterval = 5f; 
         private List<Collectible> _activeCollectibles; // List of all active collectibles
         [SerializeField] private Transform[] positionsForDrop;
         [SerializeField] private float yOffset = -0.5f; // Offset for the collectible spawn position
+        private WeaponType _activeWeapon;
+        private bool _isShieldActive;
         private void Awake()
         {
             _activeCollectibles = new List<Collectible>();
@@ -28,6 +33,8 @@ namespace Collectibles
 
         private void OnEnable()
         {
+            GameEvents.ShieldUpdated += UpdateShield;
+            GameEvents.WeaponCollected += UpdateWeapon;
             GameEvents.BeginGameLoop += DestroyAllCollectibles;
             GameEvents.FreezeLevel += StopCollectiblesMovement;
             GameEvents.EnemyDestroyed += DropCollectible;
@@ -37,11 +44,23 @@ namespace Collectibles
 
         private void OnDisable()
         {
+            GameEvents.ShieldUpdated -= UpdateShield;
+            GameEvents.WeaponCollected -= UpdateWeapon;
             GameEvents.BeginGameLoop -= DestroyAllCollectibles;
             GameEvents.FreezeLevel -= StopCollectiblesMovement;
             GameEvents.EnemyDestroyed -= DropCollectible;
             GameEvents.RestartLevel -= StartDropCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;
+        }
+        
+        private void UpdateWeapon(WeaponType weaponType)
+        {
+            _activeWeapon = weaponType;
+        }
+        
+        private void UpdateShield(bool isActive)
+        {
+            _isShieldActive = isActive;
         }
         
         private void DropCollectible(Vector3 position)
@@ -55,9 +74,9 @@ namespace Collectibles
                 position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position
                            + new Vector3(0f, yOffset, 0f);
             }
-            if (Random.Range(0, 100) > powerUptoFoodPercentRatio)
+            if (Random.Range(0, 100) > powerUptoPointPercentRatio)
             {
-                DropFoodCollectible(position);
+                DropPointCollectible(position);
             }
             else
             {
@@ -68,6 +87,19 @@ namespace Collectibles
         private void DropPowerUpCollectible(Vector3 position)
         {
             var selectedPowerUp = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
+            var weaponCollectible = selectedPowerUp.GetComponent<WeaponCollectible>();
+            if (weaponCollectible != null)
+            {
+                if(weaponCollectible.GetWeaponType() == _activeWeapon)
+                {
+                    return;
+                }
+            }
+            var shieldCollectible = selectedPowerUp.GetComponent<ShieldCollectible>();
+            if (shieldCollectible != null && _isShieldActive)
+            {
+                return; 
+            }
             Vector3 spawnPosition = position;
             var powerUpCollectibleObject = Instantiate(selectedPowerUp, spawnPosition, Quaternion.identity);
             _activeCollectibles.Add(powerUpCollectibleObject.GetComponent<Collectible>());
@@ -87,11 +119,11 @@ namespace Collectibles
             }
         }
     
-        private void DropFoodCollectible(Vector3 position)
+        private void DropPointCollectible(Vector3 position)
         {
-            var selectedFood = foodCollectibles[Random.Range(0, foodCollectibles.Length)]; 
-            var foodCollectibleObject = Instantiate(selectedFood, position, Quaternion.identity);
-            _activeCollectibles.Add(foodCollectibleObject.GetComponent<Collectible>());
+            var selectedPoint = pointCollectibles[Random.Range(0, pointCollectibles.Length)]; 
+            var pointCollectibleObject = Instantiate(selectedPoint, position, Quaternion.identity);
+            _activeCollectibles.Add(pointCollectibleObject.GetComponent<Collectible>());
         }
     
         private void StopCollectiblesMovement()

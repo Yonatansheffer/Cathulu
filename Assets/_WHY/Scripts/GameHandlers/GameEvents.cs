@@ -10,16 +10,16 @@ namespace GameHandlers
         // GameLoop events
         public static Action BeginGameLoop;
         public static Action FreezeLevel;
+        public static Action UnFreezeLevel;
         public static Action RestartLevel;
-        public static Action<int,int> PassedStage; // present score and time bonus
-        public static Action TimeOver;
-        public static Action<bool> GameOver;
+        public static Action<float> AddTime;
+        public static Action<GameState, int> GameOver;
 
 
         // UI Events
         public static Action ReadyStage;
         public static Action<int, bool> UpdateHealthUI;
-        public static Action<int> UpdatePointsUI;
+        public static Action<int> UpdateScoreUI;
         public static Action<int> UpdateTimeUI;
         public static Action ResetWeaponUI;
         public static Action HideGameUI;
@@ -33,8 +33,7 @@ namespace GameHandlers
         public static Action BossShoots;
         public static Action ToSpawnEnemy;
 
-        public static Action EnemyStopperCollected;
-        public static Action ShieldCollected;
+        public static Action<bool> ShieldUpdated;
         public static Action ShieldHit;
         public static Action<int> PlayerLivesChanged;
         public static Action BossDestroyed;
@@ -42,7 +41,6 @@ namespace GameHandlers
         public static Action<int> AddPoints;
     
         // Cheat Codes Events
-        public static Action<int> AddTime;
         public static Action<int> AddLifeToPlayer;
         public static Action StopMusicCheat;
         public static Action DefaultWeapon;

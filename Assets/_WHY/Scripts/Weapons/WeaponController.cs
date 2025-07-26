@@ -18,6 +18,7 @@ namespace Weapons
         private float _lastShotTime = -Mathf.Infinity;
         private List<Projectile> _activeProjectiles;
         
+        
         private void Awake()
         {
             _activeProjectiles = new List<Projectile>();
@@ -47,7 +48,7 @@ namespace Weapons
                 Destroy(projectile.gameObject);
             }
             _activeProjectiles.Clear();
-            SwitchWeapon(WeaponType.SpellGun);   
+            SwitchWeapon(settings.defaultWeapon);   
         }
         
         private void SwitchWeapon(WeaponType weaponType)

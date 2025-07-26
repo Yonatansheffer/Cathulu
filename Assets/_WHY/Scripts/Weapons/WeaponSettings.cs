@@ -7,6 +7,7 @@ namespace Weapons
     public class WeaponSettings : ScriptableObject
     {
         public WeaponConfig[] weaponConfigs;
+        public WeaponType defaultWeapon;
     }
     
     [Serializable]
@@ -21,6 +22,7 @@ namespace Weapons
     public enum WeaponType
     {
         SpellGun,
-        LightGun
+        LightGun,
+        FireGun
     }
 }

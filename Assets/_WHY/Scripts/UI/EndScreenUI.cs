@@ -8,7 +8,42 @@ using UnityEngine.UI;
 namespace UI
 {
     public class EndScreenUI : MonoBehaviour
-    {/*
+    {
+        [SerializeField] private TextMeshProUGUI defeatedText;
+        [SerializeField] private TextMeshProUGUI playerWonText;
+        [SerializeField] private TextMeshProUGUI timeOverText;
+        [SerializeField] private TextMeshProUGUI pressEnterText;
+        [SerializeField] private TextMeshProUGUI scoreText;
+        
+        private void OnEnable()
+        {
+            GameEvents.GameOver += HanleGameOverScreen;
+        }
+        
+        private void OnDisable()
+        {
+            GameEvents.GameOver -= HanleGameOverScreen;
+        }
+        
+        private void HanleGameOverScreen(GameState gameState, int score)
+        {
+            switch (gameState)
+            {
+                case GameState.PlayerWon:
+                    playerWonText.gameObject.SetActive(true);
+                    break;
+                case GameState.TimeOver:
+                    timeOverText.gameObject.SetActive(true);
+                    break;
+                case GameState.Defeated:
+                    defeatedText.gameObject.SetActive(true);
+                    break;
+            }
+            scoreText.text = $"SCORE: {score}";
+            //SoundManager.Instance.PlaySound("Game Over", transform);
+        }
+        
+        /*
         [SerializeField] private TextMeshProUGUI stage1Text;
         [SerializeField] private TextMeshProUGUI timeBonusText;
         [SerializeField] private TextMeshProUGUI nextExtendText;
@@ -37,7 +72,7 @@ namespace UI
             GameEvents.TimeOver += ShowTimeOverText;
             GameEvents.GameOver += ShowGameOver;
         }
-        
+
         private void OnDisable()
         {
             GameEvents.BeginGamePlay -= OnRestartStage;
@@ -51,7 +86,7 @@ namespace UI
         {
             CheckForEnter();
         }
-        
+
         private void OnRestartStage()
         {
             HideEndScreen();
@@ -75,7 +110,7 @@ namespace UI
             yield return new WaitForSeconds(5f);
             Application.Quit();
         }
-                
+
         private void ShowTimeOverText()
         {
             timeOver.gameObject.SetActive(true);
@@ -88,7 +123,7 @@ namespace UI
             timeOver.gameObject.SetActive(false);
             GameEvents.PlayerLostLife?.Invoke();
         }
-        
+
         private void ShowGameOver()
         {
             pressEnterText.gameObject.SetActive(true);
@@ -98,17 +133,17 @@ namespace UI
             gameOverCountdownText.gameObject.SetActive(true);
             _countdownCoroutine = StartCoroutine(CountDown());
         }
-        
+
         private IEnumerator BlinkPressEnterText()
         {
-            while (true) 
+            while (true)
             {
                 pressEnterText.enabled = !pressEnterText.enabled;
-                yield return new WaitForSeconds(0.5f); 
+                yield return new WaitForSeconds(0.5f);
             }
         }
 
-        
+
         private IEnumerator CountDown()
         {
             var count = 9;
@@ -130,20 +165,20 @@ namespace UI
             StopCoroutine(_countdownCoroutine);
             GameEvents.BeginGamePlay?.Invoke();
         }
-        
+
         private void CheckForEnter()
         {
             if (Input.GetKeyDown(KeyCode.Return) && _canPressEnter)
             {
                 StopAllCoroutines();
                 HideEndScreen();
-                _canPressEnter = false;                
+                _canPressEnter = false;
                 GameEvents.StartGame?.Invoke();
             }
         }
 
         private void HideEndScreen()
-        { 
+        {
             stage1Text.gameObject.SetActive(false);
             continueText.gameObject.SetActive(false);
             gameOverText.gameObject.SetActive(false);

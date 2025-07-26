@@ -14,5 +14,10 @@ namespace Collectibles
             GameEvents.WeaponCollected?.Invoke(weaponType); 
             Destroy(gameObject);
         }
+
+        public WeaponType GetWeaponType()
+        {
+            return weaponType;
+        }
     }
 }

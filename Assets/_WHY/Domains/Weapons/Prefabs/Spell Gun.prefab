@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.034, y: 0.866, z: 90}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.018509045, y: 0.00019367225}
+  m_Offset: {x: 0.0036021564, y: 0.010131601}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -176,7 +176,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.087452486, y: 0.051684257}
+  m_Size: {x: 0.0576387, y: 0.10047039}
   m_EdgeRadius: 0
 --- !u!95 &2019442647435381270
 Animator:

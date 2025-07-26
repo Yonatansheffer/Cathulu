@@ -33,7 +33,7 @@ namespace GameHandlers
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 print("Activating shield");
-                GameEvents.ShieldCollected?.Invoke();
+                GameEvents.ShieldUpdated?.Invoke(true);
             }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {

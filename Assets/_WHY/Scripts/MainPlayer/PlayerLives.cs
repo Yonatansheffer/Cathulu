@@ -25,26 +25,27 @@ namespace MainPlayer
         private void OnEnable()
         {
             GameEvents.AddLifeToPlayer += AdjustLives;
-            GameEvents.ShieldCollected += ActivateShield;
-            GameEvents.ShieldHit += UnActivateShield;
+            GameEvents.ShieldUpdated += UpdateShield;
         }
         
         private void OnDisable()
         {
             GameEvents.AddLifeToPlayer -= AdjustLives;
-            GameEvents.ShieldCollected -= ActivateShield;
-            GameEvents.ShieldHit -= UnActivateShield;
+            GameEvents.ShieldUpdated -= UpdateShield;
         }
         
-        private void ActivateShield()
+        private void UpdateShield(bool isActive)
         {
-            _isShieldActive = true;
+            if (isActive)
+            {
+                _isShieldActive = true;
+            }
+            else
+            {
+                StartCoroutine(BlinkPlayer());
+            }
         }
         
-        private void UnActivateShield()
-        {
-            StartCoroutine(BlinkPlayer());
-        }
         
         private IEnumerator BlinkPlayer()
         {

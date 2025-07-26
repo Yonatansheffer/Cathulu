@@ -10,12 +10,13 @@ TagManager:
   - Enemy
   - Background
   - Boundary
-  - FoodCollectible
   - Floor
   - Step
   - WeaponCollectible
   - Step Center
   - Boss
+  - PointCollectible
+  - FoodCollectible
   layers:
   - Default
   - TransparentFX

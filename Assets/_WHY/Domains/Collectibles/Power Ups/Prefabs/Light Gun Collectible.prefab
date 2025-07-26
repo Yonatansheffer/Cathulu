@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189b25a51b9f06449b1f78bfb40ec838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 3042664268106679132}
   fallSpeed: 3
   weaponType: 1
 --- !u!61 &564055655584181920
@@ -166,7 +165,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.015037328, y: 0.012362599}
+  m_Offset: {x: 0.019640326, y: -0.18097663}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -176,5 +175,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9476211, y: 1.4167469}
+  m_Size: {x: 1.7266622, y: 0.87355614}
   m_EdgeRadius: 0

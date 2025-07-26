@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Collectibles
 {
-    public class FoodCollectible : Collectible
+    public class PointCollectible : Collectible
     {
         [SerializeField] private int pointsValue;
 

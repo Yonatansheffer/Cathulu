@@ -154,7 +154,6 @@ namespace _WHY.Scripts.Boss
                     ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
                     : targetTransform.position;
             }
-            print("Spawning enemy at position: " + enemyTargetPosition);
             ApplyRandomForce(spawnedEnemy, enemyTargetPosition);
         }
 
