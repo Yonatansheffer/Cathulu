@@ -16,6 +16,7 @@ namespace Weapons
         public Projectile projectilePrefab;
         public float shotSpeed;
         public int maxProjectileCount;
+        public float shotCooldown;
     }
     public enum WeaponType
     {

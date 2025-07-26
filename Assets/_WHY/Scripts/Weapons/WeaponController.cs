@@ -15,6 +15,7 @@ namespace Weapons
         private static readonly int RightShoot = Animator.StringToHash("RightShoot");
         private static readonly int Idle = Animator.StringToHash("Idle");
         private WeaponConfig _currentWeaponConfig;
+        private float _lastShotTime = -Mathf.Infinity;
         private List<Projectile> _activeProjectiles;
         
         private void Awake()
@@ -69,6 +70,9 @@ namespace Weapons
         {
             if (_currentWeaponConfig == null || _activeProjectiles.Count >= _currentWeaponConfig.maxProjectileCount)
                 return;
+            if (Time.time < _lastShotTime + _currentWeaponConfig.shotCooldown)
+                return;
+            _lastShotTime = Time.time;
             SoundManager.Instance.PlaySound(
                 _currentWeaponConfig.weaponType == WeaponType.LightGun ? "Light Shot" : "Shoot", transform);
             shootingLight.gameObject.SetActive(true);
@@ -76,10 +80,7 @@ namespace Weapons
             var shootProjectile = Instantiate(_currentWeaponConfig.projectilePrefab,
                 t.position + t.TransformDirection(adding), // Transform offset based on rotation
                 t.rotation); // Match the gun's rotation
-
-            // Launch in the direction the gun is facing
             shootProjectile.Launch(shootDirection * _currentWeaponConfig.shotSpeed);
-
             var projectile = shootProjectile.GetComponent<Projectile>();
             _activeProjectiles.Add(shootProjectile);
             projectile.OnDestroy += () => _activeProjectiles.Remove(shootProjectile); 

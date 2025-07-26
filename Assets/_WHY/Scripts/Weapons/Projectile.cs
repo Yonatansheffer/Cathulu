@@ -35,7 +35,7 @@ namespace Weapons
             if (other.gameObject.CompareTag("Boss"))
             {
                 particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
-                Destroy(particles, 0.2f);
+                Destroy(particles, 0.8f);
             }
             if (other.gameObject.CompareTag("Enemy"))
             {

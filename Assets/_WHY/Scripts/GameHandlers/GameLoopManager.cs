@@ -10,9 +10,8 @@ namespace GameHandlers
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
         private bool _isCountingDown; // Flag to know if the countdown is active
 
-        private void Awake()
+        private void Start()
         {
-            _isCountingDown = true; 
             ResetStats();
             ResetCountDown();
             DontDestroyOnLoad(this);
@@ -60,7 +59,6 @@ namespace GameHandlers
             ResetCountDown();
             GameEvents.UpdatePointsUI?.Invoke(_currentPoints);
             GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
-            _isCountingDown = true;
         }
     
         private void AddPoints(int pointsToAdd)
@@ -81,6 +79,7 @@ namespace GameHandlers
         {
             StopCountDown();
             _countDownTime = initialCountDownTime;
+            _isCountingDown = true;
         }
 
         private void StopCountDown()
