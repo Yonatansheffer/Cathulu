@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4382210117089188642}
   - component: {fileID: 1789935761173789312}
   - component: {fileID: -1761358550505302627}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Fire Gun
   m_TagString: Weapon
   m_Icon: {fileID: 0}

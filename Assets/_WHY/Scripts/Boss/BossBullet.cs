@@ -19,23 +19,31 @@ namespace _WHY.Scripts.Boss
 
         }
         
-        private Animator animator;
+        private Animator _animator;
         
         private void Awake()
         {
-            animator = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _rb.linearVelocity = Vector2.zero;
-            animator.SetTrigger(Hit);
+            if (other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Background")
+                 || other.gameObject.CompareTag("Floor"))
+            {
+                _rb.linearVelocity = Vector2.zero;
+                _animator.SetTrigger(Hit);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            _rb.linearVelocity = Vector2.zero;
-            animator.SetTrigger(Hit);
+            if (other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Background")
+                                                    || other.gameObject.CompareTag("Floor"))
+            {
+                _rb.linearVelocity = Vector2.zero;
+                _animator.SetTrigger(Hit);
+            }
         }
         
         public void ReturnToPool()

@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1081038744823107637}
   - component: {fileID: 7911112968807040791}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: 'Right Boundary '
   m_TagString: Boundary
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305785550242147858}
   - component: {fileID: 2152561450037314112}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Step Center
   m_TagString: Step Center
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8198775984016096801}
   - component: {fileID: 4232548280565887378}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: Left Boundary
   m_TagString: Boundary
   m_Icon: {fileID: 0}

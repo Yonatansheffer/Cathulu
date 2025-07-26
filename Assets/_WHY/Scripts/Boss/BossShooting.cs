@@ -31,6 +31,8 @@ namespace _WHY.Scripts.Boss
         private bool isShooting = false;
         private float totalRotation = 0f;
         private float lastAngle = 0f;
+        private float rotationDirection = 1f; // 1 for clockwise, -1 for counterclockwise
+
 
         private Vector3 startPosition;
         private Vector3 targetPosition;
@@ -68,13 +70,13 @@ namespace _WHY.Scripts.Boss
         private void StartShooting()
         {
             if (isShooting) return;
+            rotationDirection = Random.value > 0.5f ? 1f : -1f;
             StartCoroutine(StartShootingWithDelay(0.8f));
         }
 
         private IEnumerator StartShootingWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-
             isShooting = true;
             shootTimer = 0f;
             totalRotation = 0f;
@@ -82,21 +84,20 @@ namespace _WHY.Scripts.Boss
             transform.rotation = Quaternion.identity;
         }
 
-
         private void HandleShootingRotation()
         {
             float currentAngle = transform.eulerAngles.z;
             float deltaRotation = Mathf.DeltaAngle(lastAngle, currentAngle);
             totalRotation += Mathf.Abs(deltaRotation);
             lastAngle = currentAngle;
-
-            if (totalRotation >= 360f)
+            if (totalRotation >= 400f)
             {
                 isShooting = false;
                 return;
             }
-            transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
+            transform.Rotate(0f, 0f, rotationSpeed * rotationDirection * Time.deltaTime);
         }
+
 
         private void ShootingRoutine()
         {

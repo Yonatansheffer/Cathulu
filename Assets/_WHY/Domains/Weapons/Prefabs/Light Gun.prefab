@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8108698719495559918}
   - component: {fileID: 4166432125833302022}
   - component: {fileID: 4382210117089188642}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Light Gun
   m_TagString: Weapon
   m_Icon: {fileID: 0}

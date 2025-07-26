@@ -10,7 +10,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float smoothSpeed = 5f;
     [SerializeField] private float rightxBound;
     [SerializeField] private float leftxBound;
-    [SerializeField] private float yBound;
+    [SerializeField] private float yLowerBound;
+    [SerializeField] private float yUpperBound;
     [SerializeField] private float _shakeDuration;
     [SerializeField] private float _shakeMagnitude;
     private bool _isZoomingOut = false;
@@ -53,7 +54,7 @@ public class CameraFollow : MonoBehaviour
         // Camera follow
         Vector3 desiredPosition = target.position + offset;
         float clampedX = Mathf.Clamp(desiredPosition.x, leftxBound, rightxBound);
-        float clampedY = Mathf.Clamp(desiredPosition.y, -yBound, yBound);
+        float clampedY = Mathf.Clamp(desiredPosition.y, yLowerBound, yUpperBound);
         Vector3 clampedPosition = new Vector3(clampedX, clampedY, desiredPosition.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, clampedPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;

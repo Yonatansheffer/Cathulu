@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4735690025514499280}
   - component: {fileID: 9140442726091747481}
   - component: {fileID: 8116780791563962592}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Shooting Light
   m_TagString: Weapon
   m_Icon: {fileID: 0}
