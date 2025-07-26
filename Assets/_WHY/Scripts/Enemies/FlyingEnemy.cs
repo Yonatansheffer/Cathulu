@@ -1,6 +1,7 @@
 ﻿using System;
 using GameHandlers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Enemies
 {
@@ -11,21 +12,33 @@ namespace _WHY.Scripts.Enemies
         [SerializeField] private float moveSpeed = 1f;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
+        private bool _isRight;
 
         private void Awake()
         {
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             _animator = GetComponent<Animator>();
-            _spriteRenderer = GetComponent<SpriteRenderer>(); 
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _isRight = Random.value > 0.5f;
         }
 
         protected override void Move()
         {
-            Vector3 direction = _playerTransform.position - transform.position;
+            Vector3 direction = (_playerTransform.position - transform.position).normalized;
             _animator.SetBool(MovingRight, direction.x > 0f);
             _spriteRenderer.flipX = direction.x < 0f;
-            transform.position = Vector3.MoveTowards(transform.position, _playerTransform.position, moveSpeed * Time.deltaTime);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 2f, LayerMask.GetMask("Ground"));
+            if (hit.collider == null)
+            {
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                direction.x += _isRight ?  5f: -5f;
+                transform.position += direction.normalized * moveSpeed * Time.deltaTime;
+            }
         }
+
 
         private void OnTriggerEnter2D(Collider2D other)
         {

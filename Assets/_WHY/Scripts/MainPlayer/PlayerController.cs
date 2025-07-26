@@ -80,7 +80,8 @@ namespace MainPlayer
 
         private void Jump()
         {
-            if (!_isGrounded || !_rb.simulated) return;
+            print(_isGrounded);
+            if (!_isGrounded || !_rb.simulated) return; 
             _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
         }
         
