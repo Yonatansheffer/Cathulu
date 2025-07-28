@@ -15,28 +15,31 @@ namespace UI
         [SerializeField] private TextMeshProUGUI pressEnterText;
         [SerializeField] private TextMeshProUGUI scoreText;
         
-        private void OnEnable()
+        private void Start()
         {
-            GameEvents.GameOver += HanleGameOverScreen;
+            GameEvents.GameOver += HandleGameOverScreen;
         }
         
         private void OnDisable()
         {
-            GameEvents.GameOver -= HanleGameOverScreen;
+            GameEvents.GameOver -= HandleGameOverScreen;
         }
         
-        private void HanleGameOverScreen(GameState gameState, int score)
+        private void HandleGameOverScreen(GameState gameState, int score)
         {
             switch (gameState)
             {
                 case GameState.PlayerWon:
                     playerWonText.gameObject.SetActive(true);
+                    SoundManager.Instance.PlaySound("Win", transform);
                     break;
                 case GameState.TimeOver:
                     timeOverText.gameObject.SetActive(true);
+                    SoundManager.Instance.PlaySound("Lose", transform);
                     break;
                 case GameState.Defeated:
                     defeatedText.gameObject.SetActive(true);
+                    SoundManager.Instance.PlaySound("Lose", transform);
                     break;
             }
             scoreText.text = $"SCORE: {score}";

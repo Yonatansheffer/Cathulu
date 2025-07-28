@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace GameHandlers
@@ -9,6 +10,7 @@ namespace GameHandlers
         TimeOver,
         PlayerWon
     }
+    
     public class GameLoopManager : MonoBehaviour
     {
         [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
@@ -120,8 +122,16 @@ namespace GameHandlers
         {
             if (lives > 0) return;
             _currentGameState = GameState.Defeated;
+            GameEvents.EndScene?.Invoke();
+            StartCoroutine(HandleGameOverSequence());
+        }
+
+        private IEnumerator HandleGameOverSequence()
+        {
+            yield return new WaitForSeconds(1f); // wait 1 second
             GameEvents.GameOver?.Invoke(_currentGameState, _currentScore);
         }
+
 
         private void AddTime(int timeToAdd)
         {

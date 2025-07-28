@@ -19,6 +19,11 @@ namespace _WHY.Scripts.Enemies
         
         protected abstract void Move();
 
+        public virtual void ToTarget(Vector2 targetPosition)
+        {
+        }
+
+
 
     }
 }

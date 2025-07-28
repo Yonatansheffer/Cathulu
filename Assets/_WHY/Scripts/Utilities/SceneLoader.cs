@@ -12,7 +12,6 @@ namespace Managers
     public class SceneLoader : MonoBehaviour
     {
         private const string GamePlaySceneName = "GamePlay";
-        private const string OpeningSceneName = "OpeningScene";
         private const string EndingSceneName = "EndingScene";
         private bool _InLevel = false;
 
@@ -28,12 +27,12 @@ namespace Managers
         
         private void OnEnable()
         {
-            GameEvents.GameOver += EndGame;
+            GameEvents.EndScene += EndGame;
         }
         
         private void OnDisable()
         {
-            GameEvents.GameOver -= EndGame;
+            GameEvents.EndScene -= EndGame;
         }
         private void Update()
         {
@@ -41,7 +40,7 @@ namespace Managers
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
                 _InLevel = true;
-                SoundManager.StopOpeningMusic();
+                SoundManager.Instance.ReturnAllSoundWrappersToPool();
                 LoadGamePlay();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -53,10 +52,12 @@ namespace Managers
         private void LoadGamePlay()
         {
             SceneManager.LoadScene(GamePlaySceneName);
+            SoundManager.Instance.PlaySound("Background", transform);
         }
 
-        private void EndGame(GameState dummy1, int dummy2)
+        private void EndGame()
         {
+            SoundManager.Instance.ReturnAllSoundWrappersToPool();
             StartCoroutine(DelayedGameOver());
         }
 

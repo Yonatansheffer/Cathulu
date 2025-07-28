@@ -1,5 +1,6 @@
 ﻿using System;
 using GameHandlers;
+using Sound;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -44,17 +45,25 @@ namespace _WHY.Scripts.Enemies
         {
             if (other.CompareTag("Weapon"))
             {
+                SoundManager.Instance.PlaySound("Explosion", transform);
                 GameEvents.EnemyDestroyed?.Invoke(transform.position);
-                FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
+                ReturnToPool();
             }
         }
-
+        
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
+                ReturnToPool();
             }
         }
+
+        private void ReturnToPool()
+        {
+            FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
+        }
+
+
     }
 }

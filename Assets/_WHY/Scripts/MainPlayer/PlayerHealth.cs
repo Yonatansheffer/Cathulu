@@ -7,13 +7,12 @@ using Weapons;
 
 namespace MainPlayer
 {
-    public class PlayerLives : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour
     {
         [SerializeField] private int initialPlayerHealth = 10;
         private bool _isShieldActive;
         private SpriteRenderer _spriteRenderer;
-        private int _currentPlayerHealth; // Stores the current lives of the player
-
+        private int _currentPlayerHealth; 
         
         private void Awake()
         {
@@ -62,7 +61,17 @@ namespace MainPlayer
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Enemy") && !_isShieldActive)
+            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))  && !_isShieldActive)
+            {
+                //StartCoroutine(OnPlayerHit());
+                AdjustLives(-1);
+                SoundManager.Instance.PlaySound("Lost Life", transform);
+            }
+        }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))  && !_isShieldActive)
             {
                 //StartCoroutine(OnPlayerHit());
                 AdjustLives(-1);

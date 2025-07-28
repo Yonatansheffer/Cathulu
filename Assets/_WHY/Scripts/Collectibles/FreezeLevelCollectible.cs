@@ -9,7 +9,7 @@ namespace Collectibles
         [SerializeField] private float freezeDuration = 5f;
         protected override void HandlePickup() 
         { 
-            SoundManager.Instance.PlaySound("Collected", transform);
+            SoundManager.Instance.PlaySound("Freeze", transform);
             StartCoroutine(FreezeLevelCoroutine());
             Destroy(gameObject);
         }

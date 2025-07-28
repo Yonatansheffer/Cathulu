@@ -13,6 +13,7 @@ namespace GameHandlers
         public static Action UnFreezeLevel;
         public static Action RestartLevel;
         public static Action<float> AddTime;
+        public static Action EndScene;
         public static Action<GameState, int> GameOver;
 
 

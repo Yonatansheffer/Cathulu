@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Mass: 0.1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0.15
+  m_GravityScale: 0.35
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fddffa3a8a54aa58264a729e047df56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.01
+  moveSpeed: 10
+  fadeInDuration: 1
 --- !u!70 &7684531376918593530
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,8 +166,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.01924699, y: -0.1287362}
-  m_Size: {x: 0.48451817, y: 0.77386993}
+  m_Offset: {x: -0.0033759668, y: -0.17566173}
+  m_Size: {x: 0.47846562, y: 0.7886752}
   m_Direction: 0
 --- !u!95 &8054067239175217671
 Animator:

@@ -74,8 +74,7 @@ namespace Weapons
             if (Time.time < _lastShotTime + _currentWeaponConfig.shotCooldown)
                 return;
             _lastShotTime = Time.time;
-            SoundManager.Instance.PlaySound(
-                _currentWeaponConfig.weaponType == WeaponType.LightGun ? "Light Shot" : "Shoot", transform);
+            PlayShotSound();
             shootingLight.gameObject.SetActive(true);
             Vector2 shootDirection = t.up; // Uses the transform's up direction (based on rotation)
             var shootProjectile = Instantiate(_currentWeaponConfig.projectilePrefab,
@@ -85,6 +84,22 @@ namespace Weapons
             var projectile = shootProjectile.GetComponent<Projectile>();
             _activeProjectiles.Add(shootProjectile);
             projectile.OnDestroy += () => _activeProjectiles.Remove(shootProjectile); 
+        }
+
+        private void PlayShotSound()
+        {
+            switch (_currentWeaponConfig.weaponType)
+            {
+                case WeaponType.SpellGun:
+                    SoundManager.Instance.PlaySound("Spell Shot", transform);
+                    break;
+                case WeaponType.LightGun:
+                    SoundManager.Instance.PlaySound("Light Shot", transform);
+                    break;
+                case WeaponType.FireGun:
+                    SoundManager.Instance.PlaySound("Fire Shot", transform);
+                    break;
+            }
         }
     }
 }

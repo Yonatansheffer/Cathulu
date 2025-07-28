@@ -19,7 +19,7 @@ MonoBehaviour:
     loop: 1
   - name: Explosion
     clip: {fileID: 8300000, guid: 25f32e95a84a07e4ba60ae23921686ea, type: 3}
-    volume: 0.6
+    volume: 0.2
     loop: 0
   - name: Lost Life
     clip: {fileID: 8300000, guid: e58b7389a600fa94d9ff9ebaceac7e39, type: 3}
@@ -29,14 +29,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e70b0d38d43682544b9b8e107d4bd892, type: 3}
     volume: 0.4
     loop: 0
-  - name: Game Over
-    clip: {fileID: 8300000, guid: c6580533f40aac148a231c3fe47d0838, type: 3}
-    volume: 0.4
-    loop: 0
-  - name: Passed Stage
-    clip: {fileID: 8300000, guid: d3e5cc094472bcf40b78e911de37781e, type: 3}
-    volume: 0.4
-    loop: 0
+  - name: Lose
+    clip: {fileID: 8300000, guid: fb23a621d1c180b49be47e6384cf6a19, type: 3}
+    volume: 0.1
+    loop: 1
   - name: Shoot
     clip: {fileID: 8300000, guid: 73f72e1155aac7442955ae411e942f81, type: 3}
     volume: 0.1
@@ -57,3 +53,23 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 79011bad6857763498011b79f8c05ee7, type: 3}
     volume: 0.2
     loop: 0
+  - name: Spell Shot
+    clip: {fileID: 8300000, guid: cec1ab75a8f9d98449893e6e96343e5f, type: 3}
+    volume: 0.1
+    loop: 0
+  - name: Fire Shot
+    clip: {fileID: 8300000, guid: c8850a5fd5a1a704a92868ddc90d3fd7, type: 3}
+    volume: 0.88
+    loop: 0
+  - name: Freeze
+    clip: {fileID: 8300000, guid: 89d0138f931be09468c610b67a53c9e4, type: 3}
+    volume: 0.2
+    loop: 0
+  - name: Win
+    clip: {fileID: 8300000, guid: 3f7efec13c70a0f42a9422d8b7e0e656, type: 3}
+    volume: 0.1
+    loop: 1
+  - name: Background
+    clip: {fileID: 8300000, guid: d2a19f4afdff2e4489cd76ae9ba9f187, type: 3}
+    volume: 0.1
+    loop: 1

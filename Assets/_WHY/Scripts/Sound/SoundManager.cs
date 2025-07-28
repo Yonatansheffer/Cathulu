@@ -69,7 +69,7 @@ namespace Sound
             return settings.audioConfigs.FirstOrDefault(config => config.name == audioName);
         }
         
-        private void ReturnAllSoundWrappersToPool()
+        public void ReturnAllSoundWrappersToPool()
         {
             foreach (var sound in _activeSounds)
             {

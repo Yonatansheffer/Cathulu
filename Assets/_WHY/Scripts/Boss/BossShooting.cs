@@ -1,9 +1,7 @@
-﻿using System;
-using _WHY.Scripts.Enemies;
+﻿using _WHY.Scripts.Enemies;
 using GameHandlers;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Boss
@@ -16,6 +14,7 @@ namespace _WHY.Scripts.Boss
         [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
         [SerializeField] private Transform[] enemyTargetPositions;
 
+
         [Header("Shooting")]
         [SerializeField] private float rotationSpeed = 30f;
         [SerializeField] private float bulletsPerSecond = 5f;
@@ -26,7 +25,9 @@ namespace _WHY.Scripts.Boss
         [SerializeField] private float moveSpeed = 1f;
         [SerializeField] private float idleTiltAngle = 15f;
         [SerializeField] private float tiltSpeed = 2f;
-
+        
+        
+        [SerializeField] private GameObject player;
         private float shootTimer = 0f;
         private bool isShooting = false;
         private float totalRotation = 0f;
@@ -106,17 +107,18 @@ namespace _WHY.Scripts.Boss
 
             while (shootTimer >= shootInterval)
             {
-                Shoot();
+                Shoot(true);
                 shootTimer -= shootInterval;
             }
         }
 
-        private void Shoot()
+        private void Shoot(bool isRoutine)
         {
             var bullet = BossBulletPool.Instance.Get();
             bullet.transform.position = transform.position;
-            Vector2 shootDirection = transform.right;
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            Vector2 shootDirection = isRoutine?
+                transform.right: (player.transform.position - transform.position).normalized;
+            var rb = bullet.GetComponent<Rigidbody2D>();
             rb.linearVelocity = shootDirection * bulletForce;
         }
         
@@ -132,7 +134,7 @@ namespace _WHY.Scripts.Boss
 
         private void PickNewTargetPosition()
         {
-            Vector2 randomOffset = Random.insideUnitCircle * moveRadius;
+            var randomOffset = Random.insideUnitCircle * moveRadius;
             targetPosition = startPosition + new Vector3(randomOffset.x, randomOffset.y, 0f);
         }
 
@@ -144,28 +146,25 @@ namespace _WHY.Scripts.Boss
         
         public void EnemySpawn()
         {
-            bool isFlyingEnemy = Random.value > 0.5f;
+            Shoot(false);
+            var isFlyingEnemy = Random.value > 0.5f;
             Enemy spawnedEnemy = isFlyingEnemy ? FlyingEnemyPool.Instance.Get() : WalkingEnemyPool.Instance.Get();
             spawnedEnemy.transform.position = transform.position + spawnOffset;
-            Vector3 enemyTargetPosition = Vector3.zero;
-            if (!isFlyingEnemy)
-            {
-                Transform targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
-                enemyTargetPosition = targetTransform.parent != null
-                    ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
-                    : targetTransform.position;
-            }
-            ApplyRandomForce(spawnedEnemy, enemyTargetPosition);
+            ApplyRandomForce(spawnedEnemy);
+            if (isFlyingEnemy) return;
+            var targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
+            var enemyTargetPosition = targetTransform.parent != null
+                ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
+                : targetTransform.position;
+            spawnedEnemy.ToTarget(enemyTargetPosition);
         }
 
 
-        private void ApplyRandomForce(Enemy enemy, Vector3 enemyTargetPosition)
+        private void ApplyRandomForce(Enemy enemy)
         {
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            Vector2 direction = enemyTargetPosition == Vector3.zero
-                ? Random.insideUnitCircle.normalized
-                : (enemyTargetPosition - enemy.transform.position).normalized;
-            float force = Random.Range(minSpawnForce, maxSpawnForce);
+            var rb = enemy.GetComponent<Rigidbody2D>();
+            var direction = Random.insideUnitCircle.normalized;
+            var force = Random.Range(minSpawnForce, maxSpawnForce);
             rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
         
