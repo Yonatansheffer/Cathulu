@@ -34,10 +34,6 @@ namespace _WHY.Scripts.Boss
                 _rb.linearVelocity = Vector2.zero;
                 _animator.SetTrigger(Hit);
             }
-            if(other.gameObject.CompareTag("Weapon"))
-            {
-                ReturnToPool();
-            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -47,10 +43,6 @@ namespace _WHY.Scripts.Boss
             {
                 _rb.linearVelocity = Vector2.zero;
                 _animator.SetTrigger(Hit);
-            }
-            if (other.gameObject.CompareTag("Weapon"))
-            {
-                ReturnToPool();
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using GameHandlers;
@@ -17,6 +18,8 @@ namespace Weapons
         private WeaponConfig _currentWeaponConfig;
         private float _lastShotTime = -Mathf.Infinity;
         private List<Projectile> _activeProjectiles;
+        private Coroutine _switchBackCoroutine;
+
         
         
         private void Awake()
@@ -55,7 +58,24 @@ namespace Weapons
         {
             _currentWeaponConfig = settings.weaponConfigs.FirstOrDefault(config => config.weaponType == weaponType);
             _activeProjectiles.Clear();
+            if (_switchBackCoroutine != null)
+            {
+                StopCoroutine(_switchBackCoroutine);
+                _switchBackCoroutine = null;
+            }
+            if (weaponType != settings.defaultWeapon)
+            {
+                _switchBackCoroutine = StartCoroutine(SwitchBackToDefaultAfterDelay());
+            }
         }
+        private IEnumerator SwitchBackToDefaultAfterDelay()
+        {
+            yield return new WaitForSeconds(15f);
+            _switchBackCoroutine = null;
+            SwitchWeapon(settings.defaultWeapon);
+        }
+
+
         
         private void StopAllProjectiles()
         {

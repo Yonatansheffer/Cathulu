@@ -99,7 +99,6 @@ namespace _WHY.Scripts.Enemies
             }
             if (other.CompareTag("Boundary"))
             {
-                print("hue");
                 FlipDirection();
             }       
             if (other.CompareTag("Step Center") && _movingToTarget)

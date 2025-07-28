@@ -2,6 +2,7 @@
 using GameHandlers;
 using Sound;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Enemies
@@ -14,6 +15,12 @@ namespace _WHY.Scripts.Enemies
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
         private bool _isRight;
+        private Vector3 _lastYCheckPosition;
+        private float _stuckTime;
+        [SerializeField] private float stuckCheckInterval = 0.5f;
+        [SerializeField] private float stuckThreshold = 1f;
+        [SerializeField] private float stuckMoveBoost = 10f;
+
 
         private void Awake()
         {
@@ -21,6 +28,7 @@ namespace _WHY.Scripts.Enemies
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _isRight = Random.value > 0.5f;
+            stuckMoveBoost = _isRight? 10f : -10f;
         }
 
         protected override void Move()
@@ -28,16 +36,21 @@ namespace _WHY.Scripts.Enemies
             Vector3 direction = (_playerTransform.position - transform.position).normalized;
             _animator.SetBool(MovingRight, direction.x > 0f);
             _spriteRenderer.flipX = direction.x < 0f;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 2f, LayerMask.GetMask("Ground"));
-            if (hit.collider == null)
+            if (Mathf.Abs(transform.position.y - _lastYCheckPosition.y) < stuckThreshold)
             {
-                transform.position += direction * moveSpeed * Time.deltaTime;
+                _stuckTime += Time.deltaTime;
+                if (_stuckTime > stuckCheckInterval)
+                {
+                    direction.x += stuckMoveBoost * Mathf.Sign(direction.x);
+                    _stuckTime = 0f; 
+                }
             }
             else
             {
-                direction.x += _isRight ?  5f: -5f;
-                transform.position += direction.normalized * moveSpeed * Time.deltaTime;
+                _stuckTime = 0f;
             }
+            _lastYCheckPosition = transform.position;
+            transform.position += direction * moveSpeed * Time.deltaTime;           
         }
 
 

@@ -10,7 +10,7 @@ namespace Weapons
         protected override void HandleHit(Collider2D other)
         {
             if (other.gameObject.CompareTag("Planet") ||
-                other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Boundary"))
+                other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Background"))
             {
                 Stop();
                 Animator.SetTrigger(HitCeiling);

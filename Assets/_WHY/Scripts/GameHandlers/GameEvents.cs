@@ -33,6 +33,11 @@ namespace GameHandlers
         public static Action<WeaponType> WeaponCollected;
         public static Action BossShoots;
         public static Action ToSpawnEnemy;
+        public static Action EnemySpawned;
+        public static Action<int> SpawnFlyingEnemies;
+
+        public static Action SpawnAllEnemies;
+
 
         public static Action<bool> ShieldUpdated;
         public static Action ShieldHit;

@@ -140,6 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  stuckCheckInterval: 0.5
+  stuckThreshold: 10
+  stuckMoveBoost: 10
 --- !u!50 &7392207242760527386
 Rigidbody2D:
   serializedVersion: 5

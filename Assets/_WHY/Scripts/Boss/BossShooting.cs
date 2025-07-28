@@ -14,7 +14,6 @@ namespace _WHY.Scripts.Boss
         [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
         [SerializeField] private Transform[] enemyTargetPositions;
 
-
         [Header("Shooting")]
         [SerializeField] private float rotationSpeed = 30f;
         [SerializeField] private float bulletsPerSecond = 5f;
@@ -47,10 +46,14 @@ namespace _WHY.Scripts.Boss
         private void OnEnable()
         {
             GameEvents.BossShoots += StartShooting;
+            GameEvents.SpawnAllEnemies += OnSpawnAllEnemies;
+            GameEvents.BossLivesChanged += BossHealthWaves;
         }
 
         private void OnDisable()
         {
+            GameEvents.SpawnAllEnemies -= OnSpawnAllEnemies;
+            GameEvents.BossLivesChanged -= BossHealthWaves;
             GameEvents.BossShoots -= StartShooting;
         }
         
@@ -167,7 +170,59 @@ namespace _WHY.Scripts.Boss
             var force = Random.Range(minSpawnForce, maxSpawnForce);
             rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
+
+        private void BossHealthWaves(int currentHealth)
+        {
+            switch (currentHealth)
+            {
+                case 15:
+                    SpawnFlyingEnemies(3);
+                    GameEvents.EnemySpawned?.Invoke();
+                    break;
+                case 10:
+                    GameEvents.SpawnAllEnemies?.Invoke();
+                    break;
+                case 7:
+                    SpawnFlyingEnemies(5);
+                    GameEvents.EnemySpawned?.Invoke();
+                    break;
+                case 5:
+                    SpawnFlyingEnemies(5);
+                    GameEvents.EnemySpawned?.Invoke();
+                    break;
+                case 3:
+                    GameEvents.SpawnAllEnemies?.Invoke();
+                    break;
+                case 1:
+                    SpawnFlyingEnemies(8);
+                    GameEvents.EnemySpawned?.Invoke();
+                    break;
+            }
+        } 
         
-        
+        private void OnSpawnAllEnemies()
+        {
+            foreach (var targetTransform in enemyTargetPositions)
+            {
+                var walkingEnemy = WalkingEnemyPool.Instance.Get();
+                walkingEnemy.transform.position = transform.position + spawnOffset;
+                ApplyRandomForce(walkingEnemy);
+                var target = targetTransform.parent != null
+                    ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
+                    : targetTransform.position;
+                walkingEnemy.ToTarget(target);
+            }
+            SpawnFlyingEnemies(5);
+        }
+
+        private void SpawnFlyingEnemies(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                var flyingEnemy = FlyingEnemyPool.Instance.Get();
+                flyingEnemy.transform.position = transform.position + spawnOffset;
+                ApplyRandomForce(flyingEnemy);
+            }
+        }
     }
 }

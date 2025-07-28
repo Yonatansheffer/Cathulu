@@ -22,6 +22,8 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
+            GameEvents.SpawnAllEnemies += TriggerSpawnAnimation;
+            GameEvents.EnemySpawned += TriggerSpawnAnimation;
             GameEvents.BossLivesChanged += TriggerDamageAnimation;
         }
         
@@ -29,6 +31,8 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
+            GameEvents.SpawnAllEnemies -= TriggerSpawnAnimation;
+            GameEvents.EnemySpawned -= TriggerSpawnAnimation;
             GameEvents.BossLivesChanged -= TriggerDamageAnimation;
         }
 

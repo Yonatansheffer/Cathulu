@@ -12,17 +12,21 @@ namespace UI
     public class GamePlayUI : MonoBehaviour
     {
         [SerializeField] private WeaponSettings settings;
-        [SerializeField] private Slider BossHealthBar;
+        [SerializeField] private Slider bossHealthBar;
         [SerializeField] private TextMeshProUGUI bossHealthText;
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
         [SerializeField] private TextMeshProUGUI playerHealthText;
         [SerializeField] private Slider playerHealthBar;
+        [SerializeField] private TextMeshProUGUI weaponCountdownText;
         [SerializeField] private Image spellGunImage;
         [SerializeField] private Image lightGunImage;
         [SerializeField] private Image fireGunImage;
         [SerializeField] private Image shieldImage;
+        [SerializeField] private int weaponCountdown = 15;
         private WeaponType? _currentWeaponType;
+        private Coroutine _countdownCoroutine;
+
 
         private void Start()
         {
@@ -55,7 +59,7 @@ namespace UI
         
         private void UpdateHealth(int amount)
         {
-            BossHealthBar.value = amount;
+            bossHealthBar.value = amount;
             bossHealthText.text = amount.ToString();
         }
         
@@ -87,7 +91,29 @@ namespace UI
                     _currentWeaponType = WeaponType.FireGun;
                     break;
             }
+            if (_currentWeaponType == settings.defaultWeapon) return;
+            weaponCountdownText.gameObject.SetActive(true);
+            if (_countdownCoroutine != null)
+                StopCoroutine(_countdownCoroutine);
+            _countdownCoroutine = StartCoroutine(WeaponCountdownCoroutine(weaponCountdown));
         }
+        
+        private IEnumerator WeaponCountdownCoroutine(int seconds)
+        {
+            var timeLeft = seconds;
+            while (timeLeft > 0)
+            {
+                weaponCountdownText.text = timeLeft.ToString();
+                yield return new WaitForSeconds(1f);
+                timeLeft--;
+            }
+            weaponCountdownText.gameObject.SetActive(false);
+            spellGunImage.gameObject.SetActive(false);
+            lightGunImage.gameObject.SetActive(false);
+            fireGunImage.gameObject.SetActive(false);
+            AddWeaponCollected(settings.defaultWeapon);
+        }
+
 
         private void RemoveLastWeapon()
         {

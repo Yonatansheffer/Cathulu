@@ -16,15 +16,16 @@ MonoBehaviour:
   - weaponType: 1
     projectilePrefab: {fileID: 4166432125833302022, guid: 3a886b143ef58964f913681dc230fe98, type: 3}
     shotSpeed: 15
-    maxProjectileCount: 5
+    maxProjectileCount: 1
     shotCooldown: 0.2
   - weaponType: 0
     projectilePrefab: {fileID: 4166432125833302022, guid: 36b9412dd2cffb744932996cb348d43c, type: 3}
     shotSpeed: 5
-    maxProjectileCount: 50
+    maxProjectileCount: 3
     shotCooldown: 0.6
   - weaponType: 2
     projectilePrefab: {fileID: -1761358550505302627, guid: 199bd084e25ce8e429f252d7b97f8e47, type: 3}
-    shotSpeed: 8
+    shotSpeed: 4
     maxProjectileCount: 10
-    shotCooldown: 0.1
+    shotCooldown: 1
+  defaultWeapon: 0

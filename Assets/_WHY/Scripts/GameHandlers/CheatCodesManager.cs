@@ -43,7 +43,7 @@ namespace GameHandlers
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
                 print("Adding 200 points");
-                GameEvents.AddPoints?.Invoke(200);
+                GameEvents.SpawnAllEnemies?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
