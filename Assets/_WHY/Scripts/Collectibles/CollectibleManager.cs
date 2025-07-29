@@ -36,7 +36,7 @@ namespace Collectibles
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.WeaponCollected += UpdateWeapon;
             GameEvents.BeginGameLoop += DestroyAllCollectibles;
-            GameEvents.FreezeLevel += StopCollectiblesMovement;
+            //GameEvents.FreezeLevel += StopCollectiblesMovement;
             GameEvents.EnemyDestroyed += DropCollectible;
             GameEvents.RestartLevel += StartDropCoroutine;
             GameEvents.ReadyStage += DestroyAllCollectibles;
@@ -47,7 +47,7 @@ namespace Collectibles
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.WeaponCollected -= UpdateWeapon;
             GameEvents.BeginGameLoop -= DestroyAllCollectibles;
-            GameEvents.FreezeLevel -= StopCollectiblesMovement;
+            //GameEvents.FreezeLevel -= StopCollectiblesMovement;
             GameEvents.EnemyDestroyed -= DropCollectible;
             GameEvents.RestartLevel -= StartDropCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;

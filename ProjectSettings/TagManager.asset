@@ -17,6 +17,7 @@ TagManager:
   - Boss
   - PointCollectible
   - FoodCollectible
+  - Boss Bullet
   layers:
   - Default
   - TransparentFX

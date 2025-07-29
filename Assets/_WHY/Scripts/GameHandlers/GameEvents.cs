@@ -14,12 +14,12 @@ namespace GameHandlers
         public static Action RestartLevel;
         public static Action<float> AddTime;
         public static Action EndScene;
-        public static Action<GameState, int> GameOver;
+        public static Action GameOver;
+        public static Action<GameState, int> GameOverUI;
 
 
         // UI Events
         public static Action ReadyStage;
-        public static Action<int, bool> UpdateHealthUI;
         public static Action<int> UpdateScoreUI;
         public static Action<int> UpdateTimeUI;
         public static Action ResetWeaponUI;
@@ -34,13 +34,12 @@ namespace GameHandlers
         public static Action BossShoots;
         public static Action ToSpawnEnemy;
         public static Action EnemySpawned;
-        public static Action<int> SpawnFlyingEnemies;
+        public static Action ShootBallBullet;
 
-        public static Action SpawnAllEnemies;
+        public static Action SpawnAllWalkingEnemies;
 
 
         public static Action<bool> ShieldUpdated;
-        public static Action ShieldHit;
         public static Action<int> PlayerLivesChanged;
         public static Action BossDestroyed;
         public static Action<int> BossLivesChanged;

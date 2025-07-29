@@ -21,14 +21,13 @@ namespace GameHandlers
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                print("Restarting stage");
+                print("FreezeLevel");
                 GameEvents.FreezeLevel?.Invoke();
-                GameEvents.ReadyStage?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                print("Popping all balloons");
-                GameEvents.KillAllEnemies?.Invoke();
+                print("UnFreezeLevel");
+                GameEvents.UnFreezeLevel?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
@@ -42,8 +41,8 @@ namespace GameHandlers
             }
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                print("Adding 200 points");
-                GameEvents.SpawnAllEnemies?.Invoke();
+                print("SpawnAllWalkingEnemies");
+                GameEvents.SpawnAllWalkingEnemies?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {

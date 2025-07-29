@@ -23,6 +23,12 @@ namespace UI
         [SerializeField] private Image lightGunImage;
         [SerializeField] private Image fireGunImage;
         [SerializeField] private Image shieldImage;
+        [SerializeField] private Image life1Image;
+        [SerializeField] private Image life2Image;
+        [SerializeField] private Image life3Image;
+        [SerializeField] private Image noLife1Image;
+        [SerializeField] private Image noLife2Image;
+        [SerializeField] private Image noLife3Image;
         [SerializeField] private int weaponCountdown = 15;
         private WeaponType? _currentWeaponType;
         private Coroutine _countdownCoroutine;
@@ -35,9 +41,9 @@ namespace UI
 
         private void OnEnable()
         {
-            GameEvents.BossLivesChanged += UpdateHealth;
+            GameEvents.BossLivesChanged += UpdateBossHealth;
+            GameEvents.PlayerLivesChanged += UpdatePlayerHealth;
             GameEvents.UpdateScoreUI += UpdateScore;
-            GameEvents.BossLivesChanged += UpdateHealth;
             GameEvents.UpdateTimeUI += UpdateTime;
             GameEvents.WeaponCollected += AddWeaponCollected;
             GameEvents.ShieldUpdated += UpdateShield;
@@ -46,7 +52,8 @@ namespace UI
         private void OnDisable()
         {
             GameEvents.UpdateScoreUI -= UpdateScore;
-            GameEvents.BossLivesChanged -= UpdateHealth;
+            GameEvents.BossLivesChanged -= UpdateBossHealth;
+            GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
             GameEvents.UpdateTimeUI -= UpdateTime;
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
@@ -57,15 +64,34 @@ namespace UI
             shieldImage.gameObject.SetActive(isActive);
         }
         
-        private void UpdateHealth(int amount)
+        private void UpdateBossHealth(int amount)
         {
             bossHealthBar.value = amount;
             bossHealthText.text = amount.ToString();
         }
         
+        private void UpdatePlayerHealth(int amount)
+        {
+            switch (amount)
+            {
+                case 2:
+                    life3Image.gameObject.SetActive(false);
+                    noLife3Image.gameObject.SetActive(true);
+                    break;
+                case 1:
+                    life2Image.gameObject.SetActive(false);
+                    noLife2Image.gameObject.SetActive(true);
+                    break;
+                case 0:
+                    life1Image.gameObject.SetActive(false);
+                    noLife1Image.gameObject.SetActive(true);
+                    break;
+            }
+        }
+        
         private void UpdateScore(int points)
         {
-            pointsText.text = points.ToString();
+            pointsText.text = $"Score: {points}";;
         }
         
         private void UpdateTime(int time)

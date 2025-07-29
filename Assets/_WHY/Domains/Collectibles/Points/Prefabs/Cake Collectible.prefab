@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b86eb7e97a12ca46a2751c603588b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 5810248220152562659}
-  fallSpeed: 2
+  fallSpeed: 5
   pointsValue: 250
 --- !u!61 &8052566697365727919
 BoxCollider2D:

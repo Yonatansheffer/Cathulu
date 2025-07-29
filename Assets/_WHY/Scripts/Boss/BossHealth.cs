@@ -19,9 +19,13 @@ namespace _WHY.Scripts.Boss
             if (other.CompareTag("Weapon"))
             {
                 _currentHealth--;
-                SoundManager.Instance.PlaySound("Explosion", transform);
+                if(_currentHealth <= 0)
+                {
+                    GameEvents.BossDestroyed?.Invoke();
+                    return;
+                }
+                SoundManager.Instance.PlaySound("Boss Damage", transform);
                 GameEvents.BossLivesChanged?.Invoke(_currentHealth);
-                GameEvents.UpdateHealthUI?.Invoke(_currentHealth, false);
             }
         }
     }

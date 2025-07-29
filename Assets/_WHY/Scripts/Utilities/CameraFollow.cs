@@ -27,13 +27,13 @@ public class CameraFollow : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.PlayerLivesChanged += CameraShake;
-        //GameEvents.BossShoots += zoomOutToCenter;
+        GameEvents.BossShoots += ZoomOutToCenter;
     }
 
     private void OnDisable()
     {
         GameEvents.PlayerLivesChanged -= CameraShake;
-        //GameEvents.BossShoots -= zoomOutToCenter;
+        GameEvents.BossShoots -= ZoomOutToCenter;
     }
 
     private void Start()
@@ -90,7 +90,7 @@ public class CameraFollow : MonoBehaviour
         StartCoroutine(Shake(_shakeDuration, _shakeMagnitude));
     }
     
-    private void zoomOutToCenter()
+    private void ZoomOutToCenter()
     {
         StartCoroutine(ZoomOutSequence());
     }
@@ -99,14 +99,10 @@ public class CameraFollow : MonoBehaviour
     {
         print("Zooming out to center");
         _isZoomingOut = true;
-
-        // Define center position (adjust if needed)
         Vector3 centerPosition = new Vector3((leftxBound + rightxBound) / 2f, 0f, offset.z);
-
-        float zoomOutSize = targetZoomSize + 15f; // How far to zoom out
+        float zoomOutSize = targetZoomSize + 40f; // How far to zoom out
         float duration = 2f; // How long to zoom out
         float elapsed = 0f;
-
         Vector3 startPos = transform.position;
         float startSize = _cam.orthographicSize;
 
@@ -123,7 +119,7 @@ public class CameraFollow : MonoBehaviour
         _cam.orthographicSize = zoomOutSize;
 
         // Wait a moment
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(8f);
 
         // Zoom back in and resume following
         elapsed = 0f;

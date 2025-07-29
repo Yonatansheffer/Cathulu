@@ -11,41 +11,47 @@ namespace MainPlayer
         private static readonly int LeftIdle = Animator.StringToHash("LeftIdle");
         private static readonly int Hit = Animator.StringToHash("Hit");
         private static readonly int Reset = Animator.StringToHash("Reset");
+        private static readonly int Death = Animator.StringToHash("death");
         private SpriteRenderer _spriteRenderer;
-        //private Vector3[] _hitAnimationVectors; // Vector3s to animate the player when hit
-        private Animator _animator; 
+        private Animator _animator;
+        [SerializeField] private GameObject capsule;
+        [SerializeField] private GameObject gun;
         private Rigidbody2D _rb;
 
         private void Awake()
         {
-            /*_hitAnimationVectors = new Vector3[]
-            {
-                new Vector3(2.2f, 3f, 0f),
-                new Vector3(2.2f, -0.1f, 0f),
-                new Vector3(3.2f, 1f, 0f),
-                new Vector3(4.2f, -5f, 0f)
-            };*/
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
         }
         
-        /*private void OnEnable()
+        private void OnEnable()
         {
-            GameEvents.BossDestroyed += HidePlayer;
+            /*GameEvents.BossDestroyed += HidePlayer;
             GameEvents.BeginGamePlay += HidePlayer;
             GameEvents.ReadyStage += ShowPlayer;
-            GameEvents.FreezeStage += FreezeAnimation;
+            GameEvents.FreezeStage += FreezeAnimation;*/
             //GameEvents.PlayerHit += UpdateHitAnimation;
+            GameEvents.GameOver += DeathAnimation;
         }
 
         private void OnDisable()
         {
-            GameEvents.BossDestroyed -= HidePlayer;
+            /*GameEvents.BossDestroyed -= HidePlayer;
             GameEvents.BeginGamePlay -= HidePlayer;
             GameEvents.ReadyStage -= ShowPlayer;
-            GameEvents.FreezeStage -= FreezeAnimation;
+            GameEvents.FreezeStage -= FreezeAnimation;*/
             //GameEvents.PlayerHit -= UpdateHitAnimation;
+            GameEvents.GameOver -= DeathAnimation;
+        }
+        
+        private void DeathAnimation()
+        {
+            capsule.gameObject.SetActive(false);
+            gun.gameObject.SetActive(false);
+            _animator.SetTrigger(Death);
+            _rb.simulated = false;
+            //GameEvents.PlayerLostLife?.Invoke();
         }
         
         private void HidePlayer()
@@ -58,7 +64,7 @@ namespace MainPlayer
             _spriteRenderer.enabled = true;
             _animator.SetTrigger(Reset);
 
-        }*/
+        }
 
         private void Update()
         {

@@ -9,20 +9,22 @@ namespace UI
 {
     public class EndScreenUI : MonoBehaviour
     {
+        [SerializeField] private GameObject winBoard;
+        [SerializeField] private GameObject loseBoard;
         [SerializeField] private TextMeshProUGUI defeatedText;
-        [SerializeField] private TextMeshProUGUI playerWonText;
         [SerializeField] private TextMeshProUGUI timeOverText;
-        [SerializeField] private TextMeshProUGUI pressEnterText;
+        [SerializeField] private TextMeshProUGUI winPressAgainText;
+        [SerializeField] private TextMeshProUGUI losePressAgainText;
         [SerializeField] private TextMeshProUGUI scoreText;
         
         private void Start()
         {
-            GameEvents.GameOver += HandleGameOverScreen;
+            GameEvents.GameOverUI += HandleGameOverScreen;
         }
         
         private void OnDisable()
         {
-            GameEvents.GameOver -= HandleGameOverScreen;
+            GameEvents.GameOverUI -= HandleGameOverScreen;
         }
         
         private void HandleGameOverScreen(GameState gameState, int score)
@@ -30,20 +32,33 @@ namespace UI
             switch (gameState)
             {
                 case GameState.PlayerWon:
-                    playerWonText.gameObject.SetActive(true);
+                    winBoard.gameObject.SetActive(true);
+                    scoreText.text = $"SCORE: {score}";
+                    StartCoroutine(BlinkText(winPressAgainText, 0.5f));
                     SoundManager.Instance.PlaySound("Win", transform);
                     break;
                 case GameState.TimeOver:
+                    loseBoard.gameObject.SetActive(true);
                     timeOverText.gameObject.SetActive(true);
+                    StartCoroutine(BlinkText(losePressAgainText, 0.5f));
                     SoundManager.Instance.PlaySound("Lose", transform);
                     break;
                 case GameState.Defeated:
+                    loseBoard.gameObject.SetActive(true);
                     defeatedText.gameObject.SetActive(true);
+                    StartCoroutine(BlinkText(losePressAgainText, 0.5f));
                     SoundManager.Instance.PlaySound("Lose", transform);
                     break;
             }
-            scoreText.text = $"SCORE: {score}";
-            //SoundManager.Instance.PlaySound("Game Over", transform);
+        }
+        
+        private IEnumerator BlinkText(TextMeshProUGUI text, float blinkInterval)
+        {
+            while (true)
+            {
+                text.enabled = !text.enabled;
+                yield return new WaitForSeconds(blinkInterval);
+            }
         }
         
         /*
@@ -135,15 +150,6 @@ namespace UI
             _canPressEnter = true;
             gameOverCountdownText.gameObject.SetActive(true);
             _countdownCoroutine = StartCoroutine(CountDown());
-        }
-
-        private IEnumerator BlinkPressEnterText()
-        {
-            while (true)
-            {
-                pressEnterText.enabled = !pressEnterText.enabled;
-                yield return new WaitForSeconds(0.5f);
-            }
         }
 
 

@@ -22,7 +22,6 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
-            GameEvents.SpawnAllEnemies += TriggerSpawnAnimation;
             GameEvents.EnemySpawned += TriggerSpawnAnimation;
             GameEvents.BossLivesChanged += TriggerDamageAnimation;
         }
@@ -31,7 +30,6 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
-            GameEvents.SpawnAllEnemies -= TriggerSpawnAnimation;
             GameEvents.EnemySpawned -= TriggerSpawnAnimation;
             GameEvents.BossLivesChanged -= TriggerDamageAnimation;
         }
@@ -48,7 +46,7 @@ namespace _WHY.Scripts.Boss
         
         private void TriggerDamageAnimation(int currentHealth)
         {
-            _animator.SetTrigger(currentHealth <= 0 ? Die : Damage);
+            //_animator.SetTrigger(currentHealth <= 0 ? Die : Damage);
         }
         
     }

@@ -23,33 +23,59 @@ namespace _WHY.Scripts.Boss
         }
 
         [SerializeField] private WaveConfig waveConfig = new WaveConfig();
-
         private bool bossIsShooting = false;
+        private bool _isFrozen = false;
 
         private void Start()
         {
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
             waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
-
             StartCoroutine(CombinedWaveRoutine());
+        }
+
+        private void OnEnable()
+        {
+            GameEvents.FreezeLevel += OnFreeze;
+            GameEvents.UnFreezeLevel += OnUnFreeze;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.FreezeLevel -= OnFreeze;
+            GameEvents.UnFreezeLevel -= OnUnFreeze;
         }
 
         private IEnumerator CombinedWaveRoutine()
         {
             yield return new WaitForSeconds(waveConfig.startDelay);
+
             while (true)
             {
                 float elapsed = 0f;
                 while (elapsed < waveConfig.currentSpawnDuration)
                 {
+                    yield return new WaitUntil(() => !_isFrozen);
+                    
                     GameEvents.ToSpawnEnemy?.Invoke();
-                    yield return new WaitForSeconds(waveConfig.currentSpawnInterval);
+
+                    float timer = 0f;
+                    while (timer < waveConfig.currentSpawnInterval)
+                    {
+                        yield return null;
+                        if (!_isFrozen) timer += Time.deltaTime;
+                    }
+
                     elapsed += waveConfig.currentSpawnInterval;
                 }
 
+                yield return new WaitUntil(() => !_isFrozen);
+
                 bossIsShooting = true;
                 GameEvents.BossShoots?.Invoke();
-                yield return new WaitUntil(() => !bossIsShooting);
+
+                yield return new WaitUntil(() => !bossIsShooting || _isFrozen);
+                yield return new WaitUntil(() => !_isFrozen);
+
                 waveConfig.currentSpawnDuration = Mathf.Max(
                     waveConfig.minSpawnDuration,
                     waveConfig.currentSpawnDuration - waveConfig.durationDecreaseRate
@@ -60,6 +86,16 @@ namespace _WHY.Scripts.Boss
                     waveConfig.currentSpawnInterval - waveConfig.intervalDecreaseRate
                 );
             }
+        }
+
+        private void OnFreeze()
+        {
+            _isFrozen = true;
+        }
+
+        private void OnUnFreeze()
+        {
+            _isFrozen = false;
         }
 
         public void BossFinishedShooting()

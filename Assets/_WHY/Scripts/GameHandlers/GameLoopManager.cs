@@ -1,4 +1,5 @@
 using System.Collections;
+using Sound;
 using UnityEngine;
 
 namespace GameHandlers
@@ -31,8 +32,8 @@ namespace GameHandlers
             GameEvents.AddTime += AddTime;  
             GameEvents.FreezeLevel += StopCountDown;
             GameEvents.RestartLevel += OnLevelStart;
-            GameEvents.BossDestroyed += PassedStage;
-            GameEvents.PlayerLivesChanged += CheckGameOver;
+            GameEvents.BossDestroyed += PlayerWin;
+            GameEvents.GameOver += OnGameOver;
             GameEvents.AddPoints += AddPoints;
         }
     
@@ -41,8 +42,8 @@ namespace GameHandlers
             GameEvents.AddTime -= AddTime;
             GameEvents.FreezeLevel -= StopCountDown;
             GameEvents.RestartLevel -= OnLevelStart;
-            GameEvents.BossDestroyed -= PassedStage;
-            GameEvents.PlayerLivesChanged -= CheckGameOver;
+            GameEvents.BossDestroyed -= PlayerWin;
+            GameEvents.GameOver -= OnGameOver;
             GameEvents.AddPoints -= AddPoints;
         }
         
@@ -82,13 +83,13 @@ namespace GameHandlers
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);
         }
 
-        private void PassedStage()
+        private void PlayerWin()
         {
             _timeBonus = Mathf.FloorToInt(_countDownTime) * 30;
             AddPoints(_timeBonus);
             _currentGameState = GameState.PlayerWon;
             GameEvents.FreezeLevel?.Invoke();
-            GameEvents.GameOver?.Invoke(_currentGameState, _currentScore);
+            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
         }
 
         private void StopCountDown()
@@ -112,27 +113,26 @@ namespace GameHandlers
             }
             else
             {
-                GameEvents.FreezeLevel?.Invoke();
                 _currentGameState = GameState.TimeOver;
-                GameEvents.GameOver.Invoke(_currentGameState, _currentScore);
+                StartCoroutine(HandleGameOverSequence());
             }
         }
     
-        private void CheckGameOver(int lives)
+        private void OnGameOver()
         {
-            if (lives > 0) return;
             _currentGameState = GameState.Defeated;
-            GameEvents.EndScene?.Invoke();
             StartCoroutine(HandleGameOverSequence());
         }
 
         private IEnumerator HandleGameOverSequence()
         {
-            yield return new WaitForSeconds(1f); // wait 1 second
-            GameEvents.GameOver?.Invoke(_currentGameState, _currentScore);
+            GameEvents.FreezeLevel?.Invoke();
+            yield return new WaitForSeconds(2f); 
+            GameEvents.EndScene?.Invoke();
+            yield return new WaitForSeconds(0.3f); 
+            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
         }
-
-
+        
         private void AddTime(int timeToAdd)
         {
             _countDownTime += timeToAdd;

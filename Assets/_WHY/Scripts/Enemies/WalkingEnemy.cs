@@ -1,4 +1,5 @@
 ﻿using System;
+using GameHandlers;
 using Sound;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,6 +20,7 @@ namespace _WHY.Scripts.Enemies
         private bool _movingToTarget;
         [SerializeField] private float fadeInDuration = 1f;
         private float _fadeTimer;
+        private bool _isFrozen = false;
         
         private void Awake()
         {
@@ -30,17 +32,44 @@ namespace _WHY.Scripts.Enemies
             _collider = GetComponent<CapsuleCollider2D>();
         }
         
+        private void OnEnable()
+        {
+            GameEvents.FreezeLevel += OnFreeze;
+            GameEvents.UnFreezeLevel += OnUnFreeze;
+        }
+        
+        private void OnDisable()
+        {
+            GameEvents.FreezeLevel -= OnFreeze;
+            GameEvents.UnFreezeLevel -= OnUnFreeze;
+        }
+        
+        private void OnFreeze()
+        {
+            _isFrozen = true;
+            _rb.linearVelocity = Vector2.zero;
+            _animator.speed = 0f; 
+
+        }
+
+        private void OnUnFreeze()
+        {
+            _isFrozen = false;
+            _animator.speed = 1f;
+        }
+
+        
         public override void ToTarget(Vector2 targetPosition)
         {
             _targetPosition = targetPosition;
             _movingToTarget = true;
             _spriteRenderer.color = new Color(1f, 1f, 1f, 0.3f); // semi-transparent
             _fadeTimer = 0f;
-
         }
 
         private new void Update()
         {
+            if (_isFrozen) return;
             UpdateAnimation();
             if (_movingToTarget)
             {
@@ -54,16 +83,16 @@ namespace _WHY.Scripts.Enemies
                 Move();
             }
         }
+
         
         private void MoveToTarget()
         {
+            if (_isFrozen) return;
             var currentPosition = transform.position;
             var direction = (_targetPosition - currentPosition).normalized;
             _rb.linearVelocity = direction * moveSpeed;
             _spriteRenderer.flipX = direction.x > 0f;
         }
-
-
         
         private void UpdateAnimation()
         {
@@ -85,10 +114,12 @@ namespace _WHY.Scripts.Enemies
 
         protected override void Move()
         {
+            if (_isFrozen) return;
+
             _rb.linearVelocity = _moveDirection * moveSpeed;
             _spriteRenderer.flipX = _moveDirection.x > 0f;
-
         }
+
 
         private void OnTriggerEnter2D(Collider2D other)
         {

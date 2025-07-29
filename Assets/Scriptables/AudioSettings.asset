@@ -70,6 +70,18 @@ MonoBehaviour:
     volume: 0.1
     loop: 1
   - name: Background
-    clip: {fileID: 8300000, guid: d2a19f4afdff2e4489cd76ae9ba9f187, type: 3}
-    volume: 0.1
+    clip: {fileID: 8300000, guid: cdc9cfa6a57ea30429709d1c505bb453, type: 3}
+    volume: 0.17
     loop: 1
+  - name: Boss Damage
+    clip: {fileID: 8300000, guid: e0d408a54bac1de40a0eb1d26de8093d, type: 3}
+    volume: 0.1
+    loop: 0
+  - name: Boss Bullet
+    clip: {fileID: 8300000, guid: 321fb7a24bf66ad48ae70ace93072574, type: 3}
+    volume: 0.1
+    loop: 0
+  - name: Boss Shoot
+    clip: {fileID: 8300000, guid: 83d854e734358464da138af18b7ccffd, type: 3}
+    volume: 0.1
+    loop: 0

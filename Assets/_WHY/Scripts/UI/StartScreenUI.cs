@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using GameHandlers;
 using TMPro;
 using UnityEngine;
@@ -8,20 +9,25 @@ namespace UI
 {
     public class StartScreenUI : MonoBehaviour
     {
-        [SerializeField] private Image startImage;
+        //[SerializeField] private Image startImage;
         [SerializeField] private TextMeshProUGUI pressEnterText;
         [SerializeField] private float blinkInterval = 0.2f;
-        private Coroutine _blinkCoroutine;
-        private bool _canPressEnter;
+        /*private Coroutine _blinkCoroutine;
+        private bool _canPressEnter*/
         //[SerializeField] private Image pangLogo;
         //[SerializeField] private TextMeshProUGUI mitchellText;
         //[SerializeField] private float licenseDisplayDuration = 3f;
-        private void Awake()
+        /*private void Awake()
         {
             _canPressEnter = false;
+        }*/
+
+        private void Start()
+        {
+            StartCoroutine(BlinkText(pressEnterText));
         }
 
-        private void OnEnable()
+        /*private void OnEnable()
         {
             GameEvents.BeginGameLoop += ShowStartScreen;
         }
@@ -29,7 +35,7 @@ namespace UI
         private void OnDisable()
         {
             GameEvents.BeginGameLoop -= ShowStartScreen;
-        }
+        }*/
 
         /*private void ShowLicenseImage()
         {
@@ -40,16 +46,15 @@ namespace UI
             StartCoroutine(ShowLogoAfterLicense());
         }*/
 
-        private void ShowStartScreen()
+        /*private void ShowStartScreen()
         {
             //licenseImage.gameObject.SetActive(false);
             //pangLogo.gameObject.SetActive(true);
             //mitchellText.gameObject.SetActive(true);
-            pressEnterText.gameObject.SetActive(true);
-            _canPressEnter = true;
-            _blinkCoroutine = StartCoroutine(BlinkText(pressEnterText));
-        }
-
+            /*pressEnterText.gameObject.SetActive(true);
+            _canPressEnter = true;#1#
+        }*/
+    
         private IEnumerator BlinkText(TextMeshProUGUI text)
         {
             while (true)
@@ -59,7 +64,7 @@ namespace UI
             }
         }
 
-        private void Update()
+        /*private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return) && _canPressEnter)
             {
@@ -73,6 +78,6 @@ namespace UI
                 //mitchellText.gameObject.SetActive(false);
                 //GameEvents.StartGame?.Invoke(); 
             }
-        }
+        }*/
     }
 }

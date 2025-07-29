@@ -31,6 +31,7 @@ namespace Weapons
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if(other.gameObject.CompareTag("Boss Bullet")) return;
             GameObject particles;
             if (other.gameObject.CompareTag("Boss"))
             {
