@@ -60,8 +60,8 @@ namespace MainPlayer
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
-                && !_isShieldActive && !_isOnHitCooldown)
+            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss") || 
+                 other.gameObject.CompareTag("Boss Bullet")) && !_isShieldActive && !_isOnHitCooldown)
             {
                 StartCoroutine(HandleDamage());
             }
@@ -69,8 +69,8 @@ namespace MainPlayer
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
-                && !_isShieldActive && !_isOnHitCooldown)
+            if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss") || 
+                 other.gameObject.CompareTag("Boss Bullet")) && !_isShieldActive && !_isOnHitCooldown)
             {
                 StartCoroutine(HandleDamage());
             }

@@ -9,11 +9,11 @@ namespace _WHY.Scripts.Boss
         public enum BossState { Idle, RotatingIn, Shooting, RotatingBack }
 
         [Header("Shooting")]
-        [SerializeField] private float rotationSpeed = 45f;
+        [SerializeField] private float rotationSpeed = 30f;
         [SerializeField] private float bulletsPerSecond = 5f;
         [SerializeField] private float bulletForce = 20f;
         [SerializeField] private GameObject player;
-        [SerializeField] private float shootingDuration = 9f;
+        [SerializeField] private float shootingDuration = 8f;
         private float shootTimer = 0f;
         private float totalRotation = 0f;
         private float _shootingElapsed = 0f;
@@ -65,15 +65,13 @@ namespace _WHY.Scripts.Boss
         private void StartShooting()
         {
             if (_currentState != BossState.Idle) return;
-
-            SoundManager.Instance.PlaySound("Boss Shoot", transform);
             StartCoroutine(StartShootingWithDelay(0.8f));
         }
 
         private IEnumerator StartShootingWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-
+            SoundManager.Instance.PlaySound("Boss Shoot", transform);
             shootTimer = 0f;
             totalRotation = 0f;
             transform.rotation = Quaternion.identity;
@@ -85,15 +83,14 @@ namespace _WHY.Scripts.Boss
             float rotateStep = rotationSpeed * Time.deltaTime;
             transform.Rotate(0f, 0f, -rotateStep); 
             totalRotation += rotateStep;
+
             if (totalRotation >= 90f)
             {
-                print("kj");
                 transform.rotation = Quaternion.Euler(0f, 0f, -90f);
                 totalRotation = 0f;
                 _shootingElapsed = 0f;
                 shootTimer = 0f;
                 _currentState = BossState.Shooting;
-                SoundManager.Instance.PlaySound("Boss Shoot", transform);
             }
         }
 
