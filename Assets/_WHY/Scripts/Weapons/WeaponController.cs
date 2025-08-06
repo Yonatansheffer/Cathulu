@@ -33,7 +33,7 @@ namespace Weapons
             GameEvents.DefaultWeapon += ResetWeapons;
             GameEvents.RestartLevel += ResetWeapons;
             GameEvents.WeaponCollected += SwitchWeapon;
-            //GameEvents.FreezeLevel += StopAllProjectiles;
+            GameEvents.GameOver += StopAllProjectiles;
         }
         private void OnDisable()
         {
@@ -41,7 +41,7 @@ namespace Weapons
             GameEvents.DefaultWeapon -= ResetWeapons;
             GameEvents.RestartLevel -= ResetWeapons;
             GameEvents.WeaponCollected -= SwitchWeapon;
-            //GameEvents.FreezeLevel -= StopAllProjectiles;
+            GameEvents.GameOver -= StopAllProjectiles;
         }
         
         private void ResetWeapons()
@@ -74,8 +74,7 @@ namespace Weapons
             _switchBackCoroutine = null;
             SwitchWeapon(settings.defaultWeapon);
         }
-
-
+        
         
         private void StopAllProjectiles()
         {

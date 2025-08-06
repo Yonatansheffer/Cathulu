@@ -19,7 +19,7 @@ MonoBehaviour:
     loop: 1
   - name: Explosion
     clip: {fileID: 8300000, guid: 25f32e95a84a07e4ba60ae23921686ea, type: 3}
-    volume: 0.2
+    volume: 0.15
     loop: 0
   - name: Lost Life
     clip: {fileID: 8300000, guid: e58b7389a600fa94d9ff9ebaceac7e39, type: 3}
@@ -75,7 +75,7 @@ MonoBehaviour:
     loop: 1
   - name: Boss Damage
     clip: {fileID: 8300000, guid: e0d408a54bac1de40a0eb1d26de8093d, type: 3}
-    volume: 0.1
+    volume: 0.18
     loop: 0
   - name: Boss Bullet
     clip: {fileID: 8300000, guid: 321fb7a24bf66ad48ae70ace93072574, type: 3}

@@ -13,34 +13,29 @@ namespace Managers
     {
         private const string GamePlaySceneName = "GamePlay";
         private const string EndingSceneName = "EndingScene";
-        private bool _InLevel = false;
+        private bool _InLevel = true;
 
         private void Awake()
         {
             DontDestroyOnLoad(this);
         }
-
-        private void Start()
-        {
-            GameEvents.BeginGameLoop?.Invoke(); 
-        }
         
         private void OnEnable()
         {
             GameEvents.EndScene += EndGame;
+            GameEvents.BeginGamePlay += LoadGamePlay;
         }
         
         private void OnDisable()
         {
             GameEvents.EndScene -= EndGame;
+            GameEvents.BeginGamePlay -= LoadGamePlay;
         }
         private void Update()
         {
             if(_InLevel) return;
             if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
-                _InLevel = true;
-                SoundManager.Instance.ReturnAllSoundWrappersToPool();
                 LoadGamePlay();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -51,6 +46,8 @@ namespace Managers
 
         private void LoadGamePlay()
         {
+            _InLevel = true;
+            SoundManager.Instance.ReturnAllSoundWrappersToPool();
             SceneManager.LoadScene(GamePlaySceneName);
             SoundManager.Instance.PlaySound("Background", transform);
         }

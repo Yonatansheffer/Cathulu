@@ -17,9 +17,6 @@ namespace UI
         [SerializeField] private TextMeshProUGUI bossHealthText;
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
-        [SerializeField] private TextMeshProUGUI playerHealthText;
-        [SerializeField] private Slider playerHealthBar;
-        [SerializeField] private TextMeshProUGUI weaponCountdownText;
         [SerializeField] private Image freezeImage;
         [SerializeField] private Image timeImage;
         [SerializeField] private Image spellGunImage;
@@ -28,10 +25,10 @@ namespace UI
         [SerializeField] private Image shieldImage;
         [SerializeField] private Image[] lifeImages;
         [SerializeField] private Image[] noLifeImages;
-        [SerializeField] private int weaponCountdown = 15;
-        private WeaponType? _currentWeaponType;
         [SerializeField] private GameObject orangeStarsParticles;
-        private Coroutine _countdownCoroutine;
+        private Coroutine _weaponCoroutine;
+        [SerializeField] private Canvas canvas; // Assign your Canvas here in the Inspector
+
 
         private void Start()
         {
@@ -65,14 +62,24 @@ namespace UI
         
         private void DeactivateAllPowerUps()
         {
-            SetPowerUpActive(spellGunImage, false);
-            SetPowerUpActive(lightGunImage, false);
-            SetPowerUpActive(fireGunImage,  false);
+            DeactivateAllWeapons();
             SetPowerUpActive(shieldImage, false);
             SetPowerUpActive(freezeImage, false);
             SetPowerUpActive(timeImage, false);
         }
-        
+
+        private void DeactivateAllWeapons()
+        {
+            if(_weaponCoroutine != null)
+            {
+                StopCoroutine(_weaponCoroutine);
+                _weaponCoroutine = null;
+            }
+            SetPowerUpActive(spellGunImage, false);
+            SetPowerUpActive(lightGunImage, false);
+            SetPowerUpActive(fireGunImage,  false);
+        }
+
         private void ActivateDefaultWeapon(WeaponType defaultWeapon)
         {
             switch (defaultWeapon)
@@ -100,13 +107,23 @@ namespace UI
                 StartCoroutine(HandlePowerUpDisplay(freezeImage, 7f, 3f));
         }
         
+
         private void UpdateTime(float dummy)
         {
-            var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity);
+            // Instantiate under the Canvas so it appears in UI
+            var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
+
+            // Optional: scale down if too big for UI
+            particles.transform.localScale = Vector3.one * 0.5f;
+
+            // Destroy after short time
             Destroy(particles, 0.8f);
+
+            // Start power-up animation
             if (gameObject.activeInHierarchy)
                 StartCoroutine(HandlePowerUpDisplay(timeImage, 1f, 0f)); // No blink, just fade after 1 sec
         }
+
         
         private void UpdateBossHealth(int amount)
         {
@@ -138,36 +155,29 @@ namespace UI
         
         private void AddWeaponCollected(WeaponType weaponType)
         {
-            _currentWeaponType = weaponType;
-
-            // Deactivate all first
-            DeactivateAllPowerUps();
-
-            // Check if it's the default weapon → activate immediately without coroutine
+            DeactivateAllWeapons();
             if (weaponType == settings.defaultWeapon)
             {
                 ActivateDefaultWeapon(weaponType);
                 return;
             }
-
-            // Otherwise → activate with coroutine (12s + 3s blink)
             switch (weaponType)
             {
                 case WeaponType.SpellGun:
-                    StartCoroutine(HandlePowerUpDisplay(spellGunImage, 12f, 3f));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(spellGunImage, 12f, 3f));
                     break;
                 case WeaponType.LightGun:
-                    StartCoroutine(HandlePowerUpDisplay(lightGunImage, 12f, 3f));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(lightGunImage, 12f, 3f));
                     break;
                 case WeaponType.FireGun:
-                    StartCoroutine(HandlePowerUpDisplay(fireGunImage, 12f, 3f));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(fireGunImage, 12f, 3f));
                     break;
             }
         }
         
         private void SetPowerUpActive(Image powerUp,bool isActive)
         {
-            Color color = isActive ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.4f); // grey + transparent
+            Color color = isActive ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.25f); // grey + transparent
             powerUp.color = color;
         }
         

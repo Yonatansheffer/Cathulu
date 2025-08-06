@@ -9,6 +9,7 @@ namespace GameHandlers
     {
         // GameLoop events
         public static Action BeginGameLoop;
+        public static Action BeginGamePlay;
         public static Action FreezeLevel;
         public static Action UnFreezeLevel;
         public static Action RestartLevel;

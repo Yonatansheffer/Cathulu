@@ -58,9 +58,7 @@ namespace _WHY.Scripts.Enemies
             _isFrozen = false;
             _animator.speed = 1f;
         }
-
-
-
+        
         protected override void Move()
         {
             if (_isFrozen || _playerTransform == null) return;
@@ -68,7 +66,7 @@ namespace _WHY.Scripts.Enemies
             // === WEAK PLAYER ATTRACTION (WEIGHTED) ===
             Vector3 toPlayer = _playerTransform.position - transform.position;
             Vector3 playerDir = toPlayer.normalized;
-            float playerAttractionWeight = 0.5f;
+            float playerAttractionWeight = 0.55f;
 
             // === SMOOTH RANDOM MOVEMENT VIA PERLIN NOISE ===
             float timeOffset = Time.time * 0.3f + GetInstanceID(); // Unique per enemy
@@ -88,10 +86,8 @@ namespace _WHY.Scripts.Enemies
                 Vector2 obstacleNormal = hit.normal;
                 finalDir = (finalDir + (Vector3)obstacleNormal * 4f).normalized;
             }
-
             // === MOVE ENEMY ===
             transform.position += finalDir * moveSpeed * Time.deltaTime;
-
             // === FLIP SPRITE BASED ON MOVEMENT ===
             _animator.SetBool(MovingRight, finalDir.x > 0f);
             _spriteRenderer.flipX = finalDir.x < 0f;

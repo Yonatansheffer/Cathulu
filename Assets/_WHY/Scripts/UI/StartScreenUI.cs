@@ -1,83 +1,49 @@
 ﻿using System;
 using System.Collections;
 using GameHandlers;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
     public class StartScreenUI : MonoBehaviour
     {
-        //[SerializeField] private Image startImage;
-        [SerializeField] private TextMeshProUGUI pressEnterText;
+        [SerializeField] private GameObject pressEnterText;
+        [SerializeField] private GameObject openingScreen;
+        [SerializeField] private GameObject player;
         [SerializeField] private float blinkInterval = 0.2f;
-        /*private Coroutine _blinkCoroutine;
-        private bool _canPressEnter*/
-        //[SerializeField] private Image pangLogo;
-        //[SerializeField] private TextMeshProUGUI mitchellText;
-        //[SerializeField] private float licenseDisplayDuration = 3f;
-        /*private void Awake()
-        {
-            _canPressEnter = false;
-        }*/
+
+        private bool _isEnterToStart = false;
 
         private void Start()
         {
-            StartCoroutine(BlinkText(pressEnterText));
+            StartCoroutine(Blink(pressEnterText));
+            GameEvents.BeginGameLoop?.Invoke(); // Optional: move to first Enter if needed
         }
 
-        /*private void OnEnable()
-        {
-            GameEvents.BeginGameLoop += ShowStartScreen;
-        }
-        
-        private void OnDisable()
-        {
-            GameEvents.BeginGameLoop -= ShowStartScreen;
-        }*/
-
-        /*private void ShowLicenseImage()
-        {
-            licenseImage.gameObject.SetActive(true);
-            pangLogo.gameObject.SetActive(false);
-            pressEnterText.gameObject.SetActive(false);
-            mitchellText.gameObject.SetActive(false);
-            StartCoroutine(ShowLogoAfterLicense());
-        }*/
-
-        /*private void ShowStartScreen()
-        {
-            //licenseImage.gameObject.SetActive(false);
-            //pangLogo.gameObject.SetActive(true);
-            //mitchellText.gameObject.SetActive(true);
-            /*pressEnterText.gameObject.SetActive(true);
-            _canPressEnter = true;#1#
-        }*/
-    
-        private IEnumerator BlinkText(TextMeshProUGUI text)
+        private IEnumerator Blink(GameObject obj)
         {
             while (true)
             {
-                text.enabled = !text.enabled;
+                obj.SetActive(!obj.activeSelf);
                 yield return new WaitForSeconds(blinkInterval);
             }
         }
 
-        /*private void Update()
+        private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return) && _canPressEnter)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                _canPressEnter = false;
-                if (_blinkCoroutine != null)
+                if (!_isEnterToStart)
                 {
-                    StopCoroutine(_blinkCoroutine);
+                    _isEnterToStart = true;
+                    openingScreen.SetActive(false);
+                    player.SetActive(true);
                 }
-                pressEnterText.gameObject.SetActive(false);
-                startImage.gameObject.SetActive(false);
-                //mitchellText.gameObject.SetActive(false);
-                //GameEvents.StartGame?.Invoke(); 
+                else
+                {
+                    GameEvents.BeginGamePlay?.Invoke();
+                }
             }
-        }*/
+        }
     }
 }

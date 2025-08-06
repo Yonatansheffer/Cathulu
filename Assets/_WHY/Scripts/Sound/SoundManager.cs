@@ -26,14 +26,12 @@ namespace Sound
         private void OnEnable()
         {
             GameEvents.BeginGameLoop += PlayOpeningMusic;
-            GameEvents.GameOver += ReturnAllSoundWrappersToPool;
             GameEvents.StopMusicCheat += ReturnAllSoundWrappersToPool;
         }
     
         private void OnDisable()
         {   
             GameEvents.BeginGameLoop -= PlayOpeningMusic;
-            GameEvents.GameOver -= ReturnAllSoundWrappersToPool;
             GameEvents.StopMusicCheat -= ReturnAllSoundWrappersToPool;
         }
 
@@ -58,13 +56,25 @@ namespace Sound
             _openingMusic.Play(config.clip, config.volume,config.loop);
         }
         
-        
-        public static void StopOpeningMusic()
+        /*public void PlayBackgroundMusic()
         {
-            if (_openingMusic == null)
+            if (_backgroundMusic != null)
                 return;
-            _openingMusic.Reset();
+            var config = FindAudioConfig("Background");
+            if (config == null)
+                return;
+            _backgroundMusic = SoundPool.Instance.Get();
+            _backgroundMusic.Play(config.clip, config.volume,config.loop);
         }
+        
+        private static void StopBackgroundMusic()
+        {
+            print("cddcd");
+            if (_backgroundMusic == null)
+                return;
+            _backgroundMusic.Reset();
+        }
+        */
 
         private AudioConfig FindAudioConfig(string audioName)
         {
