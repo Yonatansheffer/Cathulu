@@ -3277,7 +3277,7 @@ MonoBehaviour:
   yUpperBound: 37
   _shakeDuration: 0.3
   _shakeMagnitude: 0.2
-  startZoomSize: 55
+  startZoomSize: 50
   targetZoomSize: 27
   zoomSpeed: 0.7
 --- !u!1001 &522683438
@@ -13142,6 +13142,10 @@ PrefabInstance:
       value: 26
       objectReference: {fileID: 0}
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: dashSpeed
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: jumpForce
       value: 47
       objectReference: {fileID: 0}
@@ -13149,6 +13153,10 @@ PrefabInstance:
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 294676740}
+    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: dashDuration
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: groundCheckRadius
       value: 1

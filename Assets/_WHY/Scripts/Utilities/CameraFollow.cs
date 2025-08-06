@@ -122,7 +122,7 @@ namespace _WHY.Scripts.Utilities
         {
             _isZoomingOut = true;
             Vector3 centerPosition = new Vector3((leftxBound + rightxBound) / 2f+3f, 0f, offset.z);
-            float zoomOutSize = targetZoomSize + 35f; 
+            float zoomOutSize = targetZoomSize + 30f; 
             float duration = 2f; 
             float elapsed = 0f;
             Vector3 startPos = transform.position;

@@ -23,7 +23,7 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
             GameEvents.EnemySpawned += TriggerSpawnAnimation;
-            GameEvents.BossLivesChanged += TriggerDamageAnimation;
+            //GameEvents.BossLivesChanged += TriggerDamageAnimation;
         }
         
         private void OnDisable()
@@ -31,7 +31,7 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
             GameEvents.EnemySpawned -= TriggerSpawnAnimation;
-            GameEvents.BossLivesChanged -= TriggerDamageAnimation;
+            //GameEvents.BossLivesChanged -= TriggerDamageAnimation;
         }
 
         private void TriggerShootAnimation()
@@ -43,11 +43,13 @@ namespace _WHY.Scripts.Boss
         {
             _animator.SetTrigger(Spawn);
         }
-        
-        private void TriggerDamageAnimation(int currentHealth)
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            //_animator.SetTrigger(currentHealth <= 0 ? Die : Damage);
+            if (other.CompareTag("Weapon"))
+            {
+                _animator.SetTrigger(Damage);
+            }
         }
-        
     }
 }
