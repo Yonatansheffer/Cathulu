@@ -29,13 +29,13 @@ namespace _WHY.Scripts.Utilities
 
         private void OnEnable()
         {
-            GameEvents.PlayerLivesChanged += CameraShake;
+            GameEvents.ShakeCamera += CameraShake;
             GameEvents.BossShoots += ZoomOutToCenter;
         }
 
         private void OnDisable()
         {
-            GameEvents.PlayerLivesChanged -= CameraShake;
+            GameEvents.ShakeCamera -= CameraShake;
             GameEvents.BossShoots -= ZoomOutToCenter;
         }
 
@@ -91,8 +91,6 @@ namespace _WHY.Scripts.Utilities
             }
         }
 
-
-
         private IEnumerator Shake(float duration, float magnitude)
         {
             Vector3 originalPos = transform.localPosition;
@@ -110,9 +108,8 @@ namespace _WHY.Scripts.Utilities
             transform.localPosition = originalPos;
         }
 
-        private void CameraShake(int amount)
-        {
-            if (amount >= 0) return;
+        private void CameraShake()
+        { 
             StartCoroutine(Shake(_shakeDuration, _shakeMagnitude));
         }
     
@@ -124,14 +121,12 @@ namespace _WHY.Scripts.Utilities
         private IEnumerator ZoomOutSequence()
         {
             _isZoomingOut = true;
-            Vector3 centerPosition = new Vector3((leftxBound + rightxBound) / 2f, 0f, offset.z);
-            float zoomOutSize = targetZoomSize + 35f; // How far to zoom out
-            float duration = 2f; // How long to zoom out
+            Vector3 centerPosition = new Vector3((leftxBound + rightxBound) / 2f+3f, 0f, offset.z);
+            float zoomOutSize = targetZoomSize + 35f; 
+            float duration = 2f; 
             float elapsed = 0f;
             Vector3 startPos = transform.position;
             float startSize = _cam.orthographicSize;
-
-            // Zoom out & move to center
             while (elapsed < duration)
             {
                 transform.position = Vector3.Lerp(startPos, centerPosition, elapsed / duration);
@@ -142,11 +137,7 @@ namespace _WHY.Scripts.Utilities
 
             transform.position = centerPosition;
             _cam.orthographicSize = zoomOutSize;
-
-            // Wait a moment
             yield return new WaitForSeconds(8f);
-
-            // Zoom back in and resume following
             elapsed = 0f;
             Vector3 returnPos = target.position + offset;
             float returnSize = targetZoomSize;

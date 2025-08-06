@@ -12,24 +12,18 @@ namespace _WHY.Scripts.Enemies
         [SerializeField] private float moveSpeed = 1f;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
-        private bool _isRight;
-        private Vector3 _lastYCheckPosition;
-        private float _stuckTime;
-        [SerializeField] private float stuckCheckInterval = 0.5f;
-        [SerializeField] private float stuckThreshold = 1f;
-        [SerializeField] private float stuckMoveBoost = 10f;
         private bool _isFrozen = false;
         private Rigidbody2D _rb;
         [SerializeField] private float bigEnemySize = 9f;
         [SerializeField] private float bigEnemySpeed = 5f;
+        [SerializeField] private int pointsForKill = 70;
+
         
         private void Awake()
         {
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _isRight = Random.value > 0.5f;
-            stuckMoveBoost = _isRight? 10f : -10f;
             _rb = GetComponent<Rigidbody2D>();
         }
 
@@ -65,35 +59,51 @@ namespace _WHY.Scripts.Enemies
             _animator.speed = 1f;
         }
 
+
+
         protected override void Move()
         {
-            if (_isFrozen) return;
-            Vector3 direction = (_playerTransform.position - transform.position).normalized;
-            _animator.SetBool(MovingRight, direction.x > 0f);
-            _spriteRenderer.flipX = direction.x < 0f;
-            /*if (Mathf.Abs(transform.position.y - _lastYCheckPosition.y) < stuckThreshold)
+            if (_isFrozen || _playerTransform == null) return;
+
+            // === WEAK PLAYER ATTRACTION (WEIGHTED) ===
+            Vector3 toPlayer = _playerTransform.position - transform.position;
+            Vector3 playerDir = toPlayer.normalized;
+            float playerAttractionWeight = 0.5f;
+
+            // === SMOOTH RANDOM MOVEMENT VIA PERLIN NOISE ===
+            float timeOffset = Time.time * 0.3f + GetInstanceID(); // Unique per enemy
+            float noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
+            float noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
+            Vector3 randomDir = new Vector3(noiseX, noiseY, 0f).normalized;
+
+            // === COMBINE RANDOMNESS AND PLAYER ATTRACTION ===
+            Vector3 finalDir = (randomDir * (1f - playerAttractionWeight) + playerDir * playerAttractionWeight).normalized;
+
+            float detectionDistance = 4f;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, finalDir, detectionDistance, LayerMask.GetMask("Ground"));
+
+            if (hit.collider != null)
             {
-                _stuckTime += Time.deltaTime;
-                if (_stuckTime > stuckCheckInterval)
-                {
-                    direction.x += stuckMoveBoost * Mathf.Sign(direction.x);
-                    _stuckTime = 0f; 
-                }
+                // Calculate avoidance direction (perpendicular to the surface)
+                Vector2 obstacleNormal = hit.normal;
+                finalDir = (finalDir + (Vector3)obstacleNormal * 4f).normalized;
             }
-            else
-            {
-                _stuckTime = 0f;
-            }*/
-            _lastYCheckPosition = transform.position;
-            transform.position += direction * moveSpeed * Time.deltaTime;           
+
+            // === MOVE ENEMY ===
+            transform.position += finalDir * moveSpeed * Time.deltaTime;
+
+            // === FLIP SPRITE BASED ON MOVEMENT ===
+            _animator.SetBool(MovingRight, finalDir.x > 0f);
+            _spriteRenderer.flipX = finalDir.x < 0f;
         }
 
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Weapon"))
             {
                 SoundManager.Instance.PlaySound("Explosion", transform);
+                GameEvents.AddPoints?.Invoke(pointsForKill);
                 GameEvents.EnemyDestroyed?.Invoke(transform.position);
                 ReturnToPool();
             }

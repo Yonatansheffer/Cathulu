@@ -89,14 +89,15 @@ namespace MainPlayer
             _currentPlayerHealth += amount;
             if (_currentPlayerHealth <= 0)
             {
-                SoundManager.Instance.PlaySound("Lost Life", transform);
                 GameEvents.PlayerLivesChanged?.Invoke(_currentPlayerHealth);
                 GameEvents.GameOver?.Invoke();
+                SoundManager.Instance.PlaySound("Lost Life", transform);
                 return;
             }
             if(amount <0 && _currentPlayerHealth > 0)
             {
                 StartCoroutine(BlinkPlayer());
+                GameEvents.ShakeCamera?.Invoke();
                 SoundManager.Instance.PlaySound("Shield Hit", transform);
             }
             if (_currentPlayerHealth >= initialPlayerHealth)

@@ -140,11 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  stuckCheckInterval: 0.5
-  stuckThreshold: 10
-  stuckMoveBoost: 10
   bigEnemySize: 3
-  bigEnemySpeed: 4
+  bigEnemySpeed: 5
+  pointsForKill: 120
 --- !u!50 &7392207242760527386
 Rigidbody2D:
   serializedVersion: 5

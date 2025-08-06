@@ -17,7 +17,6 @@ namespace GameHandlers
         public static Action GameOver;
         public static Action<GameState, int> GameOverUI;
 
-
         // UI Events
         public static Action ReadyStage;
         public static Action<int> UpdateScoreUI;
@@ -35,15 +34,13 @@ namespace GameHandlers
         public static Action ToSpawnEnemy;
         public static Action EnemySpawned;
         public static Action ShootBallBullet;
-
         public static Action SpawnAllWalkingEnemies;
-
-
         public static Action<bool> ShieldUpdated;
         public static Action<int> PlayerLivesChanged;
         public static Action BossDestroyed;
         public static Action<int> BossLivesChanged;
         public static Action<int> AddPoints;
+        public static Action ShakeCamera;
     
         // Cheat Codes Events
         public static Action<int> AddLifeToPlayer;

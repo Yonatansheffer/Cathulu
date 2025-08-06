@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 5
-  pointsValue: 300
+  pointsValue: 150
 --- !u!95 &1876323008386049408
 Animator:
   serializedVersion: 7

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using GameHandlers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Weapons;
 using Random = UnityEngine.Random;
 
@@ -21,9 +19,14 @@ namespace Collectibles
         [SerializeField] private float yOffset = -0.5f; // Offset for the collectible spawn position
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
+        private int initialPlayerHealth = 3;
+        private int currentPlayerHealth;
+        
         private void Awake()
         {
+            currentPlayerHealth = initialPlayerHealth;
             _activeCollectibles = new List<Collectible>();
+            _activeWeapon = settings.defaultWeapon;
         }
 
         private void Start()
@@ -36,7 +39,8 @@ namespace Collectibles
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.WeaponCollected += UpdateWeapon;
             GameEvents.BeginGameLoop += DestroyAllCollectibles;
-            //GameEvents.FreezeLevel += StopCollectiblesMovement;
+            GameEvents.GameOver += StopCollectiblesMovement;
+            GameEvents.PlayerLivesChanged += UpdatePlayerHealth;
             GameEvents.EnemyDestroyed += DropCollectible;
             GameEvents.RestartLevel += StartDropCoroutine;
             GameEvents.ReadyStage += DestroyAllCollectibles;
@@ -47,10 +51,16 @@ namespace Collectibles
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.WeaponCollected -= UpdateWeapon;
             GameEvents.BeginGameLoop -= DestroyAllCollectibles;
-            //GameEvents.FreezeLevel -= StopCollectiblesMovement;
+            GameEvents.GameOver -= StopCollectiblesMovement;
+            GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
             GameEvents.EnemyDestroyed -= DropCollectible;
             GameEvents.RestartLevel -= StartDropCoroutine;
             GameEvents.ReadyStage -= DestroyAllCollectibles;
+        }
+        
+        private void UpdatePlayerHealth(int health)
+        {
+            currentPlayerHealth = health;
         }
         
         private void UpdateWeapon(WeaponType weaponType)
@@ -72,7 +82,7 @@ namespace Collectibles
             if (position == Vector3.zero)
             {
                 position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position
-                           + new Vector3(0f, yOffset, 0f);
+                           + new Vector3(Random.Range(-3f, 3f), yOffset, 0f);
             }
             if (Random.Range(0, 100) > powerUptoPointPercentRatio)
             {
@@ -86,24 +96,32 @@ namespace Collectibles
 
         private void DropPowerUpCollectible(Vector3 position)
         {
-            var selectedPowerUp = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
-            var weaponCollectible = selectedPowerUp.GetComponent<WeaponCollectible>();
-            if (weaponCollectible != null)
-            {
-                if(weaponCollectible.GetWeaponType() == _activeWeapon)
-                {
-                    return;
-                }
-            }
-            var shieldCollectible = selectedPowerUp.GetComponent<ShieldCollectible>();
-            if (shieldCollectible != null && _isShieldActive)
-            {
-                return; 
-            }
-            Vector3 spawnPosition = position;
-            var powerUpCollectibleObject = Instantiate(selectedPowerUp, spawnPosition, Quaternion.identity);
-            _activeCollectibles.Add(powerUpCollectibleObject.GetComponent<Collectible>());
+            var selected = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
+
+            if (IsRedundantCollectible(selected))
+                return;
+
+            var spawned = Instantiate(selected, position, Quaternion.identity);
+            _activeCollectibles.Add(spawned.GetComponent<Collectible>());
         }
+
+        private bool IsRedundantCollectible(GameObject collectible)
+        {
+            if (collectible.TryGetComponent(out WeaponCollectible weapon))
+            {
+                return weapon.GetWeaponType() == _activeWeapon;
+            }
+            if (collectible.TryGetComponent(out ShieldCollectible shield))
+            {
+                return _isShieldActive;
+            }
+            if (collectible.TryGetComponent(out LifeCollectible life))
+            {
+                return currentPlayerHealth >= initialPlayerHealth;
+            }
+            return false;
+        }
+
         
         private void StartDropCoroutine()
         {
@@ -114,7 +132,7 @@ namespace Collectibles
         {
             while (true)
             {
-                yield return new WaitForSeconds(dropInterval); // Wait for the specified interval
+                yield return new WaitForSeconds(dropInterval); 
                 DropCollectible(Vector3.zero);
             }
         }

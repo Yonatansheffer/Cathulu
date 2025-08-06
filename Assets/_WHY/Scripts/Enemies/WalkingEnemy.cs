@@ -19,6 +19,7 @@ namespace _WHY.Scripts.Enemies
         private Vector3 _targetPosition;
         private bool _movingToTarget;
         [SerializeField] private float fadeInDuration = 1f;
+        [SerializeField] private int pointsForKill = 70;
         private float _fadeTimer;
         private bool _isFrozen = false;
         
@@ -127,6 +128,7 @@ namespace _WHY.Scripts.Enemies
             {
                 ReturnToPool();
                 SoundManager.Instance.PlaySound("Explosion", transform);
+                GameEvents.AddPoints?.Invoke(pointsForKill);
             }
             if (other.CompareTag("Boundary"))
             {

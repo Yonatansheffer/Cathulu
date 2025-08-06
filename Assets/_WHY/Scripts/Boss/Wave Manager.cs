@@ -17,22 +17,24 @@ namespace _WHY.Scripts.Boss
             public float minSpawnInterval = 1f;
             public float durationDecreaseRate = 1f;
             public float intervalDecreaseRate = 0.2f;
-
             [HideInInspector] public float currentSpawnDuration;
             [HideInInspector] public float currentSpawnInterval;
         }
 
         [SerializeField] private WaveConfig waveConfig = new WaveConfig();
-        private bool bossIsShooting = false;
+        private bool bossIsShooting;
         private bool _isFrozen = false;
+
+        private Coroutine _waveRoutine;
 
         private void Start()
         {
+            bossIsShooting = false;
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
             waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
-            StartCoroutine(CombinedWaveRoutine());
+            _waveRoutine = StartCoroutine(CombinedWaveRoutine());
         }
-
+        
         private void OnEnable()
         {
             GameEvents.FreezeLevel += OnFreeze;
@@ -43,6 +45,11 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
+            if (_waveRoutine != null)
+            {
+                StopCoroutine(_waveRoutine);
+                _waveRoutine = null;
+            }
         }
 
         private IEnumerator CombinedWaveRoutine()
@@ -73,7 +80,8 @@ namespace _WHY.Scripts.Boss
                 bossIsShooting = true;
                 GameEvents.BossShoots?.Invoke();
 
-                yield return new WaitUntil(() => !bossIsShooting || _isFrozen);
+                yield return new WaitUntil(() => 
+                    this != null && isActiveAndEnabled && (!bossIsShooting || _isFrozen));
                 yield return new WaitUntil(() => !_isFrozen);
 
                 waveConfig.currentSpawnDuration = Mathf.Max(

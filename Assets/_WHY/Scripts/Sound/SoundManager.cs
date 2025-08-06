@@ -26,12 +26,14 @@ namespace Sound
         private void OnEnable()
         {
             GameEvents.BeginGameLoop += PlayOpeningMusic;
+            GameEvents.GameOver += ReturnAllSoundWrappersToPool;
             GameEvents.StopMusicCheat += ReturnAllSoundWrappersToPool;
         }
     
         private void OnDisable()
         {   
             GameEvents.BeginGameLoop -= PlayOpeningMusic;
+            GameEvents.GameOver -= ReturnAllSoundWrappersToPool;
             GameEvents.StopMusicCheat -= ReturnAllSoundWrappersToPool;
         }
 
