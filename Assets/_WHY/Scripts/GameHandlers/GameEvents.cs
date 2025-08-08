@@ -1,5 +1,4 @@
 using System;
-using _WHY.Scripts.Enemies;
 using UnityEngine;
 using Weapons;
 
@@ -19,16 +18,12 @@ namespace GameHandlers
         public static Action<GameState, int> GameOverUI;
 
         // UI Events
-        public static Action ReadyStage;
         public static Action<int> UpdateScoreUI;
         public static Action<int> UpdateTimeUI;
-        public static Action ResetWeaponUI;
-        public static Action HideGameUI;
     
     
         // GamePlay Events
         public static Action<Transform> Shoot;
-        public static Action<Enemy,int> EnemyHit;
         public static Action<Vector3> EnemyDestroyed;
         public static Action<WeaponType> WeaponCollected;
         public static Action BossShoots;
@@ -42,11 +37,9 @@ namespace GameHandlers
         public static Action<int> BossLivesChanged;
         public static Action<int> AddPoints;
         public static Action ShakeCamera;
+        public static Action StopMusic;
     
         // Cheat Codes Events
         public static Action<int> AddLifeToPlayer;
-        public static Action StopMusicCheat;
-        public static Action DefaultWeapon;
-        public static Action KillAllEnemies;
     }
 }

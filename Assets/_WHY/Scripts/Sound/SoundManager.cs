@@ -11,28 +11,21 @@ namespace Sound
     {
         private readonly List<AudioSourceWrapper> _activeSounds = new();
         [SerializeField] private AudioSettings settings;
-        private static AudioSourceWrapper _openingMusic;
-
         private void Awake()
         {
             DontDestroyOnLoad(this);
         }
-
-        private void Start()
-        {
-            PlayOpeningMusic();
-        }
-
+        
         private void OnEnable()
         {
-            GameEvents.BeginGameLoop += PlayOpeningMusic;
-            GameEvents.StopMusicCheat += ReturnAllSoundWrappersToPool;
+            GameEvents.StopMusic += ReturnAllSoundWrappersToPool;
+            GameEvents.FreezeLevel += ReturnAllSoundWrappersToPool;
         }
     
         private void OnDisable()
         {   
-            GameEvents.BeginGameLoop -= PlayOpeningMusic;
-            GameEvents.StopMusicCheat -= ReturnAllSoundWrappersToPool;
+            GameEvents.StopMusic -= ReturnAllSoundWrappersToPool;
+            GameEvents.FreezeLevel -= ReturnAllSoundWrappersToPool;
         }
 
         public void PlaySound(string audioName, Transform spawnTransform)
@@ -45,16 +38,33 @@ namespace Sound
             soundObject.transform.position = spawnTransform.position;
             soundObject.Play(config.clip, config.volume,config.loop);
         }
-        
-        private void PlayOpeningMusic()
+
+        private AudioConfig FindAudioConfig(string audioName)
         {
-            var config = FindAudioConfig("Opening");
-            if (config == null)
-                return;
-            _openingMusic = SoundPool.Instance.Get();
-            _activeSounds.Add(_openingMusic);
-            _openingMusic.Play(config.clip, config.volume,config.loop);
+            return settings.audioConfigs.FirstOrDefault(config => config.name == audioName);
         }
+
+        private void ReturnAllSoundWrappersToPool()
+        {
+            foreach (var sound in _activeSounds)
+            {
+                if (sound != null)
+                    sound.Reset();
+                SoundPool.Instance.Return(sound);
+
+            }
+            _activeSounds.Clear();
+        }
+        
+        /*private void PlayOpeningMusic()
+    {
+        var config = FindAudioConfig("Opening");
+        if (config == null)
+            return;
+        _openingMusic = SoundPool.Instance.Get();
+        _activeSounds.Add(_openingMusic);
+        _openingMusic.Play(config.clip, config.volume,config.loop);
+    }*/
         
         /*public void PlayBackgroundMusic()
         {
@@ -66,7 +76,7 @@ namespace Sound
             _backgroundMusic = SoundPool.Instance.Get();
             _backgroundMusic.Play(config.clip, config.volume,config.loop);
         }
-        
+
         private static void StopBackgroundMusic()
         {
             print("cddcd");
@@ -75,24 +85,6 @@ namespace Sound
             _backgroundMusic.Reset();
         }
         */
-
-        private AudioConfig FindAudioConfig(string audioName)
-        {
-            return settings.audioConfigs.FirstOrDefault(config => config.name == audioName);
-        }
-        
-        public void ReturnAllSoundWrappersToPool()
-        {
-            foreach (var sound in _activeSounds)
-            {
-                if (sound != null)
-                    sound.Reset();
-                SoundPool.Instance.Return(sound);
-
-            }
-            _activeSounds.Clear();
-            _openingMusic = null;
-        }
 
     }
 }

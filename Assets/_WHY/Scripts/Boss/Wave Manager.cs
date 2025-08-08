@@ -22,14 +22,11 @@ namespace _WHY.Scripts.Boss
         }
 
         [SerializeField] private WaveConfig waveConfig = new WaveConfig();
-        private bool bossIsShooting;
         private bool _isFrozen = false;
-
         private Coroutine _waveRoutine;
 
         private void Start()
         {
-            bossIsShooting = false;
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
             waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
             _waveRoutine = StartCoroutine(CombinedWaveRoutine());
@@ -77,11 +74,10 @@ namespace _WHY.Scripts.Boss
 
                 yield return new WaitUntil(() => !_isFrozen);
 
-                bossIsShooting = true;
                 GameEvents.BossShoots?.Invoke();
 
-                yield return new WaitUntil(() => 
-                    this != null && isActiveAndEnabled && (!bossIsShooting || _isFrozen));
+                yield return new WaitUntil(() => BossShooting.GetBossState() == BossShooting.BossState.Idle);
+                
                 yield return new WaitUntil(() => !_isFrozen);
 
                 waveConfig.currentSpawnDuration = Mathf.Max(
@@ -104,11 +100,6 @@ namespace _WHY.Scripts.Boss
         private void OnUnFreeze()
         {
             _isFrozen = false;
-        }
-
-        public void BossFinishedShooting()
-        {
-            bossIsShooting = false;
         }
     }
 }

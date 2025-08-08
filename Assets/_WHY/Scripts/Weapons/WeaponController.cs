@@ -30,7 +30,6 @@ namespace Weapons
         private void OnEnable()
         {
             GameEvents.Shoot += Shoot;
-            GameEvents.DefaultWeapon += ResetWeapons;
             GameEvents.RestartLevel += ResetWeapons;
             GameEvents.WeaponCollected += SwitchWeapon;
             GameEvents.GameOver += StopAllProjectiles;
@@ -38,7 +37,6 @@ namespace Weapons
         private void OnDisable()
         {
             GameEvents.Shoot -= Shoot;
-            GameEvents.DefaultWeapon -= ResetWeapons;
             GameEvents.RestartLevel -= ResetWeapons;
             GameEvents.WeaponCollected -= SwitchWeapon;
             GameEvents.GameOver -= StopAllProjectiles;

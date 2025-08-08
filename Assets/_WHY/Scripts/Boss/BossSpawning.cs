@@ -1,4 +1,5 @@
-﻿using _WHY.Scripts.Enemies;
+﻿using System.Collections;
+using _WHY.Scripts.Enemies;
 using GameHandlers;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace _WHY.Scripts.Boss
         [Header("Enemy Spawning")]
         [SerializeField] private float minSpawnForce = 4f;
         [SerializeField] private float maxSpawnForce = 40f;
-        [SerializeField] private Vector3 spawnOffset = new Vector3(0.8f, 0f, 0f);
+        [SerializeField] private Vector3 spawnOffset = new (0.8f, 0f, 0f);
         [SerializeField] private float chanceOfBigEnemy = 9f;
         [SerializeField] private Transform[] enemyTargetPositions;
         
@@ -17,20 +18,29 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.SpawnAllWalkingEnemies += SpawnAllWalkingEnemies;
             GameEvents.BossLivesChanged += BossHealthWaves;
+            GameEvents.ToSpawnEnemy += EnemySpawnRoutine;
         }
 
         private void OnDisable()
         {
             GameEvents.SpawnAllWalkingEnemies -= SpawnAllWalkingEnemies;
             GameEvents.BossLivesChanged -= BossHealthWaves;
+            GameEvents.ToSpawnEnemy -= EnemySpawnRoutine;
         }
-        public void EnemySpawnRoutine()
+        
+        private void EnemySpawnRoutine()
         {
+            StartCoroutine(EnemySpawn());
+        }
+        
+        private IEnumerator EnemySpawn()
+        {
+            yield return new WaitForSeconds(0.5f); 
             GameEvents.ShootBallBullet?.Invoke();
             if (Random.value > 0.5f)
             {
                 SpawnFlyingEnemies(1);
-                return;
+                yield break;
             }
             var targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
             SpawnWalkingEnemy(targetTransform);

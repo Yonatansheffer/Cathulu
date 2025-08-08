@@ -12,7 +12,7 @@ namespace Managers
     public class SceneLoader : MonoBehaviour
     {
         private const string GamePlaySceneName = "GamePlay";
-        private const string EndingSceneName = "EndingScene";
+        private const string EndingSceneName = "Ending Scene";
         private bool _InLevel = true;
 
         private void Awake()
@@ -47,14 +47,13 @@ namespace Managers
         private void LoadGamePlay()
         {
             _InLevel = true;
-            SoundManager.Instance.ReturnAllSoundWrappersToPool();
+            GameEvents.StopMusic?.Invoke();
             SceneManager.LoadScene(GamePlaySceneName);
-            SoundManager.Instance.PlaySound("Background", transform);
         }
 
         private void EndGame()
         {
-            SoundManager.Instance.ReturnAllSoundWrappersToPool();
+            GameEvents.StopMusic?.Invoke();
             StartCoroutine(DelayedGameOver());
         }
 

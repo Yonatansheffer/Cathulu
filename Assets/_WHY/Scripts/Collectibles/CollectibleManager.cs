@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GameHandlers;
+using MainPlayer;
 using UnityEngine;
 using Weapons;
 using Random = UnityEngine.Random;
@@ -19,12 +20,11 @@ namespace Collectibles
         [SerializeField] private float yOffset = -0.5f; // Offset for the collectible spawn position
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
-        private int initialPlayerHealth = 3;
         private int currentPlayerHealth;
         
         private void Awake()
         {
-            currentPlayerHealth = initialPlayerHealth;
+            currentPlayerHealth = PlayerHealth.GetInitialPlayerHealth();
             _activeCollectibles = new List<Collectible>();
             _activeWeapon = settings.defaultWeapon;
         }
@@ -43,7 +43,6 @@ namespace Collectibles
             GameEvents.PlayerLivesChanged += UpdatePlayerHealth;
             GameEvents.EnemyDestroyed += DropCollectible;
             GameEvents.RestartLevel += StartDropCoroutine;
-            GameEvents.ReadyStage += DestroyAllCollectibles;
         }
 
         private void OnDisable()
@@ -55,7 +54,6 @@ namespace Collectibles
             GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
             GameEvents.EnemyDestroyed -= DropCollectible;
             GameEvents.RestartLevel -= StartDropCoroutine;
-            GameEvents.ReadyStage -= DestroyAllCollectibles;
         }
         
         private void UpdatePlayerHealth(int health)
@@ -117,7 +115,7 @@ namespace Collectibles
             }
             if (collectible.TryGetComponent(out LifeCollectible life))
             {
-                return currentPlayerHealth >= initialPlayerHealth;
+                return currentPlayerHealth >= PlayerHealth.GetInitialPlayerHealth();
             }
             return false;
         }

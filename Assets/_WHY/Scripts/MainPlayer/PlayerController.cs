@@ -14,7 +14,6 @@ namespace MainPlayer
         private Rigidbody2D _rb;
         private PlayerInputs _inputActions;
         private Vector2 _moveInput;
-        private bool _isRight; // To determine the direction of the player
         private bool _isDashing; // Flag to know whether dashing
         private float _lastDashTime = -1f; // For dash cooldown
         [SerializeField] private GameObject gun;
@@ -23,11 +22,9 @@ namespace MainPlayer
         [SerializeField] private float groundCheckRadius = 0.2f;
         [SerializeField] private LayerMask groundLayer;
         private bool _isGrounded;
-
-
+        
         private void Awake()
         {
-            _isRight = false;
             _isDashing = false;
             _rb = GetComponent<Rigidbody2D>();
             _inputActions = new PlayerInputs();
@@ -106,7 +103,7 @@ namespace MainPlayer
             {
                 var x = _rb.linearVelocityX;
                 _rb.linearVelocity = new Vector2(_moveInput.x * speed, _rb.linearVelocityY);
-                if (x != 0 && _rb.linearVelocityX != 0)
+                /*if (x != 0 && _rb.linearVelocityX != 0)
                 {
                     if (x >= 0 && _rb.linearVelocityX >= 0)
                     {
@@ -116,7 +113,7 @@ namespace MainPlayer
                     {
                         _isRight = false;
                     }
-                }
+                }*/
             }
         }
     }

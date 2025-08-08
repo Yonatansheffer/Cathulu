@@ -85,11 +85,10 @@ namespace GameHandlers
 
         private void PlayerWin()
         {
-            _timeBonus = Mathf.FloorToInt(_countDownTime) * 30;
+            _timeBonus = Mathf.FloorToInt(_countDownTime) * 10;
             AddPoints(_timeBonus);
             _currentGameState = GameState.PlayerWon;
-            GameEvents.FreezeLevel?.Invoke();
-            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
+            StartCoroutine(HandleGameOverSequence());
         }
 
         private void StopCountDown()

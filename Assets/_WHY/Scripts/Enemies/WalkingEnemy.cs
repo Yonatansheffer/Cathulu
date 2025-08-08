@@ -1,5 +1,4 @@
-﻿using System;
-using GameHandlers;
+﻿using GameHandlers;
 using Sound;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,8 +7,10 @@ namespace _WHY.Scripts.Enemies
 {
     public class WalkingEnemy : Enemy
     {
-        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+        private static readonly int Walk = Animator.StringToHash("Walk");
         [SerializeField] private float moveSpeed = 2f;
+        [SerializeField] private float fadeInDuration = 1f;
+        [SerializeField] private int pointsForKill = 70;
         private Vector2 _moveDirection = Vector2.right;
         private Rigidbody2D _rb;
         private CapsuleCollider2D _collider;
@@ -18,16 +19,16 @@ namespace _WHY.Scripts.Enemies
         private SpriteRenderer _spriteRenderer;
         private Vector3 _targetPosition;
         private bool _movingToTarget;
-        [SerializeField] private float fadeInDuration = 1f;
-        [SerializeField] private int pointsForKill = 70;
         private float _fadeTimer;
         private bool _isFrozen = false;
+        private RigidbodyConstraints2D _originalConstraints;
         
         private void Awake()
         {
             _isMoving = false;
-            _movingToTarget = false;
+            _movingToTarget = true;
             _rb = GetComponent<Rigidbody2D>();
+            _originalConstraints = _rb.constraints;
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>(); 
             _collider = GetComponent<CapsuleCollider2D>();
@@ -47,23 +48,24 @@ namespace _WHY.Scripts.Enemies
         
         private void OnFreeze()
         {
-            _isFrozen = true;
-            _rb.linearVelocity = Vector2.zero;
+            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            /*_isFrozen = true;
+            _rb.linearVelocity = Vector2.zero;*/
             _animator.speed = 0f; 
-
         }
 
         private void OnUnFreeze()
         {
+            _rb.constraints = _originalConstraints;
+            /*
             _isFrozen = false;
+            */
             _animator.speed = 1f;
         }
-
         
         public override void ToTarget(Vector2 targetPosition)
         {
             _targetPosition = targetPosition;
-            _movingToTarget = true;
             _spriteRenderer.color = new Color(1f, 1f, 1f, 0.3f); // semi-transparent
             _fadeTimer = 0f;
         }
@@ -71,7 +73,7 @@ namespace _WHY.Scripts.Enemies
         private new void Update()
         {
             if (_isFrozen) return;
-            UpdateAnimation();
+            _spriteRenderer.flipX = _moveDirection.x > 0f;
             if (_movingToTarget)
             {
                 _fadeTimer += Time.deltaTime;
@@ -84,7 +86,6 @@ namespace _WHY.Scripts.Enemies
                 Move();
             }
         }
-
         
         private void MoveToTarget()
         {
@@ -94,18 +95,12 @@ namespace _WHY.Scripts.Enemies
             _rb.linearVelocity = direction * moveSpeed;
             _spriteRenderer.flipX = direction.x > 0f;
         }
-        
-        private void UpdateAnimation()
-        {
-            _animator.SetFloat(MoveSpeed, _rb.linearVelocity.magnitude);
-            _spriteRenderer.flipX = _moveDirection.x < 0f;
-        }
 
         public override void Reset()
         {
             _isMoving = false;
             _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-            _movingToTarget = false;
+            _movingToTarget = true;
         } 
 
         private void Start()
@@ -116,11 +111,8 @@ namespace _WHY.Scripts.Enemies
         protected override void Move()
         {
             if (_isFrozen) return;
-
             _rb.linearVelocity = _moveDirection * moveSpeed;
-            _spriteRenderer.flipX = _moveDirection.x > 0f;
         }
-
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -136,6 +128,7 @@ namespace _WHY.Scripts.Enemies
             }       
             if (other.CompareTag("Step Center") && _movingToTarget)
             {
+                _rb.constraints |= RigidbodyConstraints2D.FreezePositionX;
                 _movingToTarget = false;
                 _collider.isTrigger = false;
             }
@@ -150,8 +143,10 @@ namespace _WHY.Scripts.Enemies
             if (other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Floor"))
             {
                 _rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+                _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
                 _isMoving = true;
                 _collider.isTrigger = true;
+                _animator.SetTrigger(Walk);
             }
         }
 

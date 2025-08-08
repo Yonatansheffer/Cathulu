@@ -9,17 +9,20 @@ namespace MainPlayer
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField] private int initialPlayerHealth = 10;
+        [SerializeField] private const int InitialPlayerHealth = 3;
         private bool _isShieldActive;
         private SpriteRenderer _spriteRenderer;
         private int _currentPlayerHealth; 
-        private bool _isOnHitCooldown = false;
+        private bool _isOnHitCooldown;
+        
+        public static int GetInitialPlayerHealth() => InitialPlayerHealth;
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _isShieldActive = false;
-            _currentPlayerHealth = initialPlayerHealth; 
+            _isOnHitCooldown = false;
+            _currentPlayerHealth = InitialPlayerHealth; 
         }
         
         private void OnEnable()
@@ -100,9 +103,9 @@ namespace MainPlayer
                 GameEvents.ShakeCamera?.Invoke();
                 SoundManager.Instance.PlaySound("Shield Hit", transform);
             }
-            if (_currentPlayerHealth >= initialPlayerHealth)
+            if (_currentPlayerHealth >= InitialPlayerHealth)
             {
-                _currentPlayerHealth = initialPlayerHealth;
+                _currentPlayerHealth = InitialPlayerHealth;
             }
             GameEvents.PlayerLivesChanged?.Invoke(_currentPlayerHealth);
         }

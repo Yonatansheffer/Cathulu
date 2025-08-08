@@ -14,8 +14,7 @@ namespace GameHandlers
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 print("Restarting gameplay");
-                GameEvents.HideGameUI?.Invoke();
-                GameEvents.StopMusicCheat?.Invoke();
+                GameEvents.StopMusic?.Invoke();
                 GameEvents.FreezeLevel?.Invoke();
                 GameEvents.BeginGameLoop?.Invoke();
             }
