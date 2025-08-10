@@ -78,14 +78,38 @@ namespace _WHY.Scripts.Enemies
             Vector3 finalDir = (randomDir * (1f - playerAttractionWeight) + playerDir * playerAttractionWeight).normalized;
 
             float detectionDistance = 4f;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, finalDir, detectionDistance, LayerMask.GetMask("Ground"));
+            LayerMask groundMask = LayerMask.GetMask("Ground");
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, finalDir, detectionDistance, groundMask);
 
             if (hit.collider != null)
             {
-                // Calculate avoidance direction (perpendicular to the surface)
+                // Try to find a clear side
                 Vector2 obstacleNormal = hit.normal;
-                finalDir = (finalDir + (Vector3)obstacleNormal * 4f).normalized;
+    
+                // Perpendicular directions to the normal
+                Vector2 perp1 = new Vector2(-obstacleNormal.y, obstacleNormal.x); // left
+                Vector2 perp2 = new Vector2(obstacleNormal.y, -obstacleNormal.x); // right
+
+                bool leftClear = !Physics2D.Raycast(transform.position, perp1, 1f, groundMask);
+                bool rightClear = !Physics2D.Raycast(transform.position, perp2, 1f, groundMask);
+
+                Vector2 avoidDir;
+                if (leftClear && !rightClear)
+                    avoidDir = perp1;
+                else if (rightClear && !leftClear)
+                    avoidDir = perp2;
+                else if (leftClear && rightClear)
+                    // Pick the side with more clearance
+                    avoidDir = Physics2D.Raycast(transform.position + (Vector3)perp1 * 1f, perp1, detectionDistance, groundMask)
+                        ? perp2 : perp1;
+                else
+                    avoidDir = obstacleNormal; // No side clear, just back off
+
+                // Blend avoidance direction into current direction for smoothness
+                finalDir = Vector2.Lerp(finalDir, avoidDir, 2f).normalized;
             }
+
             // === MOVE ENEMY ===
             transform.position += finalDir * moveSpeed * Time.deltaTime;
             // === FLIP SPRITE BASED ON MOVEMENT ===

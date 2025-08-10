@@ -28,7 +28,6 @@ namespace _WHY.Scripts.Enemies
             _isMoving = false;
             _movingToTarget = true;
             _rb = GetComponent<Rigidbody2D>();
-            _originalConstraints = _rb.constraints;
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>(); 
             _collider = GetComponent<CapsuleCollider2D>();
@@ -48,18 +47,14 @@ namespace _WHY.Scripts.Enemies
         
         private void OnFreeze()
         {
+            _originalConstraints = _rb.constraints;
             _rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            /*_isFrozen = true;
-            _rb.linearVelocity = Vector2.zero;*/
             _animator.speed = 0f; 
         }
 
         private void OnUnFreeze()
         {
             _rb.constraints = _originalConstraints;
-            /*
-            _isFrozen = false;
-            */
             _animator.speed = 1f;
         }
         
@@ -98,10 +93,36 @@ namespace _WHY.Scripts.Enemies
 
         public override void Reset()
         {
+            // Stop motion
+            _rb.linearVelocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+
+            // Clear any freezes that could have been set during gameplay
+            _isFrozen = false;
+            _animator.speed = 1f;
+
+            // Restore constraints to a neutral state (no position freeze)
+            _rb.constraints = RigidbodyConstraints2D.None;
+
+            // Logic flags: start by moving to target, not horizontal roaming yet
             _isMoving = false;
-            _rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
             _movingToTarget = true;
-        } 
+
+            // Collider should be trigger while flying to target (so it can pass until Step Center)
+            if (_collider != null) _collider.isTrigger = true;
+
+            // Visuals: start semi-transparent and fade in again
+            _fadeTimer = 0f;
+            _spriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
+
+            // Randomize initial horizontal direction for when it starts walking
+            _moveDirection = Random.value < 0.5f ? Vector2.left : Vector2.right;
+            _spriteRenderer.flipX = _moveDirection.x > 0f;
+
+            // Make sure animator is not stuck on a previous trigger/state
+            _animator.ResetTrigger(Walk);
+        }
+
 
         private void Start()
         {

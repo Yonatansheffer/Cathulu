@@ -27,6 +27,7 @@ namespace _WHY.Scripts.Boss
 
         private void Start()
         {
+            print("WaveManager started");
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
             waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
             _waveRoutine = StartCoroutine(CombinedWaveRoutine());

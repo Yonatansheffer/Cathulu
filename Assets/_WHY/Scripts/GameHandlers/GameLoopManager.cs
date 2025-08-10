@@ -8,18 +8,23 @@ namespace GameHandlers
     {
         Playing,
         Defeated,
+        InFreeze,
         TimeOver,
         PlayerWon
     }
     
     public class GameLoopManager : MonoBehaviour
     {
-        [SerializeField] private float initialCountDownTime = 1000f; // Initial countdown time in seconds
+        [SerializeField] private float initialCountDownTime = 200f; // Initial countdown time in seconds
         private float _countDownTime; // Stores the current time left
         private int _currentScore; // Stores the current points
         private int _timeBonus; // time Bonus to be added to the score at the end of the stage
         private bool _isCountingDown; // Flag to know if the countdown is active
         private GameState _currentGameState; // Stores the current game state
+        [SerializeField] private const float FreezeDuration = 10f;
+        
+        public static float GetFreezeDuration() => FreezeDuration;
+
         
         private void Start()
         {
@@ -29,21 +34,23 @@ namespace GameHandlers
         
         private void OnEnable()
         {
-            GameEvents.AddTime += AddTime;  
-            GameEvents.FreezeLevel += StopCountDown;
+            GameEvents.AddTime += AddTime;
+            GameEvents.FreezeCollected += OnFreeze;
             GameEvents.RestartLevel += OnLevelStart;
-            GameEvents.BossDestroyed += PlayerWin;
-            GameEvents.GameOver += OnGameOver;
+            GameEvents.BossDestroyed += UpdatePlayerWin;
+            GameEvents.BossEndedDeath += PlayerWon;
+            GameEvents.PlayerDefeated += UpdateDefeatedGameState;
             GameEvents.AddPoints += AddPoints;
         }
     
         private void OnDisable()
         {
             GameEvents.AddTime -= AddTime;
-            GameEvents.FreezeLevel -= StopCountDown;
+            GameEvents.FreezeCollected -= OnFreeze;
             GameEvents.RestartLevel -= OnLevelStart;
-            GameEvents.BossDestroyed -= PlayerWin;
-            GameEvents.GameOver -= OnGameOver;
+            GameEvents.BossDestroyed -= UpdatePlayerWin;
+            GameEvents.BossEndedDeath -= PlayerWon;
+            GameEvents.PlayerDefeated -= UpdateDefeatedGameState;
             GameEvents.AddPoints -= AddPoints;
         }
         
@@ -72,7 +79,7 @@ namespace GameHandlers
         
         private void ResetCountDown()
         {
-            StopCountDown();
+            _isCountingDown = false;
             _countDownTime = initialCountDownTime;
             _isCountingDown = true;
         }
@@ -83,18 +90,37 @@ namespace GameHandlers
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);
         }
 
-        private void PlayerWin()
+        private void UpdatePlayerWin()
         {
+            GameEvents.FreezeLevel?.Invoke();
             _timeBonus = Mathf.FloorToInt(_countDownTime) * 10;
             AddPoints(_timeBonus);
             _currentGameState = GameState.PlayerWon;
-            StartCoroutine(HandleGameOverSequence());
         }
 
-        private void StopCountDown()
+        private void OnFreeze()
+        {
+            if (_currentGameState == GameState.InFreeze)
+            {
+                print("retin");
+                return;
+            }
+            _currentGameState = GameState.InFreeze;
+            print("in");
+            StartCoroutine(FreezeCoroutine());
+        }
+        
+        private IEnumerator FreezeCoroutine()
         {
             _isCountingDown = false;
+            GameEvents.FreezeLevel?.Invoke();
+            yield return new WaitForSeconds(FreezeDuration);
+            print("rddddetin");
+            GameEvents.UnFreezeLevel?.Invoke();
+            _isCountingDown = true;
+            _currentGameState = GameState.Playing;
         }
+
         
         private void AddTime(float timeToAdd)
         {
@@ -113,25 +139,32 @@ namespace GameHandlers
             else
             {
                 _currentGameState = GameState.TimeOver;
-                StartCoroutine(HandleGameOverSequence());
+                GameEvents.FreezeLevel?.Invoke();
+                StartCoroutine(EndScene());
             }
         }
     
-        private void OnGameOver()
+        private void UpdateDefeatedGameState()
         {
             _currentGameState = GameState.Defeated;
-            StartCoroutine(HandleGameOverSequence());
-        }
-
-        private IEnumerator HandleGameOverSequence()
-        {
             GameEvents.FreezeLevel?.Invoke();
-            yield return new WaitForSeconds(2f); 
-            GameEvents.EndScene?.Invoke();
-            yield return new WaitForSeconds(0.3f); 
-            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
+            StartCoroutine(EndScene());
         }
         
+        private void PlayerWon()
+        {
+            _currentGameState = GameState.PlayerWon;
+            StartCoroutine(EndScene());
+        }
+
+        private IEnumerator EndScene()
+        {
+            yield return new WaitForSeconds(2f);
+            GameEvents.EndScene?.Invoke();
+            yield return new WaitForSeconds(0.3f);
+            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
+        }
+
         private void AddTime(int timeToAdd)
         {
             _countDownTime += timeToAdd;

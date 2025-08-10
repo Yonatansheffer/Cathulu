@@ -15,7 +15,6 @@ namespace UI
     {
         [SerializeField] private WeaponSettings settings;
         [SerializeField] private Slider bossHealthBar;
-        [SerializeField] private TextMeshProUGUI bossHealthText;
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
         [SerializeField] private Image freezeImage;
@@ -47,7 +46,6 @@ namespace UI
             GameEvents.WeaponCollected += AddWeaponCollected;
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.FreezeLevel += UpdateFreeze;
-            GameEvents.UnFreezeLevel += UpdateFreeze;
         }
         
         private void OnDisable()
@@ -56,6 +54,7 @@ namespace UI
             GameEvents.BossLivesChanged -= UpdateBossHealth;
             GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
             GameEvents.UpdateTimeUI -= UpdateTimeCount;
+            GameEvents.AddTime -= UpdateTime;
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.FreezeLevel -= UpdateFreeze;
@@ -106,20 +105,16 @@ namespace UI
         {
             if (gameObject.activeInHierarchy)
                 StartCoroutine(HandlePowerUpDisplay(freezeImage,
-                    FreezeLevelCollectible.GetFreezeDuration()-blinkDuration, blinkDuration));
+                    GameLoopManager.GetFreezeDuration()-blinkDuration, blinkDuration));
         }
         
-
         private void UpdateTime(float dummy)
         {
-            /*// Instantiate under the Canvas so it appears in UI
             var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
 
-            // Optional: scale down if too big for UI
             particles.transform.localScale = Vector3.one * 0.5f;
 
-            // Destroy after short time
-            Destroy(particles, 0.8f);*/
+            Destroy(particles, 0.8f);
 
             if (gameObject.activeInHierarchy)
                 StartCoroutine(HandlePowerUpDisplay(timeImage,
@@ -130,7 +125,6 @@ namespace UI
         private void UpdateBossHealth(int amount)
         {
             bossHealthBar.value = amount;
-            bossHealthText.text = amount.ToString();
         }
         
         private void UpdatePlayerHealth(int amount)
@@ -145,9 +139,6 @@ namespace UI
         
         private void UpdateScore(int points)
         {
-            /*var particles = 
-                Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity);
-            Destroy(particles, 0.5f);*/
             pointsText.text = points.ToString();
         }
         

@@ -48,6 +48,7 @@ namespace Managers
         {
             _InLevel = true;
             GameEvents.StopMusic?.Invoke();
+            GameEvents.RestartLevel?.Invoke();
             SceneManager.LoadScene(GamePlaySceneName);
         }
 

@@ -6,7 +6,7 @@ namespace _WHY.Scripts.Boss
 {
     public class BossShooting : WHYBaseMono
     {
-        public enum BossState { Idle, RotatingIn, Shooting, RotatingBack }
+        public enum BossState { Idle, RotatingIn, Shooting, RotatingBack, Death }
 
         [Header("Shooting")]
         [SerializeField] private float rotationSpeed = 30f;
@@ -27,6 +27,7 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.BossShoots += StartShooting;
             GameEvents.ShootBallBullet += ShootBallBullet;
+            GameEvents.BossDestroyed += UpdateDestroyedState;
             GameEvents.FreezeLevel += () => _isFrozen = true;
             GameEvents.UnFreezeLevel += () => _isFrozen = false;
         }
@@ -36,13 +37,19 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots -= StartShooting;
             GameEvents.ShootBallBullet -= ShootBallBullet;
             GameEvents.FreezeLevel -= () => _isFrozen = true;
+            GameEvents.BossDestroyed -= UpdateDestroyedState;
             GameEvents.UnFreezeLevel -= () => _isFrozen = false;
+        }
+        
+        private void UpdateDestroyedState()
+        {
+            _currentState = BossState.Death;
+            _isFrozen = true;
         }
 
         private void Update()
         {
             if (_isFrozen) return;
-
             switch (_currentState)
             {
                 case BossState.RotatingIn:

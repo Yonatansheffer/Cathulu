@@ -17,7 +17,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI losePressAgainText;
         [SerializeField] private TextMeshProUGUI scoreText;
         
-        private void Start()
+        private void OnEnable()
         {
             GameEvents.GameOverUI += HandleGameOverScreen;
         }

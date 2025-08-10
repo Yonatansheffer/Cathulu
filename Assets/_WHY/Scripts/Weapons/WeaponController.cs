@@ -32,14 +32,14 @@ namespace Weapons
             GameEvents.Shoot += Shoot;
             GameEvents.RestartLevel += ResetWeapons;
             GameEvents.WeaponCollected += SwitchWeapon;
-            GameEvents.GameOver += StopAllProjectiles;
+            GameEvents.PlayerDefeated += StopAllProjectiles;
         }
         private void OnDisable()
         {
             GameEvents.Shoot -= Shoot;
             GameEvents.RestartLevel -= ResetWeapons;
             GameEvents.WeaponCollected -= SwitchWeapon;
-            GameEvents.GameOver -= StopAllProjectiles;
+            GameEvents.PlayerDefeated -= StopAllProjectiles;
         }
         
         private void ResetWeapons()

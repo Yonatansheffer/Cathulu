@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using GameHandlers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Utilities
 {
     public class CameraFollow : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        [SerializeField] private Transform playerTarget;
+        [SerializeField] private Transform bossTarget;
         [SerializeField] private Vector3 offset = new Vector3(0f, 0f, -10f);
         [SerializeField] private float smoothSpeed = 5f;
         [SerializeField] private float rightxBound;
@@ -31,13 +33,61 @@ namespace _WHY.Scripts.Utilities
         {
             GameEvents.ShakeCamera += CameraShake;
             GameEvents.BossShoots += ZoomOutToCenter;
+            GameEvents.BossDestroyed += BossFocus;
         }
 
         private void OnDisable()
         {
             GameEvents.ShakeCamera -= CameraShake;
             GameEvents.BossShoots -= ZoomOutToCenter;
+            GameEvents.BossDestroyed -= BossFocus;
         }
+        
+        private Coroutine _focusRoutine;
+
+        private void BossFocus()
+        {
+            if (bossTarget == null || _cam == null) return;
+
+            if (_focusRoutine != null) StopCoroutine(_focusRoutine);
+            _focusRoutine = StartCoroutine(FocusOnBossSequence());
+        }
+
+        private IEnumerator FocusOnBossSequence()
+        {
+            _isZoomingOut = true; // stop player follow
+
+            float inDuration = 1.25f;
+
+            // Target position for boss focus
+            Vector3 desired = bossTarget.position + offset;
+            float x = Mathf.Clamp(desired.x, leftxBound, rightxBound);
+            float y = Mathf.Clamp(desired.y, yLowerBound, yUpperBound);
+            Vector3 bossPos = new Vector3(x, y, desired.z);
+
+            float startSize = _cam.orthographicSize;
+            float bossZoom = Mathf.Max(6f, targetZoomSize - 6f); // zoom closer to boss
+            Vector3 startPos = transform.position;
+
+            float t = 0f;
+            while (t < inDuration)
+            {
+                float u = t / inDuration;
+                float e = (u < 0.5f) ? 4f * u * u * u : 1f - Mathf.Pow(-2f * u + 2f, 3f) / 2f;
+                Vector3 smoothPos = Vector3.Lerp(startPos, bossPos, e);
+                _cam.orthographicSize = Mathf.Lerp(startSize, bossZoom, e);
+                float shakeMag = Mathf.Lerp(0.5f, 0f, u); // shake fades out over time
+                smoothPos.x += Random.Range(-shakeMag, shakeMag);
+                smoothPos.y += Random.Range(-shakeMag, shakeMag);
+                transform.position = smoothPos;
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = bossPos;
+            _cam.orthographicSize = bossZoom;
+        }
+
 
         private void Start()
         {
@@ -55,7 +105,7 @@ namespace _WHY.Scripts.Utilities
             float duration = 8f;
             float elapsed = 0f;
             Vector3 startPos = transform.position;
-            Vector3 endPos = target.position + offset;
+            Vector3 endPos = playerTarget.position + offset;
             float startSize = _cam.orthographicSize;
             float endSize = targetZoomSize;
             while (elapsed < duration)
@@ -76,9 +126,9 @@ namespace _WHY.Scripts.Utilities
 
         private void LateUpdate()
         {
-            if (target == null || _cam == null || _isZoomingOut || _isStartingZoomIn) return;
+            if (playerTarget == null || _cam == null || _isZoomingOut || _isStartingZoomIn) return;
 
-            Vector3 desiredPosition = target.position + offset;
+            Vector3 desiredPosition = playerTarget.position + offset;
             float clampedX = Mathf.Clamp(desiredPosition.x, leftxBound, rightxBound);
             float clampedY = Mathf.Clamp(desiredPosition.y, yLowerBound, yUpperBound);
             Vector3 clampedPosition = new Vector3(clampedX, clampedY, desiredPosition.z);
@@ -139,7 +189,7 @@ namespace _WHY.Scripts.Utilities
             _cam.orthographicSize = zoomOutSize;
             yield return new WaitForSeconds(8f);
             elapsed = 0f;
-            Vector3 returnPos = target.position + offset;
+            Vector3 returnPos = playerTarget.position + offset;
             float returnSize = targetZoomSize;
             startPos = transform.position;
             startSize = _cam.orthographicSize;

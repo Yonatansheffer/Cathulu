@@ -32,7 +32,7 @@ namespace MainPlayer
             GameEvents.ReadyStage += ShowPlayer;
             GameEvents.FreezeStage += FreezeAnimation;*/
             //GameEvents.PlayerHit += UpdateHitAnimation;
-            GameEvents.GameOver += DeathAnimation;
+            GameEvents.PlayerDefeated += DeathAnimation;
         }
 
         private void OnDisable()
@@ -42,7 +42,7 @@ namespace MainPlayer
             GameEvents.ReadyStage -= ShowPlayer;
             GameEvents.FreezeStage -= FreezeAnimation;*/
             //GameEvents.PlayerHit -= UpdateHitAnimation;
-            GameEvents.GameOver -= DeathAnimation;
+            GameEvents.PlayerDefeated -= DeathAnimation;
         }
         
         private void DeathAnimation()

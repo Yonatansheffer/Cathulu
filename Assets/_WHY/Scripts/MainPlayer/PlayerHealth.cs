@@ -93,7 +93,7 @@ namespace MainPlayer
             if (_currentPlayerHealth <= 0)
             {
                 GameEvents.PlayerLivesChanged?.Invoke(_currentPlayerHealth);
-                GameEvents.GameOver?.Invoke();
+                GameEvents.PlayerDefeated?.Invoke();
                 SoundManager.Instance.PlaySound("Lost Life", transform);
                 return;
             }

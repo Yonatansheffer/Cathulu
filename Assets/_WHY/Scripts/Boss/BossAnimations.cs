@@ -8,9 +8,8 @@ namespace _WHY.Scripts.Boss
     {
         private static readonly int Shoot = Animator.StringToHash("shoot");
         private static readonly int Spawn = Animator.StringToHash("spawn");
-        private static readonly int Die = Animator.StringToHash("die");
         private static readonly int Damage = Animator.StringToHash("damage");
-
+        private static readonly int Death = Animator.StringToHash("death");
         private Animator _animator;
 
         private void Awake()
@@ -23,7 +22,7 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
             GameEvents.EnemySpawned += TriggerSpawnAnimation;
-            //GameEvents.BossLivesChanged += TriggerDamageAnimation;
+            GameEvents.BossDestroyed += DeathAnimation;
         }
         
         private void OnDisable()
@@ -31,7 +30,12 @@ namespace _WHY.Scripts.Boss
             GameEvents.BossShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
             GameEvents.EnemySpawned -= TriggerSpawnAnimation;
-            //GameEvents.BossLivesChanged -= TriggerDamageAnimation;
+            GameEvents.BossDestroyed -= DeathAnimation;
+        }
+        
+        private void DeathAnimation()
+        {
+            _animator.SetTrigger(Death);
         }
 
         private void TriggerShootAnimation()

@@ -1,4 +1,6 @@
-﻿using GameHandlers;
+﻿using System.Collections;
+using GameHandlers;
+using Sound;
 using UnityEngine;
 
 namespace _WHY.Scripts.Boss
@@ -15,6 +17,8 @@ namespace _WHY.Scripts.Boss
         [Header("X Movement Range")]
         [SerializeField] private float minX = -5f;
         [SerializeField] private float maxX = 5f;
+        
+        [SerializeField] private GameObject orangeStarsParticles;
 
         private Vector3 _startPosition;
         private Vector3 _targetPosition;
@@ -33,13 +37,49 @@ namespace _WHY.Scripts.Boss
         {
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
+            GameEvents.BossDestroyed += DestroyMovement;
         }
 
         private void OnDisable()
         {
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
+            GameEvents.BossDestroyed -= DestroyMovement;
         }
+        
+        private void DestroyMovement()
+        {
+            StartCoroutine(ShakeAndDestroy());
+        }
+
+        private IEnumerator ShakeAndDestroy()
+        {
+            yield return new WaitForSeconds(1f);
+            transform.rotation = Quaternion.identity;
+            float duration = 4f;
+            float elapsed = 0f;
+            float startTilt = 30f; // start more intense
+            float endTilt = 7f;    // end with a small shake
+            float frequency = 50f; // much faster
+            while (elapsed < duration)
+            {
+                SoundManager.Instance.PlaySound("Boss Damage", transform);
+                float currentTilt = Mathf.Lerp(startTilt, endTilt, elapsed / duration);
+                float angle = Mathf.Sin(Time.time * frequency) * currentTilt;
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            transform.rotation = Quaternion.identity;
+            var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
+            particles.transform.localScale *= 3.5f; // doubles the size
+            Destroy(particles, 2f);
+            GameEvents.BossEndedDeath?.Invoke();
+            SoundManager.Instance.PlaySound("Explosion", transform);
+            Destroy(gameObject);
+        }
+
+
 
         private void Update()
         {

@@ -9,18 +9,19 @@ namespace GameHandlers
         // GameLoop events
         public static Action BeginGameLoop;
         public static Action BeginGamePlay;
+        public static Action FreezeCollected;
         public static Action FreezeLevel;
         public static Action UnFreezeLevel;
         public static Action RestartLevel;
         public static Action<float> AddTime;
         public static Action EndScene;
-        public static Action GameOver;
+        public static Action PlayerDefeated;
+        public static Action BossEndedDeath;
         public static Action<GameState, int> GameOverUI;
 
         // UI Events
         public static Action<int> UpdateScoreUI;
         public static Action<int> UpdateTimeUI;
-    
     
         // GamePlay Events
         public static Action<Transform> Shoot;
