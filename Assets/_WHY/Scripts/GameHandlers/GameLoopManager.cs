@@ -114,6 +114,7 @@ namespace GameHandlers
         {
             _isCountingDown = false;
             GameEvents.FreezeLevel?.Invoke();
+            GameEvents.FreezeUI?.Invoke();
             yield return new WaitForSeconds(FreezeDuration);
             print("rddddetin");
             GameEvents.UnFreezeLevel?.Invoke();
@@ -159,7 +160,7 @@ namespace GameHandlers
 
         private IEnumerator EndScene()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.7f);
             GameEvents.EndScene?.Invoke();
             yield return new WaitForSeconds(0.3f);
             GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);

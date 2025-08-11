@@ -22,6 +22,7 @@ namespace GameHandlers
         // UI Events
         public static Action<int> UpdateScoreUI;
         public static Action<int> UpdateTimeUI;
+        public static Action FreezeUI;
     
         // GamePlay Events
         public static Action<Transform> Shoot;

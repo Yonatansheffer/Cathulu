@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _WHY.Scripts.Collectibles;
 using GameHandlers;
 using MainPlayer;
 using UnityEngine;

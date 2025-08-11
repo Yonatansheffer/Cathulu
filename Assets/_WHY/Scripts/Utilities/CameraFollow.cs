@@ -76,7 +76,7 @@ namespace _WHY.Scripts.Utilities
                 float e = (u < 0.5f) ? 4f * u * u * u : 1f - Mathf.Pow(-2f * u + 2f, 3f) / 2f;
                 Vector3 smoothPos = Vector3.Lerp(startPos, bossPos, e);
                 _cam.orthographicSize = Mathf.Lerp(startSize, bossZoom, e);
-                float shakeMag = Mathf.Lerp(0.5f, 0f, u); // shake fades out over time
+                float shakeMag = Mathf.Lerp(1f, 0f, u); // shake fades out over time
                 smoothPos.x += Random.Range(-shakeMag, shakeMag);
                 smoothPos.y += Random.Range(-shakeMag, shakeMag);
                 transform.position = smoothPos;

@@ -56,11 +56,11 @@ namespace _WHY.Scripts.Boss
         {
             yield return new WaitForSeconds(1f);
             transform.rotation = Quaternion.identity;
-            float duration = 4f;
+            float duration = 2.7f;
             float elapsed = 0f;
-            float startTilt = 30f; // start more intense
+            float startTilt = 40f; // start more intense
             float endTilt = 7f;    // end with a small shake
-            float frequency = 50f; // much faster
+            float frequency = 45f; // much faster
             while (elapsed < duration)
             {
                 SoundManager.Instance.PlaySound("Boss Damage", transform);

@@ -1,6 +1,7 @@
 ﻿using GameHandlers;
 using Sound;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 namespace _WHY.Scripts.Enemies
@@ -9,7 +10,7 @@ namespace _WHY.Scripts.Enemies
     {
         private static readonly int MovingRight = Animator.StringToHash("MovingRight");
         private Transform _playerTransform;
-        [SerializeField] private float moveSpeed = 1f;
+        [SerializeField] private float moveSpeed;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
         private bool _isFrozen = false;
@@ -17,7 +18,6 @@ namespace _WHY.Scripts.Enemies
         [SerializeField] private float bigEnemySize = 9f;
         [SerializeField] private float bigEnemySpeed = 5f;
         [SerializeField] private int pointsForKill = 70;
-
         
         private void Awake()
         {
@@ -52,6 +52,29 @@ namespace _WHY.Scripts.Enemies
             _animator.speed = 0f; 
 
         }
+
+        public override void Reset()
+        {
+            /*// Restore size & speed to defaults
+            transform.localScale = Vector3.one;
+            moveSpeed = 1f; // or whatever your original normal speed is*/
+
+            // Reset physics
+            if (_rb != null)
+            {
+                _rb.linearVelocity = Vector2.zero;
+                _rb.angularVelocity = 0f;
+            }
+
+            /*// Reset animation
+            if (_animator != null)
+            {
+                _animator.speed = 1f;
+                _animator.SetBool(MovingRight, false);
+            }*/
+            _isFrozen = false;
+        }
+
 
         private void OnUnFreeze()
         {

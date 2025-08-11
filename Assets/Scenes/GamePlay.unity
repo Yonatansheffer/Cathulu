@@ -13923,7 +13923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494487530571063701, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: initialBossHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6821047847051484314, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_Layer

@@ -60,9 +60,8 @@ namespace _WHY.Scripts.Boss
                 while (elapsed < waveConfig.currentSpawnDuration)
                 {
                     yield return new WaitUntil(() => !_isFrozen);
-                    
                     GameEvents.ToSpawnEnemy?.Invoke();
-
+                    GameEvents.ShootBallBullet?.Invoke();
                     float timer = 0f;
                     while (timer < waveConfig.currentSpawnInterval)
                     {
@@ -77,9 +76,12 @@ namespace _WHY.Scripts.Boss
 
                 GameEvents.BossShoots?.Invoke();
 
+                yield return new WaitUntil(() => BossShooting.GetBossState() != BossShooting.BossState.Idle);
+
                 yield return new WaitUntil(() => BossShooting.GetBossState() == BossShooting.BossState.Idle);
-                
+
                 yield return new WaitUntil(() => !_isFrozen);
+
 
                 waveConfig.currentSpawnDuration = Mathf.Max(
                     waveConfig.minSpawnDuration,

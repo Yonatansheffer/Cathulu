@@ -36,7 +36,6 @@ namespace _WHY.Scripts.Boss
         private IEnumerator EnemySpawn()
         {
             yield return new WaitForSeconds(0.5f); 
-            GameEvents.ShootBallBullet?.Invoke();
             if (Random.value > 0.5f)
             {
                 SpawnFlyingEnemies(1);

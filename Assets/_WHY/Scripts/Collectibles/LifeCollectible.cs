@@ -1,4 +1,5 @@
-﻿using GameHandlers;
+﻿using _WHY.Scripts.Collectibles;
+using GameHandlers;
 using Sound;
 using UnityEngine;
 

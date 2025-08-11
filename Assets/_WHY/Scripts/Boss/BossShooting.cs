@@ -13,15 +13,23 @@ namespace _WHY.Scripts.Boss
         [SerializeField] private float bulletsPerSecond = 5f;
         [SerializeField] private float bulletForce = 20f;
         [SerializeField] private GameObject player;
-        [SerializeField] private float shootingDuration = 8f;
+        [SerializeField] private float shootingDuration = 8f; 
+        [SerializeField] private float ballShootDistance = 30f; // Distance to trigger ball shot
+        [SerializeField] private float ballShootCooldown = 2f; // Seconds
         private float shootTimer = 0f;
         private float totalRotation = 0f;
         private float _shootingElapsed = 0f;
         private bool _isFrozen = false;
-
+       
+        private float _lastBallShootTime = -999f; // Track cooldown
         private static BossState _currentState = BossState.Idle;
 
         public static BossState GetBossState() => _currentState;
+        
+        private void Start()
+        {
+            _currentState = BossState.Idle;
+        }
 
         private void OnEnable()
         {
@@ -47,9 +55,14 @@ namespace _WHY.Scripts.Boss
             _isFrozen = true;
         }
 
+       
         private void Update()
         {
+            print(_currentState);
             if (_isFrozen) return;
+
+            CheckProximityAttack(); // NEW: check every frame
+
             switch (_currentState)
             {
                 case BossState.RotatingIn:
@@ -68,6 +81,22 @@ namespace _WHY.Scripts.Boss
                     break;
             }
         }
+
+        private void CheckProximityAttack()
+        {
+            if (player == null) return;
+
+            float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
+            // If close enough and cooldown passed
+            if (distanceToPlayer <= ballShootDistance && 
+                Time.time - _lastBallShootTime >= ballShootCooldown)
+            {
+                ShootBallBullet();
+                _lastBallShootTime = Time.time;
+            }
+        }
+
 
         private void StartShooting()
         {

@@ -45,7 +45,7 @@ namespace UI
             GameEvents.AddTime += UpdateTime;
             GameEvents.WeaponCollected += AddWeaponCollected;
             GameEvents.ShieldUpdated += UpdateShield;
-            GameEvents.FreezeLevel += UpdateFreeze;
+            GameEvents.FreezeUI += UpdateFreeze;
         }
         
         private void OnDisable()
@@ -57,7 +57,7 @@ namespace UI
             GameEvents.AddTime -= UpdateTime;
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
-            GameEvents.FreezeLevel -= UpdateFreeze;
+            GameEvents.FreezeUI -= UpdateFreeze;
         }
         
         private void DeactivateAllPowerUps()
