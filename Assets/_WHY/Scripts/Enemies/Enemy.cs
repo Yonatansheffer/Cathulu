@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using Utilities; // Assuming this contains MonoPool or similar
+﻿using UnityEngine;
+using Utilities; 
 
 namespace _WHY.Scripts.Enemies
 {
@@ -9,7 +7,6 @@ namespace _WHY.Scripts.Enemies
     {
         public virtual void Reset()
         {
-            
         }
 
         protected void Update()
@@ -22,49 +19,5 @@ namespace _WHY.Scripts.Enemies
         public virtual void ToTarget(Vector2 targetPosition)
         {
         }
-
-
-
     }
 }
-
-
-/*[SerializeField] protected float moveSpeed = 3f;
-protected Vector2 moveDirection;
-protected bool isActive;
-protected SpriteRenderer spriteRenderer;
-
-protected virtual void Awake()
-{
-    Initialize(Vector2.zero, Vector2.zero);
-    spriteRenderer = GetComponent<SpriteRenderer>();
-}
-
-protected virtual void Update()
-{
-    if (!isActive) return;
-    Move();
-}
-
-protected abstract void Move();
-
-public virtual void Initialize(Vector2 spawnPosition, Vector2 direction)
-{
-    transform.position = spawnPosition;
-    moveDirection = direction.normalized;
-    isActive = true;
-    gameObject.SetActive(true);
-}
-
-public virtual void Reset()
-{
-    isActive = false;
-}
-
-
-
-protected virtual void Die()
-{
-    isActive = false;
-    EnemyPool.Instance.Return(this);
-}*/

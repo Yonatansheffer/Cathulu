@@ -1,9 +1,8 @@
-﻿using _WHY.Scripts.Collectibles;
-using GameHandlers;
+﻿using GameHandlers;
 using Sound;
 using UnityEngine;
 
-namespace Collectibles
+namespace _WHY.Scripts.Collectibles
 {
     public class TimeAddingCollectible : Collectible
     {

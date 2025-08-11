@@ -1,38 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using _WHY.Scripts.Collectibles;
+using System.Linq;
 using GameHandlers;
 using MainPlayer;
 using UnityEngine;
 using Weapons;
 using Random = UnityEngine.Random;
 
-namespace Collectibles
+namespace _WHY.Scripts.Collectibles
 {
     public class CollectibleManager : MonoBehaviour
     {
         [SerializeField] private WeaponSettings settings;
-        [SerializeField] private GameObject[] powerUpCollectibles;
-        [SerializeField] private GameObject[] pointCollectibles;
-        [SerializeField] private float powerUptoPointPercentRatio = 17f; // Interval between possible power up drops
-        [SerializeField] private float dropInterval = 5f; 
-        private List<Collectible> _activeCollectibles; // List of all active collectibles
-        [SerializeField] private Transform[] positionsForDrop;
-        [SerializeField] private float yOffset = -0.5f; // Offset for the collectible spawn position
+        [SerializeField, Tooltip("Prefabs for power-up collectibles")] private GameObject[] powerUpCollectibles;
+        [SerializeField, Tooltip("Prefabs for point collectibles")] private GameObject[] pointCollectibles;
+        [SerializeField, Tooltip("Interval between automatic collectible drops")] private float dropInterval;
+        [SerializeField, Tooltip("Possible spawn positions for collectibles")] private Transform[] positionsForDrop;
+        [SerializeField, Tooltip("Chance to drop collectible on enemy destruction (0-1)")] private float dropChance ;
+        [SerializeField, Tooltip("Chance for power-up vs. point collectible (0-100)")]
+        private float powerUpToPointPercentRatio;
+        [SerializeField, Tooltip("Random X offset range for spawn position")]
+        private Vector2 randomXOffsetRange;
+        [SerializeField, Tooltip("Y offset for collectible spawn position")] private float yOffset;
+        
+        private List<Collectible> _activeCollectibles;
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
-        private int currentPlayerHealth;
-        
+        private int _currentPlayerHealth;
+
         private void Awake()
         {
-            currentPlayerHealth = PlayerHealth.GetInitialPlayerHealth();
+            _currentPlayerHealth = PlayerHealth.GetInitialPlayerHealth();
             _activeCollectibles = new List<Collectible>();
             _activeWeapon = settings.defaultWeapon;
         }
 
         private void Start()
         {
-            StartDropCoroutine();
+            StartSpawningCollectibles();
         }
 
         private void OnEnable()
@@ -43,7 +48,7 @@ namespace Collectibles
             GameEvents.PlayerDefeated += StopCollectiblesMovement;
             GameEvents.PlayerLivesChanged += UpdatePlayerHealth;
             GameEvents.EnemyDestroyed += DropCollectible;
-            GameEvents.RestartLevel += StartDropCoroutine;
+            GameEvents.RestartLevel += StartSpawningCollectibles;
         }
 
         private void OnDisable()
@@ -54,54 +59,65 @@ namespace Collectibles
             GameEvents.PlayerDefeated -= StopCollectiblesMovement;
             GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
             GameEvents.EnemyDestroyed -= DropCollectible;
-            GameEvents.RestartLevel -= StartDropCoroutine;
+            GameEvents.RestartLevel -= StartSpawningCollectibles;
         }
-        
+
         private void UpdatePlayerHealth(int health)
         {
-            currentPlayerHealth = health;
+            _currentPlayerHealth = health;
         }
-        
+
         private void UpdateWeapon(WeaponType weaponType)
         {
             _activeWeapon = weaponType;
         }
-        
+
         private void UpdateShield(bool isActive)
         {
             _isShieldActive = isActive;
         }
-        
+
         private void DropCollectible(Vector3 position)
         {
-            if (Random.value > 0.5f)
+            if (Random.value > dropChance)
             {
                 return;
             }
-            if (position == Vector3.zero)
+
+            Vector3 spawnPosition = position == Vector3.zero
+                ? GetRandomSpawnPosition()
+                : position;
+
+            if (Random.Range(0, 100) > powerUpToPointPercentRatio)
             {
-                position = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position
-                           + new Vector3(Random.Range(-3f, 3f), yOffset, 0f);
-            }
-            if (Random.Range(0, 100) > powerUptoPointPercentRatio)
-            {
-                DropPointCollectible(position);
+                DropPointCollectible(spawnPosition);
             }
             else
             {
-                DropPowerUpCollectible(position);
+                DropPowerUpCollectible(spawnPosition);
             }
+        }
+
+        private Vector3 GetRandomSpawnPosition()
+        {
+            var randomPosition = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position;
+            return randomPosition + new Vector3(Random.Range(randomXOffsetRange.x, randomXOffsetRange.y), yOffset, 0f);
         }
 
         private void DropPowerUpCollectible(Vector3 position)
         {
             var selected = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
-
             if (IsRedundantCollectible(selected))
+            {
                 return;
+            }
 
             var spawned = Instantiate(selected, position, Quaternion.identity);
-            _activeCollectibles.Add(spawned.GetComponent<Collectible>());
+            var collectible = spawned.GetComponent<Collectible>();
+            if (collectible != null)
+            {
+                _activeCollectibles.Add(collectible);
+            }
         }
 
         private bool IsRedundantCollectible(GameObject collectible)
@@ -116,33 +132,36 @@ namespace Collectibles
             }
             if (collectible.TryGetComponent(out LifeCollectible life))
             {
-                return currentPlayerHealth >= PlayerHealth.GetInitialPlayerHealth();
+                return _currentPlayerHealth >= PlayerHealth.GetInitialPlayerHealth();
             }
             return false;
         }
 
-        
-        private void StartDropCoroutine()
+        private void StartSpawningCollectibles()
         {
-            StartCoroutine(DropCoroutine());
+            StartCoroutine(SpawnCollectiblesRoutine());
         }
-    
-        private IEnumerator DropCoroutine()
+
+        private IEnumerator SpawnCollectiblesRoutine()
         {
             while (true)
             {
-                yield return new WaitForSeconds(dropInterval); 
+                yield return new WaitForSeconds(dropInterval);
                 DropCollectible(Vector3.zero);
             }
         }
-    
+
         private void DropPointCollectible(Vector3 position)
         {
-            var selectedPoint = pointCollectibles[Random.Range(0, pointCollectibles.Length)]; 
+            var selectedPoint = pointCollectibles[Random.Range(0, pointCollectibles.Length)];
             var pointCollectibleObject = Instantiate(selectedPoint, position, Quaternion.identity);
-            _activeCollectibles.Add(pointCollectibleObject.GetComponent<Collectible>());
+            var collectible = pointCollectibleObject.GetComponent<Collectible>();
+            if (collectible != null)
+            {
+                _activeCollectibles.Add(collectible);
+            }
         }
-    
+
         private void StopCollectiblesMovement()
         {
             StopAllCoroutines();
@@ -157,15 +176,11 @@ namespace Collectibles
 
         private void DestroyAllCollectibles()
         {
-            if(_activeCollectibles.Count == 0)
-                return;
-            foreach (var collectible in _activeCollectibles)
+            foreach (var collectible in _activeCollectibles.Where(collectible => collectible != null))
             {
-                if (collectible != null)
-                {
-                    Destroy(collectible.gameObject);
-                }
+                Destroy(collectible.gameObject);
             }
+
             _activeCollectibles.Clear();
         }
     }

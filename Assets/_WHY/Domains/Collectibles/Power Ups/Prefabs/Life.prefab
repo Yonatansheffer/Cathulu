@@ -176,3 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 5
+  timeForDestroy: 12
+  blinkDuration: 3
+  blinkInterval: 0.1

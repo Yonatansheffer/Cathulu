@@ -1,10 +1,9 @@
-using _WHY.Scripts.Collectibles;
 using GameHandlers;
 using Sound;
 using UnityEngine;
 using Weapons;
 
-namespace Collectibles
+namespace _WHY.Scripts.Collectibles
 {
     public class WeaponCollectible : Collectible
     {

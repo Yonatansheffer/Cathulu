@@ -1,8 +1,7 @@
-﻿using _WHY.Scripts.Collectibles;
-using GameHandlers;
+﻿using GameHandlers;
 using Sound;
 
-namespace Collectibles
+namespace _WHY.Scripts.Collectibles
 {
     public class FreezeLevelCollectible : Collectible
     {

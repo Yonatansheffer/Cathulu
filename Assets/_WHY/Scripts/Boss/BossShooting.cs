@@ -58,11 +58,8 @@ namespace _WHY.Scripts.Boss
        
         private void Update()
         {
-            print(_currentState);
             if (_isFrozen) return;
-
-            CheckProximityAttack(); // NEW: check every frame
-
+            CheckProximityAttack(); 
             switch (_currentState)
             {
                 case BossState.RotatingIn:

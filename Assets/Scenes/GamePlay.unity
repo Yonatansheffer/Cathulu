@@ -6531,8 +6531,8 @@ MonoBehaviour:
   - {fileID: 8424506841610855478, guid: 2a5d6a7c0846ecf4c9e80ffa5cff8e11, type: 3}
   - {fileID: 8424506841610855478, guid: deb054eece6a160438e1dff2da3eae69, type: 3}
   - {fileID: 8424506841610855478, guid: 2efac080994999f4590985857fd812dd, type: 3}
-  powerUptoPointPercentRatio: 37
-  dropInterval: 3
+  powerUpToPointPercentRatio: 37
+  dropInterval: 4
   positionsForDrop:
   - {fileID: 2133419762}
   - {fileID: 81071584}
@@ -6544,6 +6544,8 @@ MonoBehaviour:
   - {fileID: 1433887322}
   - {fileID: 1985923009}
   yOffset: -1.2
+  dropChance: 0.5
+  randomXOffsetRange: {x: -3, y: 3}
 --- !u!1001 &1158484392
 PrefabInstance:
   m_ObjectHideFlags: 0

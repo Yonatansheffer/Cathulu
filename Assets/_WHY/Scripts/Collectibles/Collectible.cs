@@ -28,7 +28,7 @@ namespace _WHY.Scripts.Collectibles
             if (other.CompareTag("Floor") || other.CompareTag("Step"))
             {
                 StopMovement();
-                StartCoroutine(DestroyAfterDelay());
+                StartCoroutine(StartDestroyTimer());
             }
             else if (other.CompareTag("Player"))
             {
@@ -38,23 +38,23 @@ namespace _WHY.Scripts.Collectibles
 
         protected abstract void HandlePickup();
         
-        private IEnumerator DestroyAfterDelay()
+        private IEnumerator StartDestroyTimer()
         {
             yield return new WaitForSeconds(timeForDestroy);
-            StartCoroutine(Blink(3f));
-            yield return new WaitForSeconds(3f);
+            StartCoroutine(BlinkRoutine());
+            yield return new WaitForSeconds(blinkDuration);
             Destroy(gameObject);
         }
 
-        private IEnumerator Blink(float duration)
+        private IEnumerator BlinkRoutine()
         {
-            var endTime = Time.time + duration;
+            var endTime = Time.time + blinkDuration;
             while (Time.time < endTime)
             {
-                _spriteRenderer.enabled = !_spriteRenderer.enabled; 
-                yield return new WaitForSeconds(0.1f);
+                _spriteRenderer.enabled = !_spriteRenderer.enabled;
+                yield return new WaitForSeconds(blinkInterval);
             }
-            _spriteRenderer.enabled = true; 
+            _spriteRenderer.enabled = true;
         }
 
         public void StopMovement()

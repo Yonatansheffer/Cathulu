@@ -1,7 +1,6 @@
 ﻿using System;
 using Weapons;
 using System.Collections;
-using Collectibles;
 using GameHandlers;
 using TMPro;
 using Unity.VisualScripting;

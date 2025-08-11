@@ -55,23 +55,11 @@ namespace _WHY.Scripts.Enemies
 
         public override void Reset()
         {
-            /*// Restore size & speed to defaults
-            transform.localScale = Vector3.one;
-            moveSpeed = 1f; // or whatever your original normal speed is*/
-
-            // Reset physics
             if (_rb != null)
             {
                 _rb.linearVelocity = Vector2.zero;
                 _rb.angularVelocity = 0f;
             }
-
-            /*// Reset animation
-            if (_animator != null)
-            {
-                _animator.speed = 1f;
-                _animator.SetBool(MovingRight, false);
-            }*/
             _isFrozen = false;
         }
 
@@ -164,7 +152,5 @@ namespace _WHY.Scripts.Enemies
         {
             FlyingEnemyPool.Instance.Return(gameObject.GetComponent<FlyingEnemy>());
         }
-
-
     }
 }
