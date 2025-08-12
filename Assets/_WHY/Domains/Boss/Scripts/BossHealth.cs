@@ -1,12 +1,12 @@
 ﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
 namespace _WHY.Domains.Boss.Scripts
 {
     public class BossHealth : WHYBaseMono
     {
-        [SerializeField] private int initialBossHealth = 100;
+        [SerializeField, Tooltip("Boss initial amount of lives")] private int initialBossHealth = 100;
         private int _currentHealth;
         
         private void Start()

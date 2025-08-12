@@ -1,45 +1,60 @@
-﻿using System;
-using Weapons;
-using System.Collections;
+﻿using System.Collections;
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
 using _WHY.Domains.Weapons.Scripts;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace UI
+namespace _WHY.Domains.Utilities.UI.Scripts
 {
     public class GamePlayUI : MonoBehaviour
     {
+        [Header("Weapon Settings")]
         [SerializeField] private WeaponSettings settings;
+
+        [Header("Boss UI")]
         [SerializeField] private Slider bossHealthBar;
+
+        [Header("Player UI")]
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
-        [SerializeField] private Image freezeImage;
-        [SerializeField] private Image timeImage;
-        [SerializeField] private Image spellGunImage;
-        [SerializeField] private Image lightGunImage;
-        [SerializeField] private Image fireGunImage;
-        [SerializeField] private Image shieldImage;
         [SerializeField] private Image[] lifeImages;
         [SerializeField] private Image[] noLifeImages;
+
+        [Header("Power-Up UI")]
+        [SerializeField] private Image freezeImage;
+        [SerializeField] private Image freezeLight;
+        [SerializeField] private Image timeImage;
+        [SerializeField] private Image timeLight;
+        [SerializeField] private Image spellGunImage;
+        [SerializeField] private Image spellGunLight;
+        [SerializeField] private Image lightGunImage;
+        [SerializeField] private Image lightGunLight;
+        [SerializeField] private Image fireGunImage;
+        [SerializeField] private Image fireGunLight;
+        [SerializeField] private Image shieldImage;
+        [SerializeField] private Image shieldLight;
+
+        [Header("Particles")]
         [SerializeField] private GameObject orangeStarsParticles;
+
+        [Header("Blink Settings")]
         [SerializeField] private float blinkDuration = 3f;
+
+        [Header("Canvas Reference")]
+        [SerializeField] private Canvas canvas;
+
         private Coroutine _weaponCoroutine;
-        [SerializeField] private Canvas canvas; 
-        
+
         private void Start()
         {
-            DeactivateAllPowerUps();
-            ActivateDefaultWeapon(settings.defaultWeapon);
+            InitializeUI();
         }
 
         private void OnEnable()
         {
             GameEvents.BossLivesChanged += UpdateBossHealth;
-            GameEvents.PlayerLivesChanged += UpdatePlayerHealth;
+            GameEvents.UpdatePlayerLivesUI += UpdatePlayerHealth;
             GameEvents.UpdateScoreUI += UpdateScore;
             GameEvents.UpdateTimeUI += UpdateTimeCount;
             GameEvents.AddTime += UpdateTime;
@@ -47,86 +62,96 @@ namespace UI
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.FreezeUI += UpdateFreeze;
         }
-        
+
         private void OnDisable()
         {
             GameEvents.UpdateScoreUI -= UpdateScore;
             GameEvents.BossLivesChanged -= UpdateBossHealth;
-            GameEvents.PlayerLivesChanged -= UpdatePlayerHealth;
+            GameEvents.UpdatePlayerLivesUI -= UpdatePlayerHealth;
             GameEvents.UpdateTimeUI -= UpdateTimeCount;
             GameEvents.AddTime -= UpdateTime;
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
-            GameEvents.FreezeUI -= UpdateFreeze;
+            GameEvents.FreezeUI -= UpdateFreeze;        }
+
+        private void InitializeUI()
+        {
+            DeactivateAllPowerUps();
+            ActivateDefaultWeapon(settings.defaultWeapon);
         }
-        
+
         private void DeactivateAllPowerUps()
         {
             DeactivateAllWeapons();
-            SetPowerUpActive(shieldImage, false);
-            SetPowerUpActive(freezeImage, false);
-            SetPowerUpActive(timeImage, false);
+            SetPowerUpActive(shieldImage, shieldLight.gameObject, false);
+            SetPowerUpActive(freezeImage, freezeLight.gameObject, false);
+            SetPowerUpActive(timeImage, timeLight.gameObject, false);
         }
 
         private void DeactivateAllWeapons()
         {
-            if(_weaponCoroutine != null)
+            if (_weaponCoroutine != null)
             {
                 StopCoroutine(_weaponCoroutine);
                 _weaponCoroutine = null;
             }
-            SetPowerUpActive(spellGunImage, false);
-            SetPowerUpActive(lightGunImage, false);
-            SetPowerUpActive(fireGunImage,  false);
+            SetPowerUpActive(spellGunImage, spellGunLight.gameObject, false);
+            SetPowerUpActive(lightGunImage, lightGunLight.gameObject, false);
+            SetPowerUpActive(fireGunImage, fireGunLight.gameObject, false);
         }
 
         private void ActivateDefaultWeapon(WeaponType defaultWeapon)
         {
             switch (defaultWeapon)
             {
-                case WeaponType.SpellGun:
-                    SetPowerUpActive(spellGunImage, true);
-                    break;
-                case WeaponType.LightGun:
-                    SetPowerUpActive(lightGunImage, true);
-                    break;
-                case WeaponType.FireGun:
-                    SetPowerUpActive(fireGunImage, true);
-                    break;
+                case WeaponType.SpellGun: SetPowerUpActive(spellGunImage, spellGunLight.gameObject, true); break;
+                case WeaponType.LightGun: SetPowerUpActive(lightGunImage, lightGunLight.gameObject,true); break;
+                case WeaponType.FireGun:  SetPowerUpActive(fireGunImage, fireGunLight.gameObject, true);  break;
             }
         }
-        
+
+        private void SetPowerUpActive(Image powerUp, GameObject lightObj, bool isActive)
+        {
+            powerUp.color = isActive
+                ? Color.white
+                : new Color(0.5f, 0.5f, 0.5f, 0.25f);
+
+            if (lightObj != null)
+                lightObj.SetActive(isActive);
+        }
+
         private void UpdateShield(bool isActive)
         {
-            SetPowerUpActive(shieldImage, isActive);
+            SetPowerUpActive(shieldImage, shieldLight.gameObject, isActive);
         }
-        
-        private void UpdateFreeze()
+
+        private void UpdateFreeze(int duration)
         {
             if (gameObject.activeInHierarchy)
-                StartCoroutine(HandlePowerUpDisplay(freezeImage,
-                    GameLoopManager.GetFreezeDuration()-blinkDuration, blinkDuration));
+                StartCoroutine(HandlePowerUpDisplay(freezeImage, freezeLight.gameObject,
+                    duration - blinkDuration, blinkDuration));
         }
-        
-        private void UpdateTime(float dummy)
+
+        private void UpdateTime(float _)
         {
-            var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
-
-            particles.transform.localScale = Vector3.one * 0.5f;
-
-            Destroy(particles, 0.8f);
-
+            ShowTimeAddedParticles();
             if (gameObject.activeInHierarchy)
-                StartCoroutine(HandlePowerUpDisplay(timeImage,
+                StartCoroutine(HandlePowerUpDisplay(timeImage, timeLight.gameObject,
                     1f, 0f));
         }
 
-        
+        private void ShowTimeAddedParticles()
+        {
+            var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
+            particles.transform.localScale = Vector3.one * 0.5f;
+            Destroy(particles, 0.8f);
+        }
+
         private void UpdateBossHealth(int amount)
         {
             bossHealthBar.value = amount;
         }
-        
+
         private void UpdatePlayerHealth(int amount)
         {
             for (var i = 0; i < lifeImages.Length; i++)
@@ -136,51 +161,49 @@ namespace UI
                 noLifeImages[i].gameObject.SetActive(!isActive);
             }
         }
-        
+
         private void UpdateScore(int points)
         {
             pointsText.text = points.ToString();
         }
-        
+
         private void UpdateTimeCount(int time)
         {
             timeCountText.text = time.ToString();
         }
-        
+
         private void AddWeaponCollected(WeaponType weaponType)
         {
             DeactivateAllWeapons();
+
             if (weaponType == settings.defaultWeapon)
             {
                 ActivateDefaultWeapon(weaponType);
                 return;
             }
+
+            var duration = 12f;
             switch (weaponType)
             {
                 case WeaponType.SpellGun:
-                    _weaponCoroutine =
-                        StartCoroutine(HandlePowerUpDisplay(spellGunImage, 12f, blinkDuration));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(
+                        spellGunImage, spellGunLight.gameObject, duration, blinkDuration));
                     break;
                 case WeaponType.LightGun:
-                    _weaponCoroutine =
-                        StartCoroutine(HandlePowerUpDisplay(lightGunImage, 12f, blinkDuration));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(
+                        lightGunImage, lightGunLight.gameObject, duration, blinkDuration));
                     break;
                 case WeaponType.FireGun:
-                    _weaponCoroutine =
-                        StartCoroutine(HandlePowerUpDisplay(fireGunImage, 12f, blinkDuration));
+                    _weaponCoroutine = StartCoroutine(HandlePowerUpDisplay(
+                        fireGunImage, fireGunLight.gameObject, duration, blinkDuration));
                     break;
             }
         }
-        
-        private void SetPowerUpActive(Image powerUp,bool isActive)
+
+        private IEnumerator HandlePowerUpDisplay(
+            Image image, GameObject lightObj, float activeDuration, float blinkingDuration)
         {
-            Color color = isActive ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.15f); 
-            powerUp.color = color;
-        }
-        
-        private IEnumerator HandlePowerUpDisplay(Image image, float activeDuration, float blinkingDuration)
-        {
-            SetPowerUpActive(image, true);
+            SetPowerUpActive(image, lightObj, true);
             yield return new WaitForSeconds(activeDuration);
 
             float blinkInterval = 0.3f;
@@ -191,11 +214,14 @@ namespace UI
             {
                 visible = !visible;
                 image.color = visible ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.1f);
+                if (lightObj != null)
+                    lightObj.SetActive(visible);
+
                 yield return new WaitForSeconds(blinkInterval);
                 blinkTime += blinkInterval;
             }
 
-            SetPowerUpActive(image, false);
+            SetPowerUpActive(image, lightObj, false);
             ActivateDefaultWeapon(settings.defaultWeapon);
         }
     }

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using TMPro;
 using UnityEngine;
 
@@ -8,15 +8,19 @@ namespace _WHY.Domains.Utilities.UI.Scripts
 {
     public class EndScreenUI : MonoBehaviour
     {
-        [SerializeField] private GameObject winBoard;
-        [SerializeField] private GameObject loseBoard;
-        [SerializeField] private TextMeshProUGUI defeatedText;
-        [SerializeField] private TextMeshProUGUI timeOverText;
-        [SerializeField] private TextMeshProUGUI winPressAgainText;
-        [SerializeField] private TextMeshProUGUI losePressAgainText;
-        [SerializeField] private TextMeshProUGUI scoreText;
+        [Header("Boards")]
+        [SerializeField, Tooltip("Win board root GameObject")] private GameObject winBoard;
+        [SerializeField, Tooltip("Lose board root GameObject")] private GameObject loseBoard;
 
-        [SerializeField] private float blinkInterval = 0.5f;
+        [Header("Texts")]
+        [SerializeField, Tooltip("Shown when player is defeated by damage")] private TextMeshProUGUI defeatedText;
+        [SerializeField, Tooltip("Shown when time runs out")] private TextMeshProUGUI timeOverText;
+        [SerializeField, Tooltip("Blinking 'press again' text on win")] private TextMeshProUGUI winPressAgainText;
+        [SerializeField, Tooltip("Blinking 'press again' text on lose")] private TextMeshProUGUI losePressAgainText;
+        [SerializeField, Tooltip("Final score text")] private TextMeshProUGUI scoreText;
+
+        [Header("Blink")]
+        [SerializeField, Tooltip("Seconds between blink toggles")] private float blinkInterval = 0.5f;
 
         private Coroutine _winBlinkCo;
         private Coroutine _loseBlinkCo;
@@ -39,50 +43,60 @@ namespace _WHY.Domains.Utilities.UI.Scripts
             switch (gameState)
             {
                 case GameState.PlayerWon:
-                    winBoard.SetActive(true);
-                    scoreText.text = $"SCORE: {score}";
-                    winPressAgainText.enabled = true;                 // known start state
-                    _winBlinkCo = StartCoroutine(BlinkText(winPressAgainText, blinkInterval));
+                {
+                    if (winBoard) winBoard.SetActive(true);
+                    if (scoreText) scoreText.text = $"SCORE: {score}";
+                    if (winPressAgainText)
+                    {
+                        winPressAgainText.enabled = true;
+                        _winBlinkCo = StartCoroutine(BlinkText(winPressAgainText, blinkInterval));
+                    }
                     SoundManager.Instance.PlaySound("Win", transform);
                     break;
-
+                }
                 case GameState.TimeOver:
-                    loseBoard.SetActive(true);
-                    timeOverText.gameObject.SetActive(true);
-                    losePressAgainText.enabled = true;               // known start state
-                    _loseBlinkCo = StartCoroutine(BlinkText(losePressAgainText, blinkInterval));
+                {
+                    if (loseBoard) loseBoard.SetActive(true);
+                    if (timeOverText) timeOverText.gameObject.SetActive(true);
+                    if (losePressAgainText)
+                    {
+                        losePressAgainText.enabled = true;
+                        _loseBlinkCo = StartCoroutine(BlinkText(losePressAgainText, blinkInterval));
+                    }
                     SoundManager.Instance.PlaySound("Lose", transform);
                     break;
-
+                }
                 case GameState.Defeated:
-                    loseBoard.SetActive(true);
-                    defeatedText.gameObject.SetActive(true);
-                    losePressAgainText.enabled = true;               // known start state
-                    _loseBlinkCo = StartCoroutine(BlinkText(losePressAgainText, blinkInterval));
+                {
+                    if (loseBoard) loseBoard.SetActive(true);
+                    if (defeatedText) defeatedText.gameObject.SetActive(true);
+                    if (losePressAgainText)
+                    {
+                        losePressAgainText.enabled = true;
+                        _loseBlinkCo = StartCoroutine(BlinkText(losePressAgainText, blinkInterval));
+                    }
                     SoundManager.Instance.PlaySound("Lose", transform);
                     break;
+                }
             }
         }
 
         private void ResetUI()
         {
-            // stop any previous blinking
             StopAllBlinking();
 
-            // hide both boards and helper texts
-            winBoard.SetActive(false);
-            loseBoard.SetActive(false);
+            if (winBoard) winBoard.SetActive(false);
+            if (loseBoard) loseBoard.SetActive(false);
 
-            defeatedText.gameObject.SetActive(false);
-            timeOverText.gameObject.SetActive(false);
+            if (defeatedText) defeatedText.gameObject.SetActive(false);
+            if (timeOverText) timeOverText.gameObject.SetActive(false);
 
-            // ensure press-again texts are active objects, but we control visibility via 'enabled'
-            if (winPressAgainText != null)
+            if (winPressAgainText)
             {
                 winPressAgainText.gameObject.SetActive(true);
                 winPressAgainText.enabled = false;
             }
-            if (losePressAgainText != null)
+            if (losePressAgainText)
             {
                 losePressAgainText.gameObject.SetActive(true);
                 losePressAgainText.enabled = false;
@@ -93,17 +107,13 @@ namespace _WHY.Domains.Utilities.UI.Scripts
         {
             if (_winBlinkCo != null) { StopCoroutine(_winBlinkCo); _winBlinkCo = null; }
             if (_loseBlinkCo != null) { StopCoroutine(_loseBlinkCo); _loseBlinkCo = null; }
-
-            // Make sure the texts end in a predictable state
-            if (winPressAgainText != null) winPressAgainText.enabled = false;
-            if (losePressAgainText != null) losePressAgainText.enabled = false;
+            if (winPressAgainText) winPressAgainText.enabled = false;
+            if (losePressAgainText) losePressAgainText.enabled = false;
         }
 
         private IEnumerator BlinkText(TextMeshProUGUI text, float interval)
         {
-            // safety: ensure it's visible to start
             text.enabled = true;
-
             while (true)
             {
                 yield return new WaitForSeconds(interval);

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
 namespace _WHY.Domains.Boss.Scripts
@@ -9,23 +9,29 @@ namespace _WHY.Domains.Boss.Scripts
     {
         public enum BossState { Idle, RotatingIn, Shooting, RotatingBack, Death }
 
-        [Header("Shooting")]
-        [SerializeField] private float rotationSpeed = 30f;
-        [SerializeField] private float bulletsPerSecond = 5f;
-        [SerializeField] private float bulletForce = 20f;
-        [SerializeField] private GameObject player;
-        [SerializeField] private float shootingDuration = 8f; 
-        [SerializeField] private float ballShootDistance = 120f; 
-        [SerializeField] private float ballShootCooldown = 3f; 
-        private float _shootTimer;
-        private float _totalRotation;
-        private float _shootingElapsed;
-        private bool _isFrozen;
-        private float _lastBallShootTime = -999f; 
+        [Header("Rotation & Shooting")]
+        [SerializeField, Tooltip("Rotation speed while aiming")] private float rotationSpeed = 30f;
+        [SerializeField, Tooltip("Bullets per second")] private float bulletsPerSecond = 5f;
+        [SerializeField, Tooltip("Bullet launch force")] private float bulletForce = 20f;
+        [SerializeField, Tooltip("Shooting phase duration")] private float shootingDuration = 8f;
+        [SerializeField, Tooltip("Delay before shooting starts")] private float startShootDelay = 0.8f;
+
+        [Header("Player Target")]
+        [SerializeField, Tooltip("Player GameObject to target")] private GameObject player;
+
+        [Header("Ball Shot")]
+        [SerializeField, Tooltip("Distance threshold for ball shot")] private float ballShootDistance = 120f;
+        [SerializeField, Tooltip("Cooldown for ball shot")] private float ballShootCooldown = 3f;
+
         private static BossState _currentState = BossState.Idle;
+        private float _shootTimer;
+        private float _shootingElapsed;
+        private float _accumulatedRotation;
+        private float _lastBallShootTime = -999f;
+        private bool _isFrozen;
 
         public static BossState GetBossState() => _currentState;
-        
+
         private void Start()
         {
             _currentState = BossState.Idle;
@@ -33,106 +39,115 @@ namespace _WHY.Domains.Boss.Scripts
 
         private void OnEnable()
         {
-            GameEvents.BossShoots += StartShooting;
-            GameEvents.BossDestroyed += UpdateDestroyedState;
-            GameEvents.FreezeLevel += () => _isFrozen = true;
-            GameEvents.UnFreezeLevel += () => _isFrozen = false;
+            GameEvents.BossShoots += OnBossShoots;
+            GameEvents.BossDestroyed += OnBossDestroyed;
+            GameEvents.FreezeLevel += OnFreeze;
+            GameEvents.UnFreezeLevel += OnUnFreeze;
         }
 
         private void OnDisable()
         {
-            GameEvents.BossShoots -= StartShooting;
-            GameEvents.FreezeLevel -= () => _isFrozen = true;
-            GameEvents.BossDestroyed -= UpdateDestroyedState;
-            GameEvents.UnFreezeLevel -= () => _isFrozen = false;
+            GameEvents.BossShoots -= OnBossShoots;
+            GameEvents.BossDestroyed -= OnBossDestroyed;
+            GameEvents.FreezeLevel -= OnFreeze;
+            GameEvents.UnFreezeLevel -= OnUnFreeze;
         }
-        
-        private void UpdateDestroyedState()
+
+        private void OnFreeze() => _isFrozen = true;
+        private void OnUnFreeze() => _isFrozen = false;
+
+        private void OnBossDestroyed()
         {
             _currentState = BossState.Death;
             _isFrozen = true;
         }
 
-       
+        private void OnBossShoots()
+        {
+            if (_currentState != BossState.Idle) return;
+            StartCoroutine(BeginShootAfterDelay(startShootDelay));
+        }
+
+        private IEnumerator BeginShootAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            SoundManager.Instance.PlaySound("Boss Shoot", transform);
+            ResetShootingState();
+            _currentState = BossState.RotatingIn;
+        }
+
         private void Update()
         {
             if (_isFrozen) return;
-            CheckProximityAttack(); 
+
+            CheckProximityAttack();
+
             switch (_currentState)
             {
                 case BossState.RotatingIn:
-                    RotateIn();
+                    HandleRotatingIn();
                     break;
                 case BossState.Shooting:
-                    _shootingElapsed += Time.deltaTime;
-                    ShootingRoutine();
-                    if (_shootingElapsed >= shootingDuration)
-                        _currentState = BossState.RotatingBack;
+                    HandleShooting();
                     break;
                 case BossState.RotatingBack:
-                    RotateBackToZero();
+                    HandleRotatingBack();
                     break;
             }
+        }
+
+        private void HandleRotatingIn()
+        {
+            var step = rotationSpeed * Time.deltaTime;
+            transform.Rotate(0f, 0f, -step);
+            _accumulatedRotation += step;
+
+            if (_accumulatedRotation >= 90f)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, -90f);
+                ResetShootingState();
+                _currentState = BossState.Shooting;
+            }
+        }
+
+        private void HandleShooting()
+        {
+            _shootingElapsed += Time.deltaTime;
+            _shootTimer += Time.deltaTime;
+
+            var interval = 1f / bulletsPerSecond;
+            while (_shootTimer >= interval)
+            {
+                Shoot();
+                _shootTimer -= interval;
+            }
+
+            if (_shootingElapsed >= shootingDuration)
+                _currentState = BossState.RotatingBack;
+        }
+
+        private void HandleRotatingBack()
+        {
+            var step = rotationSpeed * Time.deltaTime;
+            var z = Mathf.MoveTowardsAngle(transform.eulerAngles.z, 0f, step);
+            transform.rotation = Quaternion.Euler(0f, 0f, z);
+
+            if (Mathf.Approximately(z, 0f))
+                _currentState = BossState.Idle;
         }
 
         private void CheckProximityAttack()
         {
             if (player == null) return;
-            var distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-            // If close enough and cooldown passed
-            if (!(distanceToPlayer <= ballShootDistance) ||
-                !(Time.time - _lastBallShootTime >= ballShootCooldown)) return;
-            ShootBallBullet();
-            _lastBallShootTime = Time.time;
-        }
 
-        private void StartShooting()
-        {
-            if (_currentState != BossState.Idle) return;
-            StartCoroutine(StartShootingWithDelay(0.8f));
-        }
+            var distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance > ballShootDistance) return;
 
-        private IEnumerator StartShootingWithDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            SoundManager.Instance.PlaySound("Boss Shoot", transform);
-            _shootTimer = 0f;
-            _totalRotation = 0f;
-            transform.rotation = Quaternion.identity;
-            _currentState = BossState.RotatingIn;
-        }
-
-        private void RotateIn()
-        {
-            var rotateStep = rotationSpeed * Time.deltaTime;
-            transform.Rotate(0f, 0f, -rotateStep); 
-            _totalRotation += rotateStep;
-            if (!(_totalRotation >= 90f)) return;
-            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
-            _totalRotation = 0f;
-            _shootingElapsed = 0f;
-            _shootTimer = 0f;
-            _currentState = BossState.Shooting;
-        }
-
-        private void RotateBackToZero()
-        {
-            var currentZ = transform.eulerAngles.z;
-            var rotateStep = rotationSpeed * Time.deltaTime;
-            var newZ = Mathf.MoveTowardsAngle(currentZ, 0f, rotateStep);
-            transform.rotation = Quaternion.Euler(0f, 0f, newZ);
-            if (Mathf.Approximately(newZ, 0f)) _currentState = BossState.Idle;
-        }
-
-
-        private void ShootingRoutine()
-        {
-            _shootTimer += Time.deltaTime;
-            var shootInterval = 1f / bulletsPerSecond;
-            while (_shootTimer >= shootInterval)
+            var cd = distance <= ballShootDistance * 0.5f ? ballShootCooldown * 0.5f : ballShootCooldown;
+            if (Time.time - _lastBallShootTime >= cd)
             {
-                Shoot();
-                _shootTimer -= shootInterval;
+                ShootBallBullet();
+                _lastBallShootTime = Time.time;
             }
         }
 
@@ -140,19 +155,25 @@ namespace _WHY.Domains.Boss.Scripts
         {
             var bullet = BossBulletPool.Instance.Get();
             bullet.transform.position = transform.position;
-            Vector2 shootDirection = transform.right;
             var rb = bullet.GetComponent<Rigidbody2D>();
-            rb.linearVelocity = shootDirection * bulletForce;
+            rb.linearVelocity = (Vector2)transform.right * bulletForce;
         }
 
         private void ShootBallBullet()
         {
-            SoundManager.Instance.PlaySound("Boss Bullet", transform);
             var bullet = BossBallBulletPool.Instance.Get();
             bullet.transform.position = transform.position;
-            Vector2 shootDirection = (player.transform.position - transform.position).normalized;
+            var dir = (player.transform.position - transform.position).normalized;
             var rb = bullet.GetComponent<Rigidbody2D>();
-            rb.linearVelocity = shootDirection * bulletForce;
+            rb.linearVelocity = dir * bulletForce;
+            SoundManager.Instance.PlaySound("Boss Bullet", transform);
+        }
+
+        private void ResetShootingState()
+        {
+            _shootTimer = 0f;
+            _shootingElapsed = 0f;
+            _accumulatedRotation = 0f;
         }
     }
 }

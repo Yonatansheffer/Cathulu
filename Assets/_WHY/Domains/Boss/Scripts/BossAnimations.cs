@@ -11,7 +11,7 @@ namespace _WHY.Domains.Boss.Scripts
         private static readonly int Death = Animator.StringToHash("death");
         private Animator _animator;
 
-        private void Awake()
+        private void Start()
         {
             _animator = GetComponent<Animator>();
         }

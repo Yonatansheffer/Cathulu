@@ -1,5 +1,5 @@
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
 namespace _WHY.Domains.Collectibles.Scripts

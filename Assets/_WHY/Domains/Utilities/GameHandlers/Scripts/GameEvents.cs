@@ -21,8 +21,9 @@ namespace _WHY.Domains.Utilities.GameHandlers.Scripts
 
         // UI Events
         public static Action<int> UpdateScoreUI;
+        public static Action<int> UpdatePlayerLivesUI;
         public static Action<int> UpdateTimeUI;
-        public static Action FreezeUI;
+        public static Action<int> FreezeUI;
     
         // GamePlay Events
         public static Action<Transform> Shoot;
@@ -33,7 +34,7 @@ namespace _WHY.Domains.Utilities.GameHandlers.Scripts
         public static Action EnemySpawned;
         public static Action SpawnAllWalkingEnemies;
         public static Action<bool> ShieldUpdated;
-        public static Action<int> PlayerLivesChanged;
+        public static Action<int> PlayerLostLife;
         public static Action BossDestroyed;
         public static Action<int> BossLivesChanged;
         public static Action<int> AddPoints;

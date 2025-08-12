@@ -178,7 +178,18 @@
                 {
                     "name": "",
                     "id": "7c42801e-c337-4be8-a00d-bcacfe4ad677",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36cc6114-08ee-4203-b7cf-070d0596b1ee",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

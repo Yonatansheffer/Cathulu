@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using Weapons;
 
 namespace _WHY.Domains.Weapons.Scripts
 {

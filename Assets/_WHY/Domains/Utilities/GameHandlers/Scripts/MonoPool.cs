@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
+using Utilities;
 
-namespace Utilities
+namespace _WHY.Domains.Utilities.GameHandlers.Scripts
 {
     public class MonoPool<T> : MonoSingleton<MonoPool<T>> where T : MonoBehaviour, IPoolable
     {

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.743, y: 0.1298, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.7, y: 3.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -141,8 +141,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 12
   bigEnemySize: 3
-  bigEnemySpeed: 5
+  bigEnemySpeed: 7
   pointsForKill: 120
+  playerAttractionWeight: 0.55
+  noiseTimeScale: 0.3
+  detectionDistance: 4
+  sideClearanceDistance: 1
+  avoidanceLerpWeight: 2
 --- !u!50 &7392207242760527386
 Rigidbody2D:
   serializedVersion: 5

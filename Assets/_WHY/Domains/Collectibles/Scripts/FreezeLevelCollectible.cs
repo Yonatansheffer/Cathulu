@@ -1,5 +1,4 @@
 ﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
 
 namespace _WHY.Domains.Collectibles.Scripts
 {

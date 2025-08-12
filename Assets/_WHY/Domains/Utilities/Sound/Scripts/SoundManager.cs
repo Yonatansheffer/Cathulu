@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 using Utilities;
+using AudioSettings = _WHY.Domains.Utilities.Sound.Scripts.AudioSettings;
 
-namespace Sound
+namespace _WHY.Domains.Utilities.Sound.Scripts
 {
     public class SoundManager : MonoSingleton<SoundManager>
     {
@@ -32,8 +32,7 @@ namespace Sound
         {
 
             var config = FindAudioConfig(audioName);
-            if (config == null)
-                return;
+            if (config == null)  return;
             var soundObject = SoundPool.Instance.Get();
             _activeSounds.Add(soundObject);
             soundObject.transform.position = spawnTransform.position;
@@ -49,43 +48,10 @@ namespace Sound
         {
             foreach (var sound in _activeSounds)
             {
-                if (sound != null)
-                    sound.Reset();
+                if (sound != null) sound.Reset();
                 SoundPool.Instance.Return(sound);
-
             }
             _activeSounds.Clear();
         }
-        
-        /*private void PlayOpeningMusic()
-    {
-        var config = FindAudioConfig("Opening");
-        if (config == null)
-            return;
-        _openingMusic = SoundPool.Instance.Get();
-        _activeSounds.Add(_openingMusic);
-        _openingMusic.Play(config.clip, config.volume,config.loop);
-    }*/
-        
-        /*public void PlayBackgroundMusic()
-        {
-            if (_backgroundMusic != null)
-                return;
-            var config = FindAudioConfig("Background");
-            if (config == null)
-                return;
-            _backgroundMusic = SoundPool.Instance.Get();
-            _backgroundMusic.Play(config.clip, config.volume,config.loop);
-        }
-
-        private static void StopBackgroundMusic()
-        {
-            print("cddcd");
-            if (_backgroundMusic == null)
-                return;
-            _backgroundMusic.Reset();
-        }
-        */
-
     }
 }

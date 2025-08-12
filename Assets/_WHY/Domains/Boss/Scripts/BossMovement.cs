@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Sound;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
 namespace _WHY.Domains.Boss.Scripts
@@ -8,17 +8,26 @@ namespace _WHY.Domains.Boss.Scripts
     public class BossMovement : WHYBaseMono
     {
         [Header("Floating Movement")]
-        [SerializeField] private float moveRadius = 3f;
-        [SerializeField] private float initialMoveSpeed = 1f;
-        [SerializeField] private float shootingMoveSpeed = 1f;
-        [SerializeField] private float idleTiltAngle = 15f;
-        [SerializeField] private float tiltSpeed = 2f;
+        [SerializeField, Tooltip("Radius for vertical floating around start position")]
+        private float moveRadius = 3f;
+        [SerializeField, Tooltip("Horizontal speed while idle")]
+        private float initialMoveSpeed = 1f;
+        [SerializeField, Tooltip("Horizontal speed while shooting")]
+        private float shootingMoveSpeed = 1f;
+        [SerializeField, Tooltip("Max tilt angle while idle")]
+        private float idleTiltAngle = 15f;
+        [SerializeField, Tooltip("Tilt oscillation speed while idle")]
+        private float tiltSpeed = 2f;
 
         [Header("X Movement Range")]
-        [SerializeField] private float minX = -5f;
-        [SerializeField] private float maxX = 5f;
-        
-        [SerializeField] private GameObject orangeStarsParticles;
+        [SerializeField, Tooltip("Minimum X position")]
+        private float minX = -5f;
+        [SerializeField, Tooltip("Maximum X position")]
+        private float maxX = 5f;
+
+        [Header("FX")]
+        [SerializeField, Tooltip("Stars particle prefab on death")]
+        private GameObject orangeStarsParticles;
 
         private Vector3 _startPosition;
         private Vector3 _targetPosition;
@@ -46,7 +55,7 @@ namespace _WHY.Domains.Boss.Scripts
             GameEvents.UnFreezeLevel -= OnUnFreeze;
             GameEvents.BossDestroyed -= DestroyMovement;
         }
-        
+
         private void DestroyMovement()
         {
             StartCoroutine(ShakeAndDestroy());
@@ -56,23 +65,23 @@ namespace _WHY.Domains.Boss.Scripts
         {
             yield return new WaitForSeconds(1f);
             transform.rotation = Quaternion.identity;
-            float duration = 2.7f;
-            float elapsed = 0f;
-            float startTilt = 40f; // start more intense
-            float endTilt = 7f;    // end with a small shake
-            float frequency = 45f; // much faster
+            var duration = 2.7f;
+            var elapsed = 0f;
+            var startTilt = 40f;
+            var endTilt = 7f;
+            var frequency = 45f;
             while (elapsed < duration)
             {
                 SoundManager.Instance.PlaySound("Boss Damage", transform);
-                float currentTilt = Mathf.Lerp(startTilt, endTilt, elapsed / duration);
-                float angle = Mathf.Sin(Time.time * frequency) * currentTilt;
+                var currentTilt = Mathf.Lerp(startTilt, endTilt, elapsed / duration);
+                var angle = Mathf.Sin(Time.time * frequency) * currentTilt;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 elapsed += Time.deltaTime;
                 yield return null;
             }
             transform.rotation = Quaternion.identity;
             var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
-            particles.transform.localScale *= 3.5f; // doubles the size
+            particles.transform.localScale *= 3.5f;
             Destroy(particles, 2f);
             GameEvents.BossEndedDeath?.Invoke();
             SoundManager.Instance.PlaySound("Explosion", transform);
@@ -83,7 +92,8 @@ namespace _WHY.Domains.Boss.Scripts
         {
             if (_isFrozen) return;
 
-            if (BossShooting.GetBossState() != BossShooting.BossState.Idle)
+            var state = BossShooting.GetBossState();
+            if (state != BossShooting.BossState.Idle)
             {
                 _moveSpeed = shootingMoveSpeed;
                 HandleShootingMovement();
@@ -97,13 +107,9 @@ namespace _WHY.Domains.Boss.Scripts
 
         private void HandleFloatingMovement()
         {
-            transform.position = Vector3.MoveTowards(transform.position,
-                _targetPosition, _moveSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, _targetPosition) < 0.1f)
-            {
-                PickNewTargetPosition();
-            }
+            transform.position = Vector3.MoveTowards(
+                transform.position, _targetPosition, _moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, _targetPosition) < 0.1f) PickNewTargetPosition();
         }
 
         private void PickNewTargetPosition()
@@ -129,7 +135,6 @@ namespace _WHY.Domains.Boss.Scripts
                 pos.x = minX;
                 _movingRight = true;
             }
-
             transform.position = pos;
         }
 
@@ -140,7 +145,6 @@ namespace _WHY.Domains.Boss.Scripts
         }
 
         private void OnFreeze() => _isFrozen = true;
-
         private void OnUnFreeze() => _isFrozen = false;
     }
 }

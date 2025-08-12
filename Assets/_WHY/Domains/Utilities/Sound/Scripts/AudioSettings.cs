@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Sound
+namespace _WHY.Domains.Utilities.Sound.Scripts
 {
     [CreateAssetMenu(fileName = "AudioSettings", menuName = "Audio/AudioSettings")]
     public class AudioSettings : ScriptableObject
@@ -15,6 +15,6 @@ namespace Sound
         public string name;
         public AudioClip clip;
         public float volume = 1f;
-        public bool loop = false;
+        public bool loop;
     }
 }

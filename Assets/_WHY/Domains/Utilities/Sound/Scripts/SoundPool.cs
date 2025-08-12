@@ -1,5 +1,8 @@
-using Utilities;
+using _WHY.Domains.Utilities.GameHandlers.Scripts;
 
-public class SoundPool : MonoPool<AudioSourceWrapper>
+namespace _WHY.Domains.Utilities.Sound.Scripts
 {
+    public class SoundPool : MonoPool<AudioSourceWrapper>
+    {
+    }
 }

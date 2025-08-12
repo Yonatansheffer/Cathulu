@@ -6,12 +6,11 @@ namespace _WHY.Domains.Collectibles.Scripts
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class Collectible : MonoBehaviour
     {
-        private SpriteRenderer _spriteRenderer;
         [SerializeField, Tooltip("Speed at which the collectible falls")] protected float fallSpeed = 2f;
         [SerializeField, Tooltip("Time before collectible is destroyed after hitting floor")] protected float timeForDestroy = 20f;
         [SerializeField, Tooltip("Duration of blinking effect before destruction")] private float blinkDuration = 3f;
         [SerializeField, Tooltip("Interval between blinks")] private float blinkInterval = 0.1f;
-
+        private SpriteRenderer _spriteRenderer;
         
         protected virtual void Awake()
         {

@@ -9,12 +9,17 @@ namespace _WHY.Domains.Boss.Scripts
     public class BossSpawning : WHYBaseMono
     {
         [Header("Enemy Spawning")]
-        [SerializeField] private float minSpawnForce = 4f;
-        [SerializeField] private float maxSpawnForce = 40f;
-        [SerializeField] private Vector3 spawnOffset = new (0.8f, 0f, 0f);
-        [SerializeField] private float chanceOfBigEnemy = 9f;
-        [SerializeField] private Transform[] enemyTargetPositions;
-        
+        [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")]
+        private float minSpawnForce = 4f;
+        [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")]
+        private float maxSpawnForce = 40f;
+        [SerializeField, Tooltip("Offset from the boss position where enemies appear")]
+        private Vector3 spawnOffset = new(0.8f, 0f, 0f);
+        [SerializeField, Tooltip("Chance (0-100) for a flying enemy to be big")]
+        private float chanceOfBigEnemy = 9f;
+        [SerializeField, Tooltip("Walking enemies target positions")]
+        private Transform[] enemyTargetPositions;
+
         private void OnEnable()
         {
             GameEvents.SpawnAllWalkingEnemies += SpawnAllWalkingEnemies;
@@ -28,24 +33,24 @@ namespace _WHY.Domains.Boss.Scripts
             GameEvents.BossLivesChanged -= BossHealthWaves;
             GameEvents.ToSpawnEnemy -= EnemySpawnRoutine;
         }
-        
+
         private void EnemySpawnRoutine()
         {
             StartCoroutine(EnemySpawn());
         }
-        
+
         private IEnumerator EnemySpawn()
         {
-            yield return new WaitForSeconds(0.5f); 
+            yield return new WaitForSeconds(0.5f);
             if (Random.value > 0.5f)
             {
                 SpawnFlyingEnemies(1);
                 yield break;
             }
+            if (enemyTargetPositions == null || enemyTargetPositions.Length == 0) yield break;
             var targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
             SpawnWalkingEnemy(targetTransform);
         }
-
 
         private void ApplyRandomForce(Enemy enemy)
         {
@@ -84,14 +89,12 @@ namespace _WHY.Domains.Boss.Scripts
                     GameEvents.EnemySpawned?.Invoke();
                     break;
             }
-        } 
-        
+        }
+
         private void SpawnAllWalkingEnemies()
         {
-            foreach (var targetTransform in enemyTargetPositions)
-            {
-                SpawnWalkingEnemy(targetTransform);
-            }
+            if (enemyTargetPositions == null || enemyTargetPositions.Length == 0) return;
+            foreach (var targetTransform in enemyTargetPositions) SpawnWalkingEnemy(targetTransform);
         }
 
         private void SpawnWalkingEnemy(Transform targetTransform)
@@ -99,7 +102,7 @@ namespace _WHY.Domains.Boss.Scripts
             var walkingEnemy = WalkingEnemyPool.Instance.Get();
             walkingEnemy.transform.position = transform.position + spawnOffset;
             ApplyRandomForce(walkingEnemy);
-            var target = targetTransform.parent != null
+            var target = targetTransform.parent
                 ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
                 : targetTransform.position;
             walkingEnemy.ToTarget(target);

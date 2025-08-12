@@ -177,17 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dfdcba93ee4502bb7dfdce3b5110f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnForce: 2
-  maxSpawnForce: 4
-  spawnOffset: {x: 0.8, y: 0, z: 0}
-  enemyTargetPositions: []
   rotationSpeed: 40
   bulletsPerSecond: 5
   bulletForce: 20
-  moveRadius: 3
-  moveSpeed: 1
-  idleTiltAngle: 15
-  tiltSpeed: 2
+  player: {fileID: 0}
+  shootingDuration: 8
+  ballShootDistance: 120
+  ballShootCooldown: 3
 --- !u!114 &2149393485863936391
 MonoBehaviour:
   m_ObjectHideFlags: 0

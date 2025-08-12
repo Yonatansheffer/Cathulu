@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4649496092648368533}
   - component: {fileID: 5295055359996487355}
+  - component: {fileID: 7784178870465746804}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,5 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c338f49b274ee4fbaa45b0b63e3a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialCountDownTime: 100
-  initialPlayerLives: 3
+  initialCountDownTime: 200
+  freezeDuration: 6
+--- !u!114 &7784178870465746804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618363181324428778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be5f8ce0eda10b49a90d88a8fcd8bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

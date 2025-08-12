@@ -1,8 +1,7 @@
 using _WHY.Domains.Utilities.GameHandlers.Scripts;
+using _WHY.Domains.Utilities.Sound.Scripts;
 using _WHY.Domains.Weapons.Scripts;
-using Sound;
 using UnityEngine;
-using Weapons;
 
 namespace _WHY.Domains.Collectibles.Scripts
 {

@@ -597,7 +597,7 @@ Transform:
   m_GameObject: {fileID: 170470212}
   serializedVersion: 2
   m_LocalRotation: {x: 0.005818401, y: 0.000033179935, z: -0.0020486107, w: 0.999981}
-  m_LocalPosition: {x: -0.3485208, y: -2.0925937, z: -1.2521329}
+  m_LocalPosition: {x: -0.29, y: -2.09, z: -1.2521329}
   m_LocalScale: {x: 0.17305414, y: 0.20526637, z: 0.99984694}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4869,8 +4869,8 @@ Transform:
   m_GameObject: {fileID: 1304848248}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0058184857, y: 0.0000106300295, z: 0.0018269069, w: 0.9999814}
-  m_LocalPosition: {x: -1.0044, y: -0.5828, z: -1.24}
-  m_LocalScale: {x: 0.25391024, y: 0.25798538, z: 0.99984074}
+  m_LocalPosition: {x: -1.0173, y: -0.6903, z: -1.2267}
+  m_LocalScale: {x: 0.49060518, y: 0.45273462, z: 0.99984074}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1240300308}
@@ -4924,7 +4924,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.82, y: 5.5}
+  m_Size: {x: 6.94, y: 5.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -427,12 +427,12 @@ GameObject:
   m_Component:
   - component: {fileID: 203127917}
   m_Layer: 5
-  m_Name: Won Board
+  m_Name: Won Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &203127917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -611,12 +611,12 @@ GameObject:
   m_Component:
   - component: {fileID: 739274152}
   m_Layer: 5
-  m_Name: Lost Board
+  m_Name: Lost Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &739274152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -678,11 +678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 929.8331
+      value: 890.8763
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 572.2684
+      value: 559.1557
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_LocalPosition.x
@@ -714,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.7232
+      value: 3.9091
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.1313019
+      value: 4.424999
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -735,6 +735,10 @@ PrefabInstance:
     - target: {fileID: 3864915766036515503, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_Name
       value: Lose Image
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864915766036515503, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1030,6 +1034,7 @@ MonoBehaviour:
   winPressAgainText: {fileID: 720809828}
   losePressAgainText: {fileID: 196125937}
   scoreText: {fileID: 2046051727}
+  blinkInterval: 0.5
 --- !u!4 &1726380143
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,11 +1595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 931.3936
+      value: 893.4019
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 560.8973
+      value: 555.2144
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1626,11 +1631,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.1758
+      value: 3.4497
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.7828
+      value: 1.0587
       objectReference: {fileID: 0}
     - target: {fileID: 3214377393082668320, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1650,7 +1655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3864915766036515503, guid: bbdfc07e406349943afe7c5640bca245, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

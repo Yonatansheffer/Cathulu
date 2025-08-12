@@ -7,15 +7,20 @@ namespace _WHY.Domains.Player.Scripts
     public class PlayerController : MonoBehaviour
     {
         [SerializeField, Tooltip("Starting position of the player")] private Vector3 startingPosition;
-        [SerializeField, Tooltip("Movement speed")] private float speed;
+        [SerializeField, Tooltip("Movement speed")] private float speed; 
+        [SerializeField, Tooltip("Gun GameObject for shooting")] private GameObject gun;
+        [SerializeField, Tooltip("Force applied for jumping")] private float jumpForce;
+        
+        [Header("Dashing")]
         [SerializeField, Tooltip("Speed during dash")] private float dashSpeed;
         [SerializeField, Tooltip("Duration of dash in seconds")] private float dashDuration;
         [SerializeField, Tooltip("Cooldown between dashes in seconds")] private float dashCooldown;
-        [SerializeField, Tooltip("Gun GameObject for shooting")] private GameObject gun;
-        [SerializeField, Tooltip("Force applied for jumping")] private float jumpForce;
+        
+        [Header("Ground Check")]
         [SerializeField, Tooltip("Transform for ground check position")] private Transform groundCheck;
         [SerializeField, Tooltip("Radius for ground check overlap circle")] private float groundCheckRadius;
         [SerializeField, Tooltip("Layer mask for ground detection")] private LayerMask groundLayer;
+        
         private Rigidbody2D _rb;
         private PlayerInputs _inputActions;
         private Vector2 _moveInput;

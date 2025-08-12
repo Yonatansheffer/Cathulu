@@ -10,18 +10,28 @@ namespace _WHY.Domains.Boss.Scripts
         [Serializable]
         public class WaveConfig
         {
+            [Tooltip("Delay before the first wave starts")]
             public float startDelay = 5f;
+            [Tooltip("Initial time window for spawning enemies per wave")]
             public float initialSpawnDuration = 20f;
+            [Tooltip("Initial interval between spawns inside a wave")]
             public float initialSpawnInterval = 5f;
+            [Tooltip("Lower bound for spawn duration per wave")]
             public float minSpawnDuration = 5f;
+            [Tooltip("Lower bound for interval between spawns")]
             public float minSpawnInterval = 1f;
+            [Tooltip("How much to reduce duration after each cycle")]
             public float durationDecreaseRate = 1f;
+            [Tooltip("How much to reduce interval after each cycle")]
             public float intervalDecreaseRate = 0.2f;
             [HideInInspector] public float currentSpawnDuration;
             [HideInInspector] public float currentSpawnInterval;
         }
 
-        [SerializeField] private WaveConfig waveConfig = new WaveConfig();
+        [Header("Wave Settings")]
+        [SerializeField, Tooltip("Configuration for wave timings")]
+        private WaveConfig waveConfig = new WaveConfig();
+
         private bool _isFrozen;
         private Coroutine _waveRoutine;
 
@@ -31,7 +41,7 @@ namespace _WHY.Domains.Boss.Scripts
             waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
             _waveRoutine = StartCoroutine(CombinedWaveRoutine());
         }
-        
+
         private void OnEnable()
         {
             GameEvents.FreezeLevel += OnFreeze;
@@ -55,31 +65,23 @@ namespace _WHY.Domains.Boss.Scripts
 
             while (true)
             {
-                float elapsed = 0f;
+                var elapsed = 0f;
                 while (elapsed < waveConfig.currentSpawnDuration)
                 {
-                    yield return new WaitUntil(() => !_isFrozen);
+                    while (_isFrozen) yield return null;
                     GameEvents.ToSpawnEnemy?.Invoke();
-                    float timer = 0f;
-                    while (timer < waveConfig.currentSpawnInterval)
-                    {
-                        yield return null;
-                        if (!_isFrozen) timer += Time.deltaTime;
-                    }
-
+                    yield return WaitSecondsUnfrozen(waveConfig.currentSpawnInterval);
                     elapsed += waveConfig.currentSpawnInterval;
                 }
 
-                yield return new WaitUntil(() => !_isFrozen);
+                while (_isFrozen) yield return null;
 
                 GameEvents.BossShoots?.Invoke();
 
-                yield return new WaitUntil(() => BossShooting.GetBossState() != BossShooting.BossState.Idle);
+                while (BossShooting.GetBossState() == BossShooting.BossState.Idle) yield return null;
+                while (BossShooting.GetBossState() != BossShooting.BossState.Idle) yield return null;
 
-                yield return new WaitUntil(() => BossShooting.GetBossState() == BossShooting.BossState.Idle);
-
-                yield return new WaitUntil(() => !_isFrozen);
-
+                while (_isFrozen) yield return null;
 
                 waveConfig.currentSpawnDuration = Mathf.Max(
                     waveConfig.minSpawnDuration,
@@ -93,14 +95,17 @@ namespace _WHY.Domains.Boss.Scripts
             }
         }
 
-        private void OnFreeze()
+        private IEnumerator WaitSecondsUnfrozen(float seconds)
         {
-            _isFrozen = true;
+            var t = 0f;
+            while (t < seconds)
+            {
+                if (!_isFrozen) t += Time.deltaTime;
+                yield return null;
+            }
         }
 
-        private void OnUnFreeze()
-        {
-            _isFrozen = false;
-        }
+        private void OnFreeze() => _isFrozen = true;
+        private void OnUnFreeze() => _isFrozen = false;
     }
 }

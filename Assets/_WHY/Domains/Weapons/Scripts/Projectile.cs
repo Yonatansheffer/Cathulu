@@ -1,18 +1,25 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Weapons
+namespace _WHY.Domains.Weapons.Scripts
 {
-    // Base class for all projectiles
     public class Projectile : MonoBehaviour
     {
-        public event Action OnDestroy; // Event to notify when the projectile is destroyed
-        private Rigidbody2D _rb;
-        [SerializeField] private GameObject orangeStarsParticles;
-        [SerializeField] private GameObject pinkStarsParticles;
+        public event Action OnDestroy;
+
+        [Header("Particles")]
+        [SerializeField, Tooltip("Particles spawned when hitting the Boss")]
+        private GameObject orangeStarsParticles;
+        [SerializeField, Tooltip("Particles spawned when hitting an Enemy")]
+        private GameObject pinkStarsParticles;
+        [SerializeField, Tooltip("Lifetime of boss-hit particles (seconds)")]
+        private float bossParticlesLifetime = 0.8f;
+        [SerializeField, Tooltip("Lifetime of enemy-hit particles (seconds)")]
+        private float enemyParticlesLifetime = 1f;
+
         protected Animator Animator;
-        
+        private Rigidbody2D _rb;
+
         private void Awake()
         {
             Animator = GetComponent<Animator>();
@@ -21,31 +28,26 @@ namespace Weapons
 
         public void Launch(Vector2 direction)
         {
-            _rb.linearVelocity = direction;
+            if (_rb) _rb.linearVelocity = direction;
         }
 
         public void Stop()
         {
-            _rb.linearVelocity = Vector2.zero;
+            if (_rb) _rb.linearVelocity = Vector2.zero;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.gameObject.CompareTag("Boss Bullet")) return;
-            GameObject particles;
-            if (other.gameObject.CompareTag("Boss"))
-            {
-                particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
-                Destroy(particles, 0.8f);
-            }
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-                particles = Instantiate(pinkStarsParticles, transform.position, Quaternion.identity);
-                Destroy(particles, 1f);
-            }
+            if (other.CompareTag("Boss Bullet")) return;
+
+            if (other.CompareTag("Boss"))
+                SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
+            else if (other.CompareTag("Enemy"))
+                SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
+
             HandleHit(other);
         }
-        
+
         protected virtual void HandleHit(Collider2D other)
         {
             EndShot();
@@ -55,6 +57,13 @@ namespace Weapons
         {
             OnDestroy?.Invoke();
             Destroy(gameObject);
+        }
+
+        private void SpawnParticles(GameObject prefab, float lifetime)
+        {
+            if (!prefab) return;
+            var go = Instantiate(prefab, transform.position, Quaternion.identity);
+            Destroy(go, lifetime);
         }
     }
 }
