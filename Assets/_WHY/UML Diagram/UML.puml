@@ -1,0 +1,98 @@
+﻿@startuml
+title B.O.S.S — Simplified Unity Game Architecture
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+
+' ---------- Utilities ----------
+package "_WHY.Domains.Utilities" {
+  class GameEvents <<static>>
+  enum GameState {
+    Playing
+    Defeated
+    InFreeze
+    TimeOver
+    PlayerWon
+  }
+  class CameraFollow <<MonoBehaviour>>
+  class GameLoopManager <<MonoBehaviour>>
+}
+
+' ---------- Player ----------
+package "_WHY.Domains.Player" {
+  class PlayerAnimations <<MonoBehaviour>>
+  class PlayerHealth <<static>>
+}
+
+' ---------- Weapons ----------
+package "_WHY.Domains.Weapons" {
+  enum WeaponType {
+    SpellGun
+    LightGun
+    FireGun
+  }
+  class WeaponSettings
+  class WeaponConfig
+  class WeaponController <<MonoBehaviour>>
+  class Projectile
+}
+
+' ---------- Enemies ----------
+package "_WHY.Domains.Enemies" {
+  abstract class Enemy <<MonoBehaviour>>
+  class FlyingEnemy
+  class WalkingEnemy
+  class FlyingEnemyPool
+  class WalkingEnemyPool
+}
+
+Enemy <|-- FlyingEnemy
+Enemy <|-- WalkingEnemy
+
+' ---------- Boss ----------
+package "_WHY.Domains.Boss" {
+  class BossMovement <<MonoBehaviour>>
+  class BossShooting <<MonoBehaviour>>
+  class BossSpawning <<MonoBehaviour>>
+  class WaveManager <<MonoBehaviour>>
+  class BossBulletPool
+  class BossBallBulletPool
+}
+
+' ---------- UI ----------
+package "_WHY.Domains.UI" {
+  class GamePlayUI <<MonoBehaviour>>
+  class EndScreenUI <<MonoBehaviour>>
+  class StartScreenUI <<MonoBehaviour>>
+  class CollectibleManager <<MonoBehaviour>>
+}
+
+' ---------- Collectibles ----------
+package "_WHY.Domains.Collectibles" {
+  class Collectible <<MonoBehaviour>>
+  class WeaponCollectible
+  class ShieldCollectible
+  class LifeCollectible
+}
+
+' ---------- Relationships ----------
+WeaponSettings "1" o-- "*" WeaponConfig
+WeaponController --> WeaponSettings
+WeaponController --> Projectile
+BossShooting ..> BossBulletPool
+BossShooting ..> BossBallBulletPool
+BossSpawning ..> FlyingEnemyPool
+BossSpawning ..> WalkingEnemyPool
+CollectibleManager ..> Collectible
+Collectible <|-- WeaponCollectible
+Collectible <|-- ShieldCollectible
+Collectible <|-- LifeCollectible
+GamePlayUI ..> GameEvents
+EndScreenUI ..> GameEvents
+StartScreenUI ..> GameEvents
+CameraFollow ..> GameEvents
+FlyingEnemy ..> GameEvents
+WalkingEnemy ..> GameEvents
+
+@enduml

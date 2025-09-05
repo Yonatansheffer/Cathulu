@@ -165,6 +165,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -709,7 +722,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Preview_41-removebg-preview_0: -6000704157237822968
+      Preview_41-removebg-preview_1: -1600825228523889973
+      Preview_41-removebg-preview_10: 3873352309773889793
+      Preview_41-removebg-preview_11: 5184617680388890146
+      Preview_41-removebg-preview_12: 8186211974983701221
+      Preview_41-removebg-preview_13: -7545444329829997172
+      Preview_41-removebg-preview_14: 1656700843032667209
+      Preview_41-removebg-preview_15: -4282275593431685694
+      Preview_41-removebg-preview_16: 5391634212915046941
+      Preview_41-removebg-preview_17: -5536096226111467960
+      Preview_41-removebg-preview_18: -6565182158462001021
+      Preview_41-removebg-preview_19: 4816112212408475484
+      Preview_41-removebg-preview_2: 4349308551158236547
+      Preview_41-removebg-preview_20: -1719917102374840364
+      Preview_41-removebg-preview_21: -8325619893840423082
+      Preview_41-removebg-preview_22: -5467894622633495477
+      Preview_41-removebg-preview_23: -5923892366543556438
+      Preview_41-removebg-preview_3: 2830489995472342640
+      Preview_41-removebg-preview_4: -3183843531371023312
+      Preview_41-removebg-preview_5: -1957633978064106373
+      Preview_41-removebg-preview_6: 1788335952506882755
+      Preview_41-removebg-preview_7: 3626041904214567188
+      Preview_41-removebg-preview_8: 532076001750270706
+      Preview_41-removebg-preview_9: 7411828747979786049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

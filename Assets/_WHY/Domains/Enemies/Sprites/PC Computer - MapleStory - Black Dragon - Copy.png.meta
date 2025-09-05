@@ -153,6 +153,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -609,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PC Computer - MapleStory - Black Dragon - Copy_0: -2284509901054136419
+      PC Computer - MapleStory - Black Dragon - Copy_1: -1715984835350264238
+      PC Computer - MapleStory - Black Dragon - Copy_10: -2059690318939854721
+      PC Computer - MapleStory - Black Dragon - Copy_11: -3577122486259411020
+      PC Computer - MapleStory - Black Dragon - Copy_12: -5718528625062895306
+      PC Computer - MapleStory - Black Dragon - Copy_13: -7426737957720412226
+      PC Computer - MapleStory - Black Dragon - Copy_14: -8924754017499032269
+      PC Computer - MapleStory - Black Dragon - Copy_15: 7886659473918990401
+      PC Computer - MapleStory - Black Dragon - Copy_16: -6670886079991883800
+      PC Computer - MapleStory - Black Dragon - Copy_17: 5157002421099823427
+      PC Computer - MapleStory - Black Dragon - Copy_18: 1857344527050999629
+      PC Computer - MapleStory - Black Dragon - Copy_19: -4061112767620896432
+      PC Computer - MapleStory - Black Dragon - Copy_2: 6436800361903417259
+      PC Computer - MapleStory - Black Dragon - Copy_3: -6644763695739739719
+      PC Computer - MapleStory - Black Dragon - Copy_4: 1511217913712693753
+      PC Computer - MapleStory - Black Dragon - Copy_5: -730110986088614744
+      PC Computer - MapleStory - Black Dragon - Copy_6: 6508334994340928264
+      PC Computer - MapleStory - Black Dragon - Copy_7: -2870347200366845299
+      PC Computer - MapleStory - Black Dragon - Copy_8: 7661057191214860588
+      PC Computer - MapleStory - Black Dragon - Copy_9: -5678812399874709617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

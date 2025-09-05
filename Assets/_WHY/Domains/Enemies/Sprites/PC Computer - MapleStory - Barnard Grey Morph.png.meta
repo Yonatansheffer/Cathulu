@@ -546,6 +546,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -3884,7 +3897,158 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PC Computer - MapleStory - Barnard Grey Morph_0: -4731360159044724945
+      PC Computer - MapleStory - Barnard Grey Morph_1: 3002318830337570846
+      PC Computer - MapleStory - Barnard Grey Morph_10: 6989506750349486522
+      PC Computer - MapleStory - Barnard Grey Morph_100: -738258145298737132
+      PC Computer - MapleStory - Barnard Grey Morph_101: -1039095754340446649
+      PC Computer - MapleStory - Barnard Grey Morph_102: 1847050464597634474
+      PC Computer - MapleStory - Barnard Grey Morph_103: -3845578341368208096
+      PC Computer - MapleStory - Barnard Grey Morph_104: 8966246217113329253
+      PC Computer - MapleStory - Barnard Grey Morph_105: -7741018657335425893
+      PC Computer - MapleStory - Barnard Grey Morph_106: -7816748641838608163
+      PC Computer - MapleStory - Barnard Grey Morph_107: -4529660128147258899
+      PC Computer - MapleStory - Barnard Grey Morph_108: -1991599037669399201
+      PC Computer - MapleStory - Barnard Grey Morph_109: -456349993850490883
+      PC Computer - MapleStory - Barnard Grey Morph_11: 7935508996865382288
+      PC Computer - MapleStory - Barnard Grey Morph_110: -3780813077049101641
+      PC Computer - MapleStory - Barnard Grey Morph_111: -306761730894639230
+      PC Computer - MapleStory - Barnard Grey Morph_112: -4482805855637745526
+      PC Computer - MapleStory - Barnard Grey Morph_113: 5968501931046962102
+      PC Computer - MapleStory - Barnard Grey Morph_114: 440221579279694569
+      PC Computer - MapleStory - Barnard Grey Morph_115: 2826881856045963605
+      PC Computer - MapleStory - Barnard Grey Morph_116: -411175918329476600
+      PC Computer - MapleStory - Barnard Grey Morph_117: 86024312330532744
+      PC Computer - MapleStory - Barnard Grey Morph_118: 4350788113285173974
+      PC Computer - MapleStory - Barnard Grey Morph_119: -8447795849705138415
+      PC Computer - MapleStory - Barnard Grey Morph_12: -3132701462884929735
+      PC Computer - MapleStory - Barnard Grey Morph_120: 5856891408589150057
+      PC Computer - MapleStory - Barnard Grey Morph_121: -5145775064791319321
+      PC Computer - MapleStory - Barnard Grey Morph_122: 9219654048221142648
+      PC Computer - MapleStory - Barnard Grey Morph_123: -2614784390367423041
+      PC Computer - MapleStory - Barnard Grey Morph_124: 793770095170814540
+      PC Computer - MapleStory - Barnard Grey Morph_125: -6881629827633173352
+      PC Computer - MapleStory - Barnard Grey Morph_126: -7448925485888074385
+      PC Computer - MapleStory - Barnard Grey Morph_127: 8573637447189020925
+      PC Computer - MapleStory - Barnard Grey Morph_128: 1819785753427371494
+      PC Computer - MapleStory - Barnard Grey Morph_129: 587078523760809095
+      PC Computer - MapleStory - Barnard Grey Morph_13: -6038915497980650042
+      PC Computer - MapleStory - Barnard Grey Morph_130: -4197807777438668467
+      PC Computer - MapleStory - Barnard Grey Morph_131: -6119558699600682939
+      PC Computer - MapleStory - Barnard Grey Morph_132: -1829698257893349263
+      PC Computer - MapleStory - Barnard Grey Morph_133: -7268565887056543509
+      PC Computer - MapleStory - Barnard Grey Morph_134: -2429667913151515641
+      PC Computer - MapleStory - Barnard Grey Morph_135: 6552942557092535098
+      PC Computer - MapleStory - Barnard Grey Morph_136: -4492290086634171349
+      PC Computer - MapleStory - Barnard Grey Morph_137: 4132388833138906487
+      PC Computer - MapleStory - Barnard Grey Morph_138: -1566916658353447162
+      PC Computer - MapleStory - Barnard Grey Morph_139: -3796838555762981134
+      PC Computer - MapleStory - Barnard Grey Morph_14: -893316643295411562
+      PC Computer - MapleStory - Barnard Grey Morph_140: -243587139329392207
+      PC Computer - MapleStory - Barnard Grey Morph_141: -8838590742266044735
+      PC Computer - MapleStory - Barnard Grey Morph_142: 5672744809903606380
+      PC Computer - MapleStory - Barnard Grey Morph_143: 7432592691193375241
+      PC Computer - MapleStory - Barnard Grey Morph_144: -7235244485450319368
+      PC Computer - MapleStory - Barnard Grey Morph_145: 2147901515623185069
+      PC Computer - MapleStory - Barnard Grey Morph_146: 328334284545049287
+      PC Computer - MapleStory - Barnard Grey Morph_147: 4526929253748064566
+      PC Computer - MapleStory - Barnard Grey Morph_148: -1344214467895444313
+      PC Computer - MapleStory - Barnard Grey Morph_149: 1568371593687499031
+      PC Computer - MapleStory - Barnard Grey Morph_15: -7222758341280792350
+      PC Computer - MapleStory - Barnard Grey Morph_150: -8962800144267961849
+      PC Computer - MapleStory - Barnard Grey Morph_16: -1674656714714095830
+      PC Computer - MapleStory - Barnard Grey Morph_17: -8833510164031447866
+      PC Computer - MapleStory - Barnard Grey Morph_18: -4142688824166252735
+      PC Computer - MapleStory - Barnard Grey Morph_19: -1950082559631069185
+      PC Computer - MapleStory - Barnard Grey Morph_2: 7620700388205758638
+      PC Computer - MapleStory - Barnard Grey Morph_20: 1850557682563052221
+      PC Computer - MapleStory - Barnard Grey Morph_21: 632391526694887059
+      PC Computer - MapleStory - Barnard Grey Morph_22: 8274572276675248953
+      PC Computer - MapleStory - Barnard Grey Morph_23: -7038167931369602810
+      PC Computer - MapleStory - Barnard Grey Morph_24: -4165112638618284636
+      PC Computer - MapleStory - Barnard Grey Morph_25: -4293571801189755527
+      PC Computer - MapleStory - Barnard Grey Morph_26: 8672788780855575391
+      PC Computer - MapleStory - Barnard Grey Morph_27: 6055111887010351502
+      PC Computer - MapleStory - Barnard Grey Morph_28: -8364407164141882407
+      PC Computer - MapleStory - Barnard Grey Morph_29: 7389995647289742151
+      PC Computer - MapleStory - Barnard Grey Morph_3: -4283580862461519802
+      PC Computer - MapleStory - Barnard Grey Morph_30: -3898030020232852678
+      PC Computer - MapleStory - Barnard Grey Morph_31: 5747798285829016927
+      PC Computer - MapleStory - Barnard Grey Morph_32: -7817037733253987522
+      PC Computer - MapleStory - Barnard Grey Morph_33: 1309596342763021428
+      PC Computer - MapleStory - Barnard Grey Morph_34: -6254071002265872998
+      PC Computer - MapleStory - Barnard Grey Morph_35: 7183757582065162842
+      PC Computer - MapleStory - Barnard Grey Morph_36: -765367945853473176
+      PC Computer - MapleStory - Barnard Grey Morph_37: -7745334756144613666
+      PC Computer - MapleStory - Barnard Grey Morph_38: 5048016519592518639
+      PC Computer - MapleStory - Barnard Grey Morph_39: 5701915271803735151
+      PC Computer - MapleStory - Barnard Grey Morph_4: -2395485266709033842
+      PC Computer - MapleStory - Barnard Grey Morph_40: -287608240136600741
+      PC Computer - MapleStory - Barnard Grey Morph_41: 6448223869253153353
+      PC Computer - MapleStory - Barnard Grey Morph_42: 1460918468318548211
+      PC Computer - MapleStory - Barnard Grey Morph_43: 7513629372505019866
+      PC Computer - MapleStory - Barnard Grey Morph_44: -1156266364389373071
+      PC Computer - MapleStory - Barnard Grey Morph_45: 7298388966131755187
+      PC Computer - MapleStory - Barnard Grey Morph_46: -3184012262077638358
+      PC Computer - MapleStory - Barnard Grey Morph_47: 4763198588539161193
+      PC Computer - MapleStory - Barnard Grey Morph_48: 6175005318224498826
+      PC Computer - MapleStory - Barnard Grey Morph_49: 2481339446801670172
+      PC Computer - MapleStory - Barnard Grey Morph_5: -8299376132047062978
+      PC Computer - MapleStory - Barnard Grey Morph_50: 9185754624239170596
+      PC Computer - MapleStory - Barnard Grey Morph_51: -4001421705515813182
+      PC Computer - MapleStory - Barnard Grey Morph_52: 4120012246562745809
+      PC Computer - MapleStory - Barnard Grey Morph_53: -6929901585235863568
+      PC Computer - MapleStory - Barnard Grey Morph_54: 804996131423912724
+      PC Computer - MapleStory - Barnard Grey Morph_55: 1394732328932783191
+      PC Computer - MapleStory - Barnard Grey Morph_56: -3352166353248048672
+      PC Computer - MapleStory - Barnard Grey Morph_57: 7619015852315569609
+      PC Computer - MapleStory - Barnard Grey Morph_58: 1138979447016907697
+      PC Computer - MapleStory - Barnard Grey Morph_59: 4628724169911573847
+      PC Computer - MapleStory - Barnard Grey Morph_6: 1877665745308110837
+      PC Computer - MapleStory - Barnard Grey Morph_60: -2633104391045518803
+      PC Computer - MapleStory - Barnard Grey Morph_61: -8806852365708550955
+      PC Computer - MapleStory - Barnard Grey Morph_62: 9043433021246672790
+      PC Computer - MapleStory - Barnard Grey Morph_63: 3775415841818274399
+      PC Computer - MapleStory - Barnard Grey Morph_64: -7753905367330425929
+      PC Computer - MapleStory - Barnard Grey Morph_65: -8827117515822752387
+      PC Computer - MapleStory - Barnard Grey Morph_66: 1006578620223320331
+      PC Computer - MapleStory - Barnard Grey Morph_67: 1091394697286201144
+      PC Computer - MapleStory - Barnard Grey Morph_68: -37650738674084590
+      PC Computer - MapleStory - Barnard Grey Morph_69: -9038896051165487996
+      PC Computer - MapleStory - Barnard Grey Morph_7: 8582579932191369614
+      PC Computer - MapleStory - Barnard Grey Morph_70: 3906080339673922855
+      PC Computer - MapleStory - Barnard Grey Morph_71: -3106771806055155245
+      PC Computer - MapleStory - Barnard Grey Morph_72: 5703670071397335376
+      PC Computer - MapleStory - Barnard Grey Morph_73: 2628402805286649005
+      PC Computer - MapleStory - Barnard Grey Morph_74: -1802190467633343886
+      PC Computer - MapleStory - Barnard Grey Morph_75: 4072064688198958845
+      PC Computer - MapleStory - Barnard Grey Morph_76: 8943959947493128643
+      PC Computer - MapleStory - Barnard Grey Morph_77: 1654290231284753629
+      PC Computer - MapleStory - Barnard Grey Morph_78: 8253957250279757638
+      PC Computer - MapleStory - Barnard Grey Morph_79: -7209817416339109202
+      PC Computer - MapleStory - Barnard Grey Morph_8: -3186371639216549336
+      PC Computer - MapleStory - Barnard Grey Morph_80: 9189418022378890506
+      PC Computer - MapleStory - Barnard Grey Morph_81: 3685960888360995686
+      PC Computer - MapleStory - Barnard Grey Morph_82: -2782404632233479557
+      PC Computer - MapleStory - Barnard Grey Morph_83: 7880199075087875143
+      PC Computer - MapleStory - Barnard Grey Morph_84: 8668149563649423659
+      PC Computer - MapleStory - Barnard Grey Morph_85: -9202607709259791679
+      PC Computer - MapleStory - Barnard Grey Morph_86: -3522780202326190271
+      PC Computer - MapleStory - Barnard Grey Morph_87: -4878449554501516951
+      PC Computer - MapleStory - Barnard Grey Morph_88: -616814473922582418
+      PC Computer - MapleStory - Barnard Grey Morph_89: 8040717936666211243
+      PC Computer - MapleStory - Barnard Grey Morph_9: 7443023981431109056
+      PC Computer - MapleStory - Barnard Grey Morph_90: -1435333758555687281
+      PC Computer - MapleStory - Barnard Grey Morph_91: -4883198594189470570
+      PC Computer - MapleStory - Barnard Grey Morph_92: 496441637882880616
+      PC Computer - MapleStory - Barnard Grey Morph_93: 6105242684972520875
+      PC Computer - MapleStory - Barnard Grey Morph_94: -5590603509588190712
+      PC Computer - MapleStory - Barnard Grey Morph_95: 8325975398341027097
+      PC Computer - MapleStory - Barnard Grey Morph_96: 2529164395904061842
+      PC Computer - MapleStory - Barnard Grey Morph_97: 2936534485226665888
+      PC Computer - MapleStory - Barnard Grey Morph_98: 5955973734740879633
+      PC Computer - MapleStory - Barnard Grey Morph_99: -8616707795685863764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
