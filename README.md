@@ -4,6 +4,7 @@
 ## Links
 - **Gameplay Video**: [Watch here](https://youtu.be/1dOB2df8Wb4)  
 - **Itch Page**: [Play here](https://yonatansheffer.itch.io/boss)
+- **Diagram**: [PNG](Assets/B.O.S.S/UML%20Diagram/UML-B_O_S_S__Simplified_Unity_Game_Architecture.png)
 
 ## Instructions
 - **Shoot**: Aim with mouse and shoot on left click.  
