@@ -1,8 +1,8 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using _WHY.Domains.Utilities.Sound.Scripts;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Collectibles.Scripts
+namespace B.O.S.S.Domains.Collectibles.Scripts
 {
     public class TimeAddingCollectible : Collectible
     {

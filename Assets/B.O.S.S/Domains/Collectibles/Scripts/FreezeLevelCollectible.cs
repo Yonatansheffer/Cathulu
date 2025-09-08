@@ -1,6 +1,6 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 
-namespace _WHY.Domains.Collectibles.Scripts
+namespace B.O.S.S.Domains.Collectibles.Scripts
 {
     public class FreezeLevelCollectible : Collectible
     {

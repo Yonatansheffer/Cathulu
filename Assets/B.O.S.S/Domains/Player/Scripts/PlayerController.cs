@@ -1,8 +1,8 @@
 using System.Collections;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Player.Scripts
+namespace B.O.S.S.Domains.Player.Scripts
 {
     public class PlayerController : MonoBehaviour
     {

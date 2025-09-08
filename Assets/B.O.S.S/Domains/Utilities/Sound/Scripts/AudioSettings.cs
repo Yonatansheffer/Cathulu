@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace _WHY.Domains.Utilities.Sound.Scripts
+namespace B.O.S.S.Domains.Utilities.Sound.Scripts
 {
     [CreateAssetMenu(fileName = "AudioSettings", menuName = "Audio/AudioSettings")]
     public class AudioSettings : ScriptableObject

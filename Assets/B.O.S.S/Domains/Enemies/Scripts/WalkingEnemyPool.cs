@@ -1,8 +1,6 @@
-﻿using _WHY.Domains.Enemies.Scripts;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Utilities;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 
-namespace _WHY.Scripts.Enemies
+namespace B.O.S.S.Domains.Enemies.Scripts
 {
     public class WalkingEnemyPool : MonoPool<WalkingEnemy>
     {

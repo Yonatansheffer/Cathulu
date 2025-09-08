@@ -1,10 +1,10 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using _WHY.Domains.Utilities.Sound.Scripts;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Boss.Scripts
 {
-    public class BossHealth : WHYBaseMono
+    public class BossHealth : BossBaseMono
     {
         [SerializeField, Tooltip("Boss initial amount of lives")] private int initialBossHealth = 100;
         private int _currentHealth;

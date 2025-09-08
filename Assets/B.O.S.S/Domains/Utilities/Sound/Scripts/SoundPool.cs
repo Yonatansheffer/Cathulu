@@ -1,6 +1,6 @@
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 
-namespace _WHY.Domains.Utilities.Sound.Scripts
+namespace B.O.S.S.Domains.Utilities.Sound.Scripts
 {
     public class SoundPool : MonoPool<AudioSourceWrapper>
     {

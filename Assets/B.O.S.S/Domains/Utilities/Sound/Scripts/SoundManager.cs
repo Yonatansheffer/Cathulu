@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
-using Utilities;
-using AudioSettings = _WHY.Domains.Utilities.Sound.Scripts.AudioSettings;
 
-namespace _WHY.Domains.Utilities.Sound.Scripts
+namespace B.O.S.S.Domains.Utilities.Sound.Scripts
 {
     public class SoundManager : MonoSingleton<SoundManager>
     {

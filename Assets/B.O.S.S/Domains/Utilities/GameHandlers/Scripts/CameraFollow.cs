@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _WHY.Domains.Utilities.GameHandlers.Scripts
+namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
 {
     public class CameraFollow : MonoBehaviour
     {

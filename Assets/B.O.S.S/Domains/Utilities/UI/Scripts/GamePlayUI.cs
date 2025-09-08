@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using _WHY.Domains.Weapons.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Weapons.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _WHY.Domains.Utilities.UI.Scripts
+namespace B.O.S.S.Domains.Utilities.UI.Scripts
 {
     public class GamePlayUI : MonoBehaviour
     {

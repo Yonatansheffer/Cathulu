@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace _WHY.Domains.Collectibles.Scripts
+namespace B.O.S.S.Domains.Collectibles.Scripts
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class Collectible : MonoBehaviour

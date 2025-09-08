@@ -1,7 +1,6 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using Utilities;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 
-namespace _WHY.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Boss.Scripts
 {
     public class BossBulletPool : MonoPool<BossBullet>
     {

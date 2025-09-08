@@ -1,12 +1,11 @@
 ﻿using System.Collections;
-using _WHY.Domains.Enemies.Scripts;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using _WHY.Scripts.Enemies;
+using B.O.S.S.Domains.Enemies.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Boss.Scripts
 {
-    public class BossSpawning : WHYBaseMono
+    public class BossSpawning : BossBaseMono
     {
         [Header("Enemy Spawning")]
         [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")]

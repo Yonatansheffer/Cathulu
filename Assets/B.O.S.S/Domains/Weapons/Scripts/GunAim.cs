@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _WHY.Domains.Weapons.Scripts
+namespace B.O.S.S.Domains.Weapons.Scripts
 {
     public class GunAim : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Utilities
+namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {

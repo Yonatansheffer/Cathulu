@@ -1,9 +1,10 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
+﻿using _WHY.Domains.Boss.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Boss.Scripts
 {
-    public class BossBallBullet : WHYBaseMono, IPoolable
+    public class BossBallBullet : BossBaseMono, IPoolable
     {
         private bool _isFrozen;
         private Rigidbody2D _rb;

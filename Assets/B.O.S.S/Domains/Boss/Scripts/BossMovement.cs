@@ -1,11 +1,12 @@
 ﻿using System.Collections;
-using _WHY.Domains.Utilities.GameHandlers.Scripts;
-using _WHY.Domains.Utilities.Sound.Scripts;
+using _WHY.Domains.Boss.Scripts;
+using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
+using B.O.S.S.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Boss.Scripts
 {
-    public class BossMovement : WHYBaseMono
+    public class BossMovement : BossBaseMono
     {
         [Header("Floating Movement")]
         [SerializeField, Tooltip("Radius for vertical floating around start position")]

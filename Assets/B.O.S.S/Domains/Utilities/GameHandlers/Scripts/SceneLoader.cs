@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _WHY.Domains.Utilities.GameHandlers.Scripts
+namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
 {
     public class SceneLoader : MonoBehaviour
     {

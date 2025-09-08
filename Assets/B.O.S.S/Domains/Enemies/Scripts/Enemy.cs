@@ -1,10 +1,9 @@
-﻿using _WHY.Domains.Utilities.GameHandlers.Scripts;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
-using Utilities;
 
-namespace _WHY.Domains.Enemies.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts
 {
-    public abstract class Enemy : WHYBaseMono, IPoolable 
+    public abstract class Enemy : BossBaseMono, IPoolable 
     {
         public virtual void Reset()
         {

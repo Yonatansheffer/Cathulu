@@ -1,8 +1,8 @@
 using System;
-using _WHY.Domains.Weapons.Scripts;
+using B.O.S.S.Domains.Weapons.Scripts;
 using UnityEngine;
 
-namespace _WHY.Domains.Utilities.GameHandlers.Scripts
+namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
 {
     public static class GameEvents 
     {
