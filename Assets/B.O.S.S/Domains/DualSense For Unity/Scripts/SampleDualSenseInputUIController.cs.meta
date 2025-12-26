@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a0ff121d8242c444b9a5b42445bd828f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199328
+  packageName: DualSense For Unity
+  packageVersion: 1.0
+  assetPath: Assets/DualSense For Unity/Scripts/SampleDualSenseInputUIController.cs
+  uploadId: 461463

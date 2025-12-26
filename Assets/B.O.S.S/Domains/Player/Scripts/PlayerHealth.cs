@@ -7,7 +7,7 @@ namespace B.O.S.S.Domains.Player.Scripts
 {
     public class PlayerHealth : MonoBehaviour
     {
-        private const int InitialPlayerHealth = 3;
+        private const int InitialPlayerHealth = 100;
         private bool _isShieldActive;
         private int _currentPlayerHealth;
         private bool _isOnHitCooldown;

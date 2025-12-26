@@ -40,6 +40,8 @@ namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
         public static Action<int> AddPoints;
         public static Action ShakeCamera;
         public static Action StopMusic;
+        public static Action<Vector2, float,float,float> OnEnteredGravityZone;
+        public static Action OnExitedGravityZone;
     
         // Cheat Codes Events
         public static Action<int> AddLifeToPlayer;

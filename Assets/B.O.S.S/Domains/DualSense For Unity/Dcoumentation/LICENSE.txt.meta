@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 017930c7eb202f44d976349238cd09a3
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199328
+  packageName: DualSense For Unity
+  packageVersion: 1.0
+  assetPath: Assets/DualSense For Unity/Dcoumentation/LICENSE.txt
+  uploadId: 461463

@@ -1,13 +1,16 @@
 using System.Collections;
 using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
+#if UNITY_STANDALONE_WIN
+using DualSenseUnity;
+#endif
+
 
 namespace B.O.S.S.Domains.Player.Scripts
 {
     public class PlayerController : MonoBehaviour
     {
         [SerializeField, Tooltip("Starting position of the player")] private Vector3 startingPosition;
-        [SerializeField, Tooltip("Movement speed")] private float speed; 
         [SerializeField, Tooltip("Gun GameObject for shooting")] private GameObject gun;
         [SerializeField, Tooltip("Force applied for jumping")] private float jumpForce;
         
@@ -27,6 +30,14 @@ namespace B.O.S.S.Domains.Player.Scripts
         private bool _isDashing;
         private float _lastDashTime = -1f;
         private bool _isGrounded;
+        private PlayerGravityMotor _motor;
+
+        
+        #if UNITY_STANDALONE_WIN
+                private DualSenseController _dualSense;
+                private ControllerOutputState _outputState;
+        #endif
+
         
         private void Awake()
         {
@@ -34,23 +45,54 @@ namespace B.O.S.S.Domains.Player.Scripts
             _rb = GetComponent<Rigidbody2D>();
             _inputActions = new PlayerInputs();
             InitializeInputCallbacks();
+            #if UNITY_STANDALONE_WIN
+                        var controllers = DualSense.GetControllers();
+                        if (controllers.Count > 0)
+                        {
+                            _dualSense = controllers[0];
+                            _outputState = new ControllerOutputState();
+                        }
+            #endif
+            _motor = GetComponent<PlayerGravityMotor>();
         }
 
         private void OnEnable()
         {
             _inputActions?.Enable();
+            GameEvents.OnEnteredGravityZone += EnterGravity;
+            GameEvents.OnExitedGravityZone += ExitGravity;
         }
 
         private void OnDisable()
         {
             _inputActions?.Disable();
+            GameEvents.OnEnteredGravityZone -= EnterGravity;
+            GameEvents.OnExitedGravityZone -= ExitGravity;
         }
+
+        void EnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
+        {
+            _motor.EnterGravity(center, strength, maxSpeed, grip);
+        }
+
+        void ExitGravity()
+        {
+            _motor.ExitGravity();
+        }
+
 
         private void Update()
         {
             if (!_rb.simulated) return;
             CheckGrounded();
-            HandleMovement();
+        }
+        
+        private void FixedUpdate()
+        {
+            if (!_rb.simulated) return;
+            _motor.Tick(_moveInput);
+            
+
         }
 
         private void InitializeInputCallbacks()
@@ -59,7 +101,6 @@ namespace B.O.S.S.Domains.Player.Scripts
             _inputActions.Movement.Move.canceled += _ => _moveInput = Vector2.zero;
             _inputActions.Movement.Shoot.performed += _ => Shoot();
             _inputActions.Movement.Dash.performed += _ => Dash();
-            _inputActions.Movement.Jump.performed += _ => Jump();
         }
 
         private void OnMovePerformed(Vector2 input)
@@ -87,25 +128,24 @@ namespace B.O.S.S.Domains.Player.Scripts
         
         private void Dash()
         {
-            if (!_rb.simulated || _isDashing || _rb.linearVelocityX == 0 || Time.time - _lastDashTime < dashCooldown)
-                return; 
-            _lastDashTime = Time.time;  
-            StartCoroutine(PerformDash(new Vector2(_rb.linearVelocityX, 0).normalized));
+            if (!_rb.simulated || _isDashing || _moveInput.sqrMagnitude < 0.01f ||
+                Time.time - _lastDashTime < dashCooldown)
+                return;
+            _lastDashTime = Time.time;
+            StartCoroutine(PerformDash(_moveInput.normalized));
         }
+
+
 
         private IEnumerator PerformDash(Vector2 direction)
         {
             _isDashing = true;
-            _rb.linearVelocity = direction * dashSpeed;
+            _motor.SuspendMovement(true);
+            _rb.linearVelocity += direction * dashSpeed;
             yield return new WaitForSeconds(dashDuration);
+            _motor.SuspendMovement(false);
             _isDashing = false;
         }
-        
-        private void HandleMovement()
-        {
-            if (_isDashing) return;
-            var x = _rb.linearVelocityX;
-            _rb.linearVelocity = new Vector2(_moveInput.x * speed, _rb.linearVelocityY);
-        }
+
     }
 }

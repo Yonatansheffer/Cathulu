@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4f00a832f3828044c94493fe8da931de
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199328
+  packageName: DualSense For Unity
+  packageVersion: 1.0
+  assetPath: Assets/DualSense For Unity/Scripts/ControllerInputState.cs
+  uploadId: 461463

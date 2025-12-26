@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 69c7f8732f576df47a4121a21d56bfa0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 199328
+  packageName: DualSense For Unity
+  packageVersion: 1.0
+  assetPath: Assets/DualSense For Unity/Scripts/DualSense.cs
+  uploadId: 461463

@@ -6,7 +6,7 @@ namespace B.O.S.S.Domains.Weapons.Scripts
     {
         private static readonly int HitCeiling = Animator.StringToHash("Hit_Ceiling");
 
-        protected override void HandleHit(Collider2D other)
+        protected override void HandleHit(GameObject other)
         {
             if (other.gameObject.CompareTag("Planet") ||
                 other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Background"))

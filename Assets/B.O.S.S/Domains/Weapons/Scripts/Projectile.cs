@@ -45,10 +45,22 @@ namespace B.O.S.S.Domains.Weapons.Scripts
             else if (other.CompareTag("Enemy"))
                 SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
 
-            HandleHit(other);
+            HandleHit(other.gameObject);
+        }
+        
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Boss Bullet")) return;
+
+            if (other.gameObject.CompareTag("Boss"))
+                SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
+            else if (other.gameObject.CompareTag("Enemy"))
+                SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
+
+            HandleHit(other.gameObject);
         }
 
-        protected virtual void HandleHit(Collider2D other)
+        protected virtual void HandleHit(GameObject other)
         {
             EndShot();
         }
