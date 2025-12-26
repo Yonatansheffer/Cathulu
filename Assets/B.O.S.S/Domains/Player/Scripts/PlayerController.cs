@@ -1,6 +1,7 @@
 using System.Collections;
 using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 #if UNITY_STANDALONE_WIN
 using DualSenseUnity;
 #endif
@@ -13,8 +14,11 @@ namespace B.O.S.S.Domains.Player.Scripts
         [SerializeField, Tooltip("Starting position of the player")] private Vector3 startingPosition;
         [SerializeField, Tooltip("Gun GameObject for shooting")] private GameObject gun;
         
+        [FormerlySerializedAs("dashSpeed")]
         [Header("Dashing")]
-        [SerializeField, Tooltip("Speed during dash")] private float dashSpeed;
+        [SerializeField, Tooltip("Speed during dash")] private float jumpSpeed;
+        [SerializeField, Tooltip("Speed during dash")] private float boostSpeed;
+
         [SerializeField, Tooltip("Duration of dash in seconds")] private float dashDuration;
         [SerializeField, Tooltip("Cooldown between dashes in seconds")] private float dashCooldown;
         
@@ -148,10 +152,18 @@ namespace B.O.S.S.Domains.Player.Scripts
         {
             _isDashing = true;
             _motor.SuspendMovement(true);
-            _rb.linearVelocity += direction * dashSpeed;
+            if (_isGrounded)
+            {
+                _rb.linearVelocity += direction * jumpSpeed;
+            }
+            else
+            {
+                _rb.linearVelocity += direction * boostSpeed;
+            }
             yield return new WaitForSeconds(dashDuration);
             _motor.SuspendMovement(false);
             _isDashing = false;
         }
+
     }
 }
