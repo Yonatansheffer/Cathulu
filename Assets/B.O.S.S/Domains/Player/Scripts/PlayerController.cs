@@ -12,7 +12,6 @@ namespace B.O.S.S.Domains.Player.Scripts
     {
         [SerializeField, Tooltip("Starting position of the player")] private Vector3 startingPosition;
         [SerializeField, Tooltip("Gun GameObject for shooting")] private GameObject gun;
-        [SerializeField, Tooltip("Force applied for jumping")] private float jumpForce;
         
         [Header("Dashing")]
         [SerializeField, Tooltip("Speed during dash")] private float dashSpeed;
@@ -91,9 +90,24 @@ namespace B.O.S.S.Domains.Player.Scripts
         {
             if (!_rb.simulated) return;
             _motor.Tick(_moveInput);
-            
-
         }
+        
+        private void LateUpdate()
+        {
+            if (!_rb.simulated) return;
+            RotateToFacingDirection();
+        }   
+        
+        private void RotateToFacingDirection()
+        {
+            Vector2 dir = _motor.FacingDirection;
+            if (dir.sqrMagnitude < 0.001f)
+                return;
+
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 91f;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+
 
         private void InitializeInputCallbacks()
         {
@@ -119,12 +133,7 @@ namespace B.O.S.S.Domains.Player.Scripts
         {
             _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         }
-
-        private void Jump()
-        {
-            if (!_isGrounded || !_rb.simulated) return; 
-            _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
-        }
+        
         
         private void Dash()
         {
@@ -135,8 +144,6 @@ namespace B.O.S.S.Domains.Player.Scripts
             StartCoroutine(PerformDash(_moveInput.normalized));
         }
 
-
-
         private IEnumerator PerformDash(Vector2 direction)
         {
             _isDashing = true;
@@ -146,6 +153,5 @@ namespace B.O.S.S.Domains.Player.Scripts
             _motor.SuspendMovement(false);
             _isDashing = false;
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using UnityEngine.InputSystem;
+    
 namespace B.O.S.S.Domains.Weapons.Scripts
 {
     public class GunAim : MonoBehaviour
@@ -13,6 +14,8 @@ namespace B.O.S.S.Domains.Weapons.Scripts
 
         private void Update()
         {
+            if (Gamepad.all.Count > 0)
+                return;
             if (_mainCamera == null) return;
             var mouseScreenPos = Input.mousePosition;
             var mouseWorldPos = _mainCamera.ScreenToWorldPoint

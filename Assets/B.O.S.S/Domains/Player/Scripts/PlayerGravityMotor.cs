@@ -28,6 +28,7 @@ namespace B.O.S.S.Domains.Player.Scripts
         private float _maxVortexSpeed;
         private float _vortexGrip;
         private bool _suspendMovement;
+        private Vector2 _lastMoveDir;
         
         private void Awake()
         {
@@ -37,10 +38,20 @@ namespace B.O.S.S.Domains.Player.Scripts
 
         private void FixedUpdate()  
         {
-            // --- DEBUGGING LINE ---
             Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
-            // ----------------------
         }
+        
+        public Vector2 FacingDirection
+        {
+            get
+            {
+                if (_lastMoveDir.sqrMagnitude < 0.001f)
+                    return Vector2.up;
+
+                return _lastMoveDir;
+            }
+        }
+
 
         public void Tick(Vector2 input)
         {
@@ -83,6 +94,8 @@ namespace B.O.S.S.Domains.Player.Scripts
                 {
                     // Instant movement
                     vel = input.normalized * speed;
+                    _lastMoveDir = input.normalized;
+
                 }
                 else if (vel.sqrMagnitude > 0.01f)
                 {   
@@ -100,6 +113,7 @@ namespace B.O.S.S.Domains.Player.Scripts
             if (input.sqrMagnitude > 0.01f)
             {
                 Vector2 desiredDir = input.normalized;
+                _lastMoveDir = desiredDir;
 
                 Vector2 targetVelocity = desiredDir * speed;
                 vel = Vector2.Lerp(
