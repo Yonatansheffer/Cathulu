@@ -1,14 +1,14 @@
-﻿using _WHY.Domains.Boss.Scripts;
-using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
+﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace B.O.S.S.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class BossBallBullet : BossBaseMono, IPoolable
+    public class EnemyBullet : BossBaseMono, IPoolable
     {
         private bool _isFrozen;
         private Rigidbody2D _rb;
         private Vector2 _savedVelocity;
+        [SerializeField] private float lifeTime = 5f;
 
         private void Awake()
         {
@@ -19,12 +19,15 @@ namespace B.O.S.S.Domains.Boss.Scripts
         {
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
+            Invoke(nameof(ReturnToPool), lifeTime);
         }
 
         private void OnDisable()
         {
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
+            CancelInvoke(nameof(ReturnToPool));
+
         }
 
         public void Reset()
@@ -64,7 +67,7 @@ namespace B.O.S.S.Domains.Boss.Scripts
 
         public void ReturnToPool()
         {
-            BossBallBulletPool.Instance.Return(this);
+            EnemyBulletPool.Instance.Return(this);
         }
     }
 }

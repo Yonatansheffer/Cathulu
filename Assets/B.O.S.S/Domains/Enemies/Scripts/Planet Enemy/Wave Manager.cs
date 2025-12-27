@@ -3,7 +3,7 @@ using System.Collections;
 using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace B.O.S.S.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
 {
     public class WaveManager : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace B.O.S.S.Domains.Boss.Scripts
         public class WaveConfig
         {
             [Tooltip("Delay before the first wave starts")]
-            public float startDelay = 5f;
+            public float startDelay = 0f;
             [Tooltip("Initial time window for spawning enemies per wave")]
             public float initialSpawnDuration = 20f;
             [Tooltip("Initial interval between spawns inside a wave")]
@@ -75,14 +75,7 @@ namespace B.O.S.S.Domains.Boss.Scripts
                 }
 
                 while (_isFrozen) yield return null;
-
-                GameEvents.BossShoots?.Invoke();
-
-                while (BossShooting.GetBossState() == BossShooting.BossState.Idle) yield return null;
-                while (BossShooting.GetBossState() != BossShooting.BossState.Idle) yield return null;
-
-                while (_isFrozen) yield return null;
-
+                
                 waveConfig.currentSpawnDuration = Mathf.Max(
                     waveConfig.minSpawnDuration,
                     waveConfig.currentSpawnDuration - waveConfig.durationDecreaseRate

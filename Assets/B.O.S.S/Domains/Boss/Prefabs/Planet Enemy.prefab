@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6494487530571063701}
   - component: {fileID: 7424182012075156277}
   - component: {fileID: 2149393485863936391}
-  m_Layer: 9
-  m_Name: Boss
-  m_TagString: Boss
+  m_Layer: 8
+  m_Name: Planet Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5083, y: 5.7277, z: -0.1549362}
-  m_LocalScale: {x: 0.99003273, y: 0.9159871, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1056090685514174963}
@@ -58,6 +58,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 633904287
   m_SortingLayer: 3
   m_SortingOrder: 0
@@ -177,13 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dfdcba93ee4502bb7dfdce3b5110f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 40
-  bulletsPerSecond: 5
-  bulletForce: 20
   player: {fileID: 0}
-  shootingDuration: 8
   ballShootDistance: 120
   ballShootCooldown: 3
+  bulletForce: 20
 --- !u!114 &2149393485863936391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9016591127965112791, guid: 6beaffd84427579468bb6876895d33ba, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4052012970167966250, guid: 6beaffd84427579468bb6876895d33ba, type: 3}

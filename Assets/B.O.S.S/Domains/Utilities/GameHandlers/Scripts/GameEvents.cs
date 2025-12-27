@@ -44,6 +44,6 @@ namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
         public static Action OnExitedGravityZone;
     
         // Cheat Codes Events
-        public static Action<int> AddLifeToPlayer;
+        public static Action<int> ChangePlayerSize;
     }
 }

@@ -40,7 +40,7 @@ namespace B.O.S.S.Domains.Utilities.GameHandlers.Scripts
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
                 print("Adding 1 life");
-                GameEvents.AddLifeToPlayer?.Invoke(1);
+                GameEvents.ChangePlayerSize?.Invoke(1);
             }
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {

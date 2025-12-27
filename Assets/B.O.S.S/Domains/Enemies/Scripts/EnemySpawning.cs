@@ -12,6 +12,8 @@ namespace B.O.S.S.Domains.Boss.Scripts
         private float minSpawnForce = 4f;
         [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")]
         private float maxSpawnForce = 40f;
+        [SerializeField, Tooltip("Offset from the boss position where enemies appear")]
+        private Vector3 spawnOffset = new(0.8f, 0f, 0f);
         [SerializeField, Tooltip("Chance (0-100) for a flying enemy to be big")]
         private float chanceOfBigEnemy = 9f;
         [SerializeField, Tooltip("Walking enemies target positions")]
@@ -77,7 +79,7 @@ namespace B.O.S.S.Domains.Boss.Scripts
             {
                 var flyingEnemy = FlyingEnemyPool.Instance.Get();
                 if (Random.Range(0, 100) < chanceOfBigEnemy) flyingEnemy.SetBigEnemy();
-                flyingEnemy.transform.position = GetRandomPointInCollider();
+                flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
             }
         }

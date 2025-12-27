@@ -42,7 +42,7 @@ namespace B.O.S.S.Domains.Collectibles.Scripts
 
         private void Awake()
         {
-            _initialPlayerHealth = PlayerHealth.GetInitialPlayerHealth();
+            //_initialPlayerHealth = PlayerSize.CurrentSizeLevel();
             _currentPlayerHealth = _initialPlayerHealth;
             _activeWeapon =  settings.defaultWeapon;
         }
@@ -144,7 +144,7 @@ namespace B.O.S.S.Domains.Collectibles.Scripts
             if (prefab.TryGetComponent(out ShieldCollectible _))
                 return _isShieldActive;
 
-            if (prefab.TryGetComponent(out LifeCollectible _))
+            if (prefab.TryGetComponent(out SizeCollectible _))
                 return _currentPlayerHealth >= _initialPlayerHealth;
 
             return false;

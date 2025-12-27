@@ -17,7 +17,7 @@ TagManager:
   - Boss
   - PointCollectible
   - FoodCollectible
-  - Boss Bullet
+  - Enemy Bullet
   layers:
   - Default
   - TransparentFX
@@ -28,10 +28,10 @@ TagManager:
   - Player
   - Ground
   - Enemy
-  - Boss
+  - Enemy Bullet
   - Collectible
   - Weapon
-  - 
+  - Gravity Area
   - 
   - 
   - 

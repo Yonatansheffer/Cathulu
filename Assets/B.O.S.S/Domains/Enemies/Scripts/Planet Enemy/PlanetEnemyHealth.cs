@@ -2,9 +2,9 @@
 using B.O.S.S.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
-namespace B.O.S.S.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class BossHealth : BossBaseMono
+    public class PlanetEnemyHealth : BossBaseMono
     {
         [SerializeField, Tooltip("Boss initial amount of lives")] private int initialBossHealth = 100;
         private int _currentHealth;

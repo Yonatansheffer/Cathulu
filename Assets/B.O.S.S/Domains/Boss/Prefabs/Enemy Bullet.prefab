@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4805008447446938024}
   - component: {fileID: 834314629388991528}
   m_Layer: 9
-  m_Name: Boss Ball
-  m_TagString: Boss Bullet
+  m_Name: Enemy Bullet
+  m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 5253604650908459750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.2961, y: 0.8993, z: 0.048928086}
-  m_LocalScale: {x: 0.8, y: 1.4, z: 1}
+  m_LocalPosition: {x: 1.3196, y: 0.789, z: 0.048928086}
+  m_LocalScale: {x: 4.864766, y: 8.365819, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -103,6 +105,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1131726373
   m_SortingLayer: 4
   m_SortingOrder: 1
@@ -147,7 +150,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -165,3 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132cdd3ebf504d50922b781a811c8c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 5

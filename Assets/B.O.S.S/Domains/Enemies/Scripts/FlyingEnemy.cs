@@ -29,17 +29,6 @@ namespace B.O.S.S.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Min horizontal speed required to allow facing flip")] private float minFlipSpeed = 0.4f;
         [SerializeField, Tooltip("Horizontal X threshold (hysteresis) to trigger flip")] private float flipHysteresis = 0.18f;
         [SerializeField, Tooltip("Min time between flips")] private float flipCooldown = 0.25f;
-        
-        [Header("Eatable Variant")]
-        [SerializeField, Tooltip("Chance [0-1] that this enemy is eatable")]
-        private float eatableChance = 0.5f;
-        [SerializeField, Tooltip("Attraction modifier when eatable (added to base)")]
-        private float eatableAttraction = -1f;
-        [SerializeField, Tooltip("Sprite color when eatable")]
-        private Color eatableColor = Color.green;
-        [SerializeField, Tooltip("Sprite color when NOT eatable")]
-        private bool _isEatable;
-
 
         private Transform _playerTransform;
         private Animator _animator;
@@ -71,20 +60,6 @@ namespace B.O.S.S.Domains.Enemies.Scripts
         {
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
-        }
-        
-        private void ResetEatableState()
-        {
-            playerAttractionWeight = _basePlayerAttractionWeight;
-            if (_spriteRenderer)
-                _spriteRenderer.color = _baseColor;
-            _isEatable = Random.value < eatableChance;
-            if (_isEatable)
-            {
-                playerAttractionWeight = eatableAttraction;
-                if (_spriteRenderer)
-                    _spriteRenderer.color = eatableColor;
-            }
         }
 
         private void OnDisable()
@@ -122,7 +97,11 @@ namespace B.O.S.S.Domains.Enemies.Scripts
             _lastFlipTime = -999f;
             if (_animator) _animator.SetBool(MovingRight, true);
             if (_spriteRenderer) _spriteRenderer.flipX = false;
-            ResetEatableState();   
+            var eatable = GetComponent<EnemyEatable>();
+            if (eatable != null)
+            {
+                eatable.ResetEatableState();
+            }
         }
 
         protected override void Move()
@@ -194,19 +173,17 @@ namespace B.O.S.S.Domains.Enemies.Scripts
             ReturnToPool();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                ReturnToPool();
-            }
-        }
-
         private void ReturnToPool()
         {
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
             FlyingEnemyPool.Instance.Return(GetComponent<FlyingEnemy>());
         }
+        
+        public void ReturnToPoolExternally()
+        {
+            ReturnToPool();
+        }
+
     }
 }

@@ -1,9 +1,9 @@
 ﻿using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace B.O.S.S.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class BossAnimations : MonoBehaviour
+    public class PlanetEnemyAnimations : MonoBehaviour
     {
         private static readonly int Shoot = Animator.StringToHash("shoot");
         private static readonly int Spawn = Animator.StringToHash("spawn");

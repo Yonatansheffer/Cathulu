@@ -38,7 +38,7 @@ namespace B.O.S.S.Domains.Weapons.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Boss Bullet")) return;
+            if (other.CompareTag("Enemy Bullet")) return;
 
             if (other.CompareTag("Boss"))
                 SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
