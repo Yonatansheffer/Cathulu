@@ -5163,11 +5163,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3296729262242770975, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
   m_PrefabInstance: {fileID: 81071583}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &81071585 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4305785550242147858, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
-  m_PrefabInstance: {fileID: 81071583}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &83951275
 GameObject:
   m_ObjectHideFlags: 0
@@ -8953,6 +8948,11 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000038146973, y: 0.0000076293945}
   m_Radius: 6.515
+--- !u!4 &228099528 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8931726097443327189, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+  m_PrefabInstance: {fileID: 1348191728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &229727854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28225,18 +28225,7 @@ MonoBehaviour:
   maxSpawnForce: 4
   spawnOffset: {x: 0.8, y: 0, z: 0}
   chanceOfBigEnemy: 20
-  enemyTargetPositions:
-  - {fileID: 2133419763}
-  - {fileID: 81071585}
-  - {fileID: 1551513605}
-  - {fileID: 1465225390}
-  - {fileID: 182383329}
-  - {fileID: 1641415161}
-  - {fileID: 1306344994}
-  - {fileID: 165975076}
-  - {fileID: 1985923010}
-  - {fileID: 2120734458}
-  gameAreaCollider: {fileID: 1623845477}
+  maxDistanceFromPlanet: 10
 --- !u!114 &963112303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28252,13 +28241,14 @@ MonoBehaviour:
   waveConfig:
     startDelay: 5
     initialSpawnDuration: 20
-    initialSpawnInterval: 5
     minSpawnDuration: 5
-    minSpawnInterval: 1
     durationDecreaseRate: 1
-    intervalDecreaseRate: 0.2
+    maxSpawnInterval: 5
+    minSpawnInterval: 1
     currentSpawnDuration: 0
-    currentSpawnInterval: 0
+  playerTransform: {fileID: 0}
+  spawnActivationRange: 15
+  innerDangerRange: 2
 --- !u!1001 &963589254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34910,11 +34900,11 @@ Transform:
   m_GameObject: {fileID: 1154409672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.482149, y: -0.78296304, z: -0.40118086}
+  m_LocalPosition: {x: 5381.083, y: -11479.71, z: -0.40118086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1568078510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1154409674
 MonoBehaviour:
@@ -35486,15 +35476,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1568078510}
     m_Modifications:
     - target: {fileID: 4649496092648368533, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6999998
+      value: 5394.8647
       objectReference: {fileID: 0}
     - target: {fileID: 4649496092648368533, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.789999
+      value: -11497.717
       objectReference: {fileID: 0}
     - target: {fileID: 4649496092648368533, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -40805,7 +40795,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1568078510}
     m_Modifications:
     - target: {fileID: 3469458833890359047, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_Name
@@ -40901,11 +40891,11 @@ PrefabInstance:
       objectReference: {fileID: 821146407}
     - target: {fileID: 8931726097443327189, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6999998
+      value: 5394.8647
       objectReference: {fileID: 0}
     - target: {fileID: 8931726097443327189, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.789999
+      value: -11497.717
       objectReference: {fileID: 0}
     - target: {fileID: 8931726097443327189, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42342,6 +42332,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6beaffd84427579468bb6876895d33ba, type: 3}
+--- !u!4 &1408670863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4649496092648368533, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
+  m_PrefabInstance: {fileID: 1158484392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1408858509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47369,6 +47364,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3296729262242770975, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
   m_PrefabInstance: {fileID: 668011486}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1568078509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568078510}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568078510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568078509}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5395.565, y: 11478.927, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1408670863}
+  - {fileID: 1154409673}
+  - {fileID: 1910630118}
+  - {fileID: 228099528}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1573327217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48085,7 +48115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 64, y: 25.999939}
+  m_AnchoredPosition: {x: 63.99997, y: 25.999939}
   m_SizeDelta: {x: 478.7562, y: 115.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1598820127
@@ -57493,12 +57523,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910630115}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.111324, y: 3.0921834, z: -0.54253006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5359.4536, y: -11475.835, z: -0.54253006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1568078510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1918541461
 GameObject:
@@ -58395,11 +58425,6 @@ PrefabInstance:
 --- !u!4 &1985923009 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3296729262242770975, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
-  m_PrefabInstance: {fileID: 1985923008}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1985923010 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4305785550242147858, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
   m_PrefabInstance: {fileID: 1985923008}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2010385380
@@ -61956,11 +61981,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3296729262242770975, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
   m_PrefabInstance: {fileID: 2133419761}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2133419763 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4305785550242147858, guid: 176e3b730e0e3fb4ab74115d3cafd399, type: 3}
-  m_PrefabInstance: {fileID: 2133419761}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2139858130
 GameObject:
   m_ObjectHideFlags: 0
@@ -63195,7 +63215,7 @@ PrefabInstance:
       objectReference: {fileID: -8250811068079846484, guid: 80de0aecc92a90142a62a5fa7e75cc54, type: 3}
     - target: {fileID: 2190411178609266184, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_Name
-      value: Planet Enemie
+      value: Planet Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2190411178609266184, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_Layer
@@ -63307,7 +63327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: bulletForce
-      value: 48
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: maxSpawnForce
@@ -63347,7 +63367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootDistance
-      value: 3000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: enemyTargetPositions.Array.size
@@ -63475,14 +63495,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.WaveManager
   waveConfig:
     startDelay: 5
-    initialSpawnDuration: 20
-    initialSpawnInterval: 5
+    initialSpawnDuration: 40
     minSpawnDuration: 5
-    minSpawnInterval: 1
     durationDecreaseRate: 1
-    intervalDecreaseRate: 0.2
+    maxSpawnInterval: 20
+    minSpawnInterval: 0.5
     currentSpawnDuration: 0
-    currentSpawnInterval: 0
+  playerTransform: {fileID: 1499851947}
+  spawnActivationRange: 3000
+  innerDangerRange: 2
 --- !u!114 &9122062189255835436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63499,8 +63520,7 @@ MonoBehaviour:
   maxSpawnForce: 4
   spawnOffset: {x: 0.8, y: 0, z: 0}
   chanceOfBigEnemy: 20
-  enemyTargetPositions: []
-  gameAreaCollider: {fileID: 1623845477}
+  maxDistanceFromPlanet: 10
 --- !u!114 &9122062189255835437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63514,7 +63534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.OrbitalMovement
   gravityPoint: {fileID: 0}
-  orbitRadius: 220
+  orbitRadius: 250
   orbitSpeed: 10
   clockwise: 1
   idleTiltAngle: 15
@@ -63556,8 +63576,5 @@ SceneRoots:
   - {fileID: 538950152}
   - {fileID: 5679415044458585225}
   - {fileID: 2019154129}
-  - {fileID: 1158484392}
-  - {fileID: 1348191728}
-  - {fileID: 1154409673}
+  - {fileID: 1568078510}
   - {fileID: 1499644589}
-  - {fileID: 1910630118}
