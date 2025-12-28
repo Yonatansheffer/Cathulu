@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/OpeningScene.unity
+    path: Assets/RiseOfCathulu/Scenes/OpeningScene.unity
     guid: d02d768cb6832f54babdb59439bdc2b4
   - enabled: 1
-    path: Assets/Scenes/Ending Scene.unity
+    path: Assets/RiseOfCathulu/Scenes/Ending Scene.unity
     guid: 29a5fc93ccb5a594184757e874779683
   - enabled: 1
-    path: Assets/Scenes/GamePlay.unity
+    path: Assets/RiseOfCathulu/Scenes/GamePlay.unity
     guid: b4fb8f3df6a8c9b4bbecd2f253ab0cc7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f78a8295ad143894d8fcbaff05231d27, type: 3}
