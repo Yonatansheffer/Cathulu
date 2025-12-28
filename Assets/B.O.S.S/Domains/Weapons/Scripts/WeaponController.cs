@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using B.O.S.S.Domains.Player.Scripts;
 using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using B.O.S.S.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
@@ -10,12 +11,10 @@ namespace B.O.S.S.Domains.Weapons.Scripts
     public class WeaponController : MonoBehaviour
     {
         [Header("Weapon Settings")]
-        [SerializeField, Tooltip("Weapon settings configuration")]
-        private WeaponSettings settings;
-        [SerializeField, Tooltip("Shooting light effect GameObject")]
-        private ShootingLight shootingLight;
-        [SerializeField, Tooltip("Offset for projectile spawn position")]
-        private Vector3 adding;
+        [SerializeField, Tooltip("Weapon settings configuration")] private WeaponSettings settings;
+        [SerializeField, Tooltip("Shooting light effect GameObject")] private ShootingLight shootingLight;
+        [SerializeField, Tooltip("Offset for projectile spawn position")] private Vector3 adding;
+        [SerializeField] private PlayerSize playerSize;
 
         private static readonly int Idle = Animator.StringToHash("Idle");
 
@@ -56,7 +55,6 @@ namespace B.O.S.S.Domains.Weapons.Scripts
             _currentWeaponConfig = settings.weaponConfigs.FirstOrDefault(config => config.weaponType == weaponType);
             _activeProjectiles.Clear();
             CancelSwitchBackCoroutine();
-
             if (weaponType != settings.defaultWeapon)
                 _switchBackCoroutine = StartCoroutine(SwitchBackToDefaultAfterDelay());
         }
@@ -80,11 +78,9 @@ namespace B.O.S.S.Domains.Weapons.Scripts
         private void Shoot(Transform t)
         {
             if (!CanShoot()) return;
-
             _lastShotTime = Time.time;
             PlayShotSound();
             shootingLight.gameObject.SetActive(true);
-
             SpawnProjectile(t);
         }
 
@@ -102,8 +98,8 @@ namespace B.O.S.S.Domains.Weapons.Scripts
                 _currentWeaponConfig.projectilePrefab,
                 t.position + t.TransformDirection(adding),
                 t.rotation
-            );
-
+            ).GetComponent<Projectile>();
+            projectileInstance.Initialize(playerSize.CurrentScale);
             projectileInstance.Launch(shootDirection * _currentWeaponConfig.shotSpeed);
             RegisterProjectile(projectileInstance);
         }
@@ -140,7 +136,6 @@ namespace B.O.S.S.Domains.Weapons.Scripts
         private void PlayShotSound()
         {
             if (_currentWeaponConfig == null) return;
-
             var sound = _currentWeaponConfig.weaponType switch
             {
                 WeaponType.SpellGun => "Spell Shot",
@@ -148,7 +143,6 @@ namespace B.O.S.S.Domains.Weapons.Scripts
                 WeaponType.FireGun => "Fire Shot",
                 _ => null
             };
-
             if (!string.IsNullOrEmpty(sound))
                 SoundManager.Instance.PlaySound(sound, transform);
         }

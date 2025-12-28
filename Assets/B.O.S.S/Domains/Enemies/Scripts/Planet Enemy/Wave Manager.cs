@@ -10,35 +10,38 @@ namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
         [Serializable]
         public class WaveConfig
         {
-            [Tooltip("Delay before the first wave starts")]
-            public float startDelay = 0f;
-            [Tooltip("Initial time window for spawning enemies per wave")]
+            [Tooltip("Delay before the first wave starts")] public float startDelay = 0f;
+            [Header("Duration (Wave Length)")]
             public float initialSpawnDuration = 20f;
-            [Tooltip("Initial interval between spawns inside a wave")]
-            public float initialSpawnInterval = 5f;
-            [Tooltip("Lower bound for spawn duration per wave")]
             public float minSpawnDuration = 5f;
-            [Tooltip("Lower bound for interval between spawns")]
-            public float minSpawnInterval = 1f;
-            [Tooltip("How much to reduce duration after each cycle")]
             public float durationDecreaseRate = 1f;
-            [Tooltip("How much to reduce interval after each cycle")]
-            public float intervalDecreaseRate = 0.2f;
+
+            [Header("Interval (Spawn Speed)")]
+            [Tooltip("Time between spawns when player is at the EDGE of range")] public float maxSpawnInterval = 5f; 
+            [Tooltip("Time between spawns when player is at the CENTER")] public float minSpawnInterval = 0.5f;
+
             [HideInInspector] public float currentSpawnDuration;
-            [HideInInspector] public float currentSpawnInterval;
         }
 
         [Header("Wave Settings")]
-        [SerializeField, Tooltip("Configuration for wave timings")]
-        private WaveConfig waveConfig = new WaveConfig();
-
+        [SerializeField, Tooltip("Configuration for wave timings")] private WaveConfig waveConfig = new WaveConfig();
+        
+        [Header("Distance Settings")]
+        [SerializeField] private Transform playerTransform;
+        [SerializeField] private float spawnActivationRange = 15f;
+        [SerializeField, Tooltip("Inner radius where is maximum")] private float innerDangerRange = 2f;
+        
         private bool _isFrozen;
         private Coroutine _waveRoutine;
 
         private void Start()
         {
+            if (playerTransform == null)
+            {
+                var player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null) playerTransform = player.transform;
+            }
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
-            waveConfig.currentSpawnInterval = waveConfig.initialSpawnInterval;
             _waveRoutine = StartCoroutine(CombinedWaveRoutine());
         }
 
@@ -68,37 +71,91 @@ namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
                 var elapsed = 0f;
                 while (elapsed < waveConfig.currentSpawnDuration)
                 {
-                    while (_isFrozen) yield return null;
+                    while (_isFrozen || !IsPlayerInRange()) yield return null;
                     GameEvents.ToSpawnEnemy?.Invoke();
-                    yield return WaitSecondsUnfrozen(waveConfig.currentSpawnInterval);
-                    elapsed += waveConfig.currentSpawnInterval;
+                    float dynamicInterval = GetDynamicInterval();
+                    yield return WaitSecondsUnfrozen(dynamicInterval);
+                    elapsed += dynamicInterval;
                 }
-
                 while (_isFrozen) yield return null;
-                
-                waveConfig.currentSpawnDuration = Mathf.Max(
-                    waveConfig.minSpawnDuration,
-                    waveConfig.currentSpawnDuration - waveConfig.durationDecreaseRate
-                );
-
-                waveConfig.currentSpawnInterval = Mathf.Max(
-                    waveConfig.minSpawnInterval,
-                    waveConfig.currentSpawnInterval - waveConfig.intervalDecreaseRate
-                );
+                UpdateWaveDifficulty();
             }
         }
+        
+        private float GetDynamicInterval()
+        {
+            if (playerTransform == null) return waveConfig.maxSpawnInterval;
+
+            float distance = Vector3.Distance(transform.position, playerTransform.position);
+    
+            // InverseLerp outputs 0.0 when distance is at innerDangerRange
+            // and 1.0 when distance is at spawnActivationRange
+            float t = Mathf.InverseLerp(innerDangerRange, spawnActivationRange, distance);
+    
+            // Lerp then picks the spawn rate: 
+            // If t is 0 (Close), it picks minSpawnInterval.
+            // If t is 1 (Far), it picks maxSpawnInterval.
+            return Mathf.Lerp(waveConfig.minSpawnInterval, waveConfig.maxSpawnInterval, t);
+        }
+        
+        private void UpdateWaveDifficulty()
+        {
+            waveConfig.currentSpawnDuration = Mathf.Max(waveConfig.minSpawnDuration,
+                waveConfig.currentSpawnDuration - waveConfig.durationDecreaseRate
+            );
+        }
+        
+        private bool IsPlayerInRange() =>
+            Vector3.Distance(transform.position, playerTransform.position) <= spawnActivationRange;
 
         private IEnumerator WaitSecondsUnfrozen(float seconds)
         {
             var t = 0f;
             while (t < seconds)
             {
-                if (!_isFrozen) t += Time.deltaTime;
+                if (!_isFrozen && IsPlayerInRange()) 
+                    t += Time.deltaTime;
                 yield return null;
             }
+        }
+        
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, spawnActivationRange);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, innerDangerRange);
         }
 
         private void OnFreeze() => _isFrozen = true;
         private void OnUnFreeze() => _isFrozen = false;
+        
+        private void OnGUI()
+        {
+            // Only show in the editor or development builds
+            if (!Debug.isDebugBuild) return;
+
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 18;
+            style.normal.textColor = Color.white;
+
+            float dist = playerTransform ? Vector3.Distance(transform.position, playerTransform.position) : 0;
+            float currentInterval = GetDynamicInterval();
+
+            GUILayout.BeginArea(new Rect(20, 20, 350, 200));
+            GUILayout.Label($"--- WAVE MANAGER DEBUG ---", style);
+            GUILayout.Label($"Player Distance: {dist:F2}", style);
+            GUILayout.Label($"Current Interval: {currentInterval:F2}s", style);
+            GUILayout.Label($"Wave Time Left: {waveConfig.currentSpawnDuration:F2}s", style);
+    
+            if (!IsPlayerInRange()) 
+                GUILayout.Label($"STATUS: <color=yellow>PLAYER OUT OF RANGE</color>", style);
+            else if (_isFrozen)
+                GUILayout.Label($"STATUS: <color=cyan>FROZEN</color>", style);
+            else
+                GUILayout.Label($"STATUS: <color=red>ACTIVE & SPAWNING</color>", style);
+
+            GUILayout.EndArea();
+        }
     }
 }

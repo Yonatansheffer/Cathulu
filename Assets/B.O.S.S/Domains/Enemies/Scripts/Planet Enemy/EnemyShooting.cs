@@ -33,15 +33,12 @@ namespace B.O.S.S.Domains.Enemies.Scripts.Planet_Enemy
 
         private void OnFreeze() => _isFrozen = true;
         private void OnUnFreeze() => _isFrozen = false;
-        
-        
 
         private void Update()
         {
             if (_isFrozen) return;
             CheckProximityAttack();
         }
-        
 
         private void CheckProximityAttack()
         {

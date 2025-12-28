@@ -1,26 +1,19 @@
 ﻿using System.Collections;
-using B.O.S.S.Domains.Enemies.Scripts;
 using B.O.S.S.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
-namespace B.O.S.S.Domains.Boss.Scripts
+namespace B.O.S.S.Domains.Enemies.Scripts
 {
     public class EnemySpawning : BossBaseMono
     {
         [Header("Enemy Spawning")]
-        [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")]
-        private float minSpawnForce = 4f;
-        [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")]
-        private float maxSpawnForce = 40f;
-        [SerializeField, Tooltip("Offset from the boss position where enemies appear")]
-        private Vector3 spawnOffset = new(0.8f, 0f, 0f);
-        [SerializeField, Tooltip("Chance (0-100) for a flying enemy to be big")]
-        private float chanceOfBigEnemy = 9f;
-        [SerializeField, Tooltip("Walking enemies target positions")]
-        private Transform[] enemyTargetPositions;
-        [SerializeField] private Collider2D gameAreaCollider;
-
-
+        [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")] private float minSpawnForce = 4f;
+        [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")] private float maxSpawnForce = 40f;
+        [SerializeField, Tooltip("Offset from the spawn position")] private Vector3 spawnOffset = new(0.8f, 0f, 0f);
+        [SerializeField, Tooltip("Chance (0-100) for a flying enemy to be big")] private float chanceOfBigEnemy = 9f;
+        [SerializeField, Tooltip("Maximum distance of enemy from planet")] private float maxDistanceFromPlanet = 10f;
+        //[SerializeField, Tooltip("Walking enemies target positions")] private Transform[] enemyTargetPositions;
+        
         private void OnEnable()
         {
             /*GameEvents.SpawnAllWalkingEnemies += SpawnAllWalkingEnemies;
@@ -43,14 +36,16 @@ namespace B.O.S.S.Domains.Boss.Scripts
         private IEnumerator EnemySpawn()
         {
             yield return new WaitForSeconds(0.5f);
-            if (true || Random.value > 0.5f)
+            SpawnFlyingEnemies(1);
+            yield break;
+            /*if (Random.value > 0.5f)
             {
                 SpawnFlyingEnemies(1);
                 yield break;
             }
             if (enemyTargetPositions == null || enemyTargetPositions.Length == 0) yield break;
             var targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
-            SpawnWalkingEnemy(targetTransform);
+            SpawnWalkingEnemy(targetTransform);*/
         }
 
         private void ApplyRandomForce(Enemy enemy)
@@ -61,8 +56,26 @@ namespace B.O.S.S.Domains.Boss.Scripts
             rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
 
+        
+        private void SpawnFlyingEnemies(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                var flyingEnemy = FlyingEnemyPool.Instance.Get();
+                FlyingEnemy enemy = flyingEnemy.GetComponent<FlyingEnemy>();
+                enemy.SetTether(transform.parent, maxDistanceFromPlanet);
+                if (Random.Range(0, 100) < chanceOfBigEnemy) flyingEnemy.SetBigEnemy();
+                flyingEnemy.transform.position = transform.position + spawnOffset;
+                ApplyRandomForce(flyingEnemy);
+            }
+        }
+    }
+}
 
-        private void SpawnWalkingEnemy(Transform targetTransform)
+/*
+ 
+ 
+         private void SpawnWalkingEnemy(Transform targetTransform)
         {
             var walkingEnemy = WalkingEnemyPool.Instance.Get();
             walkingEnemy.transform.position = GetRandomPointInCollider();
@@ -72,17 +85,11 @@ namespace B.O.S.S.Domains.Boss.Scripts
                 : targetTransform.position;
             walkingEnemy.ToTarget(target);
         }
+        
+        
+        
+         [SerializeField] private Collider2D gameAreaCollider;
 
-        private void SpawnFlyingEnemies(int amount)
-        {
-            for (var i = 0; i < amount; i++)
-            {
-                var flyingEnemy = FlyingEnemyPool.Instance.Get();
-                if (Random.Range(0, 100) < chanceOfBigEnemy) flyingEnemy.SetBigEnemy();
-                flyingEnemy.transform.position = transform.position + spawnOffset;
-                ApplyRandomForce(flyingEnemy);
-            }
-        }
         
         private Vector2 GetRandomPointInCollider()
         {
@@ -98,13 +105,8 @@ namespace B.O.S.S.Domains.Boss.Scripts
             }
             return gameAreaCollider.bounds.center;  // fallback (should almost never happen)
         }
-
-    }
-}
-
-
-
-/*private void BossHealthWaves(int currentHealth)
+ 
+ private void BossHealthWaves(int currentHealth)
 {
     switch (currentHealth)
     {

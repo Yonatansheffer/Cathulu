@@ -29,6 +29,8 @@ namespace B.O.S.S.Domains.Player.Scripts
         private bool _isOnHitCooldown;
 
         public int CurrentSizeLevel => _currentSizeLevel;
+        public float CurrentScale => transform.localScale.x;
+
         public bool IsBiggerThan(int enemySizeLevel) => _currentSizeLevel > enemySizeLevel;
         
         private void Awake()

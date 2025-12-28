@@ -16,7 +16,8 @@ namespace B.O.S.S.Domains.Weapons.Scripts
         private float bossParticlesLifetime = 0.8f;
         [SerializeField, Tooltip("Lifetime of enemy-hit particles (seconds)")]
         private float enemyParticlesLifetime = 1f;
-
+        [SerializeField] private float baseScale = 1f;
+        
         protected Animator Animator;
         private Rigidbody2D _rb;
 
@@ -24,6 +25,11 @@ namespace B.O.S.S.Domains.Weapons.Scripts
         {
             Animator = GetComponent<Animator>();
             _rb = GetComponent<Rigidbody2D>();
+        }
+        
+        public void Initialize(float playerScale)
+        {
+            transform.localScale = Vector3.one * baseScale * playerScale;
         }
 
         public void Launch(Vector2 direction)
@@ -39,24 +45,20 @@ namespace B.O.S.S.Domains.Weapons.Scripts
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy Bullet")) return;
-
-            if (other.CompareTag("Boss"))
+            if (other.CompareTag("Planet Enemy"))
                 SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
             else if (other.CompareTag("Enemy"))
                 SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
-
             HandleHit(other.gameObject);
         }
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Boss Bullet")) return;
-
-            if (other.gameObject.CompareTag("Boss"))
+            if (other.gameObject.CompareTag("Enemy Bullet")) return;
+            if (other.gameObject.CompareTag("Planet Enemy"))
                 SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
             else if (other.gameObject.CompareTag("Enemy"))
                 SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
-
             HandleHit(other.gameObject);
         }
 

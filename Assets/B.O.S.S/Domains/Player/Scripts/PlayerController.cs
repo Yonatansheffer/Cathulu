@@ -112,7 +112,6 @@ namespace B.O.S.S.Domains.Player.Scripts
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
-
         private void InitializeInputCallbacks()
         {
             _inputActions.Movement.Move.performed += ctx => OnMovePerformed(ctx.ReadValue<Vector2>());

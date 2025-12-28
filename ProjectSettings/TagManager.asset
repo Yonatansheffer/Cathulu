@@ -18,6 +18,7 @@ TagManager:
   - PointCollectible
   - FoodCollectible
   - Enemy Bullet
+  - Planet Enemy
   layers:
   - Default
   - TransparentFX

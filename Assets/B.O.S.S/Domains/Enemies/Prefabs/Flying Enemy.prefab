@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dbe747246845568d0135bb80ef26fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
+  moveSpeed: 70
   playerAttractionWeight: 0.55
   noiseTimeScale: 0.3
   bigEnemySize: 3

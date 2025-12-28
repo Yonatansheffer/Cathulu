@@ -29,6 +29,18 @@ namespace B.O.S.S.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Min horizontal speed required to allow facing flip")] private float minFlipSpeed = 0.4f;
         [SerializeField, Tooltip("Horizontal X threshold (hysteresis) to trigger flip")] private float flipHysteresis = 0.18f;
         [SerializeField, Tooltip("Min time between flips")] private float flipCooldown = 0.25f;
+        
+        [Header("Tether Settings")]
+        private Transform _tetherTransform;
+        private float _maxTetherDistance;
+        private bool _isTethered = false;
+
+        public void SetTether(Transform center, float maxDistance)
+        {
+            _tetherTransform = center;
+            _maxTetherDistance = maxDistance;
+            _isTethered = true;
+        }
 
         private Transform _playerTransform;
         private Animator _animator;
@@ -86,6 +98,8 @@ namespace B.O.S.S.Domains.Enemies.Scripts
 
         public override void Reset()
         {
+            _isTethered = false;
+            _tetherTransform = null;
             if (_animator) _animator.speed = 1f;
             if (_rb)
             {
@@ -109,11 +123,37 @@ namespace B.O.S.S.Domains.Enemies.Scripts
             if (_isFrozen || !_playerTransform) return;
 
             var finalDir = CalculateDirection();
+            finalDir = ApplyTetherConstraint(finalDir);
             finalDir = HandleObstacleAvoidance(finalDir);
 
             transform.position += finalDir * (moveSpeed * Time.deltaTime);
 
             UpdateFacing(finalDir);
+        }
+        
+        private Vector3 ApplyTetherConstraint(Vector3 moveDir)
+        {
+            if (!_isTethered || _tetherTransform == null) return moveDir;
+
+            Vector3 toCenter = _tetherTransform.position - transform.position;
+            float currentDistance = toCenter.magnitude;
+
+            // If we are at the edge and moving further away
+            if (currentDistance > _maxTetherDistance)
+            {
+                float dot = Vector3.Dot(moveDir, toCenter.normalized);
+                
+                // If dot is negative, we are moving AWAY from the center
+                if (dot < 0)
+                {
+                    // Blend the movement direction with a strong pull towards the center
+                    // The further out they are, the harder they get pulled back
+                    float pullIntensity = Mathf.Clamp01((currentDistance - _maxTetherDistance) / 2f);
+                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized;
+                }
+            }
+
+            return moveDir;
         }
 
         private void UpdateFacing(Vector3 dir)

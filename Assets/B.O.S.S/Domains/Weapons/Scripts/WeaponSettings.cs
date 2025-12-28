@@ -14,7 +14,7 @@ namespace B.O.S.S.Domains.Weapons.Scripts
     public class WeaponConfig
     {
         public WeaponType weaponType;
-        public Projectile projectilePrefab;
+        public GameObject projectilePrefab;
         public float shotSpeed;
         public int maxProjectileCount;
         public float shotCooldown;
