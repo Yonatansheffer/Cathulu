@@ -17817,7 +17817,7 @@ MonoBehaviour:
   baseZoomSize: 10
   zoomMultiplier: 30
   minZoomSize: 400
-  maxZoomSize: 10000
+  maxZoomSize: 8000
   zoomSmoothing: 2
   startZoomSize: 12500
   startZoomDuration: 6

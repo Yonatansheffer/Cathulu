@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 4455138211600082639}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0208, y: -0.026, z: -0.06}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: -0.0208, y: -0.026, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1987256796397445801}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8074282756354523846}
   - component: {fileID: 7392207242760527386}
   - component: {fileID: 7843399307491914456}
-  - component: {fileID: -7443897745618997167}
+  - component: {fileID: 5890774174550896572}
   m_Layer: 8
   m_Name: Flying Enemy
   m_TagString: Enemy
@@ -238,7 +238,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.315
+  m_Radius: 0.57272726
 --- !u!114 &8074282756354523846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeLevel: 0
   moveSpeed: 70
+  speedVariation: 0.4
   playerAttractionWeight: 0.55
   noiseTimeScale: 0.3
   pointsForKill: 120
@@ -311,7 +312,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-7443897745618997167
+--- !u!114 &5890774174550896572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,8 +321,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6251765156081064338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfaacc94f884d9e92f69eb0b77aacd6, type: 3}
+  m_Script: {fileID: 11500000, guid: e4dbe747246845568d0135bb80ef26fa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Enemies.Scripts.EnemyEatable
-  sizeLevel: 1
-  eatableChance: 0.5
+  m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Enemies.Scripts.FlyingEnemy
+  sizeLevel: 0
+  moveSpeed: 3
+  speedVariation: 0.4
+  playerAttractionWeight: 0.55
+  noiseTimeScale: 0.3
+  pointsForKill: 1
+  detectionDistance: 4
+  sideClearanceDistance: 1
+  avoidanceLerpWeight: 2
+  minFlipSpeed: 0.4
+  flipHysteresis: 0.18
+  flipCooldown: 0.25

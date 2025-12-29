@@ -1,6 +1,9 @@
-﻿using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+﻿using System;
+using RiseOfCathulu.Domains.Player.Scripts;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts
 {
@@ -8,8 +11,12 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
     {
         private static readonly int MovingRight = Animator.StringToHash("MovingRight");
 
-        [Header("Movement & Scaling")]
+        [Header("Movement")]
         [SerializeField, Tooltip("Speed of enemy movement")] private float moveSpeed = 3f;
+        [SerializeField, Tooltip("Randomness factor for speed")] private float speedVariation = 0.4f;
+        
+        [Header("Player Attraction")]
+        private PlayerSize _player;
         [SerializeField, Tooltip("Weight of player attraction (0-1)")] private float playerAttractionWeight = 0.55f;
         [SerializeField, Tooltip("Time scale for Perlin noise randomness")] private float noiseTimeScale = 0.3f;
 
@@ -38,7 +45,10 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private bool _isFrozen;
         private int _facing = 1;
         private float _lastFlipTime = -999f;
-        private Color _baseColor;
+        private float _currentAttractionSign = 1f; // 1 = Attract, -1 = Repel
+        private bool _isCurrentlyEatable = false;
+        
+        public bool IsEatable => _isCurrentlyEatable;
         
         public void SetTether(Transform center, float maxDistance)
         {
@@ -50,12 +60,36 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         public void InitializeLevel(int level, GrowthConfig config)
         {
             sizeLevel = level;
-    
-            // Instead of multiplying, we set the scale directly to the config value
+
+            // Set absolute scale directly
             float targetScale = config.GetScale(level);
             transform.localScale = Vector3.one * targetScale;
+
+            // Get the base speed from config
+            float baseSpeed = config.GetSpeed(level);
+
+            // Calculate a random multiplier (e.g., if variation is 0.15, range is 0.85 to 1.15)
+            float randomMultiplier = Random.Range(1f - speedVariation, 1f + speedVariation);
+            // Inside InitializeLevel
+            if (_animator != null)
+            {
+                // If they move 20% faster, their animation plays 20% faster
+                _animator.speed = randomMultiplier; 
+            }
     
-            moveSpeed = config.GetSpeed(level);
+            // Assign the unique speed
+            moveSpeed = baseSpeed * randomMultiplier;
+            
+            playerAttractionWeight = Random.Range(0.5f, 1.0f);
+    
+            // Reset sign to positive (hunting) by default
+            _currentAttractionSign = 1f;
+        }   
+        
+        // 2. Add this method so the LevelIndicator can flip the behavior
+        public void SetAttractionSign(float sign)
+        {
+            _currentAttractionSign = sign;
         }
 
         public void SetMoveSpeed(float speed) => moveSpeed = speed;
@@ -83,13 +117,12 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 _rb.angularVelocity = 0f;
             }
             if (_spriteRenderer) _spriteRenderer.flipX = false;
-            var eatable = GetComponent<EnemyEatable>();
-            if (eatable != null) eatable.ResetEatableState();
         }
 
         private void Awake()
         {
             var playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null) _player = playerObj.GetComponent<PlayerSize>();
             _playerTransform = playerObj ? playerObj.transform : null;
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -121,6 +154,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         protected override void Move()
         {
             if (_isFrozen || !_playerTransform) return;
+            _isCurrentlyEatable = _player.CurrentSizeLevel > sizeLevel;
             var finalDir = CalculateDirection();
             finalDir = ApplyTetherConstraint(finalDir);
             finalDir = HandleObstacleAvoidance(finalDir);
@@ -128,6 +162,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             UpdateFacing(finalDir);
         }
         
+
         private Vector3 ApplyTetherConstraint(Vector3 moveDir)
         {
             if (!_isTethered || _tetherTransform == null) return moveDir;
@@ -170,11 +205,16 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             var toPlayer = _playerTransform.position - transform.position;
             var playerDir = toPlayer.normalized;
+    
+            // 3. Apply the sign here: positive pulls toward, negative pushes away
+            var modifiedPlayerDir = playerDir * _currentAttractionSign;
+
             var timeOffset = Time.time * noiseTimeScale + GetInstanceID();
             var noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
             var noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
             var randomDir = new Vector3(noiseX, noiseY, 0f).normalized;
-            return (randomDir * (1f - playerAttractionWeight) + playerDir * playerAttractionWeight).normalized;
+
+            return (randomDir * (1f - playerAttractionWeight) + modifiedPlayerDir * playerAttractionWeight).normalized;
         }
 
         private Vector3 HandleObstacleAvoidance(Vector3 moveDir)
@@ -209,6 +249,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             GameEvents.EnemyDestroyed?.Invoke(transform.position);
             ReturnToPool();
         }
+        
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.gameObject.CompareTag("Player")) return;
+            GameEvents.ChangePlayerSize?.Invoke(_isCurrentlyEatable? 1:-1);
+            ReturnToPool();
+        }
 
         private void ReturnToPool()
         {
@@ -217,10 +264,5 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             FlyingEnemyPool.Instance.Return(GetComponent<FlyingEnemy>());
         }
         
-        public void ReturnToPoolExternally()
-        {
-            ReturnToPool();
-        }
-
     }
 }

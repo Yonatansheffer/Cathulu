@@ -67,9 +67,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 return;
             }
             if (!other.CompareTag("Enemy")) return;
-            var enemy = other.GetComponent<EnemyEatable>(); 
+            var enemy = other.GetComponent<FlyingEnemy>(); 
             if (enemy == null) return;
-            if (enemy.IsEatable && _currentSizeLevel > enemy.SizeLevel)
+            if (enemy.IsEatable && _currentSizeLevel > enemy.sizeLevel)
             {
                 AdjustSize(+1);
                 SoundManager.Instance.PlaySound("Eat", transform);
