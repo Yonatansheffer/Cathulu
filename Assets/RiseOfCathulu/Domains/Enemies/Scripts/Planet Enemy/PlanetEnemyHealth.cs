@@ -1,17 +1,18 @@
 ﻿using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
     public class PlanetEnemyHealth : BossBaseMono
     {
-        [SerializeField, Tooltip("Boss initial amount of lives")] private int initialBossHealth = 100;
+        [SerializeField, Tooltip("initial amount of lives")] private int initialHealth = 100;
         private int _currentHealth;
         
         private void Start()
         {
-            _currentHealth = initialBossHealth;
+            _currentHealth = initialHealth;
         }
         
         private void OnTriggerEnter2D(Collider2D other)

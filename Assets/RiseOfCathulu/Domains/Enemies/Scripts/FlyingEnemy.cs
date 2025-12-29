@@ -8,14 +8,10 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
     {
         private static readonly int MovingRight = Animator.StringToHash("MovingRight");
 
-        [Header("Movement")]
+        [Header("Movement & Scaling")]
         [SerializeField, Tooltip("Speed of enemy movement")] private float moveSpeed = 3f;
         [SerializeField, Tooltip("Weight of player attraction (0-1)")] private float playerAttractionWeight = 0.55f;
         [SerializeField, Tooltip("Time scale for Perlin noise randomness")] private float noiseTimeScale = 0.3f;
-
-        [Header("Big Variant")]
-        [SerializeField, Tooltip("Scale for big enemy variant")] private float bigEnemySize = 1.8f;
-        [SerializeField, Tooltip("Speed for big enemy variant")] private float bigEnemySpeed = 2.2f;
 
         [Header("Scoring")]
         [SerializeField, Tooltip("Points awarded for destroying this enemy")] private int pointsForKill = 1;
@@ -26,34 +22,66 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Weight for blending avoidance direction")] private float avoidanceLerpWeight = 2f;
 
         [Header("Facing Filter")]
-        [SerializeField, Tooltip("Min horizontal speed required to allow facing flip")] private float minFlipSpeed = 0.4f;
-        [SerializeField, Tooltip("Horizontal X threshold (hysteresis) to trigger flip")] private float flipHysteresis = 0.18f;
+        [SerializeField, Tooltip("Min horizontal speed  to allow facing flip")] private float minFlipSpeed = 0.4f;
+        [SerializeField, Tooltip("Horizontal X threshold to trigger flip")] private float flipHysteresis = 0.18f;
         [SerializeField, Tooltip("Min time between flips")] private float flipCooldown = 0.25f;
         
         [Header("Tether Settings")]
         private Transform _tetherTransform;
         private float _maxTetherDistance;
         private bool _isTethered = false;
-
+        
+        private Transform _playerTransform;
+        private Animator _animator;
+        private SpriteRenderer _spriteRenderer;
+        private Rigidbody2D _rb;
+        private bool _isFrozen;
+        private int _facing = 1;
+        private float _lastFlipTime = -999f;
+        private Color _baseColor;
+        
         public void SetTether(Transform center, float maxDistance)
         {
             _tetherTransform = center;
             _maxTetherDistance = maxDistance;
             _isTethered = true;
         }
-
-        private Transform _playerTransform;
-        private Animator _animator;
-        private SpriteRenderer _spriteRenderer;
-        private Rigidbody2D _rb;
-        private bool _isFrozen;
-
-        private int _facing = 1;
-        private float _lastFlipTime = -999f;
         
-        private float _basePlayerAttractionWeight;
-        private Color _baseColor;
+        public void InitializeLevel(int level, GrowthConfig config)
+        {
+            sizeLevel = level;
+            transform.localScale = Vector3.one * config.GetScale(level);
+            moveSpeed = config.GetSpeed(level);
+        }
+
+        public void SetMoveSpeed(float speed) => moveSpeed = speed;
         
+        public override void Reset()
+        {
+            // Reset state for pooling
+            _isTethered = false;
+            _tetherTransform = null;
+            _isFrozen = false;
+            _facing = 1;
+            _lastFlipTime = -999f;
+            
+            // Reset visuals/physics
+            transform.localScale = Vector3.one; 
+            moveSpeed = 3f; 
+            if (_animator) 
+            {
+                _animator.speed = 1f;
+                _animator.SetBool(MovingRight, true);
+            }
+            if (_rb)
+            {
+                _rb.linearVelocity = Vector2.zero;
+                _rb.angularVelocity = 0f;
+            }
+            if (_spriteRenderer) _spriteRenderer.flipX = false;
+            var eatable = GetComponent<EnemyEatable>();
+            if (eatable != null) eatable.ResetEatableState();
+        }
 
         private void Awake()
         {
@@ -62,10 +90,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _rb = GetComponent<Rigidbody2D>();
-            
-            _basePlayerAttractionWeight = playerAttractionWeight;
-            if (_spriteRenderer)
-                _baseColor = _spriteRenderer.color;
         }
 
         private void OnEnable()
@@ -80,12 +104,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             GameEvents.UnFreezeLevel -= OnUnFreeze;
         }
 
-        public void SetBigEnemy()
-        {
-            moveSpeed = bigEnemySpeed;
-            transform.localScale = new Vector3(bigEnemySize, bigEnemySize, 1f);
-        }
-
         private void OnFreeze() => SetFreezeState(true);
         private void OnUnFreeze() => SetFreezeState(false);
 
@@ -96,38 +114,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (freeze && _rb) _rb.linearVelocity = Vector2.zero;
         }
 
-        public override void Reset()
-        {
-            _isTethered = false;
-            _tetherTransform = null;
-            if (_animator) _animator.speed = 1f;
-            if (_rb)
-            {
-                _rb.linearVelocity = Vector2.zero;
-                _rb.angularVelocity = 0f;
-            }
-            _isFrozen = false;
-            _facing = 1;
-            _lastFlipTime = -999f;
-            if (_animator) _animator.SetBool(MovingRight, true);
-            if (_spriteRenderer) _spriteRenderer.flipX = false;
-            var eatable = GetComponent<EnemyEatable>();
-            if (eatable != null)
-            {
-                eatable.ResetEatableState();
-            }
-        }
-
         protected override void Move()
         {
             if (_isFrozen || !_playerTransform) return;
-
             var finalDir = CalculateDirection();
             finalDir = ApplyTetherConstraint(finalDir);
             finalDir = HandleObstacleAvoidance(finalDir);
-
             transform.position += finalDir * (moveSpeed * Time.deltaTime);
-
             UpdateFacing(finalDir);
         }
         

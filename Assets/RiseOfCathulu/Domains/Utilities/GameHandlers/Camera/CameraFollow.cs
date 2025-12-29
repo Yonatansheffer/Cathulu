@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using RiseOfCathulu.Domains.Player.Scripts;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
     {
         [Header("Targets")]
         [SerializeField, Tooltip("Player transform to follow")] private Transform playerTarget;
+        [SerializeField] private PlayerSize playerSize; // Reference to track player scale
         [SerializeField, Tooltip("Boss transform to focus on when destroyed")] private Transform bossTarget;
 
         [Header("Follow")]
@@ -19,17 +21,16 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         [SerializeField, Tooltip("Lower world bound for camera y")] private float yLowerBound;
         [SerializeField, Tooltip("Upper world bound for camera y")] private float yUpperBound;
 
-        [Header("Zoom")]
-        [SerializeField, Tooltip("Orthographic size at start")] private float startZoomSize = 5f;
-        [SerializeField, Tooltip("Orthographic size during gameplay")] private float targetZoomSize = 15f;
-        [SerializeField, Tooltip("Zoom smoothing speed toward target size")] private float zoomSpeed = 1f;
-
-        [Header("Start Zoom")]
-        [SerializeField, Tooltip("Duration of the initial zoom and move-in")] private float startZoomDuration = 8f;
-
-        /*[Header("Boss Focus")]
-        [SerializeField, Tooltip("Duration of the boss focus in animation")] private float bossFocusInDuration = 1.25f;
-        [SerializeField, Tooltip("How much to zoom closer relative to target zoom (positive brings closer)")] private float bossZoomCloserBy = 6f;*/
+        [Header("Dynamic Zoom")]
+        [SerializeField, Tooltip("Base zoom when player is at min size")] private float baseZoomSize = 10f;
+        [SerializeField, Tooltip("Camera zoom increase per unit of player scale")] private float zoomMultiplier = 3.5f;
+        [SerializeField, Tooltip("Minimum orthographic size allowed")] private float minZoomSize = 8f;   
+        [SerializeField, Tooltip("Maximum orthographic size allowed")] private float maxZoomSize = 10000f;
+        [SerializeField, Tooltip("Smoothing speed for size-based zooming")] private float zoomSmoothing = 2f;
+        
+        [Header("Manual Zoom Settings")]
+        [SerializeField] private float startZoomSize = 5f;
+        [SerializeField] private float startZoomDuration = 8f;
 
         [Header("Zoom-Out Sequence")]
         [SerializeField, Tooltip("Additional size to zoom out during boss shooting")] private float zoomOutExtraSize = 30f;
@@ -45,11 +46,24 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         private bool _isZoomingOut;
         private bool _isStartingZoomIn = true;
         private bool _isFrozen; // only pauses special sequences, not follow
+        private float _dynamicTargetZoom;
 
         private Coroutine _focusRoutine;
         private Coroutine _zoomRoutine;
         private Coroutine _shakeRoutine;
 
+        private void Start()
+        {
+            _cam = GetComponent<UnityEngine.Camera>();
+            if (_cam != null) _cam.orthographicSize = startZoomSize;
+            
+            // Auto-find PlayerSize if not assigned
+            if (playerSize == null && playerTarget != null)
+                playerSize = playerTarget.GetComponent<PlayerSize>();
+
+            StartCoroutine(StartZoomToTarget());
+        }
+        
         private void OnEnable()
         {
             GameEvents.ShakeCamera += OnShakeCamera;
@@ -68,26 +82,41 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
             GameEvents.UnFreezeLevel -= OnUnfreeze;
         }
 
-        private void Start()
-        {
-            _cam = GetComponent<UnityEngine.Camera>();
-            if (_cam != null) _cam.orthographicSize = startZoomSize;
-            StartCoroutine(StartZoomToTarget());
-        }
-
         private void LateUpdate()
         {
             if (playerTarget == null || _cam == null || _isZoomingOut || _isStartingZoomIn) return;
 
-            var desired = playerTarget.position + offset;
-            var clampedX = Mathf.Clamp(desired.x, leftxBound, rightxBound);
-            var clampedY = Mathf.Clamp(desired.y, yLowerBound, yUpperBound);
-            var clamped = new Vector3(clampedX, clampedY, desired.z);
-            var smoothed = Vector3.Lerp(transform.position, clamped, smoothSpeed * Time.deltaTime);
-            transform.position = smoothed;
+            // 1. Position Follow
+            Vector3 desired = playerTarget.position + offset;
 
-            if (_cam.orthographicSize > targetZoomSize)
-                _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, targetZoomSize, zoomSpeed * Time.deltaTime);
+            // 2. Calculate the current visible bounds of the camera
+            float camHalfHeight = _cam.orthographicSize;
+            float camHalfWidth = camHalfHeight * _cam.aspect;
+
+            // 3. Clamp the center position so the EDGES stay within bounds
+            // We add half-width to the left and subtract it from the right
+            float clampedX = Mathf.Clamp(desired.x, leftxBound + camHalfWidth, rightxBound - camHalfWidth);
+            float clampedY = Mathf.Clamp(desired.y, yLowerBound + camHalfHeight, yUpperBound - camHalfHeight);
+
+            // 4. Apply Smoothing
+            transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, clampedY, desired.z), smoothSpeed * Time.deltaTime);
+
+            // 5. Dynamic Zoom Logic
+            UpdateDynamicZoom();
+        }
+        
+        private void UpdateDynamicZoom()
+        {
+            float playerScale = playerSize != null ? playerSize.CurrentScale : 1f;
+    
+            // 1. Calculate the ideal zoom
+            float rawTargetZoom = baseZoomSize + (playerScale * zoomMultiplier);
+
+            // 2. Clamp between Min and Max
+            _dynamicTargetZoom = Mathf.Clamp(rawTargetZoom, minZoomSize, maxZoomSize);
+
+            // 3. Smoothly transition
+            _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, _dynamicTargetZoom, zoomSmoothing * Time.deltaTime);
         }
 
         private void OnFreeze()   { _isFrozen = true; }
@@ -99,27 +128,15 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
             _shakeRoutine = StartCoroutine(Shake(shakeDuration, shakeMagnitude));
         }
 
-        /*private void OnBossShoots()
-        {
-            if (_zoomRoutine != null) StopCoroutine(_zoomRoutine);
-            _zoomRoutine = StartCoroutine(ZoomOutSequence());
-        }*/
-
-        /*private void OnBossDestroyed()
-        {
-            if (bossTarget == null || _cam == null) return;
-            if (_focusRoutine != null) StopCoroutine(_focusRoutine);
-            _focusRoutine = StartCoroutine(FocusOnBossSequence());
-        }*/
-
         private IEnumerator StartZoomToTarget()
         {
+            // Update the dynamic target once to have a valid end point
+            UpdateDynamicZoom();
+            
             var duration = Mathf.Max(0f, startZoomDuration);
             var elapsed = 0f;
             var startPos = transform.position;
-            var endPos = playerTarget ? playerTarget.position + offset : startPos;
             var startSize = _cam.orthographicSize;
-            var endSize = targetZoomSize;
 
             while (elapsed < duration)
             {
@@ -127,52 +144,20 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
 
                 var t0 = elapsed / duration;
                 var t = t0 * t0 * t0;
+                
+                var endPos = playerTarget ? playerTarget.position + offset : startPos;
                 transform.position = Vector3.Lerp(startPos, endPos, t);
-                _cam.orthographicSize = Mathf.Lerp(startSize, endSize, t);
+                
+                // Zooming toward the dynamic target calculated from player size
+                _cam.orthographicSize = Mathf.Lerp(startSize, _dynamicTargetZoom, t);
+                
                 elapsed += Time.deltaTime;
                 yield return null;
             }
 
-            transform.position = endPos;
-            _cam.orthographicSize = endSize;
             _isStartingZoomIn = false;
         }
 
-        /*private IEnumerator FocusOnBossSequence()
-        {
-            _isZoomingOut = true;
-
-            var desired = bossTarget.position + offset;
-            var x = Mathf.Clamp(desired.x, leftxBound, rightxBound);
-            var y = Mathf.Clamp(desired.y, yLowerBound, yUpperBound);
-            var bossPos = new Vector3(x, y, desired.z);
-
-            var startSize = _cam.orthographicSize;
-            var bossZoom = Mathf.Max(6f, targetZoomSize - Mathf.Abs(bossZoomCloserBy));
-            var startPos = transform.position;
-
-            var t = 0f;
-            var d = Mathf.Max(0f, bossFocusInDuration);
-            while (t < d)
-            {
-                if (_isFrozen) { yield return new WaitUntil(() => !_isFrozen); }
-
-                var u = t / d;
-                var e = u < 0.5f ? 4f * u * u * u : 1f - Mathf.Pow(-2f * u + 2f, 3f) / 2f;
-                var smoothPos = Vector3.Lerp(startPos, bossPos, e);
-                _cam.orthographicSize = Mathf.Lerp(startSize, bossZoom, e);
-                var shakeMag = Mathf.Lerp(1f, 0f, u);
-                smoothPos.x += Random.Range(-shakeMag, shakeMag);
-                smoothPos.y += Random.Range(-shakeMag, shakeMag);
-                transform.position = smoothPos;
-
-                t += Time.deltaTime;
-                yield return null;
-            }
-
-            transform.position = bossPos;
-            _cam.orthographicSize = bossZoom;
-        }*/
 
         private IEnumerator ZoomOutSequence()
         {
@@ -180,7 +165,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
 
             var centerX = (leftxBound + rightxBound) * 0.5f + zoomOutCenterXOffset;
             var centerPos = new Vector3(centerX, 0f, offset.z);
-            var zoomOutSize = targetZoomSize + Mathf.Abs(zoomOutExtraSize);
+            var zoomOutSize = _dynamicTargetZoom + Mathf.Abs(zoomOutExtraSize);
             var duration = Mathf.Max(0.0001f, zoomOutLerpDuration);
             var elapsed = 0f;
             var startPos = transform.position;
@@ -211,7 +196,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
 
             elapsed = 0f;
             var returnPos = playerTarget ? playerTarget.position + offset : transform.position;
-            var returnSize = targetZoomSize;
+            var returnSize = _dynamicTargetZoom;
             startPos = transform.position;
             startSize = _cam.orthographicSize;
 
@@ -247,5 +232,69 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
             }
             transform.localPosition = original;
         }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Vector3 center = new Vector3((leftxBound + rightxBound) / 2f, (yLowerBound + yUpperBound) / 2f, 0f);
+            Vector3 size = new Vector3(rightxBound - leftxBound, yUpperBound - yLowerBound, 1f);
+            Gizmos.DrawWireCube(center, size);
+        }   
     }
 }
+
+
+/*[Header("Boss Focus")]
+[SerializeField, Tooltip("Duration of the boss focus in animation")] private float bossFocusInDuration = 1.25f;
+[SerializeField, Tooltip("How much to zoom closer relative to target zoom (positive brings closer)")] private float bossZoomCloserBy = 6f;*/
+
+
+
+/*private IEnumerator FocusOnBossSequence()
+{
+    _isZoomingOut = true;
+
+    var desired = bossTarget.position + offset;
+    var x = Mathf.Clamp(desired.x, leftxBound, rightxBound);
+    var y = Mathf.Clamp(desired.y, yLowerBound, yUpperBound);
+    var bossPos = new Vector3(x, y, desired.z);
+
+    var startSize = _cam.orthographicSize;
+    var bossZoom = Mathf.Max(6f, targetZoomSize - Mathf.Abs(bossZoomCloserBy));
+    var startPos = transform.position;
+
+    var t = 0f;
+    var d = Mathf.Max(0f, bossFocusInDuration);
+    while (t < d)
+    {
+        if (_isFrozen) { yield return new WaitUntil(() => !_isFrozen); }
+
+        var u = t / d;
+        var e = u < 0.5f ? 4f * u * u * u : 1f - Mathf.Pow(-2f * u + 2f, 3f) / 2f;
+        var smoothPos = Vector3.Lerp(startPos, bossPos, e);
+        _cam.orthographicSize = Mathf.Lerp(startSize, bossZoom, e);
+        var shakeMag = Mathf.Lerp(1f, 0f, u);
+        smoothPos.x += Random.Range(-shakeMag, shakeMag);
+        smoothPos.y += Random.Range(-shakeMag, shakeMag);
+        transform.position = smoothPos;
+
+        t += Time.deltaTime;
+        yield return null;
+    }
+
+    transform.position = bossPos;
+    _cam.orthographicSize = bossZoom;
+}*/
+
+
+/*private void OnBossShoots()
+{
+    if (_zoomRoutine != null) StopCoroutine(_zoomRoutine);
+    _zoomRoutine = StartCoroutine(ZoomOutSequence());
+}*/
+
+/*private void OnBossDestroyed()
+{
+    if (bossTarget == null || _cam == null) return;
+    if (_focusRoutine != null) StopCoroutine(_focusRoutine);
+    _focusRoutine = StartCoroutine(FocusOnBossSequence());
+}*/

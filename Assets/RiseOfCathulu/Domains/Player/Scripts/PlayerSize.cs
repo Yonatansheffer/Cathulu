@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RiseOfCathulu.Domains.Enemies.Scripts;
@@ -9,10 +10,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 {
     public class PlayerSize : MonoBehaviour
     {
-        [Header("Size Levels")]
-        [SerializeField] private int minSizeLevel = 0;
+        [Header("Config")]
+        [SerializeField] private GrowthConfig growthConfig; 
         [SerializeField] private int initialSizeLevel = 2;
-        [SerializeField] private int maxSizeLevel = 20;
 
         [Header("Scale Values")]
         [SerializeField] private float minScale = 0.5f;
@@ -21,9 +21,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [Header("Hit Cooldown")]
         [SerializeField] private float hitCooldown = 1f;
 
-        private Dictionary<int, float> _sizeLevelToScale;
         private int _currentSizeLevel;
-
         private bool _isShieldActive;
         private bool _isOnHitCooldown;
 
@@ -34,11 +32,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         private void Awake()
         {
-            BuildSizeDictionary();
             _currentSizeLevel = initialSizeLevel;
             ApplyScale();
         }
-
         
         private void OnEnable()
         {
@@ -65,29 +61,33 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void HandleHit(Collider2D other)
         {
             if (_isShieldActive || _isOnHitCooldown) return;
-
-            // Enemy bullets always hurt
             if (other.CompareTag("Enemy Bullet"))
             {
                 TakeHit();
                 return;
             }
-
             if (!other.CompareTag("Enemy")) return;
-
-            var enemy = other.GetComponent<EnemyEatable>(); // or EnemyEatable / FlyingEnemy
+            var enemy = other.GetComponent<EnemyEatable>(); 
             if (enemy == null) return;
-
-            // Eat
             if (enemy.IsEatable && _currentSizeLevel > enemy.SizeLevel)
             {
                 AdjustSize(+1);
                 SoundManager.Instance.PlaySound("Eat", transform);
                 return;
             }
-
-            // Otherwise → hit
             TakeHit();
+        }
+
+        private void Update()
+        {
+            CheatSize();
+        }
+
+
+        private void CheatSize()
+        {
+            if (Input.GetKeyDown(KeyCode.B)) AdjustSize(+1);
+            if (Input.GetKeyDown(KeyCode.N)) AdjustSize(-1);
         }
 
         
@@ -97,49 +97,26 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             GameEvents.ShakeCamera?.Invoke();
             SoundManager.Instance.PlaySound("Shield Hit", transform);
             GameEvents.PlayerLostLife?.Invoke(_currentSizeLevel);
-
-            if (_currentSizeLevel < minSizeLevel)
+            if (_currentSizeLevel < growthConfig.minLevel)
             {
                 GameEvents.PlayerDefeated?.Invoke();
                 SoundManager.Instance.PlaySound("Lost Life", transform);
             }
-
             StartCoroutine(HitCooldown());
         }
 
         private void AdjustSize(int delta)
         {
-            int newLevel = Mathf.Clamp(
-                _currentSizeLevel + delta,
-                minSizeLevel,
-                maxSizeLevel
-            );
-
-            if (newLevel == _currentSizeLevel)
-                return;
-
-            _currentSizeLevel = newLevel;
+            _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
             ApplyScale();
         }
 
         private void ApplyScale()
         {
-            float scale = _sizeLevelToScale[_currentSizeLevel];
+            float scale = growthConfig.GetScale(_currentSizeLevel);
             transform.localScale = Vector3.one * scale;
         }
-
-        private void BuildSizeDictionary()
-        {
-            _sizeLevelToScale = new Dictionary<int, float>();
-
-            for (int level = minSizeLevel; level <= maxSizeLevel; level++)
-            {
-                float t = Mathf.InverseLerp(minSizeLevel, maxSizeLevel, level);
-                float scale = Mathf.Lerp(minScale, maxScale, t);
-                _sizeLevelToScale[level] = scale;
-            }
-        }
-        
+      
         private void UpdateShield(bool isActive)
         {
             _isShieldActive = isActive;

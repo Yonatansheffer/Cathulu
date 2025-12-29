@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using RiseOfCathulu.Domains.Player.Scripts;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
@@ -6,13 +7,25 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 {
     public class EnemySpawning : BossBaseMono
     {
+        [Header("References")]
+        [SerializeField] private GrowthConfig growthConfig;
+        [SerializeField] private PlayerSize playerSize;
+        
+        [Header("Debug Settings")]
+        [SerializeField] private bool showDebugOverlay = true;
+        [SerializeField] private Color debugCircleColor = new Color(1, 0, 0, 0.2f);
+        private int _lastSpawnedLevel;
+        private float _lastSpawnedScale;
+        
         [Header("Enemy Spawning")]
         [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")] private float minSpawnForce = 4f;
         [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")] private float maxSpawnForce = 40f;
         [SerializeField, Tooltip("Offset from the spawn position")] private Vector3 spawnOffset = new(0.8f, 0f, 0f);
-        [SerializeField, Tooltip("Chance (0-100) for a flying enemy to be big")] private float chanceOfBigEnemy = 9f;
         [SerializeField, Tooltip("Maximum distance of enemy from planet")] private float maxDistanceFromPlanet = 10f;
         //[SerializeField, Tooltip("Walking enemies target positions")] private Transform[] enemyTargetPositions;
+        [Header("Normal Distribution (Leveling)")]
+        [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
+        [SerializeField, Tooltip("Shift average enemy level (-1=slightly easier)")] private int levelOffset = 0;
         
         private void OnEnable()
         {
@@ -28,10 +41,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             GameEvents.ToSpawnEnemy -= EnemySpawnRoutine;
         }
 
-        private void EnemySpawnRoutine()
-        {
-            StartCoroutine(EnemySpawn());
-        }
+        private void EnemySpawnRoutine() => StartCoroutine(EnemySpawn());
 
         private IEnumerator EnemySpawn()
         {
@@ -48,27 +58,74 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             SpawnWalkingEnemy(targetTransform);*/
         }
 
-        private void ApplyRandomForce(Enemy enemy)
-        {
-            var rb = enemy.GetComponent<Rigidbody2D>();
-            var direction = Random.insideUnitCircle.normalized;
-            var force = Random.Range(minSpawnForce, maxSpawnForce);
-            rb.AddForce(direction * force, ForceMode2D.Impulse);
-        }
-
-        
         private void SpawnFlyingEnemies(int amount)
         {
             for (var i = 0; i < amount; i++)
             {
                 var flyingEnemy = FlyingEnemyPool.Instance.Get();
-                FlyingEnemy enemy = flyingEnemy.GetComponent<FlyingEnemy>();
+                var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
+                int spawnedLevel = GetNormalDistributedLevel();
+                enemy.InitializeLevel(spawnedLevel, growthConfig);
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet);
-                if (Random.Range(0, 100) < chanceOfBigEnemy) flyingEnemy.SetBigEnemy();
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
+                
+                // --- Debug Tracking ---
+                _lastSpawnedLevel = spawnedLevel;
+                _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
+                Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {playerSize.CurrentSizeLevel}");
             }
         }
+        
+        private int GetNormalDistributedLevel()
+        {
+            int meanLevel = playerSize.CurrentSizeLevel + levelOffset;
+            float u1 = Random.value;
+            float u2 = Random.value;
+            float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
+            
+            float randNormal = meanLevel + levelStandardDeviation * randStdNormal;
+
+            return Mathf.Clamp(Mathf.RoundToInt(randNormal), growthConfig.minLevel, growthConfig.maxLevel);
+        }
+
+        private void ApplyRandomForce(FlyingEnemy enemy)
+        {
+            var rb = enemy.GetComponent<Rigidbody2D>();
+            if (rb) {
+                var direction = Random.insideUnitCircle.normalized;
+                var force = Random.Range(minSpawnForce, maxSpawnForce);
+                rb.AddForce(direction * force, ForceMode2D.Impulse);
+            }
+        }
+        
+        private void OnGUI()
+        {
+            if (!showDebugOverlay) return;
+
+            // Simple box in the top-left corner
+            GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
+            GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {playerSize.CurrentSizeLevel}");
+            GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {playerSize.CurrentSizeLevel + levelOffset}");
+            GUI.Label(new Rect(20, 70, 230, 20), $"Last Enemy Level: {_lastSpawnedLevel}");
+            GUI.Label(new Rect(20, 90, 230, 20), $"Last Enemy Scale: {_lastSpawnedScale:F2}");
+        }
+        
+        private void OnDrawGizmosSelected()
+        {
+            // Visualize the Tether Range
+            Gizmos.color = debugCircleColor;
+            if (transform.parent != null)
+            {
+                Gizmos.DrawWireSphere(transform.parent.position, maxDistanceFromPlanet);
+            }
+
+            // Visualize the Spawn Offset point
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(transform.position, transform.position + spawnOffset);
+            Gizmos.DrawSphere(transform.position + spawnOffset, 0.2f);
+        }
+        
     }
 }
 

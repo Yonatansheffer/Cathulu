@@ -130,7 +130,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void OnFreeze() => _isFrozen = true;
         private void OnUnFreeze() => _isFrozen = false;
         
-        private void OnGUI()
+        /*private void OnGUI()
         {
             // Only show in the editor or development builds
             if (!Debug.isDebugBuild) return;
@@ -156,6 +156,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
                 GUILayout.Label($"STATUS: <color=red>ACTIVE & SPAWNING</color>", style);
 
             GUILayout.EndArea();
-        }
+        }*/
     }
 }

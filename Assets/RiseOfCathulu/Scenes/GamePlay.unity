@@ -17693,7 +17693,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13000
+  orthographic size: 12500
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -17738,16 +17738,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1499851947}
+  playerSize: {fileID: 1499851948}
   bossTarget: {fileID: 9122062189255835426}
-  offset: {x: 0, y: 10, z: -10}
+  offset: {x: 0, y: 0, z: -1}
   smoothSpeed: 5
-  leftxBound: -40009
-  rightxBound: 520009
-  yLowerBound: -121000
-  yUpperBound: 270000
+  leftxBound: -24850
+  rightxBound: 25100
+  yLowerBound: -17040
+  yUpperBound: 16680
+  baseZoomSize: 10
+  zoomMultiplier: 30
+  minZoomSize: 400
+  maxZoomSize: 10000
+  zoomSmoothing: 2
   startZoomSize: 12500
-  targetZoomSize: 400
-  zoomSpeed: 0.7
   startZoomDuration: 6
   zoomOutExtraSize: 30
   zoomOutLerpDuration: 1
@@ -28221,11 +28225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968347b49e87444eafc515b8f1921ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  growthConfig: {fileID: 0}
+  playerSize: {fileID: 0}
+  showDebugOverlay: 1
+  debugCircleColor: {r: 1, g: 0, b: 0, a: 0.2}
   minSpawnForce: 1
   maxSpawnForce: 4
   spawnOffset: {x: 0.8, y: 0, z: 0}
-  chanceOfBigEnemy: 20
   maxDistanceFromPlanet: 10
+  levelStandardDeviation: 1.5
+  levelOffset: 0
 --- !u!114 &963112303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50044,7 +50053,7 @@ Transform:
   m_GameObject: {fileID: 1640757119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.0018269379, w: 0.99999833}
-  m_LocalPosition: {x: 0.714674, y: -0.9899521, z: -1.9319291}
+  m_LocalPosition: {x: 0.16, y: 0, z: -1.9319291}
   m_LocalScale: {x: 0.020734046, y: 0.02248586, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61167,7 +61176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9493df3a467648ad950440f5c457dbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPoolSize: 30
+  initialPoolSize: 25
   prefab: {fileID: 834314629388991528, guid: c84dc1f87bc965c4da6e7338a3a4415a, type: 3}
 --- !u!114 &2084742446
 MonoBehaviour:
@@ -61181,7 +61190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34df038542248f99fe014e8c6f62630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Enemies.Scripts.FlyingEnemyPool
-  initialPoolSize: 30
+  initialPoolSize: 25
   prefab: {fileID: 8074282756354523846, guid: e34df86720dc7c74cb0e5570f7216dbd, type: 3}
 --- !u!114 &2084742447
 MonoBehaviour:
@@ -63026,7 +63035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10594.467
+      value: 8862
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63110,7 +63119,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458262124846041072, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: maxScale
-      value: 60
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458262124846041072, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: minScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458262124846041072, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 5458262124846041072, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: initialSizeLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7864353137068054537, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_Size.x
@@ -63296,6 +63317,10 @@ PrefabInstance:
     - target: {fileID: 5979220966766298785, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_UpdateMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494487530571063701, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
+      propertyPath: initialHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6494487530571063701, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: initialBossHealth
@@ -63503,7 +63528,7 @@ MonoBehaviour:
     currentSpawnDuration: 0
   playerTransform: {fileID: 1499851947}
   spawnActivationRange: 3000
-  innerDangerRange: 2
+  innerDangerRange: 200
 --- !u!114 &9122062189255835436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63516,11 +63541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968347b49e87444eafc515b8f1921ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.EnemySpawning
-  minSpawnForce: 1
-  maxSpawnForce: 4
+  growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+  playerSize: {fileID: 1499851948}
+  showDebugOverlay: 1
+  debugCircleColor: {r: 1, g: 0, b: 0, a: 0.2}
+  minSpawnForce: 80
+  maxSpawnForce: 800
   spawnOffset: {x: 0.8, y: 0, z: 0}
-  chanceOfBigEnemy: 20
-  maxDistanceFromPlanet: 10
+  maxDistanceFromPlanet: 2000
+  levelStandardDeviation: 1.2
+  levelOffset: 1
 --- !u!114 &9122062189255835437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63533,8 +63563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d528172bbe4d44a9855f03c6545a4e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.OrbitalMovement
-  gravityPoint: {fileID: 0}
-  orbitRadius: 250
+  gravityPoint: {fileID: 2143213401}
+  orbitRadius: 220
   orbitSpeed: 10
   clockwise: 1
   idleTiltAngle: 15
