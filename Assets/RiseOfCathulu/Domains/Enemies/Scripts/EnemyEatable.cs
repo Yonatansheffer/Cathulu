@@ -16,9 +16,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private SpriteRenderer _spriteRenderer;
         private Color _baseColor;
 
-        [Header("Visuals")]
-        [SerializeField] private Color eatableColor = Color.green;
-
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,9 +31,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         public void ResetEatableState()
         {
             IsEatable = Random.value < eatableChance;
-
-            if (_spriteRenderer)
-                _spriteRenderer.color = IsEatable ? eatableColor : _baseColor;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +51,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             {
                 GameEvents.ChangePlayerSize?.Invoke(-1);
             }
+            ReturnEnemy();
         }
 
         private void ReturnEnemy()

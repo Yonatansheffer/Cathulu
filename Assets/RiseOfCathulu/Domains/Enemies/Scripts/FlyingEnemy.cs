@@ -50,7 +50,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         public void InitializeLevel(int level, GrowthConfig config)
         {
             sizeLevel = level;
-            transform.localScale = Vector3.one * config.GetScale(level);
+    
+            // Instead of multiplying, we set the scale directly to the config value
+            float targetScale = config.GetScale(level);
+            transform.localScale = Vector3.one * targetScale;
+    
             moveSpeed = config.GetSpeed(level);
         }
 

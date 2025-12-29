@@ -52,23 +52,21 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         private Coroutine _zoomRoutine;
         private Coroutine _shakeRoutine;
 
+        private bool _hasSkippedStartZoom = false;
+        
         private void Start()
         {
             _cam = GetComponent<UnityEngine.Camera>();
             if (_cam != null) _cam.orthographicSize = startZoomSize;
-            
-            // Auto-find PlayerSize if not assigned
             if (playerSize == null && playerTarget != null)
                 playerSize = playerTarget.GetComponent<PlayerSize>();
 
             StartCoroutine(StartZoomToTarget());
         }
-        
         private void OnEnable()
         {
             GameEvents.ShakeCamera += OnShakeCamera;
-            /*GameEvents.BossShoots += OnBossShoots;
-            GameEvents.BossDestroyed += OnBossDestroyed;*/
+            GameEvents.Shoot += OnPlayerShoot; 
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnfreeze;
         }
@@ -76,10 +74,36 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         private void OnDisable()
         {
             GameEvents.ShakeCamera -= OnShakeCamera;
-            /*GameEvents.BossShoots -= OnBossShoots;
-            GameEvents.BossDestroyed -= OnBossDestroyed;*/
+            GameEvents.Shoot -= OnPlayerShoot; 
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnfreeze;
+        }
+
+        private void OnPlayerShoot(Transform t)
+        {
+            if (_isStartingZoomIn && !_hasSkippedStartZoom)
+            {
+                CutStartZoom();
+            }
+        }
+
+        private void CutStartZoom()
+        {
+            _hasSkippedStartZoom = true;
+            StopAllCoroutines(); 
+            UpdateDynamicZoom();
+            if (playerTarget != null)
+            {
+                Vector3 finalPos = playerTarget.position + offset;
+                float camHalfHeight = _cam.orthographicSize;
+                float camHalfWidth = camHalfHeight * _cam.aspect;
+                float clampedX = Mathf.Clamp(finalPos.x, leftxBound + camHalfWidth, rightxBound - camHalfWidth);
+                float clampedY = Mathf.Clamp(finalPos.y, yLowerBound + camHalfHeight, yUpperBound - camHalfHeight);
+        
+                transform.position = new Vector3(clampedX, clampedY, finalPos.z);
+            }
+            _cam.orthographicSize = _dynamicTargetZoom;
+            _isStartingZoomIn = false;
         }
 
         private void LateUpdate()

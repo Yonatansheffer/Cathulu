@@ -5,7 +5,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 {
     public abstract class Enemy : BossBaseMono, IPoolable 
     {
-        [HideInInspector] public int sizeLevel;
+        public int sizeLevel;
         
         public virtual void Reset()
         {
