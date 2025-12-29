@@ -44,7 +44,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             }
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {
-                GameEvents.BossShoots?.Invoke();
+                GameEvents.PlanetEnemyShoots?.Invoke();
             }
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {

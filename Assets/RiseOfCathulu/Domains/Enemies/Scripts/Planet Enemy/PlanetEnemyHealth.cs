@@ -21,11 +21,10 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             _currentHealth--;
             if(_currentHealth <= 0)
             {
-                GameEvents.BossDestroyed?.Invoke();
+                GameEvents.PlanetEnemyDestroyed?.Invoke();
                 return;
             }
             SoundManager.Instance.PlaySound("Boss Damage", transform);
-            GameEvents.BossLivesChanged?.Invoke(_currentHealth);
         }
     }
 }

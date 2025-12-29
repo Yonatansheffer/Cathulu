@@ -18,18 +18,18 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void OnEnable()
         {
-            GameEvents.BossShoots += TriggerShootAnimation;
+            GameEvents.PlanetEnemyShoots += TriggerShootAnimation;
             GameEvents.ToSpawnEnemy += TriggerSpawnAnimation;
             GameEvents.EnemySpawned += TriggerSpawnAnimation;
-            GameEvents.BossDestroyed += DeathAnimation;
+            GameEvents.PlanetEnemyDestroyed += DeathAnimation;
         }
         
         private void OnDisable()
         {
-            GameEvents.BossShoots -= TriggerShootAnimation;
+            GameEvents.PlanetEnemyShoots -= TriggerShootAnimation;
             GameEvents.ToSpawnEnemy -= TriggerSpawnAnimation;
             GameEvents.EnemySpawned -= TriggerSpawnAnimation;
-            GameEvents.BossDestroyed -= DeathAnimation;
+            GameEvents.PlanetEnemyDestroyed -= DeathAnimation;
         }
         
         private void DeathAnimation()

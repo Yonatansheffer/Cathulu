@@ -12,9 +12,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         [Header("Weapon Settings")]
         [SerializeField] private WeaponSettings settings;
 
-        [Header("Boss UI")]
-        [SerializeField] private Slider bossHealthBar;
-
         [Header("Player UI")]
         [SerializeField] private TextMeshProUGUI pointsText;
         [SerializeField] private TextMeshProUGUI timeCountText;
@@ -53,7 +50,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         private void OnEnable()
         {
-            GameEvents.BossLivesChanged += UpdateBossHealth;
             GameEvents.UpdatePlayerLivesUI += UpdatePlayerHealth;
             GameEvents.UpdateScoreUI += UpdateScore;
             GameEvents.UpdateTimeUI += UpdateTimeCount;
@@ -66,7 +62,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         private void OnDisable()
         {
             GameEvents.UpdateScoreUI -= UpdateScore;
-            GameEvents.BossLivesChanged -= UpdateBossHealth;
             GameEvents.UpdatePlayerLivesUI -= UpdatePlayerHealth;
             GameEvents.UpdateTimeUI -= UpdateTimeCount;
             GameEvents.AddTime -= UpdateTime;
@@ -145,11 +140,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
             particles.transform.localScale = Vector3.one * 0.5f;
             Destroy(particles, 0.8f);
-        }
-
-        private void UpdateBossHealth(int amount)
-        {
-            bossHealthBar.value = amount;
         }
 
         private void UpdatePlayerHealth(int amount)

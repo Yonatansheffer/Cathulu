@@ -16,7 +16,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<float> AddTime;
         public static Action EndScene;
         public static Action PlayerDefeated;
-        public static Action BossEndedDeath;
+        public static Action PlanetEnemyEndedDeath;
         public static Action<GameState, int> GameOverUI;
 
         // UI Events
@@ -29,19 +29,21 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<Transform> Shoot;
         public static Action<Vector3> EnemyDestroyed;
         public static Action<WeaponType> WeaponCollected;
-        public static Action BossShoots;
+        public static Action PlanetEnemyShoots;
         public static Action ToSpawnEnemy;
         public static Action EnemySpawned;
         public static Action SpawnAllWalkingEnemies;
         public static Action<bool> ShieldUpdated;
         public static Action<int> PlayerLostLife;
-        public static Action BossDestroyed;
-        public static Action<int> BossLivesChanged;
+        public static Action PlanetEnemyDestroyed;
         public static Action<int> AddPoints;
         public static Action ShakeCamera;
         public static Action StopMusic;
         public static Action<Vector2, float,float,float> OnEnteredGravityZone;
         public static Action OnExitedGravityZone;
+        public static Action DestroyedSun;
+
+        
     
         // Cheat Codes Events
         public static Action<int> ChangePlayerSize;

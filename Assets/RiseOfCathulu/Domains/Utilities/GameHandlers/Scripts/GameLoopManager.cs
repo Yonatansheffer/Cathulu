@@ -34,8 +34,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.AddTime += AddTime;
             GameEvents.FreezeCollected += OnFreeze;
             GameEvents.RestartLevel += OnLevelStart;
-            GameEvents.BossDestroyed += UpdatePlayerWin;
-            GameEvents.BossEndedDeath += PlayerWon;
+            GameEvents.DestroyedSun += UpdatePlayerWin;
+            GameEvents.PlanetEnemyEndedDeath += PlayerWon;
             GameEvents.PlayerDefeated += UpdateDefeatedGameState;
             GameEvents.AddPoints += AddPoints;
         }
@@ -45,8 +45,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.AddTime -= AddTime;
             GameEvents.FreezeCollected -= OnFreeze;
             GameEvents.RestartLevel -= OnLevelStart;
-            GameEvents.BossDestroyed -= UpdatePlayerWin;
-            GameEvents.BossEndedDeath -= PlayerWon;
+            GameEvents.DestroyedSun -= UpdatePlayerWin;
+            GameEvents.PlanetEnemyEndedDeath -= PlayerWon;
             GameEvents.PlayerDefeated -= UpdateDefeatedGameState;
             GameEvents.AddPoints -= AddPoints;
         }
