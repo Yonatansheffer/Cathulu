@@ -32,7 +32,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private float _lastDashTime = -1f;
         private bool _isGrounded;
         private PlayerGravityMotor _motor;
-
+        private Vector2 _steeringInput;
+        private float _brakeInput;
+        private float _thrustInput;
         
         #if UNITY_STANDALONE_WIN
                 private DualSenseController _dualSense;
@@ -91,7 +93,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void FixedUpdate()
         {
             if (!_rb.simulated) return;
-            _motor.Tick(_moveInput);
+            _motor.Tick(_steeringInput, _thrustInput, _brakeInput);
         }
         
         private void LateUpdate()
@@ -99,6 +101,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             if (!_rb.simulated) return;
             RotateToFacingDirection();
         }   
+
         
         private void RotateToFacingDirection()
         {
@@ -112,10 +115,25 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void InitializeInputCallbacks()
         {
-            _inputActions.Movement.Move.performed += ctx => OnMovePerformed(ctx.ReadValue<Vector2>());
-            _inputActions.Movement.Move.canceled += _ => _moveInput = Vector2.zero;
+            _inputActions.Movement.Move.performed +=
+                ctx => _steeringInput = ctx.ReadValue<Vector2>();
+
+            _inputActions.Movement.Move.canceled +=
+                _ => _steeringInput = Vector2.zero;
+
+            _inputActions.Movement.Acceleration.performed +=
+                ctx => _thrustInput = ctx.ReadValue<float>();
+
+            _inputActions.Movement.Acceleration.canceled +=
+                _ => _thrustInput = 0f;
+            
+            _inputActions.Movement.Brake.performed +=
+                ctx => _brakeInput = ctx.ReadValue<float>();
+
+            _inputActions.Movement.Brake.canceled +=
+                _ => _brakeInput = 0f;
+
             _inputActions.Movement.Shoot.performed += _ => Shoot();
-            _inputActions.Movement.Dash.performed += _ => Dash();
         }
 
         private void OnMovePerformed(Vector2 input)

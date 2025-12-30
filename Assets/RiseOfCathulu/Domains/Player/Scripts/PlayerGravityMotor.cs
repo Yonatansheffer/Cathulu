@@ -14,6 +14,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private float convergenceRate = 4f;
         [SerializeField, Tooltip("Absolute hard cap on velocity magnitude")]
         private float absoluteMaxSpeed = 40f;
+        private bool _wasThrusting;
 
 
         [Header("Gravity Defaults")]
@@ -28,7 +29,35 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private float _vortexGrip;
         private bool _suspendMovement;
         private Vector2 _lastMoveDir;
+        private float _gravityFade = 0f;
         
+        [Header("Acceleration")]
+        [SerializeField] private float acceleration = 18f;
+        [Header("Trigger Curves")]
+        [SerializeField]
+        private AnimationCurve accelerationTriggerCurve =
+            new AnimationCurve(
+                new Keyframe(0f, 0f),
+                new Keyframe(0.15f, 1f),
+                new Keyframe(1f, 1f)
+            );
+
+        [SerializeField]
+        private AnimationCurve brakeTriggerCurve =
+            new AnimationCurve(
+                new Keyframe(0f, 0f),
+                new Keyframe(0.4f, 1f),
+                new Keyframe(1f, 1f)
+            );
+
+
+
+        
+        private float _gravityMultiplier = 1f;
+        private float _steeringMultiplier = 1f;
+        [SerializeField] private float orbitBiasStrength = 1.2f;
+        [SerializeField] private float slingshotBonus = 2.5f;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -51,13 +80,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             }
         }
 
-
-        public void Tick(Vector2 input)
+        public void Tick(Vector2 steering, float thrust, float brake)
         {
             if (_suspendMovement) return;
-            ApplyCruising(input);
+            ApplyCruising(steering, thrust, brake);
             ApplyGravity();
             ClampAbsoluteSpeed();
+
         }
 
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
@@ -66,60 +95,103 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _inwardGravity = inwardGravity;
             _maxVortexSpeed = maxVortexSpeed;
             _vortexGrip = vortexGrip;
+            _gravityFade = 1f;
+
             _isInGravityZone = true;
         }
-
         public void ExitGravity()
         {
             _isInGravityZone = false;
+            _gravityFade = 0f;
+
+            _rb.linearVelocity += _rb.linearVelocity.normalized * slingshotBonus;
             ResetGravityToDefaults();
         }
+
+
 
         public void SuspendMovement(bool suspend)
         {
             _suspendMovement = suspend;
         }
         
-        private void ApplyCruising(Vector2 input)
+        public void SetDiveState(bool diving)
         {
+            _gravityMultiplier = diving ? 2.5f : 1f;
+            _steeringMultiplier = diving ? 0.35f : 1f;
+        }
+
+        private float ApplyTriggerCurve(float value, float deadZone, AnimationCurve curve)
+        {
+            if (value < deadZone)
+                return 0f;
+
+            float normalized =
+                Mathf.InverseLerp(deadZone, 1f, value);
+
+            return curve.Evaluate(normalized);
+        }
+        
+        private void ApplyCruising(Vector2 moveInput, float thrust, float brake)
+        {
+            float accelInput = ApplyTriggerCurve(thrust, 0.05f, accelerationTriggerCurve);
+            float brakeInput = ApplyTriggerCurve(brake, 0.05f, brakeTriggerCurve);
+
             Vector2 vel = _rb.linearVelocity;
+            float speedNow = vel.magnitude;
 
-            // -------------------------------------------------------
-            // OUTSIDE GRAVITY → INSTANT RESPONSE
-            // -------------------------------------------------------
-            if (!_isInGravityZone)
+            // -----------------------------
+            // BRAKE (same as before)
+            // -----------------------------
+            if (brakeInput > 0f && speedNow > 0.1f)
             {
-                if (input.sqrMagnitude > 0.01f)
+                float gravityProximity = 0f;
+
+                if (_isInGravityZone)
                 {
-                    // Instant movement
-                    vel = input.normalized * speed;
-                    _lastMoveDir = input.normalized;
-
-                }
-                else if (vel.sqrMagnitude > 0.01f)
-                {   
-                    // Instant idle drift
-                    vel = vel.normalized * idleSpeed;
+                    Vector2 toCenter = _gravityCenter - _rb.position;
+                    gravityProximity = Mathf.Clamp01(1f / (toCenter.magnitude + 1f));
                 }
 
-                _rb.linearVelocity = vel;
-                return;
+                float brakeTarget = Mathf.Lerp(0.55f, 0.4f, gravityProximity);
+
+                vel = Vector2.Lerp(
+                    vel,
+                    vel * brakeTarget,
+                    brakeInput * Time.fixedDeltaTime * 6f
+                );
             }
 
-            // -------------------------------------------------------
-            // INSIDE GRAVITY → SMOOTH CONVERGENCE
-            // -------------------------------------------------------
-            if (input.sqrMagnitude > 0.01f)
+            // -----------------------------
+            // DIRECTION + SPEED CONTROL
+            // -----------------------------
+            if (moveInput.sqrMagnitude > 0.01f)
             {
-                Vector2 desiredDir = input.normalized;
+                Vector2 desiredDir = moveInput.normalized;
                 _lastMoveDir = desiredDir;
 
-                Vector2 targetVelocity = desiredDir * speed;
+                float targetSpeed =
+                    Mathf.Lerp(idleSpeed, speed, accelInput);
+
+                Vector2 targetVelocity = desiredDir * targetSpeed;
+
                 vel = Vector2.Lerp(
                     vel,
                     targetVelocity,
                     convergenceRate * Time.fixedDeltaTime
                 );
+            }
+            else
+            {
+                // No input → gentle drift
+                if (speedNow > idleSpeed)
+                {
+                    vel = Vector2.Lerp(
+                        vel,
+                        vel.normalized * idleSpeed,
+                        convergenceRate * Time.fixedDeltaTime
+                    );
+                }
             }
 
             _rb.linearVelocity = vel;
@@ -128,28 +200,51 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void ApplyGravity()
         {
-            if (!_isInGravityZone) return;
+            if (!_isInGravityZone)
+                return;
 
             Vector2 vel = _rb.linearVelocity;
 
+            // Direction & distance to gravity center
             Vector2 toCenter = _gravityCenter - _rb.position;
             float distance = Mathf.Max(0.1f, toCenter.magnitude);
             Vector2 radialDir = toCenter.normalized;
 
-            // Radial gravity pull
-            float gravityForce = _inwardGravity / (distance + 2f);
+            // Smooth gravity engagement
+            _gravityFade = Mathf.MoveTowards(
+                _gravityFade,
+                1f,
+                4f * Time.fixedDeltaTime
+            );
+
+            // ----------------------------
+            // RADIAL GRAVITY (INEVITABLE)
+            // ----------------------------
+            float gravityForce =
+                (_inwardGravity * _gravityMultiplier * _gravityFade) /
+                (distance + 2f);
+
             vel += radialDir * gravityForce * Time.fixedDeltaTime;
 
-            // Tangential orbit force
+            // ----------------------------
+            // TANGENTIAL ORBIT (FLOW)
+            // ----------------------------
             Vector2 tangentDir = new Vector2(-radialDir.y, radialDir.x);
+
+            // Ensure orbit follows current motion
             if (Vector2.Dot(vel, tangentDir) < 0f)
                 tangentDir = -tangentDir;
 
             Vector2 orbitTarget = tangentDir * _maxVortexSpeed;
-            vel += (orbitTarget - vel) * _vortexGrip * Time.fixedDeltaTime;
+
+            // Orbit dominates farther from center
+            float orbitInfluence = 1f / (distance + 1f);
+
+            vel += (orbitTarget - vel) * (_vortexGrip * orbitBiasStrength * orbitInfluence * Time.fixedDeltaTime);
 
             _rb.linearVelocity = vel;
         }
+
 
         private void ClampAbsoluteSpeed()
         {
