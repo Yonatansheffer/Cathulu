@@ -34,7 +34,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _isGrounded;
         private PlayerGravityMotor _motor;
         private Vector2 _steeringInput;
-        private float _brakeInput;
         private float _thrustInput;
         private PlayerDualSenseFeedback _dualSenseFeedback;
         
@@ -44,8 +43,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _inputActions = new PlayerInputs();
-            InitializeInputCallbacks();
             _dualSenseFeedback = GetComponent<PlayerDualSenseFeedback>();
+            InitializeInputCallbacks();
             _motor = GetComponent<PlayerGravityMotor>();
         }
 
@@ -83,7 +82,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void FixedUpdate()
         {
             if (!_rb.simulated) return;
-            _motor.Tick(_steeringInput, _thrustInput, _brakeInput);
+            _motor.Tick(_steeringInput, _thrustInput);
             Flip();
         }
 
@@ -123,6 +122,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
             _inputActions.Movement.Move.canceled +=
                 _ => _steeringInput = Vector2.zero;
+            
+            _inputActions.Movement.Dash.performed += _ => Dash();
 
             _inputActions.Movement.Acceleration.performed +=
                 ctx =>
@@ -137,14 +138,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                     _thrustInput = 0f;
                     _dualSenseFeedback?.SetThrustInput(0f);
                 };
-
             
-            _inputActions.Movement.Brake.performed +=
-                ctx => _brakeInput = ctx.ReadValue<float>();
-
-            _inputActions.Movement.Brake.canceled +=
-                _ => _brakeInput = 0f;
-
             _inputActions.Movement.Shoot.performed += _ => Shoot();
         }
 
@@ -157,22 +151,30 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (!_rb.simulated)
                 return;
+            _dualSenseFeedback?.TriggerGunWall();
             GameEvents.Shoot?.Invoke(gun.transform);
         }
         
         private void CheckGrounded()
         {
-            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            _isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer
+            );
+
+            _dualSenseFeedback?.SetGrounded(_isGrounded);
         }
+
         
         
         private void Dash()
         {
-            if (!_rb.simulated || _isDashing || _moveInput.sqrMagnitude < 0.01f ||
+            if (!_rb.simulated || _isDashing || _steeringInput.sqrMagnitude < 0.01f ||
                 Time.time - _lastDashTime < dashCooldown)
                 return;
             _lastDashTime = Time.time;
-            StartCoroutine(PerformDash(_moveInput.normalized));
+            StartCoroutine(PerformDash(_steeringInput.normalized));
         }
 
         private IEnumerator PerformDash(Vector2 direction)

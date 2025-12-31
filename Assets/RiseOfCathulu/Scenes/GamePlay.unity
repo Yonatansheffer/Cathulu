@@ -18314,8 +18314,8 @@ Transform:
   m_GameObject: {fileID: 538950150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122, y: -180, z: 0}
-  m_LocalScale: {x: 4994.5, y: 6000, z: 1}
+  m_LocalPosition: {x: 259.332, y: -507.0137, z: 0}
+  m_LocalScale: {x: 5716.1094, y: 6612.443, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1623845476}
@@ -35079,7 +35079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1154409673
 Transform:
   m_ObjectHideFlags: 0
@@ -41144,7 +41144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8931726097443327189, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1499644589}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
 --- !u!1001 &1356520881
@@ -44370,7 +44373,7 @@ RectTransform:
   - {fileID: 241560769}
   - {fileID: 1836441074}
   - {fileID: 1004072198}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 228099528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -44405,10 +44408,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815148ec69d74bfcaeec73d84eee38c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Player.Scripts.PlayerDualSenseFeedback
+  gunWallStart: 0.25
+  gunWallEnd: 0.37
+  gunWallForce: 0.03
+  gunWallDuration: 0.04
   thrustStartPosition: 0.15
   maxTriggerForce: 0.85
   speedForceWeight: 0.4
   gravityForceMultiplier: 1.3
+  gunRumbleStrength: 0.05
+  gunRumbleDuration: 0.05
+  gravityRumbleMax: 0.2
+  gravityRumbleFadeSpeed: 3
+  growRumbleStrength: 0.6
+  growRumbleDuration: 0.18
+  shrinkRumbleStrength: 0.4
+  shrinkRumbleDuration: 0.12
+  gravityEnterStrength: 0.15
+  gravityEnterDuration: 0.1
+  speedFactor: 250
+  speedSmoothing: 2
+  slingshotSpeedThreshold: 16
+  slingshotRumbleStrength: 0.15
+  slingshotRumbleDuration: 0.12
 --- !u!96 &1499851964
 TrailRenderer:
   serializedVersion: 3
@@ -64095,5 +64117,4 @@ SceneRoots:
   - {fileID: 5679415044458585225}
   - {fileID: 2019154129}
   - {fileID: 1568078510}
-  - {fileID: 1499644589}
   - {fileID: 686934011}
