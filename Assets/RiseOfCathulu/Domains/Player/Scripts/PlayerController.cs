@@ -26,6 +26,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField, Tooltip("Layer mask for ground detection")] private LayerMask groundLayer;
         
         private Rigidbody2D _rb;
+        private SpriteRenderer _sr;
         private PlayerInputs _inputActions;
         private Vector2 _moveInput;
         private bool _isDashing;
@@ -46,6 +47,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             _isDashing = false;
             _rb = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
             _inputActions = new PlayerInputs();
             InitializeInputCallbacks();
             #if UNITY_STANDALONE_WIN
@@ -94,6 +96,19 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (!_rb.simulated) return;
             _motor.Tick(_steeringInput, _thrustInput, _brakeInput);
+            Flip();
+        }
+
+        private void Flip()
+        {
+            if (_rb.linearVelocity.x <= -0.001f)
+            {
+                _sr.flipX = false;
+            }
+            else if (_rb.linearVelocity.x >= 0.001f)
+            {
+                _sr.flipX = true;
+            }
         }
         
         private void LateUpdate()
