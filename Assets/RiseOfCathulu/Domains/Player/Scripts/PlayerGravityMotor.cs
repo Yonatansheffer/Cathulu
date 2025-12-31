@@ -74,6 +74,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ClampAbsoluteSpeed();
 
         }
+        
+
 
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
         {

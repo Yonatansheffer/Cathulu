@@ -157,8 +157,15 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         private void CheckGrounded()
         {
-            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            _isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer
+            );
+
+            _dualSenseFeedback?.SetGrounded(_isGrounded);
         }
+
         
         
         private void Dash()

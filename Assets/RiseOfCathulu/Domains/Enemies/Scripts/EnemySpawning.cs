@@ -99,18 +99,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             }
         }
         
-        private void OnGUI()
-        {
-            if (!showDebugOverlay) return;
 
-            // Simple box in the top-left corner
-            GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
-            GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {playerSize.CurrentSizeLevel}");
-            GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {playerSize.CurrentSizeLevel + levelOffset}");
-            GUI.Label(new Rect(20, 70, 230, 20), $"Last Enemy Level: {_lastSpawnedLevel}");
-            GUI.Label(new Rect(20, 90, 230, 20), $"Last Enemy Scale: {_lastSpawnedScale:F2}");
-        }
-        
         private void OnDrawGizmosSelected()
         {
             // Visualize the Tether Range
@@ -131,7 +120,18 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
 /*
  
- 
+         private void OnGUI()
+        {
+            if (!showDebugOverlay) return;
+
+            // Simple box in the top-left corner
+            GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
+            GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {playerSize.CurrentSizeLevel}");
+            GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {playerSize.CurrentSizeLevel + levelOffset}");
+            GUI.Label(new Rect(20, 70, 230, 20), $"Last Enemy Level: {_lastSpawnedLevel}");
+            GUI.Label(new Rect(20, 90, 230, 20), $"Last Enemy Scale: {_lastSpawnedScale:F2}");
+        }
+        
          private void SpawnWalkingEnemy(Transform targetTransform)
         {
             var walkingEnemy = WalkingEnemyPool.Instance.Get();
