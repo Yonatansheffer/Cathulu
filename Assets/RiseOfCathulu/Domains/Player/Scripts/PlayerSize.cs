@@ -21,6 +21,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [Header("Hit Cooldown")]
         [SerializeField] private float hitCooldown = 1f;
 
+        private TrailRenderer _trailRenderer;
         private int _currentSizeLevel;
         private bool _isShieldActive;
         private bool _isOnHitCooldown;
@@ -33,6 +34,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void Awake()
         {
             _currentSizeLevel = initialSizeLevel;
+            
+            //initialize the trail size
+            _trailRenderer = GetComponent<TrailRenderer>();
+            _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
+            _trailRenderer.time = (_currentSizeLevel * 0.1f);
+
             ApplyScale();
         }
         
@@ -108,6 +115,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void AdjustSize(int delta)
         {
             _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
+            
+            //handle the trail size when changing size
+            _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
+            _trailRenderer.time = (_currentSizeLevel * 0.1f);
             ApplyScale();
         }
 
