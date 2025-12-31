@@ -35,12 +35,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private Vector2 _steeringInput;
         private float _brakeInput;
         private float _thrustInput;
-        
-        #if UNITY_STANDALONE_WIN
-                private DualSenseController _dualSense;
-                private ControllerOutputState _outputState;
-        #endif
-
+        private PlayerDualSenseFeedback _dualSenseFeedback;
         
         private void Awake()
         {
@@ -48,14 +43,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _rb = GetComponent<Rigidbody2D>();
             _inputActions = new PlayerInputs();
             InitializeInputCallbacks();
-            #if UNITY_STANDALONE_WIN
-                        var controllers = DualSense.GetControllers();
-                        if (controllers.Count > 0)
-                        {
-                            _dualSense = controllers[0];
-                            _outputState = new ControllerOutputState();
-                        }
-            #endif
+            _dualSenseFeedback = GetComponent<PlayerDualSenseFeedback>();
             _motor = GetComponent<PlayerGravityMotor>();
         }
 
@@ -73,12 +61,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             GameEvents.OnExitedGravityZone -= ExitGravity;
         }
 
-        void EnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
+        private void EnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
         {
             _motor.EnterGravity(center, strength, maxSpeed, grip);
         }
 
-        void ExitGravity()
+        private void ExitGravity()
         {
             _motor.ExitGravity();
         }
@@ -122,10 +110,19 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 _ => _steeringInput = Vector2.zero;
 
             _inputActions.Movement.Acceleration.performed +=
-                ctx => _thrustInput = ctx.ReadValue<float>();
+                ctx =>
+                {
+                    _thrustInput = ctx.ReadValue<float>();
+                    _dualSenseFeedback?.SetThrustInput(_thrustInput);
+                };
 
             _inputActions.Movement.Acceleration.canceled +=
-                _ => _thrustInput = 0f;
+                _ =>
+                {
+                    _thrustInput = 0f;
+                    _dualSenseFeedback?.SetThrustInput(0f);
+                };
+
             
             _inputActions.Movement.Brake.performed +=
                 ctx => _brakeInput = ctx.ReadValue<float>();
