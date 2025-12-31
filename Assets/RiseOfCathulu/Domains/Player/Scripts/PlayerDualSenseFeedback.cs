@@ -11,16 +11,37 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private DualSenseController _dualSense;
         private ControllerOutputState _outputState;
 #endif
+        
+        [Header("Gun Trigger Wall")]
+        [SerializeField] private float gunWallStart = 0.25f;
+        [SerializeField] private float gunWallEnd = 0.6f;
+        [SerializeField] private float gunWallForce = 1.0f;
+        [SerializeField] private float gunWallDuration = 0.12f;
+
 
         [Header("Trigger Tuning")]
         [SerializeField] private float thrustStartPosition = 0.15f;
         [SerializeField] private float maxTriggerForce = 0.85f;
         [SerializeField] private float speedForceWeight = 0.4f;
         [SerializeField] private float gravityForceMultiplier = 1.3f;
+        
+        [Header("Rumble - Gun Recoil")]
+        [SerializeField] private float gunRumbleStrength = 0.5f;
+        [SerializeField] private float gunRumbleDuration = 0.1f;
 
+        [Header("Rumble - Gravity")]
+        [SerializeField] private float gravityRumbleMax = 0.25f;
+        [SerializeField] private float gravityRumbleFadeSpeed = 3f;
+
+        
+        private float _gunRumbleTimer;
+        private float _currentGravityRumble;
+
+        
+        private bool _gunWallActive;
+        private float _gunWallTimer;
         private Rigidbody2D _rb;
         private PlayerGravityMotor _motor;
-
         private float _currentThrust;
         private bool _inGravity;
 
@@ -55,14 +76,31 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 #endif
         }
 
+
+        public void TriggerGunWall()
+        {
+#if UNITY_STANDALONE_WIN
+            _gunWallActive = true;
+            _gunWallTimer = gunWallDuration;
+            _gunRumbleTimer = gunRumbleDuration;
+#endif
+        }
+
         public void SetThrustInput(float thrust)
         {
             _currentThrust = thrust;
         }
-
+        
         private void FixedUpdate()
         {
 #if UNITY_STANDALONE_WIN
+            if (_gunWallActive)
+            {
+                UpdateGunWall();
+                return;
+            }
+            UpdateRumble();
+
             if (_dualSense == null)
                 return;
 
@@ -105,6 +143,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _dualSense.SetOutputState(_outputState);
         }
 #endif
+        
 
         private void OnEnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
         {
@@ -115,5 +154,57 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             _inGravity = false;
         }
+        
+#if UNITY_STANDALONE_WIN
+        private void UpdateGunWall()
+        {
+            _outputState.LeftTriggerEffect.InitializeSectionResistanceEffect(
+                gunWallStart,
+                gunWallEnd,
+                gunWallForce
+            );
+
+            _dualSense.SetOutputState(_outputState);
+
+            _gunWallTimer -= Time.fixedDeltaTime;
+            if (_gunWallTimer <= 0f)
+            {
+                _gunWallActive = false;
+            }
+        }
+#endif
+        
+        
+#if UNITY_STANDALONE_WIN
+        private void UpdateRumble()
+        {
+            // --- Gun recoil (priority) ---
+            if (_gunRumbleTimer > 0f)
+            {
+                _outputState.RightRumbleIntensity = gunRumbleStrength;
+                _outputState.LeftRumbleIntensity = 0f;
+
+                _gunRumbleTimer -= Time.fixedDeltaTime;
+                _dualSense.SetOutputState(_outputState);
+                return;
+            }
+
+            // --- Gravity rumble ---
+            float targetGravityRumble = _inGravity ? gravityRumbleMax : 0f;
+
+            _currentGravityRumble = Mathf.MoveTowards(
+                _currentGravityRumble,
+                targetGravityRumble,
+                gravityRumbleFadeSpeed * Time.fixedDeltaTime
+            );
+
+            _outputState.LeftRumbleIntensity = _currentGravityRumble;
+            _outputState.RightRumbleIntensity = 0f;
+
+            _dualSense.SetOutputState(_outputState);
+        }
+#endif
+
+
     }
 }

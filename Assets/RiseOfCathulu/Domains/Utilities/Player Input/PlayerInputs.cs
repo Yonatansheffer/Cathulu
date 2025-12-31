@@ -127,15 +127,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Brake"",
-                    ""type"": ""Button"",
-                    ""id"": ""73f9d355-4118-4bd5-bfdc-8f8d67dc094f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -273,8 +264,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""52f56a92-0beb-40d5-8101-ee20f0f0e1c6"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""id"": ""ac20415a-9d18-4bdd-b634-c7bdc9cd84f1"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -325,28 +316,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Acceleration"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ab0a8b69-1a64-49f7-88e2-e5541a733b17"",
-                    ""path"": ""<DualShockGamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Brake"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""25c231ce-ec99-46bb-8725-b51edd66553b"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Brake"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -359,7 +328,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Movement_Shoot = m_Movement.FindAction("Shoot", throwIfNotFound: true);
         m_Movement_Dash = m_Movement.FindAction("Dash", throwIfNotFound: true);
         m_Movement_Acceleration = m_Movement.FindAction("Acceleration", throwIfNotFound: true);
-        m_Movement_Brake = m_Movement.FindAction("Brake", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -444,7 +412,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Shoot;
     private readonly InputAction m_Movement_Dash;
     private readonly InputAction m_Movement_Acceleration;
-    private readonly InputAction m_Movement_Brake;
     /// <summary>
     /// Provides access to input actions defined in input action map "Movement".
     /// </summary>
@@ -472,10 +439,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Movement/Acceleration".
         /// </summary>
         public InputAction @Acceleration => m_Wrapper.m_Movement_Acceleration;
-        /// <summary>
-        /// Provides access to the underlying input action "Movement/Brake".
-        /// </summary>
-        public InputAction @Brake => m_Wrapper.m_Movement_Brake;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -514,9 +477,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Acceleration.started += instance.OnAcceleration;
             @Acceleration.performed += instance.OnAcceleration;
             @Acceleration.canceled += instance.OnAcceleration;
-            @Brake.started += instance.OnBrake;
-            @Brake.performed += instance.OnBrake;
-            @Brake.canceled += instance.OnBrake;
         }
 
         /// <summary>
@@ -540,9 +500,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Acceleration.started -= instance.OnAcceleration;
             @Acceleration.performed -= instance.OnAcceleration;
             @Acceleration.canceled -= instance.OnAcceleration;
-            @Brake.started -= instance.OnBrake;
-            @Brake.performed -= instance.OnBrake;
-            @Brake.canceled -= instance.OnBrake;
         }
 
         /// <summary>
@@ -611,12 +568,5 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAcceleration(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Brake" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnBrake(InputAction.CallbackContext context);
     }
 }

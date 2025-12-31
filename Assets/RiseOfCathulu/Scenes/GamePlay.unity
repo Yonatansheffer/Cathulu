@@ -18314,8 +18314,8 @@ Transform:
   m_GameObject: {fileID: 538950150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122, y: -180, z: 0}
-  m_LocalScale: {x: 4994.5, y: 6000, z: 1}
+  m_LocalPosition: {x: 259.332, y: -507.0137, z: 0}
+  m_LocalScale: {x: 5716.1094, y: 6612.443, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1623845476}
@@ -44405,6 +44405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815148ec69d74bfcaeec73d84eee38c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Player.Scripts.PlayerDualSenseFeedback
+  gunWallStart: 0.25
+  gunWallEnd: 0.37
+  gunWallForce: 0.05
+  gunWallDuration: 0.06
   thrustStartPosition: 0.15
   maxTriggerForce: 0.85
   speedForceWeight: 0.4

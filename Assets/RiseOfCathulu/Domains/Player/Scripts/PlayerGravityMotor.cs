@@ -34,27 +34,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [Header("Acceleration")]
         [SerializeField] private float acceleration = 18f;
         [Header("Trigger Curves")]
-        [SerializeField]
-        private AnimationCurve accelerationTriggerCurve =
-            new AnimationCurve(
+        [SerializeField] private AnimationCurve accelerationTriggerCurve = new AnimationCurve(
                 new Keyframe(0f, 0f),
                 new Keyframe(0.15f, 1f),
                 new Keyframe(1f, 1f)
             );
-
-        [SerializeField]
-        private AnimationCurve brakeTriggerCurve =
-            new AnimationCurve(
-                new Keyframe(0f, 0f),
-                new Keyframe(0.4f, 1f),
-                new Keyframe(1f, 1f)
-            );
-
-
-
         
         private float _gravityMultiplier = 1f;
-        private float _steeringMultiplier = 1f;
         [SerializeField] private float orbitBiasStrength = 1.2f;
         [SerializeField] private float slingshotBonus = 2.5f;
 
@@ -80,10 +66,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             }
         }
 
-        public void Tick(Vector2 steering, float thrust, float brake)
+        public void Tick(Vector2 steering, float thrust)
         {
             if (_suspendMovement) return;
-            ApplyCruising(steering, thrust, brake);
+            ApplyCruising(steering, thrust);
             ApplyGravity();
             ClampAbsoluteSpeed();
 
@@ -118,7 +104,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         public void SetDiveState(bool diving)
         {
             _gravityMultiplier = diving ? 2.5f : 1f;
-            _steeringMultiplier = diving ? 0.35f : 1f;
         }
 
         private float ApplyTriggerCurve(float value, float deadZone, AnimationCurve curve)
@@ -132,35 +117,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             return curve.Evaluate(normalized);
         }
         
-        private void ApplyCruising(Vector2 moveInput, float thrust, float brake)
+        private void ApplyCruising(Vector2 moveInput, float thrust)
         {
             float accelInput = ApplyTriggerCurve(thrust, 0.05f, accelerationTriggerCurve);
-            float brakeInput = ApplyTriggerCurve(brake, 0.05f, brakeTriggerCurve);
 
             Vector2 vel = _rb.linearVelocity;
             float speedNow = vel.magnitude;
-
-            // -----------------------------
-            // BRAKE (same as before)
-            // -----------------------------
-            if (brakeInput > 0f && speedNow > 0.1f)
-            {
-                float gravityProximity = 0f;
-
-                if (_isInGravityZone)
-                {
-                    Vector2 toCenter = _gravityCenter - _rb.position;
-                    gravityProximity = Mathf.Clamp01(1f / (toCenter.magnitude + 1f));
-                }
-
-                float brakeTarget = Mathf.Lerp(0.55f, 0.4f, gravityProximity);
-
-                vel = Vector2.Lerp(
-                    vel,
-                    vel * brakeTarget,
-                    brakeInput * Time.fixedDeltaTime * 6f
-                );
-            }
 
             // -----------------------------
             // DIRECTION + SPEED CONTROL

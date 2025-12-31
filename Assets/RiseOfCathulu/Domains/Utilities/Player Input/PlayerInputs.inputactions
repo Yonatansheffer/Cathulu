@@ -41,15 +41,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Brake",
-                    "type": "Button",
-                    "id": "73f9d355-4118-4bd5-bfdc-8f8d67dc094f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -187,8 +178,8 @@
                 },
                 {
                     "name": "",
-                    "id": "52f56a92-0beb-40d5-8101-ee20f0f0e1c6",
-                    "path": "<DualShockGamepad>/buttonEast",
+                    "id": "ac20415a-9d18-4bdd-b634-c7bdc9cd84f1",
+                    "path": "<DualShockGamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -237,28 +228,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Acceleration",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ab0a8b69-1a64-49f7-88e2-e5541a733b17",
-                    "path": "<DualShockGamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "25c231ce-ec99-46bb-8725-b51edd66553b",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Brake",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
