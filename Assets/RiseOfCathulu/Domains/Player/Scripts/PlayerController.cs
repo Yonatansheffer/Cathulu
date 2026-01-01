@@ -14,6 +14,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         [FormerlySerializedAs("dashSpeed")]
         [Header("Dashing")]
+        [SerializeField, Tooltip("Speed during dash")] private float jumpSpeed;
         [SerializeField, Tooltip("Speed during dash")] private float boostSpeed;
 
         [SerializeField, Tooltip("Duration of dash in seconds")] private float dashDuration;
@@ -27,6 +28,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private PlayerInputs _inputActions;
+        private Vector2 _moveInput;
         private bool _isDashing;
         private float _lastDashTime = -1f;
         private bool _isGrounded;
@@ -108,23 +110,43 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             Vector2 dir = _motor.FacingDirection;
             if (dir.sqrMagnitude < 0.001f)
                 return;
+
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 91f;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
         private void InitializeInputCallbacks()
         {
-            _inputActions.Movement.Move.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
-            _inputActions.Movement.Move.canceled += _ => _steeringInput = Vector2.zero;
+            _inputActions.Movement.Move.performed +=
+                ctx => _steeringInput = ctx.ReadValue<Vector2>();
+
+            _inputActions.Movement.Move.canceled +=
+                _ => _steeringInput = Vector2.zero;
+            
             _inputActions.Movement.Dash.performed += _ => Dash();
-            _inputActions.Movement.Acceleration.performed += ctx => { 
-                _thrustInput = ctx.ReadValue<float>();
-                _dualSenseFeedback?.SetThrustInput(_thrustInput); };
-            _inputActions.Movement.Acceleration.canceled += _ => { _thrustInput = 0f;
-                _dualSenseFeedback?.SetThrustInput(0f); };
+
+            _inputActions.Movement.Acceleration.performed +=
+                ctx =>
+                {
+                    _thrustInput = ctx.ReadValue<float>();
+                    _dualSenseFeedback?.SetThrustInput(_thrustInput);
+                };
+
+            _inputActions.Movement.Acceleration.canceled +=
+                _ =>
+                {
+                    _thrustInput = 0f;
+                    _dualSenseFeedback?.SetThrustInput(0f);
+                };
+            
             _inputActions.Movement.Shoot.performed += _ => Shoot();
         }
 
+        private void OnMovePerformed(Vector2 input)
+        {
+            _moveInput = input;
+        }
+        
         private void Shoot()
         {
             if (!_rb.simulated)
@@ -135,10 +157,16 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         private void CheckGrounded()
         {
-            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            _isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer
+            );
+
             _dualSenseFeedback?.SetGrounded(_isGrounded);
-            _motor?.SetGrounded(_isGrounded);
         }
+
+        
         
         private void Dash()
         {
@@ -153,7 +181,14 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             _isDashing = true;
             _motor.SuspendMovement(true);
-            _rb.linearVelocity += direction * boostSpeed;
+            if (_isGrounded)
+            {
+                _rb.linearVelocity += direction * jumpSpeed;
+            }
+            else
+            {
+                _rb.linearVelocity += direction * boostSpeed;
+            }
             yield return new WaitForSeconds(dashDuration);
             _motor.SuspendMovement(false);
             _isDashing = false;
