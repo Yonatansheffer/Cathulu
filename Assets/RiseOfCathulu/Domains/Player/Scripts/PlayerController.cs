@@ -1,6 +1,5 @@
 using System.Collections;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
-using RiseOfCathulu.Domains.Utilities.Player_Input.DualSense_For_Unity.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,6 +27,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private SpriteRenderer _sr;
         private PlayerInputs _inputActions;
         private bool _isDashing;
+        private bool _isShooting;
         private float _lastDashTime = -1f;
         private bool _isGrounded;
         private PlayerGravityMotor _motor;
@@ -38,6 +38,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void Awake()
         {
             _isDashing = false;
+            _isShooting = false;
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _inputActions = new PlayerInputs();
@@ -75,6 +76,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (!_rb.simulated) return;
             CheckGrounded();
+            if (_isShooting)
+                Shoot();
         }
         
         private void FixedUpdate()
@@ -117,19 +120,23 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _inputActions.Movement.Steer.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
             _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
             _inputActions.Movement.Dash.performed += _ => Dash();
+            
+            _inputActions.Movement.Shoot.performed += _ => _isShooting = true;
+            _inputActions.Movement.Shoot.canceled += _ => _isShooting = false;
+            
             _inputActions.Movement.Move.performed += ctx => { 
                 _thrustInput = ctx.ReadValue<float>();
                 _dualSenseFeedback?.SetThrustInput(_thrustInput); };
             _inputActions.Movement.Move.canceled += _ => { _thrustInput = 0f;
                 _dualSenseFeedback?.SetThrustInput(0f); };
-            _inputActions.Movement.Shoot.performed += _ => Shoot();
+
+            
         }
 
         private void Shoot()
         {
             if (!_rb.simulated)
                 return;
-            _dualSenseFeedback?.TriggerGunWall();
             GameEvents.Shoot?.Invoke(gun.transform);
         }
         

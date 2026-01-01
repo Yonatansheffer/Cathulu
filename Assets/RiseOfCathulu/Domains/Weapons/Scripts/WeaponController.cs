@@ -14,18 +14,22 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
         [SerializeField, Tooltip("Weapon settings configuration")] private WeaponSettings settings;
         [SerializeField, Tooltip("Shooting light effect GameObject")] private ShootingLight shootingLight;
         [SerializeField, Tooltip("Offset for projectile spawn position")] private Vector3 adding;
-        [SerializeField] private PlayerSize playerSize;
-
+       
         private static readonly int Idle = Animator.StringToHash("Idle");
-
         private WeaponConfig _currentWeaponConfig;
         private float _lastShotTime = -Mathf.Infinity;
         private readonly List<Projectile> _activeProjectiles = new();
         private Coroutine _switchBackCoroutine;
+        private PlayerDualSenseFeedback _dualSenseFeedback;
+        private GameObject _playerGameObject;
+        private PlayerSize _playerSize;
 
         private void Awake()
         {
             ResetWeapons();
+            _playerGameObject = GameObject.FindGameObjectWithTag("Player");
+            _playerSize = _playerGameObject.GetComponent<PlayerSize>();
+            _dualSenseFeedback = _playerGameObject.GetComponent<PlayerDualSenseFeedback>();
         }
 
         private void OnEnable()
@@ -99,8 +103,9 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
                 t.position + t.TransformDirection(adding),
                 t.rotation
             ).GetComponent<Projectile>();
-            projectileInstance.Initialize(playerSize.CurrentScale);
+            projectileInstance.Initialize(_playerSize.CurrentScale);
             projectileInstance.Launch(shootDirection * _currentWeaponConfig.shotSpeed);
+            _dualSenseFeedback?.TriggerGunWall();
             RegisterProjectile(projectileInstance);
         }
 

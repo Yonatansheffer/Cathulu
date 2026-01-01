@@ -15,8 +15,8 @@ MonoBehaviour:
   weaponConfigs:
   - weaponType: 1
     projectilePrefab: {fileID: 5253604650908459750, guid: 3a886b143ef58964f913681dc230fe98, type: 3}
-    shotSpeed: 700
-    maxProjectileCount: 20
+    shotSpeed: 850
+    maxProjectileCount: 8
     shotCooldown: 0.5
   - weaponType: 0
     projectilePrefab: {fileID: 5253604650908459750, guid: 36b9412dd2cffb744932996cb348d43c, type: 3}

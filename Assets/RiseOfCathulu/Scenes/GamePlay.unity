@@ -44415,11 +44415,9 @@ MonoBehaviour:
   thrustStartPosition: 0.2
   maxTriggerForce: 0.85
   speedForceWeight: 0.4
-  spaceResistanceMultiplier: 0.12
-  gravityResistanceMultiplier: 1.6
-  gravityResistanceSpeedBias: 0.7
-  gunRumbleStrength: 0.05
-  gunRumbleDuration: 0.05
+  gravityForceMultiplier: 1.3
+  gunRumbleStrength: 0.1
+  gunRumbleDuration: 0.02
   gravityRumbleMax: 0.08
   gravityRumbleFadeSpeed: 4
   growRumbleStrength: 0.6
@@ -63435,12 +63433,16 @@ PrefabInstance:
       value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 496099143262697345, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2115881
+      objectReference: {fileID: 0}
+    - target: {fileID: 496099143262697345, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -0.01216
       objectReference: {fileID: 0}
     - target: {fileID: 496099143262697345, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 937176178784988943, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_Name
@@ -63527,16 +63529,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1643540819036384994, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2900188
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643540819036384994, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26415235
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643540819036384994, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: 1643540819036384994, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18
+      value: 0.311
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 10.063
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalScale.y
@@ -63544,7 +63554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6416.3
+      value: -6416.1396
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -63678,6 +63688,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2495294809265736669, guid: 291b6dded0948df43a287c4695bef5a9, type: 3}
+    - target: {fileID: 7864353137068054537, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864353137068054537, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.43137258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864353137068054537, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8705883
+      objectReference: {fileID: 0}
     - target: {fileID: 7864353137068054537, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
