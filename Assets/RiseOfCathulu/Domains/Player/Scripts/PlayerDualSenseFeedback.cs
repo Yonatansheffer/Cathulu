@@ -23,11 +23,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private float thrustStartPosition = 0.15f;
         [SerializeField] private float maxTriggerForce = 0.85f;
         [SerializeField] private float speedForceWeight = 0.4f;
-        [Header("Gravity Trigger Resistance")]
-        [SerializeField] private float spaceResistanceMultiplier = 0.6f;
-        [SerializeField] private float gravityResistanceMultiplier = 1.6f;
-        [SerializeField] private float gravityResistanceSpeedBias = 0.7f;
-
+        [SerializeField] private float gravityForceMultiplier = 1.3f;
         
         [Header("Rumble")]
         [SerializeField] private float gunRumbleStrength = 0.5f;
@@ -59,6 +55,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _gunWallActive;
         private float _gunWallTimer;
         private Rigidbody2D _rb;
+        private PlayerGravityMotor _motor;
         private float _currentThrust;
         private bool _inGravity;
         private bool _isGrounded;
@@ -67,6 +64,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _motor = GetComponent<PlayerGravityMotor>();
+
 #if UNITY_STANDALONE_WIN
             var controllers = DualSense.GetControllers();
             if (controllers.Count > 0)
@@ -160,31 +159,14 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 return;
             }
 
-            float speed01 = Mathf.Clamp01(_rb.linearVelocity.magnitude / speedFactor);
-            float baseForce =
+            float speed01 = Mathf.Clamp01(_rb.linearVelocity.magnitude / 40f);
+            float force =
                 (_currentThrust * (1f - speedForceWeight)) +
                 (speed01 * speedForceWeight);
 
-// How much gravity is "felt" (slow = heavy)
-            float gravityWeight = 0f;
+            if (_inGravity)
+                force *= gravityForceMultiplier;
 
-            if (_inGravity && !_isGrounded)
-            {
-                gravityWeight = Mathf.Lerp(
-                    1f,
-                    0f,
-                    speed01 * gravityResistanceSpeedBias
-                );
-            }
-
-// Blend between space and gravity resistance
-            float resistanceMultiplier = Mathf.Lerp(
-                spaceResistanceMultiplier,
-                gravityResistanceMultiplier,
-                gravityWeight
-            );
-
-            float force = baseForce * resistanceMultiplier;
             force = Mathf.Clamp(force, 0f, maxTriggerForce);
 
             _outputState.LeftTriggerEffect.InitializeContinuousResistanceEffect(
