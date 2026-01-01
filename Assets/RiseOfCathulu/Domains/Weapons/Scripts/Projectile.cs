@@ -13,7 +13,6 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
         [SerializeField, Tooltip("Particles spawned when hitting an Enemy")] private GameObject pinkStarsParticles;
         [SerializeField, Tooltip("Lifetime of enemyPlanet-hit particles (sec)")] private float bossParticlesLifetime = 0.8f;
         [SerializeField, Tooltip("Lifetime of enemy-hit particles (sec)")] private float enemyParticlesLifetime = 1f;
-        
         [SerializeField, Tooltip("Seconds before the projectile is destroyed")] private float lifetime = 4f; 
         [SerializeField] private float baseScale = 1f;
         

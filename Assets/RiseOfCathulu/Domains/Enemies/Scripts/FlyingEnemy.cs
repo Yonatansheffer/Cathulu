@@ -7,9 +7,10 @@ using Random = UnityEngine.Random;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts
 {
-    public class FlyingEnemy : Enemy
+    public class FlyingEnemy : MonoBehaviour, IPoolable
     {
         private static readonly int MovingRight = Animator.StringToHash("MovingRight");
+        public int sizeLevel;
 
         [Header("Movement")]
         [SerializeField, Tooltip("Speed of enemy movement")] private float moveSpeed = 3f;
@@ -36,6 +37,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [Header("Tether Settings")]
         private Transform _tetherTransform;
         private float _maxTetherDistance;
+        private float _eatableMaxTetherDistance;
         private bool _isTethered = false;
         
         private Transform _playerTransform;
@@ -50,10 +52,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
         public bool IsEatable => _isCurrentlyEatable;
         
-        public void SetTether(Transform center, float maxDistance)
+        public void SetTether(Transform center, float maxDistance, float eatableMaxDistance)
         {
             _tetherTransform = center;
             _maxTetherDistance = maxDistance;
+            _eatableMaxTetherDistance = eatableMaxDistance;
             _isTethered = true;
         }
         
@@ -94,7 +97,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         public void SetMoveSpeed(float speed) => moveSpeed = speed;
         
-        public override void Reset()
+        public void Reset()
         {
             // Reset state for pooling
             _isTethered = false;
@@ -150,8 +153,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (_animator) _animator.speed = freeze ? 0f : 1f;
             if (freeze && _rb) _rb.linearVelocity = Vector2.zero;
         }
+        
+        private void Update()
+        {
+            Move();
+        }
 
-        protected override void Move()
+        private void Move()
         {
             if (_isFrozen || !_playerTransform) return;
             _isCurrentlyEatable = _player.CurrentSizeLevel > sizeLevel;
@@ -167,21 +175,28 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             if (!_isTethered || _tetherTransform == null) return moveDir;
 
+            float activeMaxDistance = _isCurrentlyEatable
+                ? _eatableMaxTetherDistance
+                : _maxTetherDistance;
+
             Vector3 toCenter = _tetherTransform.position - transform.position;
             float currentDistance = toCenter.magnitude;
 
-            // If we are at the edge and moving further away
-            if (currentDistance > _maxTetherDistance)
+            if (currentDistance > activeMaxDistance)
             {
                 float dot = Vector3.Dot(moveDir, toCenter.normalized);
-                
-                // If dot is negative, we are moving AWAY from the center
+
+                // moving away from center
                 if (dot < 0)
                 {
-                    // Blend the movement direction with a strong pull towards the center
-                    // The further out they are, the harder they get pulled back
-                    float pullIntensity = Mathf.Clamp01((currentDistance - _maxTetherDistance) / 2f);
-                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized;
+                    float pullIntensity =
+                        Mathf.Clamp01((currentDistance - activeMaxDistance) / 2f);
+
+                    return Vector3.Lerp(
+                        moveDir,
+                        toCenter.normalized,
+                        pullIntensity + 0.5f
+                    ).normalized;
                 }
             }
 

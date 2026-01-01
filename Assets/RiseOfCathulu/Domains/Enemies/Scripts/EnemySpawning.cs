@@ -22,6 +22,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Maximum impulse force applied to spawned enemies")] private float maxSpawnForce = 40f;
         [SerializeField, Tooltip("Offset from the spawn position")] private Vector3 spawnOffset = new(0.8f, 0f, 0f);
         [SerializeField, Tooltip("Maximum distance of enemy from planet")] private float maxDistanceFromPlanet = 10f;
+        [SerializeField, Tooltip("Maximum distance of eatable enemy from planet")]
+        private float eatableMaxDistanceFromPlanet = 10f;
+
         //[SerializeField, Tooltip("Walking enemies target positions")] private Transform[] enemyTargetPositions;
         [Header("Normal Distribution (Leveling)")]
         [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
@@ -66,7 +69,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
                 int spawnedLevel = GetNormalDistributedLevel();
                 enemy.InitializeLevel(spawnedLevel, growthConfig);
-                enemy.SetTether(transform.parent, maxDistanceFromPlanet);
+                enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
                 
@@ -107,6 +110,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (transform.parent != null)
             {
                 Gizmos.DrawWireSphere(transform.parent.position, maxDistanceFromPlanet);
+                Gizmos.DrawWireSphere(transform.parent.position, eatableMaxDistanceFromPlanet);
             }
 
             // Visualize the Spawn Offset point
