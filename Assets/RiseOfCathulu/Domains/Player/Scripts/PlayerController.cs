@@ -86,11 +86,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void Flip()
         {
-            if (_rb.linearVelocity.x <= -0.001f)
+            if (_steeringInput.x <= -0.001f)
             {
                 _sr.flipX = false;
             }
-            else if (_rb.linearVelocity.x >= 0.001f)
+            else if (_steeringInput.x >= 0.001f)
             {
                 _sr.flipX = true;
             }

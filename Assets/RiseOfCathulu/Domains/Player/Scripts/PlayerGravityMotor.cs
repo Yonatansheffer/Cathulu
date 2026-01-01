@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Player.Scripts
 {
@@ -33,6 +34,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         [Header("Acceleration")]
         [SerializeField] private float acceleration = 18f;
+        [SerializeField] private float steeringFactor =20f;
+
         [Header("Trigger Curves")]
         [SerializeField] private AnimationCurve accelerationTriggerCurve = new AnimationCurve(
                 new Keyframe(0f, 0f),
@@ -117,15 +120,14 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             float accelInput = ApplyTriggerCurve(thrust, 0.05f, accelerationTriggerCurve);
             Vector2 vel = _rb.linearVelocity;
             float speedNow = vel.magnitude;
-            Vector2 desiredDir = steerInput.normalized;
-            _lastMoveDir = desiredDir;
-            // -----------------------------
-            // DIRECTION + SPEED CONTROL
-            // -----------------------------
+            //  STEER CONTROL
+            if (steerInput.sqrMagnitude > 0.01f)
+                _lastMoveDir = Vector2.Lerp(_lastMoveDir, steerInput.normalized, steeringFactor * Time.fixedDeltaTime).normalized;
+            //  SPEED CONTROL
             if (thrust > 0.01f)
             {
                 float targetSpeed = Mathf.Lerp(idleSpeed, speed, accelInput);
-                Vector2 targetVelocity = desiredDir * targetSpeed;
+                Vector2 targetVelocity = _lastMoveDir * targetSpeed;
                 vel = Vector2.Lerp(vel, targetVelocity, convergenceRate * Time.fixedDeltaTime);
             }
             else
