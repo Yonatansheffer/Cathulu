@@ -30,6 +30,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _suspendMovement;
         private Vector2 _lastMoveDir;
         private float _gravityFade = 0f;
+        private bool _isGrounded;
         
         [Header("Acceleration")]
         [SerializeField] private float acceleration = 18f;
@@ -72,8 +73,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ApplyCruising(steering, thrust);
             ApplyGravity();
             ClampAbsoluteSpeed();
-
         }
+        
+        public void SetGrounded(bool grounded)
+        {
+            _isGrounded = grounded;
+        }
+
         
 
 
@@ -175,18 +181,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             Vector2 radialDir = toCenter.normalized;
 
             // Smooth gravity engagement
-            _gravityFade = Mathf.MoveTowards(
-                _gravityFade,
-                1f,
-                4f * Time.fixedDeltaTime
-            );
+            _gravityFade = Mathf.MoveTowards(_gravityFade, 1f, 4f * Time.fixedDeltaTime);
 
             // ----------------------------
             // RADIAL GRAVITY (INEVITABLE)
             // ----------------------------
-            float gravityForce =
-                (_inwardGravity * _gravityMultiplier * _gravityFade) /
-                (distance + 2f);
+            float gravityForce = (_inwardGravity * _gravityMultiplier * _gravityFade) / (distance + 2f);
 
             vel += radialDir * gravityForce * Time.fixedDeltaTime;
 
