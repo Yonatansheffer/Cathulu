@@ -136,6 +136,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void FixedUpdate()
         {
 #if UNITY_STANDALONE_WIN
+            if (_dualSense == null)
+                return;
             UpdateRumble();
 
             if (_gunWallActive)
@@ -143,10 +145,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 UpdateGunWall();
                 return;
             }
-
-            if (_dualSense == null)
-                return;
-
             UpdateThrustTrigger();
 #endif
         }
@@ -156,7 +154,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (_currentThrust < 0.05f)
             {
-                _outputState.RightTriggerEffect.InitializeNoResistanceEffect();
+                _outputState.LeftTriggerEffect.InitializeNoResistanceEffect();
                 _dualSense.SetOutputState(_outputState);
                 return;
             }
@@ -171,7 +169,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
             force = Mathf.Clamp(force, 0f, maxTriggerForce);
 
-            _outputState.RightTriggerEffect.InitializeContinuousResistanceEffect(
+            _outputState.LeftTriggerEffect.InitializeContinuousResistanceEffect(
                 thrustStartPosition,
                 force
             );
@@ -181,8 +179,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void ResetTriggers()
         {
-            _outputState.RightTriggerEffect.InitializeNoResistanceEffect();
             _outputState.LeftTriggerEffect.InitializeNoResistanceEffect();
+            _outputState.RightTriggerEffect.InitializeNoResistanceEffect();
             _dualSense.SetOutputState(_outputState);
         }
 #endif
@@ -226,7 +224,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 #if UNITY_STANDALONE_WIN
         private void UpdateGunWall()
         {
-            _outputState.LeftTriggerEffect.InitializeSectionResistanceEffect(
+            
+            _outputState.RightTriggerEffect.InitializeSectionResistanceEffect(
                 gunWallStart,
                 gunWallEnd,
                 gunWallForce

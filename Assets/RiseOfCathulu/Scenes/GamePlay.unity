@@ -1159,7 +1159,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 209009768}
@@ -1235,8 +1235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 209009768}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &16591904
 CircleCollider2D:
@@ -16418,7 +16418,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2011657273}
@@ -16494,8 +16494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 2011657273}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &477116017
 CircleCollider2D:
@@ -19210,7 +19210,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4808427}
@@ -19286,8 +19286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 4808427}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &574355846
 CircleCollider2D:
@@ -19354,7 +19354,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2143213401}
@@ -19430,8 +19430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 2143213401}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &598799179
 CircleCollider2D:
@@ -19955,7 +19955,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 109720202}
@@ -20031,8 +20031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 109720202}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &631173548
 CircleCollider2D:
@@ -27584,7 +27584,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 278391318}
@@ -27660,8 +27660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 278391318}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &946114554
 CircleCollider2D:
@@ -33997,7 +33997,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 294639927}
@@ -34073,8 +34073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 294639927}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1143729309
 CircleCollider2D:
@@ -37942,7 +37942,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1510824653}
@@ -38018,8 +38018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 1510824653}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1254401765
 CircleCollider2D:
@@ -38730,7 +38730,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963589255}
@@ -38806,8 +38806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 963589255}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1268587684
 CircleCollider2D:
@@ -43291,7 +43291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 11825267}
@@ -43367,8 +43367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 11825267}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1444834714
 CircleCollider2D:
@@ -43697,7 +43697,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 377991938}
@@ -43773,8 +43773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 377991938}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1461330574
 CircleCollider2D:
@@ -44412,21 +44412,23 @@ MonoBehaviour:
   gunWallEnd: 0.37
   gunWallForce: 0.03
   gunWallDuration: 0.04
-  thrustStartPosition: 0.15
+  thrustStartPosition: 0.2
   maxTriggerForce: 0.85
   speedForceWeight: 0.4
-  gravityForceMultiplier: 1.3
+  spaceResistanceMultiplier: 0.12
+  gravityResistanceMultiplier: 1.6
+  gravityResistanceSpeedBias: 0.7
   gunRumbleStrength: 0.05
   gunRumbleDuration: 0.05
-  gravityRumbleMax: 0.2
-  gravityRumbleFadeSpeed: 3
+  gravityRumbleMax: 0.08
+  gravityRumbleFadeSpeed: 4
   growRumbleStrength: 0.6
   growRumbleDuration: 0.18
   shrinkRumbleStrength: 0.4
   shrinkRumbleDuration: 0.12
   gravityEnterStrength: 0.15
   gravityEnterDuration: 0.1
-  speedFactor: 250
+  speedFactor: 700
   speedSmoothing: 2
   slingshotSpeedThreshold: 16
   slingshotRumbleStrength: 0.15
@@ -60673,7 +60675,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 838112184}
@@ -60749,8 +60751,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 838112184}
-  gravityStrength: 70000
-  maxOrbitSpeed: 100
+  gravityStrength: 505000
+  maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &2063612983
 CircleCollider2D:
@@ -62438,7 +62440,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: -0.1, z: 0}
-  m_LocalScale: {x: 2.17034, y: 2.38339, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1925841741}
@@ -62514,7 +62516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 1925841741}
-  gravityStrength: 500000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &2139858134
@@ -62551,8 +62553,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.000015258789}
-  m_Radius: 6.515001
+  m_Offset: {x: -0.036174573, y: 0.00011556195}
+  m_Radius: 5.907636
 --- !u!1001 &2143213400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63417,6 +63419,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: boostSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: dashCooldown
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: groundCheckRadius
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -63567,6 +63581,22 @@ PrefabInstance:
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398602198311605372, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Size.x
+      value: 3.4175782
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398602198311605372, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Size.y
+      value: 4.608703
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398602198311605372, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.36044922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398602198311605372, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15712146
       objectReference: {fileID: 0}
     - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63769,11 +63799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148893894478018942, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 194.62012
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 3148893894478018942, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 137.24121
+      value: 157
       objectReference: {fileID: 0}
     - target: {fileID: 3148893894478018942, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63897,7 +63927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootCooldown
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootDistance
@@ -64037,7 +64067,7 @@ MonoBehaviour:
     currentSpawnDuration: 0
   playerTransform: {fileID: 1499851947}
   spawnActivationRange: 3000
-  innerDangerRange: 200
+  innerDangerRange: 100
 --- !u!114 &9122062189255835436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64073,8 +64103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.OrbitalMovement
   gravityPoint: {fileID: 2143213401}
-  orbitRadius: 220
-  orbitSpeed: 10
+  orbitRadius: 400
+  orbitSpeed: 12
   clockwise: 1
   idleTiltAngle: 15
   tiltSpeed: 2
