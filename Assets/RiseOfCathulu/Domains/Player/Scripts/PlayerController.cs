@@ -114,13 +114,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void InitializeInputCallbacks()
         {
-            _inputActions.Movement.Move.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
-            _inputActions.Movement.Move.canceled += _ => _steeringInput = Vector2.zero;
+            _inputActions.Movement.Steer.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
+            _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
             _inputActions.Movement.Dash.performed += _ => Dash();
-            _inputActions.Movement.Acceleration.performed += ctx => { 
+            _inputActions.Movement.Move.performed += ctx => { 
                 _thrustInput = ctx.ReadValue<float>();
                 _dualSenseFeedback?.SetThrustInput(_thrustInput); };
-            _inputActions.Movement.Acceleration.canceled += _ => { _thrustInput = 0f;
+            _inputActions.Movement.Move.canceled += _ => { _thrustInput = 0f;
                 _dualSenseFeedback?.SetThrustInput(0f); };
             _inputActions.Movement.Shoot.performed += _ => Shoot();
         }

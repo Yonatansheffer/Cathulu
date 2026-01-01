@@ -90,19 +90,15 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _maxVortexSpeed = maxVortexSpeed;
             _vortexGrip = vortexGrip;
             _gravityFade = 1f;
-
             _isInGravityZone = true;
         }
         public void ExitGravity()
         {
             _isInGravityZone = false;
             _gravityFade = 0f;
-
             _rb.linearVelocity += _rb.linearVelocity.normalized * slingshotBonus;
             ResetGravityToDefaults();
         }
-
-
 
         public void SuspendMovement(bool suspend)
         {
@@ -118,52 +114,31 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (value < deadZone)
                 return 0f;
-
-            float normalized =
-                Mathf.InverseLerp(deadZone, 1f, value);
-
+            float normalized = Mathf.InverseLerp(deadZone, 1f, value);
             return curve.Evaluate(normalized);
         }
         
-        private void ApplyCruising(Vector2 moveInput, float thrust)
+        private void ApplyCruising(Vector2 steerInput, float thrust)
         {
             float accelInput = ApplyTriggerCurve(thrust, 0.05f, accelerationTriggerCurve);
-
             Vector2 vel = _rb.linearVelocity;
             float speedNow = vel.magnitude;
-
+            Vector2 desiredDir = steerInput.normalized;
+            _lastMoveDir = desiredDir;
             // -----------------------------
             // DIRECTION + SPEED CONTROL
             // -----------------------------
-            if (moveInput.sqrMagnitude > 0.01f)
+            if (thrust > 0.01f)
             {
-                Vector2 desiredDir = moveInput.normalized;
-                _lastMoveDir = desiredDir;
-
-                float targetSpeed =
-                    Mathf.Lerp(idleSpeed, speed, accelInput);
-
+                float targetSpeed = Mathf.Lerp(idleSpeed, speed, accelInput);
                 Vector2 targetVelocity = desiredDir * targetSpeed;
-
-                vel = Vector2.Lerp(
-                    vel,
-                    targetVelocity,
-                    convergenceRate * Time.fixedDeltaTime
-                );
+                vel = Vector2.Lerp(vel, targetVelocity, convergenceRate * Time.fixedDeltaTime);
             }
             else
             {
-                // No input → gentle drift
                 if (speedNow > idleSpeed)
-                {
-                    vel = Vector2.Lerp(
-                        vel,
-                        vel.normalized * idleSpeed,
-                        convergenceRate * Time.fixedDeltaTime
-                    );
-                }
+                    vel = Vector2.Lerp(vel, vel.normalized * idleSpeed, convergenceRate * Time.fixedDeltaTime);
             }
-
             _rb.linearVelocity = vel;
         }
 
