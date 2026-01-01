@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 209009768}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &16591904
@@ -16494,7 +16494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 2011657273}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &477116017
@@ -19286,7 +19286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 4808427}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &574355846
@@ -19430,7 +19430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 2143213401}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &598799179
@@ -20031,7 +20031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 109720202}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &631173548
@@ -27660,7 +27660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 278391318}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &946114554
@@ -34073,7 +34073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 294639927}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1143729309
@@ -38018,7 +38018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 1510824653}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1254401765
@@ -38806,7 +38806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 963589255}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1268587684
@@ -43367,7 +43367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 11825267}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1444834714
@@ -43773,7 +43773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 377991938}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &1461330574
@@ -44420,8 +44420,8 @@ MonoBehaviour:
   gravityResistanceSpeedBias: 0.7
   gunRumbleStrength: 0.05
   gunRumbleDuration: 0.05
-  gravityRumbleMax: 0.15
-  gravityRumbleFadeSpeed: 6.55
+  gravityRumbleMax: 0.08
+  gravityRumbleFadeSpeed: 4
   growRumbleStrength: 0.6
   growRumbleDuration: 0.18
   shrinkRumbleStrength: 0.4
@@ -60751,7 +60751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 838112184}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &2063612983
@@ -62516,7 +62516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
   planetCenter: {fileID: 1925841741}
-  gravityStrength: 525000
+  gravityStrength: 505000
   maxOrbitSpeed: 150
   vortexGrip: 2
 --- !u!58 &2139858134
@@ -63420,11 +63420,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: boostSpeed
-      value: 150
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: dashCooldown
-      value: 1.7
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: groundCheckRadius
@@ -63927,7 +63927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootCooldown
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootDistance
@@ -64067,7 +64067,7 @@ MonoBehaviour:
     currentSpawnDuration: 0
   playerTransform: {fileID: 1499851947}
   spawnActivationRange: 3000
-  innerDangerRange: 200
+  innerDangerRange: 100
 --- !u!114 &9122062189255835436
 MonoBehaviour:
   m_ObjectHideFlags: 0
