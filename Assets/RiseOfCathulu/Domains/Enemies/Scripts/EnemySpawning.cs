@@ -9,13 +9,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
     {
         [Header("References")]
         [SerializeField] private GrowthConfig growthConfig;
-       private PlayerSize _playerSize;
-        
-        [Header("Debug Settings")]
-        [SerializeField] private bool showDebugOverlay = true;
-        [SerializeField] private Color debugCircleColor = new Color(1, 0, 0, 0.2f);
-        private int _lastSpawnedLevel;
-        private float _lastSpawnedScale;
+        private PlayerSize _playerSize;
         
         [Header("Enemy Spawning")]
         [SerializeField, Tooltip("Minimum impulse force applied to spawned enemies")] private float minSpawnForce = 4f;
@@ -36,6 +30,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [Header("Normal Distribution (Leveling)")]
         [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
         [SerializeField, Tooltip("Shift average enemy level (-1=slightly easier)")] private int levelOffset = 0;
+        
+                
+        [Header("Debug Settings")]
+        [SerializeField] private bool showDebugOverlay = true;
+        [SerializeField] private Color debugCircleColor = new Color(1, 0, 0, 0.2f);
+        private int _lastSpawnedLevel;
+        private float _lastSpawnedScale;
 
         public bool CanBecomeEatable()
         {
@@ -158,23 +159,22 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             Gizmos.DrawLine(transform.position, transform.position + spawnOffset);
             Gizmos.DrawSphere(transform.position + spawnOffset, 0.2f);
         }
-        
-    }
-}
-
-/*
- 
-         private void OnGUI()
+        private void OnGUI()
         {
             if (!showDebugOverlay) return;
 
             // Simple box in the top-left corner
             GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
-            GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {playerSize.CurrentSizeLevel}");
-            GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {playerSize.CurrentSizeLevel + levelOffset}");
+            GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {_playerSize.CurrentSizeLevel}");
+            GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {_playerSize.CurrentSizeLevel + levelOffset}");
             GUI.Label(new Rect(20, 70, 230, 20), $"Last Enemy Level: {_lastSpawnedLevel}");
             GUI.Label(new Rect(20, 90, 230, 20), $"Last Enemy Scale: {_lastSpawnedScale:F2}");
         }
+    }
+}
+
+/*
+ 
         
          private void SpawnWalkingEnemy(Transform targetTransform)
         {

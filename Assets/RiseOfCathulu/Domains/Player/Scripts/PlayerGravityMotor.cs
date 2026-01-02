@@ -32,9 +32,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private Vector2 _lastMoveDir;
         private float _gravityFade = 0f;
         
-        [Header("Acceleration")]
-        [SerializeField] private float acceleration = 18f;
-        [SerializeField] private float steeringFactor =20f;
 
         [Header("Trigger Curves")]
         [SerializeField] private AnimationCurve accelerationTriggerCurve = new AnimationCurve(
@@ -44,6 +41,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             );
         
         private float _gravityMultiplier = 1f;
+        [SerializeField] private float steeringFactor =20f;
         [SerializeField] private float orbitBiasStrength = 1.2f;
         [SerializeField] private float slingshotBonus = 2.5f;
 
