@@ -732,16 +732,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Boss.Scripts.EnemySpawning
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
-  playerSize: {fileID: 0}
-  showDebugOverlay: 1
-  debugCircleColor: {r: 1, g: 0, b: 0, a: 0.2}
   minSpawnForce: 20
   maxSpawnForce: 100
   spawnOffset: {x: 0.8, y: 0, z: 0}
   maxDistanceFromPlanet: 2200
   eatableMaxDistanceFromPlanet: 475
+  maxActiveEnemies: 10
+  maxEatableEnemies: 3
   levelStandardDeviation: 1.2
   levelOffset: 1
+  showDebugOverlay: 0
+  debugCircleColor: {r: 1, g: 0, b: 0, a: 0.2}
 --- !u!114 &1145222240560599387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,7 +763,6 @@ MonoBehaviour:
     maxSpawnInterval: 20
     minSpawnInterval: 0.5
     currentSpawnDuration: 0
-  playerTransform: {fileID: 0}
   spawnActivationRange: 3000
   innerDangerRange: 150
 --- !u!50 &2748817735794666776

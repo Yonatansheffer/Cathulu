@@ -1,5 +1,4 @@
-﻿using System;
-using RiseOfCathulu.Domains.Player.Scripts;
+﻿using RiseOfCathulu.Domains.Player.Scripts;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
@@ -38,7 +37,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private Transform _tetherTransform;
         private float _maxTetherDistance;
         private float _eatableMaxTetherDistance;
-        private bool _isTethered = false;
+        private bool _isTethered;
         
         private Transform _playerTransform;
         private Animator _animator;
@@ -48,7 +47,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private int _facing = 1;
         private float _lastFlipTime = -999f;
         private float _currentAttractionSign = 1f; // 1 = Attract, -1 = Repel
-        private bool _isCurrentlyEatable = false;
+        private bool _isCurrentlyEatable;
         private EnemySpawning _ownerSpawner;
         
         public bool IsEatable => _isCurrentlyEatable;
@@ -69,12 +68,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         public void InitializeLevel(int level, GrowthConfig config)
         {
             sizeLevel = level;
-
-            // Set absolute scale directly
             float targetScale = config.GetScale(level);
             transform.localScale = Vector3.one * targetScale;
-
-            // Get the base speed from config
             float baseSpeed = config.GetSpeed(level);
 
             // Calculate a random multiplier (e.g., if variation is 0.15, range is 0.85 to 1.15)
@@ -86,12 +81,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 _animator.speed = randomMultiplier; 
             }
     
-            // Assign the unique speed
             moveSpeed = baseSpeed * randomMultiplier;
-            
-            playerAttractionWeight = Random.Range(0.5f, 1.0f);
-    
-            // Reset sign to positive (hunting) by default
+            playerAttractionWeight = Random.Range(0.45f,0.85f);
             _currentAttractionSign = 1f;
         }   
 
@@ -206,9 +197,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             if (!_isTethered || _tetherTransform == null) return moveDir;
 
-            float activeMaxDistance = _isCurrentlyEatable
-                ? _eatableMaxTetherDistance
-                : _maxTetherDistance;
+            float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
 
             Vector3 toCenter = _tetherTransform.position - transform.position;
             float currentDistance = toCenter.magnitude;
@@ -219,8 +208,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 if (dot < 0)
                 {
                     float pullIntensity = Mathf.Clamp01((currentDistance - activeMaxDistance) / 2f);
-
-                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized; }
+                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized;
+                }
             }
 
             return moveDir;
@@ -253,31 +242,15 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
             // --- Decide attraction strength based on player distance ---
             float effectiveAttractionWeight = 0f;
-
             if (_isTethered && _tetherTransform != null)
             {
-                float activeMaxDistance =
-                    _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
-
-                float dist = Vector3.Distance(
-                    _playerTransform.position,
-                    _tetherTransform.position
-                );
-
-                // Smooth fade-in of attention
-                float t = Mathf.InverseLerp(
-                    activeMaxDistance * 1.3f, // fully random when far
-                    activeMaxDistance,        // full attention when inside
-                    dist
-                );
-
+                float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
+                float dist = Vector3.Distance(_playerTransform.position, _tetherTransform.position);
+                float t = Mathf.InverseLerp(activeMaxDistance * 1.3f, activeMaxDistance, dist);
                 effectiveAttractionWeight = playerAttractionWeight * t;
             }
-
-            return (
-                randomDir * (1f - effectiveAttractionWeight) +
-                modifiedPlayerDir * effectiveAttractionWeight
-            ).normalized;
+            return (randomDir *
+                (1f - effectiveAttractionWeight) + modifiedPlayerDir * effectiveAttractionWeight).normalized;
         }
 
         private Vector3 HandleObstacleAvoidance(Vector3 moveDir)
@@ -290,14 +263,17 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             var perp1 = new Vector2(-n.y, n.x);
             var perp2 = new Vector2(n.y, -n.x);
 
-            var leftClear = !Physics2D.Raycast(transform.position, perp1, sideClearanceDistance, groundMask);
-            var rightClear = !Physics2D.Raycast(transform.position, perp2, sideClearanceDistance, groundMask);
+            var leftClear = !Physics2D.Raycast(transform.position, 
+                perp1, sideClearanceDistance, groundMask);
+            var rightClear = !Physics2D.Raycast(transform.position,
+                perp2, sideClearanceDistance, groundMask);
 
             Vector2 avoidDir;
             if (leftClear && !rightClear) avoidDir = perp1;
             else if (rightClear && !leftClear) avoidDir = perp2;
             else if (leftClear)
-                avoidDir = Physics2D.Raycast(transform.position + (Vector3)perp1 * sideClearanceDistance, perp1, detectionDistance, groundMask) ? perp2 : perp1;
+                avoidDir = Physics2D.Raycast(transform.position + (Vector3)perp1 * sideClearanceDistance,
+                    perp1, detectionDistance, groundMask) ? perp2 : perp1;
             else
                 avoidDir = n;
 
@@ -316,7 +292,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (!collision.gameObject.CompareTag("Player")) return;
-            GameEvents.ChangePlayerSize?.Invoke(_isCurrentlyEatable? 1:-1);
             ReturnToPool();
         }
 

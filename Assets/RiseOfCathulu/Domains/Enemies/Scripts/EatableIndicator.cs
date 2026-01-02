@@ -12,9 +12,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [Header("References")]
         [SerializeField] private SpriteRenderer lightRenderer;
         [SerializeField] private FlyingEnemy parentEnemy; 
-
-        private PlayerSize _player;
-
+        
         private void Awake()
         {
             if (parentEnemy == null) parentEnemy = GetComponentInParent<FlyingEnemy>();

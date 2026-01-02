@@ -68,7 +68,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             if (!other.CompareTag("Enemy")) return;
             var enemy = other.GetComponent<FlyingEnemy>(); 
             if (enemy == null) return;
-            if (enemy.IsEatable && _currentSizeLevel > enemy.sizeLevel)
+            if (_currentSizeLevel >= enemy.sizeLevel)
             {
                 AdjustSize(+1);
                 SoundManager.Instance.PlaySound("Eat", transform);
@@ -107,15 +107,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void AdjustSize(int delta)
         {
             int previousSize = _currentSizeLevel;
-
             _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
-
             if (_currentSizeLevel != previousSize)
             {
                 GetComponent<PlayerDualSenseFeedback>()?
                     .TriggerSizeChangeRumble(_currentSizeLevel - previousSize);
             }
-
             _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
             _trailRenderer.time = (_currentSizeLevel * 0.1f);
             ApplyScale();
