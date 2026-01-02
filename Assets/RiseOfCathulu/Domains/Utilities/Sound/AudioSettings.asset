@@ -77,7 +77,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e0d408a54bac1de40a0eb1d26de8093d, type: 3}
     volume: 0.18
     loop: 0
-  - name: Boss Bullet
+  - name: Planet Enemy Bullet
     clip: {fileID: 8300000, guid: 321fb7a24bf66ad48ae70ace93072574, type: 3}
     volume: 0.1
     loop: 0

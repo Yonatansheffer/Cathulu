@@ -6,18 +6,19 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
     public class EnemyShooting : BossBaseMono
     {
-
-        [Header("Player Target")]
-        [SerializeField, Tooltip("Player GameObject to target")] private GameObject player;
-
         [Header("Ball Shot")]
         [SerializeField, Tooltip("Distance threshold for ball shot")] private float ballShootDistance = 120f;
         [SerializeField, Tooltip("Cooldown for ball shot")] private float ballShootCooldown = 3f;
         [SerializeField, Tooltip("Bullet launch force")] private float bulletForce = 20f;
 
+        private GameObject _player;
         private float _lastBallShootTime = -999f;
         private bool _isFrozen;
         
+        private void Awake()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player");
+        }
 
         private void OnEnable()
         {
@@ -42,9 +43,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void CheckProximityAttack()
         {
-            if (player == null) return;
+            if (_player == null) return;
 
-            var distance = Vector2.Distance(transform.position, player.transform.position);
+            var distance = Vector2.Distance(transform.position, _player.transform.position);
             if (distance > ballShootDistance) return;
 
             var cd = distance <= ballShootDistance * 0.5f ? ballShootCooldown * 0.5f : ballShootCooldown;
@@ -59,10 +60,10 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         {
             var bullet = EnemyBulletPool.Instance.Get();
             bullet.transform.position = transform.position;
-            var dir = (player.transform.position - transform.position).normalized;
+            var dir = (_player.transform.position - transform.position).normalized;
             var rb = bullet.GetComponent<Rigidbody2D>();
             rb.linearVelocity = dir * bulletForce;
-            SoundManager.Instance.PlaySound("Boss Bullet", transform);
+            SoundManager.Instance.PlaySound("Planet Enemy Bullet", transform);
         }
     }
 }

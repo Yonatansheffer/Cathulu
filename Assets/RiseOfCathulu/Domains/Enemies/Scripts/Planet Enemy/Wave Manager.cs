@@ -27,19 +27,25 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [SerializeField, Tooltip("Configuration for wave timings")] private WaveConfig waveConfig = new WaveConfig();
         
         [Header("Distance Settings")]
-        [SerializeField] private Transform playerTransform;
         [SerializeField] private float spawnActivationRange = 15f;
         [SerializeField, Tooltip("Inner radius where is maximum")] private float innerDangerRange = 2f;
-        
+        private Transform _playerTransform;
         private bool _isFrozen;
         private Coroutine _waveRoutine;
 
+
+        private void Awake()
+        {
+            _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        }
+
         private void Start()
         {
-            if (playerTransform == null)
+            if (_playerTransform == null)
             {
                 var player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null) playerTransform = player.transform;
+                if (player != null) _playerTransform = player.transform;
             }
             waveConfig.currentSpawnDuration = waveConfig.initialSpawnDuration;
             _waveRoutine = StartCoroutine(CombinedWaveRoutine());
@@ -84,9 +90,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         
         private float GetDynamicInterval()
         {
-            if (playerTransform == null) return waveConfig.maxSpawnInterval;
+            if (_playerTransform == null) return waveConfig.maxSpawnInterval;
 
-            float distance = Vector3.Distance(transform.position, playerTransform.position);
+            float distance = Vector3.Distance(transform.position, _playerTransform.position);
     
             // InverseLerp outputs 0.0 when distance is at innerDangerRange
             // and 1.0 when distance is at spawnActivationRange
@@ -106,7 +112,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         }
         
         private bool IsPlayerInRange() =>
-            Vector3.Distance(transform.position, playerTransform.position) <= spawnActivationRange;
+            Vector3.Distance(transform.position, _playerTransform.position) <= spawnActivationRange;
 
         private IEnumerator WaitSecondsUnfrozen(float seconds)
         {

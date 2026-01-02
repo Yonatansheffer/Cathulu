@@ -43,8 +43,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _sr = GetComponent<SpriteRenderer>();
             _inputActions = new PlayerInputs();
             _dualSenseFeedback = GetComponent<PlayerDualSenseFeedback>();
-            InitializeInputCallbacks();
             _motor = GetComponent<PlayerGravityMotor>();
+            InitializeInputCallbacks();
         }
 
         private void OnEnable()

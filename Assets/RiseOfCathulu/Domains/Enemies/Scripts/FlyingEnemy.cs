@@ -49,6 +49,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private float _lastFlipTime = -999f;
         private float _currentAttractionSign = 1f; // 1 = Attract, -1 = Repel
         private bool _isCurrentlyEatable = false;
+        private EnemySpawning _ownerSpawner;
         
         public bool IsEatable => _isCurrentlyEatable;
         
@@ -58,6 +59,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             _maxTetherDistance = maxDistance;
             _eatableMaxTetherDistance = eatableMaxDistance;
             _isTethered = true;
+        }
+        
+        public void SetOwnerSpawner(EnemySpawning spawner)
+        {
+            _ownerSpawner = spawner;
         }
         
         public void InitializeLevel(int level, GrowthConfig config)
@@ -88,12 +94,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             // Reset sign to positive (hunting) by default
             _currentAttractionSign = 1f;
         }   
-        
-        // 2. Add this method so the LevelIndicator can flip the behavior
-        public void SetAttractionSign(float sign)
-        {
-            _currentAttractionSign = sign;
-        }
 
         public void SetMoveSpeed(float speed) => moveSpeed = speed;
         
@@ -156,13 +156,36 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
         private void Update()
         {
+            UpdateEatable();
             Move();
         }
+
+        private void UpdateEatable()
+        {
+            bool nowEatable = _player.CurrentSizeLevel >= sizeLevel;
+
+            if (_isCurrentlyEatable != nowEatable)
+            {
+                _isCurrentlyEatable = nowEatable;
+                _currentAttractionSign = _isCurrentlyEatable ? -1f : 1f;
+            }
+        }
+
+        
+        private bool IsPlayerWithinTetherRange()
+        {
+            if (!_isTethered || _tetherTransform == null || !_playerTransform)
+                return true; 
+
+            float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
+            float playerDistance = Vector3.Distance(_playerTransform.position, _tetherTransform.position);
+            return playerDistance <= activeMaxDistance;
+        }
+
 
         private void Move()
         {
             if (_isFrozen || !_playerTransform) return;
-            _isCurrentlyEatable = _player.CurrentSizeLevel > sizeLevel;
             var finalDir = CalculateDirection();
             finalDir = ApplyTetherConstraint(finalDir);
             finalDir = HandleObstacleAvoidance(finalDir);
@@ -185,19 +208,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (currentDistance > activeMaxDistance)
             {
                 float dot = Vector3.Dot(moveDir, toCenter.normalized);
-
-                // moving away from center
                 if (dot < 0)
                 {
-                    float pullIntensity =
-                        Mathf.Clamp01((currentDistance - activeMaxDistance) / 2f);
+                    float pullIntensity = Mathf.Clamp01((currentDistance - activeMaxDistance) / 2f);
 
-                    return Vector3.Lerp(
-                        moveDir,
-                        toCenter.normalized,
-                        pullIntensity + 0.5f
-                    ).normalized;
-                }
+                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized; }
             }
 
             return moveDir;
@@ -220,16 +235,41 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             var toPlayer = _playerTransform.position - transform.position;
             var playerDir = toPlayer.normalized;
-    
-            // 3. Apply the sign here: positive pulls toward, negative pushes away
             var modifiedPlayerDir = playerDir * _currentAttractionSign;
 
+            // --- Random (Perlin noise) direction ---
             var timeOffset = Time.time * noiseTimeScale + GetInstanceID();
-            var noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
-            var noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
+            float noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
+            float noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
             var randomDir = new Vector3(noiseX, noiseY, 0f).normalized;
 
-            return (randomDir * (1f - playerAttractionWeight) + modifiedPlayerDir * playerAttractionWeight).normalized;
+            // --- Decide attraction strength based on player distance ---
+            float effectiveAttractionWeight = 0f;
+
+            if (_isTethered && _tetherTransform != null)
+            {
+                float activeMaxDistance =
+                    _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
+
+                float dist = Vector3.Distance(
+                    _playerTransform.position,
+                    _tetherTransform.position
+                );
+
+                // Smooth fade-in of attention
+                float t = Mathf.InverseLerp(
+                    activeMaxDistance * 1.3f, // fully random when far
+                    activeMaxDistance,        // full attention when inside
+                    dist
+                );
+
+                effectiveAttractionWeight = playerAttractionWeight * t;
+            }
+
+            return (
+                randomDir * (1f - effectiveAttractionWeight) +
+                modifiedPlayerDir * effectiveAttractionWeight
+            ).normalized;
         }
 
         private Vector3 HandleObstacleAvoidance(Vector3 moveDir)
@@ -274,6 +314,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         private void ReturnToPool()
         {
+            _ownerSpawner?.NotifyEnemyReturned();
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
             FlyingEnemyPool.Instance.Return(GetComponent<FlyingEnemy>());

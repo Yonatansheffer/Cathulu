@@ -16,8 +16,8 @@ MonoBehaviour:
   maxLevel: 50
   minScale: 4
   maxScale: 1200
-  minSpeed: 40
-  maxSpeed: 600
+  minSpeed: 200
+  maxSpeed: 700
   scaleCurve:
     serializedVersion: 2
     m_Curve:

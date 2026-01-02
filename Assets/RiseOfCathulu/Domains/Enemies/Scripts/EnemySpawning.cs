@@ -9,7 +9,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
     {
         [Header("References")]
         [SerializeField] private GrowthConfig growthConfig;
-        [SerializeField] private PlayerSize playerSize;
+       private PlayerSize _playerSize;
         
         [Header("Debug Settings")]
         [SerializeField] private bool showDebugOverlay = true;
@@ -24,11 +24,26 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Maximum distance of enemy from planet")] private float maxDistanceFromPlanet = 10f;
         [SerializeField, Tooltip("Maximum distance of eatable enemy from planet")]
         private float eatableMaxDistanceFromPlanet = 10f;
+        
+        [Header("Spawn Limits")]
+        [SerializeField] private int maxActiveEnemies = 10;   
+        private int _currentActiveEnemies = 0;
+
 
         //[SerializeField, Tooltip("Walking enemies target positions")] private Transform[] enemyTargetPositions;
         [Header("Normal Distribution (Leveling)")]
         [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
         [SerializeField, Tooltip("Shift average enemy level (-1=slightly easier)")] private int levelOffset = 0;
+        
+        public void NotifyEnemyReturned()
+        {
+            _currentActiveEnemies = Mathf.Max(0, _currentActiveEnemies - 1);
+        }
+
+        private void Awake()
+        {
+            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();
+        }
         
         private void OnEnable()
         {
@@ -72,17 +87,19 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
+                enemy.SetOwnerSpawner(this); 
+                _currentActiveEnemies++; 
                 
                 // --- Debug Tracking ---
                 _lastSpawnedLevel = spawnedLevel;
                 _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
-                Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {playerSize.CurrentSizeLevel}");
+                Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {_playerSize.CurrentSizeLevel}");
             }
         }
         
         private int GetNormalDistributedLevel()
         {
-            int meanLevel = playerSize.CurrentSizeLevel + levelOffset;
+            int meanLevel = _playerSize.CurrentSizeLevel + levelOffset;
             float u1 = Random.value;
             float u2 = Random.value;
             float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);

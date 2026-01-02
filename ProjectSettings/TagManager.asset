@@ -14,7 +14,6 @@ TagManager:
   - Step
   - WeaponCollectible
   - Step Center
-  - Boss
   - PointCollectible
   - FoodCollectible
   - Enemy Bullet
