@@ -46,7 +46,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private bool _isFrozen;
         private int _facing = 1;
         private float _lastFlipTime = -999f;
-        private float _currentAttractionSign = 1f; // 1 = Attract, -1 = Repel
+        private float _currentAttractionSign = 1f; 
         private bool _isCurrentlyEatable;
         private EnemySpawning _ownerSpawner;
         
@@ -195,25 +195,48 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         private Vector3 ApplyTetherConstraint(Vector3 moveDir)
         {
-            if (!_isTethered || _tetherTransform == null) return moveDir;
-
-            float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
+            if (!_isTethered || _tetherTransform == null)
+                return moveDir;
 
             Vector3 toCenter = _tetherTransform.position - transform.position;
             float currentDistance = toCenter.magnitude;
 
-            if (currentDistance > activeMaxDistance)
+            Vector3 fromCenterDir = -toCenter.normalized;
+
+            // --- INNER BOUND (minimum distance) ---
+            if (!_isCurrentlyEatable && currentDistance < _eatableMaxTetherDistance)
             {
-                float dot = Vector3.Dot(moveDir, toCenter.normalized);
-                if (dot < 0)
-                {
-                    float pullIntensity = Mathf.Clamp01((currentDistance - activeMaxDistance) / 2f);
-                    return Vector3.Lerp(moveDir, toCenter.normalized, pullIntensity + 0.5f).normalized;
-                }
+                float pushStrength = Mathf.Clamp01(
+                    (_eatableMaxTetherDistance - currentDistance) / 2f
+                );
+
+                return Vector3.Lerp(
+                    moveDir,
+                    fromCenterDir,
+                    pushStrength + 0.5f
+                ).normalized;
+            }
+
+            // --- OUTER BOUND (maximum distance) ---
+            float maxAllowedDistance =
+                _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
+
+            if (currentDistance > maxAllowedDistance)
+            {
+                float pullStrength = Mathf.Clamp01(
+                    (currentDistance - maxAllowedDistance) / 2f
+                );
+
+                return Vector3.Lerp(
+                    moveDir,
+                    toCenter.normalized,
+                    pullStrength + 0.5f
+                ).normalized;
             }
 
             return moveDir;
         }
+
 
         private void UpdateFacing(Vector3 dir)
         {
@@ -230,27 +253,39 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         private Vector3 CalculateDirection()
         {
-            var toPlayer = _playerTransform.position - transform.position;
-            var playerDir = toPlayer.normalized;
-            var modifiedPlayerDir = playerDir * _currentAttractionSign;
-
             // --- Random (Perlin noise) direction ---
             var timeOffset = Time.time * noiseTimeScale + GetInstanceID();
             float noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
             float noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
             var randomDir = new Vector3(noiseX, noiseY, 0f).normalized;
 
-            // --- Decide attraction strength based on player distance ---
-            float effectiveAttractionWeight = 0f;
-            if (_isTethered && _tetherTransform != null)
-            {
-                float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
-                float dist = Vector3.Distance(_playerTransform.position, _tetherTransform.position);
-                float t = Mathf.InverseLerp(activeMaxDistance * 1.3f, activeMaxDistance, dist);
-                effectiveAttractionWeight = playerAttractionWeight * t;
-            }
-            return (randomDir *
-                (1f - effectiveAttractionWeight) + modifiedPlayerDir * effectiveAttractionWeight).normalized;
+            // Safety
+            if (!_isTethered || _tetherTransform == null || !_playerTransform)
+                return randomDir;
+
+            // --- Player awareness zone check (CENTER-based) ---
+            float playerToCenterDist = Vector3.Distance(
+                _playerTransform.position,
+                _tetherTransform.position
+            );
+
+            bool playerInAwarenessZone =
+                playerToCenterDist >= _eatableMaxTetherDistance &&
+                playerToCenterDist <= _maxTetherDistance;
+
+            // Outside zone → pure random movement
+            if (!playerInAwarenessZone)
+                return randomDir;
+
+            // --- Inside zone → attraction allowed ---
+            var toPlayer = _playerTransform.position - transform.position;
+            var playerDir = toPlayer.normalized;
+            var modifiedPlayerDir = playerDir * _currentAttractionSign;
+
+            return (
+                randomDir * (1f - playerAttractionWeight) +
+                modifiedPlayerDir * playerAttractionWeight
+            ).normalized;
         }
 
         private Vector3 HandleObstacleAvoidance(Vector3 moveDir)
@@ -258,16 +293,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             var groundMask = LayerMask.GetMask("Ground");
             var hit = Physics2D.Raycast(transform.position, moveDir, detectionDistance, groundMask);
             if (!hit.collider) return moveDir;
-
             var n = hit.normal;
             var perp1 = new Vector2(-n.y, n.x);
             var perp2 = new Vector2(n.y, -n.x);
-
             var leftClear = !Physics2D.Raycast(transform.position, 
                 perp1, sideClearanceDistance, groundMask);
             var rightClear = !Physics2D.Raycast(transform.position,
                 perp2, sideClearanceDistance, groundMask);
-
             Vector2 avoidDir;
             if (leftClear && !rightClear) avoidDir = perp1;
             else if (rightClear && !leftClear) avoidDir = perp2;
@@ -276,7 +308,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                     perp1, detectionDistance, groundMask) ? perp2 : perp1;
             else
                 avoidDir = n;
-
             return Vector2.Lerp(moveDir, avoidDir, avoidanceLerpWeight).normalized;
         }
 
