@@ -156,32 +156,40 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
         private void Update()
         {
+            CheckTooSmall();
             UpdateEatable();
             Move();
+        }
+        
+        private void CheckTooSmall()
+        {
+            if (_player == null) return;
+            if (_player.CurrentSizeLevel > sizeLevel + 4)
+                ReturnToPool();
         }
 
         private void UpdateEatable()
         {
             bool nowEatable = _player.CurrentSizeLevel >= sizeLevel;
 
-            if (_isCurrentlyEatable != nowEatable)
+            if (nowEatable && !_isCurrentlyEatable)
             {
-                _isCurrentlyEatable = nowEatable;
-                _currentAttractionSign = _isCurrentlyEatable ? -1f : 1f;
+                if (_ownerSpawner != null && !_ownerSpawner.CanBecomeEatable())
+                {
+                    ReturnToPool();
+                    return;
+                }
+                _isCurrentlyEatable = true;
+                _currentAttractionSign = -1f;
+                _ownerSpawner?.NotifyEnemyBecameEatable();
+            }
+            else if (!nowEatable && _isCurrentlyEatable)
+            {
+                _isCurrentlyEatable = false;
+                _currentAttractionSign = 1f;
+                _ownerSpawner?.NotifyEnemyStoppedBeingEatable();
             }
         }
-
-        
-        private bool IsPlayerWithinTetherRange()
-        {
-            if (!_isTethered || _tetherTransform == null || !_playerTransform)
-                return true; 
-
-            float activeMaxDistance = _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
-            float playerDistance = Vector3.Distance(_playerTransform.position, _tetherTransform.position);
-            return playerDistance <= activeMaxDistance;
-        }
-
 
         private void Move()
         {
@@ -314,11 +322,12 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         private void ReturnToPool()
         {
-            _ownerSpawner?.NotifyEnemyReturned();
+            _ownerSpawner?.NotifyEnemyReturned(_isCurrentlyEatable);
+            _isCurrentlyEatable = false;
+            _ownerSpawner = null;
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
-            FlyingEnemyPool.Instance.Return(GetComponent<FlyingEnemy>());
+            FlyingEnemyPool.Instance.Return(this);
         }
-        
     }
 }

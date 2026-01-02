@@ -26,7 +26,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private float eatableMaxDistanceFromPlanet = 10f;
         
         [Header("Spawn Limits")]
-        [SerializeField] private int maxActiveEnemies = 10;   
+        [SerializeField] private int maxActiveEnemies = 10;
+        [SerializeField] private int maxEatableEnemies = 3;
+        private int _currentEatableEnemies = 0;
         private int _currentActiveEnemies = 0;
 
 
@@ -34,11 +36,30 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [Header("Normal Distribution (Leveling)")]
         [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
         [SerializeField, Tooltip("Shift average enemy level (-1=slightly easier)")] private int levelOffset = 0;
-        
-        public void NotifyEnemyReturned()
+
+        public bool CanBecomeEatable()
+        {
+            return _currentEatableEnemies < maxEatableEnemies;
+        } 
+
+        public void NotifyEnemyReturned(bool wasEatable)
         {
             _currentActiveEnemies = Mathf.Max(0, _currentActiveEnemies - 1);
+
+            if (wasEatable)
+                _currentEatableEnemies = Mathf.Max(0, _currentEatableEnemies - 1);
         }
+
+        public void NotifyEnemyBecameEatable()
+        {
+            _currentEatableEnemies++;
+        }
+
+        public void NotifyEnemyStoppedBeingEatable()
+        {
+            _currentEatableEnemies = Mathf.Max(0, _currentEatableEnemies - 1);
+        }
+
 
         private void Awake()
         {
@@ -80,6 +101,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             for (var i = 0; i < amount; i++)
             {
+                if (_currentActiveEnemies >= maxActiveEnemies)
+                    break;
+                
                 var flyingEnemy = FlyingEnemyPool.Instance.Get();
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
                 int spawnedLevel = GetNormalDistributedLevel();
@@ -87,8 +111,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
-                enemy.SetOwnerSpawner(this); 
-                _currentActiveEnemies++; 
+                enemy.SetOwnerSpawner(this);
+                _currentActiveEnemies++;
                 
                 // --- Debug Tracking ---
                 _lastSpawnedLevel = spawnedLevel;

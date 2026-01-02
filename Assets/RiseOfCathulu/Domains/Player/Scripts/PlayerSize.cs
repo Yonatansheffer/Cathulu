@@ -29,17 +29,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         public int CurrentSizeLevel => _currentSizeLevel;
         public float CurrentScale => transform.localScale.x;
 
-        public bool IsBiggerThan(int enemySizeLevel) => _currentSizeLevel > enemySizeLevel;
-        
+      
         private void Awake()
         {
             _currentSizeLevel = initialSizeLevel;
-            
-            //initialize the trail size
             _trailRenderer = GetComponent<TrailRenderer>();
             _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
             _trailRenderer.time = (_currentSizeLevel * 0.1f);
-
             ApplyScale();
         }
         
@@ -116,11 +112,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             int previousSize = _currentSizeLevel;
 
-            _currentSizeLevel = Mathf.Clamp(
-                _currentSizeLevel + delta,
-                growthConfig.minLevel,
-                growthConfig.maxLevel
-            );
+            _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
 
             if (_currentSizeLevel != previousSize)
             {
