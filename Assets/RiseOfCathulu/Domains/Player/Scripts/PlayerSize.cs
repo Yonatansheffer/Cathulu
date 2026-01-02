@@ -14,10 +14,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private GrowthConfig growthConfig; 
         [SerializeField] private int initialSizeLevel = 2;
 
-        [Header("Scale Values")]
-        [SerializeField] private float minScale = 0.5f;
-        [SerializeField] private float maxScale = 3.5f;
-
         [Header("Hit Cooldown")]
         [SerializeField] private float hitCooldown = 1f;
 

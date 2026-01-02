@@ -68,17 +68,25 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
         private void OnEnable()
         {
-            /*GameEvents.SpawnAllWalkingEnemies += SpawnAllWalkingEnemies;
-            GameEvents.BossLivesChanged += BossHealthWaves;*/
             GameEvents.ToSpawnEnemy += EnemySpawnRoutine;
+            GameEvents.PlanetEnemyDestroyed += StopSpawning;
+            
         }
 
         private void OnDisable()
         {
-            /*GameEvents.SpawnAllWalkingEnemies -= SpawnAllWalkingEnemies;
-            GameEvents.BossLivesChanged -= BossHealthWaves;*/
             GameEvents.ToSpawnEnemy -= EnemySpawnRoutine;
+            GameEvents.PlanetEnemyDestroyed -= StopSpawning;
         }
+        
+        private void StopSpawning(Transform destroyedPlanet)
+        {
+            if (transform.parent != destroyedPlanet)
+                return;
+
+            StopAllCoroutines();
+        }
+
 
         private void EnemySpawnRoutine() => StartCoroutine(EnemySpawn());
 
@@ -86,15 +94,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             yield return new WaitForSeconds(0.5f);
             SpawnFlyingEnemies(1);
-            yield break;
-            /*if (Random.value > 0.5f)
-            {
-                SpawnFlyingEnemies(1);
-                yield break;
-            }
-            if (enemyTargetPositions == null || enemyTargetPositions.Length == 0) yield break;
-            var targetTransform = enemyTargetPositions[Random.Range(0, enemyTargetPositions.Length)];
-            SpawnWalkingEnemy(targetTransform);*/
         }
 
         private void SpawnFlyingEnemies(int amount)

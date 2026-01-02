@@ -13,6 +13,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private GameObject _player;
         private float _lastBallShootTime = -999f;
+        private bool _isDestroyed;
         private bool _isFrozen;
         
         private void Awake()
@@ -22,22 +23,32 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void OnEnable()
         {
+            GameEvents.PlanetEnemyDestroyed += StopShooting;
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
         }
 
         private void OnDisable()
         {
+            GameEvents.PlanetEnemyDestroyed -= StopShooting;
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnFreeze;
         }
+
+        private void StopShooting(Transform destroyedPlanet)
+        {
+            if (transform.parent != destroyedPlanet)
+                return;
+            _isDestroyed = true;
+        }
+
 
         private void OnFreeze() => _isFrozen = true;
         private void OnUnFreeze() => _isFrozen = false;
 
         private void Update()
         {
-            if (_isFrozen) return;
+            if (_isFrozen || _isDestroyed) return;
             CheckProximityAttack();
         }
 

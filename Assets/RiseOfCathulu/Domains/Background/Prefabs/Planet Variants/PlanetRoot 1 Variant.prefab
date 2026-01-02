@@ -552,6 +552,10 @@ PrefabInstance:
       propertyPath: gravityPoint
       value: 
       objectReference: {fileID: 8752399172440395277}
+    - target: {fileID: 2529995809540959969, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: initialHealth
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3371333428188933272, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_LocalScale.x
       value: 75
@@ -632,6 +636,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1576313571
       objectReference: {fileID: 0}
+    - target: {fileID: 7271476990186319603, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: particlesSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7271476990186319603, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: orangeStarsParticles
+      value: 
+      objectReference: {fileID: 2307528430244752201, guid: c6e34865eac9a462ebae0a9a63fd7495, type: 3}
     - target: {fileID: 8331400270794985523, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant
