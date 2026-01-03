@@ -27,7 +27,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
     
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag("Enemy") && !other.CompareTag("Boss") && !other.CompareTag("Boss Bullet")) return;
+            if (!other.CompareTag("Enemy") && !other.CompareTag("Enemy Bullet")) return;
             GameEvents.ShakeCamera?.Invoke();
             SoundManager.Instance.PlaySound("Shield Hit", transform);
             GameEvents.ShieldUpdated?.Invoke(false);

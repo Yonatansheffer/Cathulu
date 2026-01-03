@@ -6,7 +6,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     {
         private void Update()
         {
-            //HandleCheatCodes();
+            HandleCheatCodes();
         }
 
         private static void HandleCheatCodes()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts
 {
-    public class EnemySpawning : BossBaseMono
+    public class EnemySpawning : MonoBehaviour
     {
         [Header("References")]
         [SerializeField] private GrowthConfig growthConfig;

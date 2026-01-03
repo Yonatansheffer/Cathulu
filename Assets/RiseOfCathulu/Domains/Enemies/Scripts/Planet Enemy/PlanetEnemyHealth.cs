@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class PlanetEnemyHealth : BossBaseMono
+    public class PlanetEnemyHealth : MonoBehaviour
     {
         [SerializeField, Tooltip("initial amount of lives")] private int initialHealth = 100;
         private int _currentHealth;

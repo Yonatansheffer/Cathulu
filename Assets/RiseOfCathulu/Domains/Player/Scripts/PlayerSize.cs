@@ -37,13 +37,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         private void OnEnable()
         {
-            GameEvents.ChangePlayerSize += AdjustSize;
             GameEvents.ShieldUpdated += UpdateShield;
         }
 
         private void OnDisable()
         {
-            GameEvents.ChangePlayerSize -= AdjustSize;
             GameEvents.ShieldUpdated -= UpdateShield;
         }
 
@@ -88,7 +86,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             if (Input.GetKeyDown(KeyCode.B)) AdjustSize(+1);
             if (Input.GetKeyDown(KeyCode.N)) AdjustSize(-1);
         }
-
         
         private void TakeHit()
         {
@@ -126,8 +123,22 @@ namespace RiseOfCathulu.Domains.Player.Scripts
       
         private void UpdateShield(bool isActive)
         {
-            _isShieldActive = isActive;
+            if (isActive)
+            {
+                StartCoroutine(ClearShieldGrace());
+            }
+            else
+            {
+                _isShieldActive = true;
+            }
         }
+        
+        private IEnumerator ClearShieldGrace()
+        {
+            yield return new WaitForSeconds(hitCooldown);
+            _isShieldActive = false;
+        }
+        
 
         private IEnumerator HitCooldown()
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class AnimatedEnemyBullet : BossBaseMono, IPoolable
+    public class AnimatedEnemyBullet : MonoBehaviour, IPoolable
     {
         private static readonly int Hit = Animator.StringToHash("Hit");
         private Rigidbody2D _rb;

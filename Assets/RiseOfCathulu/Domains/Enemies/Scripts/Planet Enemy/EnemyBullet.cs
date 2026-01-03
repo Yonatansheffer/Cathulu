@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class EnemyBullet : BossBaseMono, IPoolable
+    public class EnemyBullet : MonoBehaviour, IPoolable
     {
         private bool _isFrozen;
         private Rigidbody2D _rb;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
-    public class EnemyShooting : BossBaseMono
+    public class EnemyShooting : MonoBehaviour
     {
         [Header("Ball Shot")]
         [SerializeField, Tooltip("Delay before the enemy starts shooting")] private float startShootDelay = 6f;
