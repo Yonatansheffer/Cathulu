@@ -20,8 +20,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         [SerializeField, Tooltip("Max level offset from player")] private int maxLevelOffset = 2;
         [SerializeField, Tooltip("Growth config scriptable object")] private GrowthConfig growthConfig;
         private int _collectibleLevel;
-        protected Transform FallTarget;
-        protected Vector3 fallDirection;
+        private Vector3 _fallDirection;
         private PlayerSize _playerSize;
         private SpriteRenderer _spriteRenderer;
         private bool _isInPlanet;
@@ -36,7 +35,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         protected virtual void Update()
         {
             if (_isInPlanet)
-                transform.position += fallDirection * (inPlanetFallSpeed * Time.deltaTime);
+                transform.position += _fallDirection * (inPlanetFallSpeed * Time.deltaTime);
             else
                 transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
         }
@@ -44,30 +43,28 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         private void InitializeScaleFromPlayer()
         {
             if (_playerSize == null) return;
-
             int mean = _playerSize.CurrentSizeLevel;
-
             _collectibleLevel = LevelDistribution.GetNormalDistributedLevel(
                 mean,
                 levelStdDev,
                 mean + minLevelOffset,
                 mean + maxLevelOffset
             );
-            transform.localScale = Vector3.one * growthConfig.GetScale(_collectibleLevel);;
+            transform.localScale = Vector3.one * growthConfig.GetScale(_collectibleLevel);
         }
         
         public void InitializeFallTowardsPlanet(Transform target, float radius)
         {
             _isInPlanet = true;
-            FallTarget = target;
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             transform.position = target.position + (Vector3)(randomDir * radius);
-            fallDirection = (target.position - transform.position).normalized;
+            _fallDirection = (target.position - transform.position).normalized;
         }
         
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            print("triggered");
             if (other.CompareTag("Planet"))
             {
                 StopMovement();
@@ -81,6 +78,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         
         private void OnCollisionEnter2D(Collision2D other)
         {
+            print("Collided");
             if (other.gameObject.CompareTag("Planet"))
             {
                 StopMovement();
@@ -116,6 +114,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         public void StopMovement()
         {
             fallSpeed = 0;
+            inPlanetFallSpeed = 0;
         }
     }
 }

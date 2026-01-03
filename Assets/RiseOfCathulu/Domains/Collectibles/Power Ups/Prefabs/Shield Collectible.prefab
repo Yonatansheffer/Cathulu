@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a39aa4f746e43d188d066711ca7f9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 150
-  inPlanetFallSpeed: 10
+  fallSpeed: 120
+  inPlanetFallSpeed: 35
   timeForDestroy: 20
   blinkDuration: 3
   blinkInterval: 0.1
