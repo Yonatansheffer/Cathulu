@@ -119,7 +119,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             _inputActions.Movement.Steer.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
             _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
-            _inputActions.Movement.Dash.performed += _ => Dash();
+            _inputActions.Movement.Move.performed += _ => Dash();
             
             _inputActions.Movement.Shoot.performed += _ => _isShooting = true;
             _inputActions.Movement.Shoot.canceled += _ => _isShooting = false;
@@ -129,8 +129,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 _dualSenseFeedback?.SetThrustInput(_thrustInput); };
             _inputActions.Movement.Move.canceled += _ => { _thrustInput = 0f;
                 _dualSenseFeedback?.SetThrustInput(0f); };
-
-            
         }
 
         private void Shoot()
@@ -149,7 +147,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void Dash()
         {
             if (!_rb.simulated || _isDashing || _steeringInput.sqrMagnitude < 0.01f ||
-                Time.time - _lastDashTime < dashCooldown)
+                Time.time - _lastDashTime < dashCooldown || !_isGrounded)
                 return;
             _lastDashTime = Time.time;
             StartCoroutine(PerformDash(_steeringInput.normalized));
