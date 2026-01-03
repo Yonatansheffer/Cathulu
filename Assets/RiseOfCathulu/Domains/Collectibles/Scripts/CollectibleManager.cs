@@ -11,29 +11,18 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
     public class CollectibleManager : MonoBehaviour
     {
         [Header("Config")]
-        [SerializeField, Tooltip("Global weapon settings (for default weapon etc.)")]
-        private WeaponSettings settings;
-        [SerializeField, Tooltip("Prefabs for power-up collectibles")]
-        private GameObject[] powerUpCollectibles;
-        [SerializeField, Tooltip("Prefabs for point collectibles")]
-        private GameObject[] pointCollectibles;
+        [SerializeField, Tooltip("Global weapon settings (for default weapon etc.)")] private WeaponSettings settings;
+        [SerializeField, Tooltip("Prefabs for power-up collectibles")] private GameObject[] powerUpCollectibles;
+        [SerializeField, Tooltip("Prefabs for point collectibles")] private GameObject[] pointCollectibles;
 
         [Header("Spawning")]
         [SerializeField, Tooltip("Interval between automatic collectible drops")] private float dropInterval = 6f;
-        [SerializeField, Tooltip("Possible spawn positions for collectibles")] private Transform[] positionsForDrop;
-        [SerializeField, Tooltip("Chance to drop collectible on enemy destruction (0-1)")] 
-        private float dropChance = 0.35f;
-        [SerializeField, Tooltip("Chance (0-100) that a drop is a power-up (else points)")]
-        private float powerUpToPointPercentRatio = 35f;
+        [SerializeField, Tooltip("Chance to drop on enemy destruction (0-1)")] private float dropChance = 0.35f;
+        [SerializeField, Tooltip("Chance (0-100) for power-up ")] private float powerUpToPointPercentRatio = 35f;
         
         [Header("Planets")]
         [SerializeField] private CircleCollider2D[] gravityAreas;
         
-        /*[SerializeField, Tooltip("Random X offset range for spawn position")]
-        private Vector2 randomXOffsetRange = new(-0.75f, 0.75f);
-        [SerializeField, Tooltip("Y offset for collectible spawn position")]
-        private float yOffset = 0.75f;*/
-
         private readonly List<Collectible> _activeCollectibles = new();
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
@@ -43,7 +32,6 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
 
         private void Awake()
         {
-            //_initialPlayerHealth = PlayerSize.CurrentSizeLevel();
             _currentPlayerHealth = _initialPlayerHealth;
             _activeWeapon =  settings.defaultWeapon;
         }

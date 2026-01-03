@@ -16,10 +16,12 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Randomness factor for speed")] private float speedVariation = 0.4f;
         
         [Header("Player Attraction")]
-        private PlayerSize _player;
-        [SerializeField, Tooltip("Weight of player attraction (0-1)")] private float playerAttractionWeight = 0.55f;
+        [SerializeField, Tooltip("Minimum of player attraction (0-1)")] private float minPlayerAttraction = 0.55f;
+        [SerializeField, Tooltip("Maximum of player attraction (0-1)")] private float maxPlayerAttraction = 0.9f;
         [SerializeField, Tooltip("Time scale for Perlin noise randomness")] private float noiseTimeScale = 0.3f;
-
+        private PlayerSize _player;
+        private float _playerAttractionWeight;
+        
         [Header("Scoring")]
         [SerializeField, Tooltip("Points awarded for destroying this enemy")] private int pointsForKill = 1;
 
@@ -82,7 +84,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             }
     
             moveSpeed = baseSpeed * randomMultiplier;
-            playerAttractionWeight = Random.Range(0.45f,0.85f);
+            _playerAttractionWeight = Random.Range(minPlayerAttraction,maxPlayerAttraction);
             _currentAttractionSign = 1f;
         }   
 
@@ -283,8 +285,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             var modifiedPlayerDir = playerDir * _currentAttractionSign;
 
             return (
-                randomDir * (1f - playerAttractionWeight) +
-                modifiedPlayerDir * playerAttractionWeight
+                randomDir * (1f - _playerAttractionWeight) +
+                modifiedPlayerDir * _playerAttractionWeight
             ).normalized;
         }
 

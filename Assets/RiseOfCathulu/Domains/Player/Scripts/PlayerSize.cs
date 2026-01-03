@@ -57,9 +57,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void HandleHit(Collider2D other)
         {
+            print( "shield " + _isShieldActive + " hit" + _isOnHitCooldown);
             if (_isShieldActive || _isOnHitCooldown) return;
             if (other.CompareTag("Enemy Bullet"))
             {
+                print("hello");
                 TakeHit();
                 return;
             }
@@ -139,7 +141,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _isShieldActive = false;
         }
         
-
         private IEnumerator HitCooldown()
         {
             _isOnHitCooldown = true;

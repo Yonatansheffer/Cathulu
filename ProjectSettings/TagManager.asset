@@ -10,12 +10,9 @@ TagManager:
   - Enemy
   - Background
   - Boundary
-  - Floor
-  - Step
   - WeaponCollectible
   - Step Center
   - PointCollectible
-  - FoodCollectible
   - Enemy Bullet
   - Planet Enemy
   layers:

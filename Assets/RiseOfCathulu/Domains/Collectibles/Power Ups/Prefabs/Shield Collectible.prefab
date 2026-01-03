@@ -151,7 +151,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -174,9 +174,6 @@ MonoBehaviour:
   timeForDestroy: 20
   blinkDuration: 3
   blinkInterval: 0.1
-  levelStdDev: 1.2
-  minLevelOffset: -2
-  maxLevelOffset: 2
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
 --- !u!95 &1412033126490496689
 Animator:

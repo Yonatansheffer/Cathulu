@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
@@ -20,40 +22,53 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [Header("Spin Control")]
         [SerializeField] private float angularDamping = 20f; // higher = faster decay
 
-        private Rigidbody2D rb;
+        private Rigidbody2D _rb;
+        private bool _isFrozen;
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
-            rb.gravityScale = 0f;
+            _rb = GetComponent<Rigidbody2D>();
+            _rb.gravityScale = 0f;
             gravityPoint = transform.parent;
+        }
+
+        private void OnEnable()
+        {
+            GameEvents.FreezeLevel += OnFreeze;
+            GameEvents.UnFreezeLevel += OnUnFreeze;
+        }
+        
+        private void OnDisable()
+        {
+            GameEvents.FreezeLevel -= OnFreeze;
+            GameEvents.UnFreezeLevel -= OnUnFreeze;
+        }
+        
+        private void OnFreeze()
+        {
+            _isFrozen = true;
+        }
+        
+        private void OnUnFreeze()
+        {
+            _isFrozen = false;
         }
 
         private void FixedUpdate()
         {
-            if (gravityPoint == null)
+            if (gravityPoint == null || _isFrozen)
                 return;
-
             Vector2 toCenter = gravityPoint.position - transform.position;
             Vector2 radialDir = toCenter.normalized;
             HandleIdleTilt();
-            // 1. Lock position to orbit radius
-            rb.position = (Vector2)gravityPoint.position - radialDir * orbitRadius;
+            _rb.position = (Vector2)gravityPoint.position - radialDir * orbitRadius;
 
             // 2. Tangential direction
-            Vector2 tangentDir = clockwise
-                ? new Vector2(radialDir.y, -radialDir.x)
+            Vector2 tangentDir = clockwise ? new Vector2(radialDir.y, -radialDir.x)
                 : new Vector2(-radialDir.y, radialDir.x);
 
-            // 3. Constant-speed orbit
-            rb.linearVelocity = tangentDir * orbitSpeed;
-
-            // 4. FAST angular velocity decay
-            rb.angularVelocity = Mathf.Lerp(
-                rb.angularVelocity,
-                0f,
-                angularDamping * Time.fixedDeltaTime
-            );
+            _rb.linearVelocity = tangentDir * orbitSpeed;
+            _rb.angularVelocity = Mathf.Lerp(_rb.angularVelocity, 0f,angularDamping * Time.fixedDeltaTime);
         }
         
         

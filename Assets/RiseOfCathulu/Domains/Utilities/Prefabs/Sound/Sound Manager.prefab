@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8618363181324428778
+--- !u!1 &6732007448759605626
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4649496092648368533}
-  - component: {fileID: 5295055359996487355}
-  - component: {fileID: 7784178870465746804}
+  - component: {fileID: 5230246484256155122}
+  - component: {fileID: 6858015136642404536}
+  - component: {fileID: 1668770151117829118}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Sound Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4649496092648368533
+--- !u!4 &5230246484256155122
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8618363181324428778}
+  m_GameObject: {fileID: 6732007448759605626}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.11133, y: 3.0917969, z: -0.54253006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5295055359996487355
+--- !u!114 &6858015136642404536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8618363181324428778}
+  m_GameObject: {fileID: 6732007448759605626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63c338f49b274ee4fbaa45b0b63e3a36, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e1018e3204b36f4e9d300a7db3b9fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialCountDownTime: 200
-  freezeDuration: 6
---- !u!114 &7784178870465746804
+  settings: {fileID: 11400000, guid: c5a2a713bd1b2c447b73a8c704e05ece, type: 2}
+--- !u!114 &1668770151117829118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8618363181324428778}
+  m_GameObject: {fileID: 6732007448759605626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be5f8ce0eda10b49a90d88a8fcd8bf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eff32123d3e1d04ba9675b1365a767e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPoolSize: 30
+  prefab: {fileID: 4013685499598490876, guid: 909235c19406925429cca0d15fc9bb68, type: 3}

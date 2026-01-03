@@ -13,11 +13,6 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         [SerializeField, Tooltip("Time before destroyed after hitting floor")] protected float timeForDestroy = 20f;
         [SerializeField, Tooltip("Duration of blinking effect before destruction")] private float blinkDuration = 3f;
         [SerializeField, Tooltip("Interval between blinks")] private float blinkInterval = 0.1f;
-        
-        [Header("Level & Scaling")]
-        [SerializeField, Tooltip("Std deviation for normal distribution")] private float levelStdDev = 1.2f;
-        [SerializeField, Tooltip("Min level offset from player")] private int minLevelOffset = -2;
-        [SerializeField, Tooltip("Max level offset from player")] private int maxLevelOffset = 2;
         [SerializeField, Tooltip("Growth config scriptable object")] private GrowthConfig growthConfig;
         private int _collectibleLevel;
         private Vector3 _fallDirection;
