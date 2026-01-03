@@ -66,7 +66,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         private void OnEnable()
         {
             GameEvents.ShakeCamera += OnShakeCamera;
-            GameEvents.Shoot += OnPlayerShoot; 
+            GameEvents.PlayerFirstMoved += OnPlayerFirstMove; 
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnfreeze;
         }
@@ -74,12 +74,12 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
         private void OnDisable()
         {
             GameEvents.ShakeCamera -= OnShakeCamera;
-            GameEvents.Shoot -= OnPlayerShoot; 
+            GameEvents.PlayerFirstMoved -= OnPlayerFirstMove;
             GameEvents.FreezeLevel -= OnFreeze;
             GameEvents.UnFreezeLevel -= OnUnfreeze;
         }
 
-        private void OnPlayerShoot(Transform t)
+        private void OnPlayerFirstMove()
         {
             if (_isStartingZoomIn && !_hasSkippedStartZoom)
             {

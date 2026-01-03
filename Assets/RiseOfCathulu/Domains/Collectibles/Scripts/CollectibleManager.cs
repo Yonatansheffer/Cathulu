@@ -19,18 +19,20 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         private GameObject[] pointCollectibles;
 
         [Header("Spawning")]
-        [SerializeField, Tooltip("Interval between automatic collectible drops")]
-        private float dropInterval = 6f;
-        [SerializeField, Tooltip("Possible spawn positions for collectibles")]
-        private Transform[] positionsForDrop;
-        [SerializeField, Tooltip("Chance to drop collectible on enemy destruction (0-1)")]
+        [SerializeField, Tooltip("Interval between automatic collectible drops")] private float dropInterval = 6f;
+        [SerializeField, Tooltip("Possible spawn positions for collectibles")] private Transform[] positionsForDrop;
+        [SerializeField, Tooltip("Chance to drop collectible on enemy destruction (0-1)")] 
         private float dropChance = 0.35f;
         [SerializeField, Tooltip("Chance (0-100) that a drop is a power-up (else points)")]
         private float powerUpToPointPercentRatio = 35f;
-        [SerializeField, Tooltip("Random X offset range for spawn position")]
+        
+        [Header("Planets")]
+        [SerializeField] private CircleCollider2D[] gravityAreas;
+        
+        /*[SerializeField, Tooltip("Random X offset range for spawn position")]
         private Vector2 randomXOffsetRange = new(-0.75f, 0.75f);
         [SerializeField, Tooltip("Y offset for collectible spawn position")]
-        private float yOffset = 0.75f;
+        private float yOffset = 0.75f;*/
 
         private readonly List<Collectible> _activeCollectibles = new();
         private WeaponType _activeWeapon;
@@ -101,38 +103,51 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         private void DropCollectible(Vector3 position)
         {
             if (Random.value > dropChance) return;
-
-            var spawnPos = position == Vector3.zero ? GetRandomSpawnPosition() : position;
             var roll = Random.Range(0f, 100f);
-            if (roll < powerUpToPointPercentRatio) DropPowerUpCollectible(spawnPos);
-            else DropPointCollectible(spawnPos);
+            var isRandomPlanet = position == Vector3.zero;
+            if (roll < powerUpToPointPercentRatio) 
+                DropPowerUpCollectible(isRandomPlanet);
+            else 
+                DropPointCollectible(isRandomPlanet);
         }
 
-        private Vector3 GetRandomSpawnPosition()
-        {
-            if (positionsForDrop == null || positionsForDrop.Length == 0) return Vector3.zero;
-            var anchor = positionsForDrop[Random.Range(0, positionsForDrop.Length)].position;
-            var dx = Random.Range(randomXOffsetRange.x, randomXOffsetRange.y);
-            return new Vector3(anchor.x + dx, anchor.y + yOffset, 0f);
-        }
-
-        private void DropPowerUpCollectible(Vector3 position)
+        private void DropPowerUpCollectible(bool isRandomPlanet)
         {
             if (powerUpCollectibles == null || powerUpCollectibles.Length == 0) return;
             var selected = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
             if (IsRedundantCollectible(selected)) return;
-            var spawned = Instantiate(selected, position, Quaternion.identity);
+            var spawned = Instantiate(selected, Vector3.zero, Quaternion.identity);
             var collectible = spawned.GetComponent<Collectible>();
-            if (collectible != null) _activeCollectibles.Add(collectible);
+            if (collectible != null)
+            {
+                if (isRandomPlanet)
+                {
+                    var gravityArea = gravityAreas[Random.Range(0, gravityAreas.Length)];
+                    collectible.InitializeFallTowardsPlanet(gravityArea.transform,
+                        gravityArea.radius * gravityArea.transform.lossyScale.x
+                    );
+                }
+                _activeCollectibles.Add(collectible);
+            }
         }
 
-        private void DropPointCollectible(Vector3 position)
+        private void DropPointCollectible(bool isRandomPlanet)
         {
             if (pointCollectibles == null || pointCollectibles.Length == 0) return;
             var selected = pointCollectibles[Random.Range(0, pointCollectibles.Length)];
-            var spawned = Instantiate(selected, position, Quaternion.identity);
+            var spawned = Instantiate(selected, Vector3.zero, Quaternion.identity);
             var collectible = spawned.GetComponent<Collectible>();
-            if (collectible != null) _activeCollectibles.Add(collectible);
+            if (collectible != null)
+            {
+                if (isRandomPlanet)
+                {
+                    var gravityArea = gravityAreas[Random.Range(0, gravityAreas.Length)];
+                    collectible.InitializeFallTowardsPlanet(gravityArea.transform,
+                        gravityArea.radius * gravityArea.transform.lossyScale.x
+                    );
+                }
+                _activeCollectibles.Add(collectible);
+            }
         }
 
         private bool IsRedundantCollectible(GameObject prefab)

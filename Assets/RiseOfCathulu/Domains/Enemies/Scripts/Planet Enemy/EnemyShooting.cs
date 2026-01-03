@@ -7,6 +7,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
     public class EnemyShooting : BossBaseMono
     {
         [Header("Ball Shot")]
+        [SerializeField, Tooltip("Delay before the enemy starts shooting")] private float startShootDelay = 6f;
         [SerializeField, Tooltip("Distance threshold for ball shot")] private float ballShootDistance = 120f;
         [SerializeField, Tooltip("Cooldown for ball shot")] private float ballShootCooldown = 3f;
         [SerializeField, Tooltip("Bullet launch force")] private float bulletForce = 20f;
@@ -15,6 +16,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private float _lastBallShootTime = -999f;
         private bool _isDestroyed;
         private bool _isFrozen;
+        private float _shootStartTime;
+
         
         private void Awake()
         {
@@ -23,6 +26,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void OnEnable()
         {
+            _shootStartTime = Time.time + startShootDelay;
+
             GameEvents.PlanetEnemyDestroyed += StopShooting;
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
@@ -48,7 +53,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void Update()
         {
-            if (_isFrozen || _isDestroyed) return;
+            if (_isFrozen || _isDestroyed || Time.time < _shootStartTime) return;
             CheckProximityAttack();
         }
 

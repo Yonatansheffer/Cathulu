@@ -70,7 +70,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             var controllers = DualSense.GetControllers();
             if (controllers.Count > 0)
             {
-                print("DualSense controller detected for player rumble feedback.");
                 _dualSense = controllers[0];
                 _outputState = new ControllerOutputState();
             }

@@ -117,21 +117,21 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 // --- Debug Tracking ---
                 _lastSpawnedLevel = spawnedLevel;
                 _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
-                Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {_playerSize.CurrentSizeLevel}");
+                //Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {_playerSize.CurrentSizeLevel}");
             }
         }
         
         private int GetNormalDistributedLevel()
         {
             int meanLevel = _playerSize.CurrentSizeLevel + levelOffset;
-            float u1 = Random.value;
-            float u2 = Random.value;
-            float randStdNormal = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Sin(2.0f * Mathf.PI * u2);
-            
-            float randNormal = meanLevel + levelStandardDeviation * randStdNormal;
-
-            return Mathf.Clamp(Mathf.RoundToInt(randNormal), growthConfig.minLevel, growthConfig.maxLevel);
+            return LevelDistribution.GetNormalDistributedLevel(
+                meanLevel,
+                levelStandardDeviation,
+                growthConfig.minLevel,
+                growthConfig.maxLevel
+            );
         }
+
 
         private void ApplyRandomForce(FlyingEnemy enemy)
         {
@@ -142,7 +142,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 rb.AddForce(direction * force, ForceMode2D.Impulse);
             }
         }
-        
 
         private void OnDrawGizmosSelected()
         {

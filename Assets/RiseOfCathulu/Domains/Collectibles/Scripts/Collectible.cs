@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using RiseOfCathulu.Domains.Player.Scripts;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Collectibles.Scripts
@@ -6,30 +8,85 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class Collectible : MonoBehaviour
     {
-        [SerializeField, Tooltip("Speed at which the collectible falls")] protected float fallSpeed = 2f;
+        [SerializeField, Tooltip("Speed at which the collectible falls")] protected float fallSpeed = 150f;
+        [SerializeField, Tooltip("Speed at which the collectible falls")] protected float inPlanetFallSpeed = 2f;
         [SerializeField, Tooltip("Time before destroyed after hitting floor")] protected float timeForDestroy = 20f;
         [SerializeField, Tooltip("Duration of blinking effect before destruction")] private float blinkDuration = 3f;
         [SerializeField, Tooltip("Interval between blinks")] private float blinkInterval = 0.1f;
+        
+        [Header("Level & Scaling")]
+        [SerializeField, Tooltip("Std deviation for normal distribution")] private float levelStdDev = 1.2f;
+        [SerializeField, Tooltip("Min level offset from player")] private int minLevelOffset = -2;
+        [SerializeField, Tooltip("Max level offset from player")] private int maxLevelOffset = 2;
+        [SerializeField, Tooltip("Growth config scriptable object")] private GrowthConfig growthConfig;
+        private int _collectibleLevel;
+        protected Transform FallTarget;
+        protected Vector3 fallDirection;
+        private PlayerSize _playerSize;
         private SpriteRenderer _spriteRenderer;
+        private bool _isInPlanet;
         
         protected virtual void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();    
+            _spriteRenderer = GetComponent<SpriteRenderer>();InitializeScaleFromPlayer();
+            InitializeScaleFromPlayer();
         }
     
         protected virtual void Update()
         {
-            transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
+            if (_isInPlanet)
+                transform.position += fallDirection * (inPlanetFallSpeed * Time.deltaTime);
+            else
+                transform.Translate(Vector3.down * (fallSpeed * Time.deltaTime));
         }
+        
+        private void InitializeScaleFromPlayer()
+        {
+            if (_playerSize == null) return;
+
+            int mean = _playerSize.CurrentSizeLevel;
+
+            _collectibleLevel = LevelDistribution.GetNormalDistributedLevel(
+                mean,
+                levelStdDev,
+                mean + minLevelOffset,
+                mean + maxLevelOffset
+            );
+            transform.localScale = Vector3.one * growthConfig.GetScale(_collectibleLevel);;
+        }
+        
+        public void InitializeFallTowardsPlanet(Transform target, float radius)
+        {
+            _isInPlanet = true;
+            FallTarget = target;
+            Vector2 randomDir = Random.insideUnitCircle.normalized;
+            transform.position = target.position + (Vector3)(randomDir * radius);
+            fallDirection = (target.position - transform.position).normalized;
+        }
+        
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Floor") || other.CompareTag("Step"))
+            if (other.CompareTag("Planet"))
             {
                 StopMovement();
                 StartCoroutine(StartDestroyTimer());
             }
             else if (other.CompareTag("Player"))
+            {
+                HandlePickup();
+            }
+        }
+        
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Planet"))
+            {
+                StopMovement();
+                StartCoroutine(StartDestroyTimer());
+            }
+            else if (other.gameObject.CompareTag("Player"))
             {
                 HandlePickup();
             }

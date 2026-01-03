@@ -5,11 +5,10 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     [CreateAssetMenu(fileName = "GrowthConfig", menuName = "B.O.S.S/Growth Config")]
     public class GrowthConfig : ScriptableObject
     {
-        public int minLevel = 0;
+        public int minLevel;
         public int maxLevel = 20;
         public float minScale = 0.5f;
         public float maxScale = 3.5f;
-        // We can also define speed per level here!
         public float minSpeed = 2f;
         public float maxSpeed = 6f;
     

@@ -34,6 +34,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private Vector2 _steeringInput;
         private float _thrustInput;
         private PlayerDualSenseFeedback _dualSenseFeedback;
+        private bool _isFirstMove = true;
         
         private void Awake()
         {
@@ -119,11 +120,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             _inputActions.Movement.Steer.performed += ctx => _steeringInput = ctx.ReadValue<Vector2>();
             _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
-            _inputActions.Movement.Move.performed += _ => Dash();
-            
             _inputActions.Movement.Shoot.performed += _ => _isShooting = true;
             _inputActions.Movement.Shoot.canceled += _ => _isShooting = false;
-            
+            _inputActions.Movement.Move.performed += _ => Dash();
             _inputActions.Movement.Move.performed += ctx => { 
                 _thrustInput = ctx.ReadValue<float>();
                 _dualSenseFeedback?.SetThrustInput(_thrustInput); };
@@ -146,6 +145,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         private void Dash()
         {
+            if(_isFirstMove)
+            {
+                GameEvents.PlayerFirstMoved?.Invoke();
+                _isFirstMove = false;
+            }
             if (!_rb.simulated || _isDashing || _steeringInput.sqrMagnitude < 0.01f ||
                 Time.time - _lastDashTime < dashCooldown || !_isGrounded)
                 return;

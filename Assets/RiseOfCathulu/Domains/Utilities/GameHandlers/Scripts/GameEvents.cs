@@ -26,6 +26,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<int> FreezeUI;
     
         // GamePlay Events
+        public static Action PlayerFirstMoved;
         public static Action<Transform> Shoot;
         public static Action<Vector3> EnemyDestroyed;
         public static Action<WeaponType> WeaponCollected;
