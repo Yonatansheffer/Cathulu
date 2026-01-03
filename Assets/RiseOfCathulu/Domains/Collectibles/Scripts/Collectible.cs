@@ -43,14 +43,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         private void InitializeScaleFromPlayer()
         {
             if (_playerSize == null) return;
-            int mean = _playerSize.CurrentSizeLevel;
-            _collectibleLevel = LevelDistribution.GetNormalDistributedLevel(
-                mean,
-                levelStdDev,
-                mean + minLevelOffset,
-                mean + maxLevelOffset
-            );
-            transform.localScale = Vector3.one * growthConfig.GetScale(_collectibleLevel);
+            transform.localScale = Vector3.one * growthConfig.GetScale(_playerSize.CurrentSizeLevel);
         }
         
         public void InitializeFallTowardsPlanet(Transform target, float radius)
@@ -64,7 +57,6 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            print("triggered");
             if (other.CompareTag("Planet"))
             {
                 StopMovement();
@@ -76,20 +68,6 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             }
         }
         
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            print("Collided");
-            if (other.gameObject.CompareTag("Planet"))
-            {
-                StopMovement();
-                StartCoroutine(StartDestroyTimer());
-            }
-            else if (other.gameObject.CompareTag("Player"))
-            {
-                HandlePickup();
-            }
-        }
-
         protected abstract void HandlePickup();
         
         private IEnumerator StartDestroyTimer()

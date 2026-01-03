@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Player.Scripts.PlayerDualSenseFeedback
   gunWallStart: 0.25
   gunWallEnd: 0.37
-  gunWallForce: 0.03
+  gunWallForce: 0.05
   gunWallDuration: 0.04
   thrustStartPosition: 0.2
   maxTriggerForce: 0.85
@@ -3805,7 +3805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: boostSpeed
-      value: 180
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: dashCooldown
@@ -3937,15 +3937,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7.8971653
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6525
+      value: -5381
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9612
+      value: -8633
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3994,6 +3994,22 @@ PrefabInstance:
     - target: {fileID: 3398602198311605372, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_Offset.y
       value: 0.15712146
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6877878
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2766194
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.08326
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.48874
       objectReference: {fileID: 0}
     - target: {fileID: 3665514695634794329, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4117,6 +4133,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344223010626530016, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420412242359834195, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
