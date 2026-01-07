@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1395897156840073585}
   - component: {fileID: 4406219783516737104}
   - component: {fileID: 4438614935785709462}
+  - component: {fileID: 1572940553389784454}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -455,6 +456,21 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1572940553389784454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937176178784988943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee262004bf35f6d40a0e94350056d876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlarmLight
+  lightSprite: {fileID: 8155621282651366725}
+  sizeThreshold: 5
+  flashSpeed: 3
 --- !u!1 &4665717866754436639
 GameObject:
   m_ObjectHideFlags: 0
