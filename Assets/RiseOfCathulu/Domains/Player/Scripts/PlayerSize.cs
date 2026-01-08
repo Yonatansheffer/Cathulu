@@ -16,6 +16,15 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         [Header("Hit Cooldown")]
         [SerializeField] private float hitCooldown = 1f;
+        
+        [Header("Light Object")]
+
+        [SerializeField] private GameObject lightObject;
+        [SerializeField] private float sizeThreshold = 5f;
+        [SerializeField] private float flashSpeed = 3f;
+        private SpriteRenderer _lightSprite;
+        private Vector3 _initialLightScale; 
+        private bool _isFirstMinLevel = true;
 
         private TrailRenderer _trailRenderer;
         private int _currentSizeLevel;
@@ -28,6 +37,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
       
         private void Awake()
         {
+            _lightSprite = lightObject.GetComponent<SpriteRenderer>();
             _currentSizeLevel = initialSizeLevel;
             _trailRenderer = GetComponent<TrailRenderer>();
             _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
@@ -80,6 +90,34 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void Update()
         {
             CheatSize();
+            UpdateLight();
+        }
+        
+        private void UpdateLight()
+        {
+            print("this " + _currentSizeLevel + " min " + growthConfig.minLevel);
+            if (_currentSizeLevel == growthConfig.minLevel)
+            {
+                if (_isFirstMinLevel)
+                {
+                    _isFirstMinLevel = false;
+                }
+                 // 1. Handle Color Flashing
+                float t = Mathf.PingPong(Time.time * flashSpeed, 1f);
+                _lightSprite.color = Color.Lerp(Color.red, Color.white, t);
+                // 2. Handle Size Pulsing
+                float pulse = Mathf.PingPong(Time.time * flashSpeed, sizeThreshold);
+                lightObject.transform.localScale = _initialLightScale + (Vector3.one * pulse);
+            }
+            if (_currentSizeLevel-1 == growthConfig.minLevel && _isFirstMinLevel)
+            {
+                _initialLightScale = lightObject.transform.localScale;
+            }
+            if (_currentSizeLevel - 1 == growthConfig.minLevel && !_isFirstMinLevel)
+            {
+                lightObject.transform.localScale = _initialLightScale;
+                _lightSprite.color = Color.white;
+            }
         }
 
 

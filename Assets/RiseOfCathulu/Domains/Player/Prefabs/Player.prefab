@@ -241,6 +241,9 @@ MonoBehaviour:
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
   initialSizeLevel: 2
   hitCooldown: 1
+  lightObject: {fileID: 7658951533393683893}
+  sizeThreshold: 0.8
+  flashSpeed: 2.7
 --- !u!114 &1395897156840073585
 MonoBehaviour:
   m_ObjectHideFlags: 0
