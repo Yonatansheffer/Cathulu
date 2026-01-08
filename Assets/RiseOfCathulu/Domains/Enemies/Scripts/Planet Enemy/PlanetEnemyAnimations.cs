@@ -36,8 +36,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             GameEvents.PlanetEnemyDestroyed -= DeathAnimation;
         }
         
-        private void DeathAnimation(Transform dummy)
+        private void DeathAnimation(Transform parent)
         {
+            if (transform.parent != parent) return;
             _animator.SetTrigger(Death);
             StartCoroutine(ShakeAndDestroy());
         }

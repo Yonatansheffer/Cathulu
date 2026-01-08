@@ -42,8 +42,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void StopShooting(Transform destroyedPlanet)
         {
-            if (transform.parent != destroyedPlanet)
-                return;
+            if (transform.parent != destroyedPlanet) return;
             _isDestroyed = true;
         }
 

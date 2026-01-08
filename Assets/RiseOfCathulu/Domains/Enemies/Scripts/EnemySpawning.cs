@@ -82,9 +82,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
         private void StopSpawning(Transform destroyedPlanet)
         {
-            if (transform.parent != destroyedPlanet)
-                return;
-
+            if (transform.parent != destroyedPlanet) return;
             StopAllCoroutines();
         }
 
