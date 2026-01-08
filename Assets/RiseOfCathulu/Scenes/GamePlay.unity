@@ -411,6 +411,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetRoot 4 Sun
       objectReference: {fileID: 0}
+    - target: {fileID: 3180386548376132842, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: initialHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901082786836395466, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: initialHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33
@@ -450,6 +458,26 @@ PrefabInstance:
     - target: {fileID: 4811934209974710087, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290120355026038317, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: maxOrbitSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656061667159487940, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Radius
+      value: 3.0269554
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656061667159487940, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.023698425
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656061667159487940, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.02369934
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393820442055450024, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: initialHealth
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
