@@ -159,6 +159,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             float scale = growthConfig.GetScale(_currentSizeLevel);
             transform.localScale = Vector3.one * scale;
+            
         }
       
         private void UpdateShield(bool isActive)

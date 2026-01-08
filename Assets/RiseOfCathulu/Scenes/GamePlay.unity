@@ -356,7 +356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14080
+      value: -12054
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.y
@@ -407,6 +407,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: sizeFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 1226654190249582154, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: sizeFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1226654190249582154, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 2666019479596491642, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 4 Sun
@@ -458,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 4811934209974710087, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: sizeFactor
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6290120355026038317, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: maxOrbitSpeed
@@ -738,6 +758,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15629
@@ -2657,13 +2681,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1572940553389784454, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5603
+      value: -10897
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8633
+      value: -8526
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2696,6 +2724,10 @@ PrefabInstance:
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665717866754436639, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2844,6 +2876,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6243360505571999858, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13032

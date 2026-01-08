@@ -1,4 +1,5 @@
-﻿using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+﻿using RiseOfCathulu.Domains.Player.Scripts;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 
@@ -11,8 +12,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [SerializeField, Tooltip("Distance threshold for ball shot")] private float ballShootDistance = 120f;
         [SerializeField, Tooltip("Cooldown for ball shot")] private float ballShootCooldown = 3f;
         [SerializeField, Tooltip("Bullet launch force")] private float bulletForce = 20f;
+        [SerializeField] private float sizeFactor = 5f;
+        [SerializeField] private GrowthConfig growthConfig;
 
         private GameObject _player;
+        private PlayerSize _playerSize;
         private float _lastBallShootTime = -999f;
         private bool _isDestroyed;
         private bool _isFrozen;
@@ -22,12 +26,12 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void Awake()
         {
             _player = GameObject.FindGameObjectWithTag("Player");
+            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();    
         }
 
         private void OnEnable()
         {
             _shootStartTime = Time.time + startShootDelay;
-
             GameEvents.PlanetEnemyDestroyed += StopShooting;
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
@@ -74,6 +78,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void ShootBallBullet()
         {
             var bullet = EnemyBulletPool.Instance.Get();
+            bullet.transform.localScale =  growthConfig.GetScale(_playerSize.CurrentSizeLevel) * 
+                                           (transform.localScale / sizeFactor);
             bullet.transform.position = transform.position;
             var dir = (_player.transform.position - transform.position).normalized;
             var rb = bullet.GetComponent<Rigidbody2D>();

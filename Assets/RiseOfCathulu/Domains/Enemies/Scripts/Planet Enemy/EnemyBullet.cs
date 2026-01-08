@@ -1,5 +1,4 @@
-﻿using RiseOfCathulu.Domains.Player.Scripts;
-using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+﻿using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
@@ -9,27 +8,17 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private bool _isFrozen;
         private Rigidbody2D _rb;
         private Vector2 _savedVelocity;
-        [SerializeField] private float lifeTime = 5f;
-        private PlayerSize _playerSize;
-        [SerializeField] private GrowthConfig growthConfig;
+        [SerializeField] private float lifeTime = 5f; 
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();    
-        }
-        
-        private void InitializeScaleFromPlayer()
-        {
-            if (_playerSize == null) return;
-            transform.localScale = Vector3.one * growthConfig.GetScale(_playerSize.CurrentSizeLevel);
         }
 
         private void OnEnable()
         {
             GameEvents.FreezeLevel += OnFreeze;
             GameEvents.UnFreezeLevel += OnUnFreeze;
-            InitializeScaleFromPlayer();
             Invoke(nameof(ReturnToPool), lifeTime);
         }
 

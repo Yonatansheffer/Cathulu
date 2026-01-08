@@ -7,14 +7,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
     public class PlayerGravityMotor : MonoBehaviour
     {
         [Header("Cruising Movement")]
-        [SerializeField, Tooltip("Target cruising speed when input is held")]
-        private float speed = 10f;
-        [SerializeField, Tooltip("Target drifting speed when no input is held")]
-        private float idleSpeed = 1.2f;
-        [SerializeField, Tooltip("How fast velocity converges to its target")]
-        private float convergenceRate = 4f;
-        [SerializeField, Tooltip("Absolute hard cap on velocity magnitude")]
-        private float absoluteMaxSpeed = 40f;
+        [SerializeField, Tooltip("Target cruising speed when input is held")] private float speed = 10f;
+        [SerializeField, Tooltip("Target drifting speed when no input is held")] private float idleSpeed = 1.2f;
+        [SerializeField, Tooltip("How fast velocity converges to its target")] private float convergenceRate = 4f;
+        [SerializeField, Tooltip("Absolute hard cap on velocity magnitude")] private float absoluteMaxSpeed = 40f;
         private bool _wasThrusting;
 
 
@@ -75,8 +71,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ClampAbsoluteSpeed();
 
         }
-        
-
 
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
         {
