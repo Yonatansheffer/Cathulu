@@ -198,7 +198,7 @@ MonoBehaviour:
   noiseTimeScale: 0.5
   teaseDistance: 1000
   neutralDistance: 500
-  panicDistance: 250
+  panicDistance: 200
   teaseAttraction: 0.75
   neutralAttraction: 0.25
   fleeStrength: 1.1

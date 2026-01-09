@@ -16,6 +16,7 @@ TagManager:
   - Enemy Bullet
   - Planet Enemy
   - Enemy Shield
+  - Snitch
   layers:
   - Default
   - TransparentFX
