@@ -13,10 +13,10 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [SerializeField] private bool clockwise = true;
         
         [Header("Tilting Movement")]
-        [SerializeField, Tooltip("Max tilt angle while idle")]
-        private float idleTiltAngle = 15f;
-        [SerializeField, Tooltip("Tilt oscillation speed while idle")]
-        private float tiltSpeed = 2f;
+        [SerializeField, Tooltip("Max tilt angle while idle")] private float idleTiltAngle = 15f;
+        [SerializeField, Tooltip("Tilt oscillation speed while idle")] private float tiltSpeed = 2f;
+        private Vector2 _savedVelocity;
+        private float _savedAngularVelocity;
         
 
         [Header("Spin Control")]
@@ -46,25 +46,40 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         
         private void OnFreeze()
         {
+            if (_isFrozen) return; // Prevent double-triggering
             _isFrozen = true;
+
+            // Capture current momentum
+            _savedVelocity = _rb.linearVelocity;
+            _savedAngularVelocity = _rb.angularVelocity;
+
+            // Completely stop the physics body
+            _rb.linearVelocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+            _rb.simulated = false; // This prevents ANY physics movement or collisions
         }
-        
+
         private void OnUnFreeze()
         {
+            if (!_isFrozen) return;
             _isFrozen = false;
+
+            // Restore the physics body
+            _rb.simulated = true;
+            _rb.linearVelocity = _savedVelocity;
+            _rb.angularVelocity = _savedAngularVelocity;
         }
 
         private void FixedUpdate()
         {
             if (gravityPoint == null || _isFrozen)
                 return;
+            print(_isFrozen);
             Vector2 toCenter = gravityPoint.position - transform.position;
             Vector2 radialDir = toCenter.normalized;
             HandleIdleTilt();
             _rb.position = (Vector2)gravityPoint.position - radialDir * orbitRadius;
-
-            // 2. Tangential direction
-            Vector2 tangentDir = clockwise ? new Vector2(radialDir.y, -radialDir.x)
+            var tangentDir = clockwise ? new Vector2(radialDir.y, -radialDir.x)
                 : new Vector2(-radialDir.y, radialDir.x);
 
             _rb.linearVelocity = tangentDir * orbitSpeed;
