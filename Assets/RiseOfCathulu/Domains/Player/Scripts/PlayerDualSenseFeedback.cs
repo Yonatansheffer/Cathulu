@@ -294,8 +294,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 );
 
                 float speed01 = Mathf.Clamp01(_smoothedSpeed / speedFactor);
-                float target = gravityRumbleMax * (1f - speed01);
-
+                float target = gravityRumbleMax * (1f - speed01) * 0.3f; // Reduces final strength by half
                 _currentGravityRumble = Mathf.MoveTowards(
                     _currentGravityRumble,
                     target,
