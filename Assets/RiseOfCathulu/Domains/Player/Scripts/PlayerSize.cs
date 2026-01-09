@@ -67,11 +67,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void HandleHit(Collider2D other)
         {
-            print( "shield " + _isShieldActive + " hit" + _isOnHitCooldown);
             if (_isShieldActive || _isOnHitCooldown) return;
             if (other.CompareTag("Enemy Bullet"))
             {
-                print("hello");
                 TakeHit();
                 return;
             }
@@ -89,13 +87,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void Update()
         {
+            print("shield" + _isShieldActive);
             CheatSize();
             UpdateLight();
         }
         
         private void UpdateLight()
         {
-            print("this " + _currentSizeLevel + " min " + growthConfig.minLevel);
             if (_currentSizeLevel == growthConfig.minLevel)
             {
                 if (_isFirstMinLevel)
@@ -166,11 +164,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (isActive)
             {
-                StartCoroutine(ClearShieldGrace());
+                _isShieldActive = true;
             }
             else
             {
-                _isShieldActive = true;
+                StartCoroutine(ClearShieldGrace());
             }
         }
         
