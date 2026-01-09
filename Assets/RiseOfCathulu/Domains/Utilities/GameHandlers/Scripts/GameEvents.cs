@@ -44,6 +44,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<Vector2, float,float,float> OnEnteredGravityZone;
         public static Action OnExitedGravityZone;
         public static Action DestroyedSun;
+        public static Action SnitchCaught;
 
         
     

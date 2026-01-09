@@ -67,6 +67,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void HandleHit(Collider2D other)
         {
+            if (other.CompareTag("Snitch"))
+            {
+                AdjustSize(+5);
+            }
             if (_isShieldActive || _isOnHitCooldown) return;
             if (other.CompareTag("Enemy Bullet"))
             {
@@ -87,7 +91,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void Update()
         {
-            print("shield" + _isShieldActive);
             CheatSize();
             UpdateLight();
         }
