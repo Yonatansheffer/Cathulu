@@ -35,6 +35,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action EnemySpawned;
         public static Action SpawnAllWalkingEnemies;
         public static Action<bool> ShieldUpdated;
+        public static Action<bool> EnemyShieldUpdated;
         public static Action<int> PlayerLostLife;
         public static Action<Transform> PlanetEnemyDestroyed;
         public static Action<int> AddPoints;

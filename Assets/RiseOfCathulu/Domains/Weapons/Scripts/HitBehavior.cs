@@ -9,7 +9,7 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
         protected override void HandleHit(GameObject other)
         {
             if (other.gameObject.CompareTag("Planet") ||
-                other.gameObject.CompareTag("Step") || other.gameObject.CompareTag("Background"))
+                other.gameObject.CompareTag("Enemy Shield") || other.gameObject.CompareTag("Boundary"))
             {
                 Stop();
                 Animator.SetTrigger(HitCeiling);

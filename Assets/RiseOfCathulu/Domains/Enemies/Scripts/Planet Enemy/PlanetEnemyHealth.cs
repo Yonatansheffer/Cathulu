@@ -15,9 +15,15 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             _currentHealth = initialHealth;
         }
         
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Weapon")) return;
+            Collider2D myShieldCollider = GetComponentInChildren<PlanetEnemyShield>()?.GetComponent<Collider2D>();
+            if (myShieldCollider != null && myShieldCollider.enabled)
+            {
+                return;
+            }
             _currentHealth--;
             if(_currentHealth <= 0)
             {

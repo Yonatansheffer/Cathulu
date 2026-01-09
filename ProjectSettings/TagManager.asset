@@ -15,6 +15,7 @@ TagManager:
   - PointCollectible
   - Enemy Bullet
   - Planet Enemy
+  - Enemy Shield
   layers:
   - Default
   - TransparentFX
