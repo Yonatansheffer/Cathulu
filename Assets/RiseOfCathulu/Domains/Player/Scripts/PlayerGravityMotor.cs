@@ -11,8 +11,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField, Tooltip("Target drifting speed when no input is held")] private float idleSpeed = 1.2f;
         [SerializeField, Tooltip("How fast velocity converges to its target")] private float convergenceRate = 4f;
         [SerializeField, Tooltip("Absolute hard cap on velocity magnitude")] private float absoluteMaxSpeed = 40f;
-        private bool _wasThrusting;
-
+        [SerializeField] private float cruiseLockThreshold = 0.95f;
+        [SerializeField] private float thrustReleaseThreshold = 0.15f;
+        private bool _thrustHeld;
+        private bool _cruiseLocked;
 
         [Header("Gravity Defaults")]
         private float _defaultInwardGravity = 30f;
@@ -26,7 +28,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private float _vortexGrip;
         private bool _suspendMovement;
         private Vector2 _lastMoveDir;
-        private float _gravityFade = 0f;
+        private float _gravityFade;
         
 
         [Header("Trigger Curves")]
@@ -110,22 +112,97 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void ApplyCruising(Vector2 steerInput, float thrust)
         {
             float accelInput = ApplyTriggerCurve(thrust, 0.05f, accelerationTriggerCurve);
+
             Vector2 vel = _rb.linearVelocity;
             float speedNow = vel.magnitude;
-            //  STEER CONTROL
-            if (steerInput.sqrMagnitude > 0.01f)
-                _lastMoveDir = Vector2.Lerp(_lastMoveDir, steerInput.normalized, steeringFactor * Time.fixedDeltaTime).normalized;
-            //  SPEED CONTROL
-            if (thrust > 0.01f)
+
+            bool pressedThisFrame = false;
+            if (_thrustHeld && thrust < thrustReleaseThreshold)
             {
-                float targetSpeed = Mathf.Lerp(idleSpeed, speed, accelInput);
-                Vector2 targetVelocity = _lastMoveDir * targetSpeed;
-                vel = Vector2.Lerp(vel, targetVelocity, convergenceRate * Time.fixedDeltaTime);
+                _thrustHeld = false;
             }
+            if (!_thrustHeld && thrust > thrustReleaseThreshold)
+            {
+                _thrustHeld = true;
+                pressedThisFrame = true;
+            }
+            bool thrusting = _thrustHeld;
+
+
+            // ----------------------------
+            // STEERING (always allowed)
+            // ----------------------------
+            if (steerInput.sqrMagnitude > 0.01f)
+            {
+                _lastMoveDir = Vector2.Lerp(
+                    _lastMoveDir,
+                    steerInput.normalized,
+                    steeringFactor * Time.fixedDeltaTime
+                ).normalized;
+            }
+
+            // ----------------------------
+            // CRUISE STATE LOGIC (NO GRAVITY)
+            // ----------------------------
+            if (!_isInGravityZone)
+            {
+                if (pressedThisFrame)
+                {
+                    _cruiseLocked = false;
+                }
+                // Accelerating toward max
+                if (thrusting && !_cruiseLocked)
+                {
+                    float targetSpeed = Mathf.Lerp(idleSpeed, speed, accelInput);
+                    Vector2 targetVelocity = _lastMoveDir * targetSpeed;
+
+                    vel = Vector2.Lerp(
+                        vel,
+                        targetVelocity,
+                        convergenceRate * Time.fixedDeltaTime
+                    );
+
+                    // Lock cruise when close enough to max
+                    if (vel.magnitude >= speed * cruiseLockThreshold)
+                    {
+                        vel = vel.normalized * speed;
+                        _cruiseLocked = true;
+                    }
+                }
+                // Cruise lock: maintain inertia even with no input
+                else if (_cruiseLocked)
+                {
+                    vel = vel.normalized * speed;
+                }
+                // Not thrusting and not cruising → slow drift
+                else
+                {
+                    if (speedNow > idleSpeed)
+                    {
+                        vel = Vector2.Lerp(
+                            vel,
+                            vel.normalized * idleSpeed,
+                            convergenceRate * Time.fixedDeltaTime
+                        );
+                    }
+                }
+            }
+            // ----------------------------
+            // IN GRAVITY → unchanged behavior
+            // ----------------------------
             else
             {
-                if (speedNow > idleSpeed)
-                    vel = Vector2.Lerp(vel, vel.normalized * idleSpeed, convergenceRate * Time.fixedDeltaTime);
+                _cruiseLocked = false;
+
+                if (thrusting)
+                {
+                    float targetSpeed = Mathf.Lerp(idleSpeed, speed, accelInput);
+                    vel = Vector2.Lerp(
+                        vel,
+                        _lastMoveDir * targetSpeed,
+                        convergenceRate * Time.fixedDeltaTime
+                    );
+                }
             }
             _rb.linearVelocity = vel;
         }
