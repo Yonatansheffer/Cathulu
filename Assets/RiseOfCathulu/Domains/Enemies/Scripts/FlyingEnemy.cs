@@ -19,6 +19,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Minimum of player attraction (0-1)")] private float minPlayerAttraction = 0.55f;
         [SerializeField, Tooltip("Maximum of player attraction (0-1)")] private float maxPlayerAttraction = 0.9f;
         [SerializeField, Tooltip("Time scale for Perlin noise randomness")] private float noiseTimeScale = 0.3f;
+        [SerializeField] private float eatableSoftRadiusFactor = 0.75f; // 75% of eatable radius
+
         private PlayerSize _player;
         private float _playerAttractionWeight;
         
@@ -195,49 +197,87 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         }
         
 
-        private Vector3 ApplyTetherConstraint(Vector3 moveDir)
-        {
-            if (!_isTethered || _tetherTransform == null)
-                return moveDir;
+private Vector3 ApplyTetherConstraint(Vector3 moveDir)
+{
+    if (!_isTethered || _tetherTransform == null)
+        return moveDir;
 
-            Vector3 toCenter = _tetherTransform.position - transform.position;
-            float currentDistance = toCenter.magnitude;
+    Vector3 toCenter = _tetherTransform.position - transform.position;
+    float currentDistance = toCenter.magnitude;
 
-            Vector3 fromCenterDir = -toCenter.normalized;
+    Vector3 toCenterDir = toCenter.normalized;
+    Vector3 fromCenterDir = -toCenterDir;
 
-            // --- INNER BOUND (minimum distance) ---
-            if (!_isCurrentlyEatable && currentDistance < _eatableMaxTetherDistance)
-            {
-                float pushStrength = Mathf.Clamp01(
-                    (_eatableMaxTetherDistance - currentDistance) / 2f
-                );
+    // -----------------------------
+    // EATABLE BEHAVIOR (SOFT ZONE)
+    // -----------------------------
+    if (_isCurrentlyEatable)
+    {
+        float softRadius = _eatableMaxTetherDistance * eatableSoftRadiusFactor;
 
-                return Vector3.Lerp(
-                    moveDir,
-                    fromCenterDir,
-                    pushStrength + 0.5f
-                ).normalized;
-            }
-
-            // --- OUTER BOUND (maximum distance) ---
-            float maxAllowedDistance =
-                _isCurrentlyEatable ? _eatableMaxTetherDistance : _maxTetherDistance;
-
-            if (currentDistance > maxAllowedDistance)
-            {
-                float pullStrength = Mathf.Clamp01(
-                    (currentDistance - maxAllowedDistance) / 2f
-                );
-
-                return Vector3.Lerp(
-                    moveDir,
-                    toCenter.normalized,
-                    pullStrength + 0.5f
-                ).normalized;
-            }
-
+        // Inside soft zone → no constraint at all
+        if (currentDistance < softRadius)
             return moveDir;
+
+        // Between soft zone and hard leash → gentle pull inward
+        if (currentDistance < _eatableMaxTetherDistance)
+        {
+            float t = Mathf.InverseLerp(
+                softRadius,
+                _eatableMaxTetherDistance,
+                currentDistance
+            );
+
+            return Vector3.Lerp(
+                moveDir,
+                toCenterDir,
+                t * 0.6f
+            ).normalized;
         }
+
+        // Outside hard leash → strong pull
+        float hardPull = Mathf.Clamp01(
+            (currentDistance - _eatableMaxTetherDistance) / 2f
+        );
+
+        return Vector3.Lerp(
+            moveDir,
+            toCenterDir,
+            hardPull + 0.6f
+        ).normalized;
+    }
+
+    // --------------------------------
+    // NON-EATABLE (ORIGINAL BEHAVIOR)
+    // --------------------------------
+    if (currentDistance < _eatableMaxTetherDistance)
+    {
+        float pushStrength = Mathf.Clamp01(
+            (_eatableMaxTetherDistance - currentDistance) / 2f
+        );
+
+        return Vector3.Lerp(
+            moveDir,
+            fromCenterDir,
+            pushStrength + 0.5f
+        ).normalized;
+    }
+
+    if (currentDistance > _maxTetherDistance)
+    {
+        float pullStrength = Mathf.Clamp01(
+            (currentDistance - _maxTetherDistance) / 2f
+        );
+
+        return Vector3.Lerp(
+            moveDir,
+            toCenterDir,
+            pullStrength + 0.5f
+        ).normalized;
+    }
+
+    return moveDir;
+}
 
 
         private void UpdateFacing(Vector3 dir)
@@ -264,6 +304,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             // Safety
             if (!_isTethered || _tetherTransform == null || !_playerTransform)
                 return randomDir;
+            
 
             // --- Player awareness zone check (CENTER-based) ---
             float playerToCenterDist = Vector3.Distance(

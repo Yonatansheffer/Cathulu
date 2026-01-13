@@ -154,6 +154,14 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
             _trailRenderer.time = (_currentSizeLevel * 0.1f);
             ApplyScale();
+            var motor = GetComponent<PlayerGravityMotor>();
+            if (motor != null)
+            {
+                motor.ApplySizeStats(
+                    growthConfig.GetMaxSpeed(_currentSizeLevel),
+                    growthConfig.GetConvergence(_currentSizeLevel)
+                );
+            }
         }
 
         private void ApplyScale()

@@ -74,7 +74,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         {
             if (gravityPoint == null || _isFrozen)
                 return;
-            print(_isFrozen);
             Vector2 toCenter = gravityPoint.position - transform.position;
             Vector2 radialDir = toCenter.normalized;
             HandleIdleTilt();

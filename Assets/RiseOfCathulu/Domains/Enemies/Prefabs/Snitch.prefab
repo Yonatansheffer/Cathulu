@@ -193,9 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e970d9594c1480fb9a0cc3ac39fb145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Enemies.Scripts.GoldenSnitch
-  baseMoveSpeed: 100
-  panicSpeedMultiplier: 1.8
+  gameArea: {fileID: 0}
+  baseMoveSpeed: 80
+  panicSpeedMultiplier: 1.6
   noiseTimeScale: 0.5
+  boundaryPadding: 10
+  boundaryForce: 1.3
   teaseDistance: 1000
   neutralDistance: 500
   panicDistance: 200

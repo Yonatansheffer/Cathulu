@@ -48,11 +48,19 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _rb = GetComponent<Rigidbody2D>();
             ResetGravityToDefaults();
         }
+        
 
         private void FixedUpdate()  
         {
             Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
         }
+        
+        public void ApplySizeStats( float maxSpeed, float convergence)
+        {
+            absoluteMaxSpeed = maxSpeed;
+            convergenceRate = convergence;
+        }
+
         
         public Vector2 FacingDirection
         {
@@ -96,10 +104,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _suspendMovement = suspend;
         }
         
-        public void SetDiveState(bool diving)
-        {
-            _gravityMultiplier = diving ? 2.5f : 1f;
-        }
 
         private float ApplyTriggerCurve(float value, float deadZone, AnimationCurve curve)
         {
