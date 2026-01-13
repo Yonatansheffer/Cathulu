@@ -85,7 +85,17 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (transform.parent != destroyedPlanet) return;
             StopAllCoroutines();
         }
-
+        
+        private int GetForcedEatableLevel()
+        {
+            // Smallest level that is eatable by the player
+            // (equal size is eatable in your logic)
+            return Mathf.Clamp(
+                _playerSize.CurrentSizeLevel,
+                growthConfig.minLevel,
+                growthConfig.maxLevel
+            );
+        }
 
         private void EnemySpawnRoutine() => StartCoroutine(EnemySpawn());
 
@@ -104,8 +114,22 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 
                 var flyingEnemy = FlyingEnemyPool.Instance.Get();
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
-                int spawnedLevel = GetNormalDistributedLevel();
+                int spawnedLevel;
+                bool needEatableEnemy =
+                    _currentActiveEnemies > 0 &&
+                    _currentEatableEnemies == 0;
+
+                if (needEatableEnemy)
+                {
+                    spawnedLevel = GetForcedEatableLevel();
+                }
+                else
+                {
+                    spawnedLevel = GetNormalDistributedLevel();
+                }
+
                 enemy.InitializeLevel(spawnedLevel, growthConfig);
+
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);

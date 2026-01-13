@@ -18,7 +18,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private float hitCooldown = 1f;
         
         [Header("Light Object")]
-
         [SerializeField] private GameObject lightObject;
         [SerializeField] private float sizeThreshold = 5f;
         [SerializeField] private float flashSpeed = 3f;
@@ -27,6 +26,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _isFirstMinLevel = true;
 
         private TrailRenderer _trailRenderer;
+        private PlayerGravityMotor _motor;
         private int _currentSizeLevel;
         private bool _isShieldActive;
         private bool _isOnHitCooldown;
@@ -37,6 +37,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
       
         private void Awake()
         {
+            _motor = GetComponent<PlayerGravityMotor>();
             _lightSprite = lightObject.GetComponent<SpriteRenderer>();
             _currentSizeLevel = initialSizeLevel;
             _trailRenderer = GetComponent<TrailRenderer>();
@@ -154,10 +155,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
             _trailRenderer.time = (_currentSizeLevel * 0.1f);
             ApplyScale();
-            var motor = GetComponent<PlayerGravityMotor>();
-            if (motor != null)
+            if (_motor != null)
             {
-                motor.ApplySizeStats(
+                print("hello");
+                _motor.ApplySizeStats(
                     growthConfig.GetMaxSpeed(_currentSizeLevel),
                     growthConfig.GetConvergence(_currentSizeLevel)
                 );

@@ -253,9 +253,11 @@ MonoBehaviour:
   sizeLevel: 0
   moveSpeed: 70
   speedVariation: 0.4
-  playerAttractionWeight: 0.55
+  minPlayerAttraction: 0.55
+  maxPlayerAttraction: 0.9
   noiseTimeScale: 0.3
-  pointsForKill: 120
+  eatableSoftRadiusFactor: 0.75
+  pointsForKill: 0
   detectionDistance: 4
   sideClearanceDistance: 1
   avoidanceLerpWeight: 2

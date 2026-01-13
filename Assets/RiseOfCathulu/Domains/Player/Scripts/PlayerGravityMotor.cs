@@ -58,6 +58,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         public void ApplySizeStats( float maxSpeed, float convergence)
         {
             absoluteMaxSpeed = maxSpeed;
+            speed = maxSpeed; 
             convergenceRate = convergence;
         }
 
@@ -79,7 +80,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ApplyCruising(steering, thrust);
             ApplyGravity();
             ClampAbsoluteSpeed();
-
         }
 
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
