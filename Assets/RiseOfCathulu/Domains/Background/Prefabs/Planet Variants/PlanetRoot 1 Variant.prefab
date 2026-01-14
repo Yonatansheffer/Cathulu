@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: initialPoolSize
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 749912132047032911, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 749912132047032911, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1145222240560599387, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: innerDangerRange
       value: 160
@@ -123,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 3371333428188933272, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_LocalScale.y
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494966380309833757, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4062391835470510252, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_Size.x
@@ -675,10 +687,37 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: -4052012970167966250, guid: 6beaffd84427579468bb6876895d33ba, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 3109609996827450320, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 6908956405829748485, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8331400270794985523, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7909827949863036732}
   m_SourcePrefab: {fileID: 100100000, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+--- !u!1 &2255796061378626096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8331400270794985523, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+  m_PrefabInstance: {fileID: 7841091270581080579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7909827949863036732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255796061378626096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e06d48b032154f42bbbcfaa62daaf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetCanDestruct
+  Player: {fileID: 0}
+  destructibleLight: {fileID: 0}
+  smallerThanPlayer: 0
+  guardianIsAlive: 1
+  canBeDestroyed: 0
 --- !u!4 &8752399172440395277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1560464679327587342, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}

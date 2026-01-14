@@ -145,6 +145,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void AdjustSize(int delta)
         {
+            GameEvents.PlayerChangeSize.Invoke();
+
             int previousSize = _currentSizeLevel;
             _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
             if (_currentSizeLevel != previousSize)

@@ -17,6 +17,7 @@ TagManager:
   - Planet Enemy
   - Enemy Shield
   - Snitch
+  - Destructable Planet
   layers:
   - Default
   - TransparentFX

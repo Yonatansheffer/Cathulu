@@ -66,6 +66,9 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
                 SpawnParticles(orangeStarsParticles, bossParticlesLifetime);
             else if (other.gameObject.CompareTag("Enemy"))
                 SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
+            else if (other.gameObject.CompareTag("Destructable Planet"))
+                SpawnParticles(pinkStarsParticles, enemyParticlesLifetime);
+
             HandleHit(other.gameObject);
         }
 

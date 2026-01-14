@@ -45,6 +45,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action OnExitedGravityZone;
         public static Action DestroyedSun;
         public static Action SnitchCaught;
+        public static Action PlayerChangeSize;
 
         
     

@@ -2657,6 +2657,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4317537541787664195, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4406219783516737104, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: gravityRumbleMax
       value: 0.04
