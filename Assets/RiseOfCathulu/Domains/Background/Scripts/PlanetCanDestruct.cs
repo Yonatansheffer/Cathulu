@@ -12,11 +12,11 @@ public class PlanetCanDestruct : MonoBehaviour
     private const string DESTRUCTIBLE_PLANET_TAG = "Destructable Planet";
 
 
-    public bool smallerThanPlayer;
-    public bool guardianIsAlive = true;
-    public bool canBeDestroyed;
+    private bool smallerThanPlayer;
+    private bool guardianIsAlive = true;
+    private bool canBeDestroyed;
     
-    public List<Transform> guardians = new List<Transform>();
+    private List<Transform> guardians = new List<Transform>();
 
     
 
@@ -136,7 +136,7 @@ public class PlanetCanDestruct : MonoBehaviour
         if (!canBeDestroyed)
             return;
 
-        if (collision.gameObject.CompareTag("Weapon"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             DestroyPlanet();
         }
@@ -144,11 +144,6 @@ public class PlanetCanDestruct : MonoBehaviour
     
     private void DestroyPlanet()
     {
-        Debug.Log($"{name} destroyed by weapon!");
-
-        // Optional effects
-        // Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
         Destroy(gameObject);
     }
 }

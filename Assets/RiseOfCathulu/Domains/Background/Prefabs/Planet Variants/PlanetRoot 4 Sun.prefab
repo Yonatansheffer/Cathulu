@@ -324,6 +324,14 @@ PrefabInstance:
       propertyPath: spawnActivationRange
       value: 3000
       objectReference: {fileID: 0}
+    - target: {fileID: 8662421764484142562, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8662421764484142562, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8835815815145669574, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: gravityStrength
       value: 800000

@@ -817,6 +817,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+--- !u!1 &408883311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4665717866754436639, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+  m_PrefabInstance: {fileID: 5679415044458585225}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &408883314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408883311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5f45031b3ab51489902971471cc518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapIconScaler2D
+  targetWorldScale: {x: 2000, y: 2000}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2698,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4665717866754436639, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 408883314}
   m_SourcePrefab: {fileID: 100100000, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
 --- !u!1001 &6787893120177761530
 PrefabInstance:
