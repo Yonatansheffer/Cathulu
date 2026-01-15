@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73d5839b1f19554db649ee7054fdd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WinLoseManager
+  winConditionObject: {fileID: 1098498653}
   endSceneName: Ending Scene
 --- !u!1001 &280039188
 PrefabInstance:
@@ -835,7 +836,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4665717866754436639, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
   m_PrefabInstance: {fileID: 5679415044458585225}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &408883314
+--- !u!114 &408883317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -844,9 +845,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 408883311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5f45031b3ab51489902971471cc518, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d26c43a808c4524ab85fad73c636f30, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MinimapIconScaler2D
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMinimapIconScaler2D
   targetWorldScale: {x: 2000, y: 2000}
 --- !u!1001 &461420100
 PrefabInstance:
@@ -1729,6 +1730,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
   m_PrefabInstance: {fileID: 20594237}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1098498653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2666019479596491642, guid: faf660f5736257744bee72fdd7636044, type: 3}
+  m_PrefabInstance: {fileID: 174525532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1128627713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
@@ -1879,6 +1885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (1)
@@ -2662,6 +2672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 2 Variant
@@ -2855,7 +2869,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4665717866754436639, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 408883314}
+      addedObject: {fileID: 408883317}
   m_SourcePrefab: {fileID: 100100000, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
 --- !u!1001 &6787893120177761530
 PrefabInstance:

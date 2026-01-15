@@ -228,6 +228,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9156918353416367831, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_Radius
+      value: 82.22363
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156918353416367831, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4052012970167966250, guid: 6beaffd84427579468bb6876895d33ba, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -715,9 +723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlanetCanDestruct
   Player: {fileID: 0}
   destructibleLight: {fileID: 0}
-  smallerThanPlayer: 0
-  guardianIsAlive: 1
-  canBeDestroyed: 0
 --- !u!4 &8752399172440395277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1560464679327587342, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}

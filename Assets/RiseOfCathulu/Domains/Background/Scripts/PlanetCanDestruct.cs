@@ -96,7 +96,7 @@ public class PlanetCanDestruct : MonoBehaviour
             planetVisuals = transform; // fallback
         }
 
-        float playerSize = Player.localScale.magnitude;
+        float playerSize = Player.localScale.magnitude * 5;
         float planetSize = planetVisuals.localScale.magnitude;
 
         smallerThanPlayer = planetSize < playerSize;

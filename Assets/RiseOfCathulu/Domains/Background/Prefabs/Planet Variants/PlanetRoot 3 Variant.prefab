@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Radius
+      value: 334.00635
+      objectReference: {fileID: 0}
+    - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.7045898
+      objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 3 Variant
