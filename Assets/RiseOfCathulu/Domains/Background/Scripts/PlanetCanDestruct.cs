@@ -131,12 +131,12 @@ public class PlanetCanDestruct : MonoBehaviour
     }
 
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (!canBeDestroyed)
             return;
 
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             DestroyPlanet();
         }
