@@ -37,6 +37,13 @@ public class WinLoseManager : MonoBehaviour
         GameEvents.PlayerDefeated -= OnPlayerDefeated;
     }
     
+    public void ResetState(GameObject newWinCondition)
+    {
+        hasWon = false;
+        playerWon = false;
+        winConditionObject = newWinCondition;
+    }
+    
     void Update()
     {
         if (hasWon) return;

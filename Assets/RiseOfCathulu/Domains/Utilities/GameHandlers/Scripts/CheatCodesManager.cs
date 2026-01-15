@@ -50,6 +50,16 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             {
                 GameEvents.ToSpawnEnemy?.Invoke();
             }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                GameEvents.PlayerWon?.Invoke();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                GameEvents.PlayerDefeated?.Invoke();
+            }
         }
     }
 }

@@ -10,6 +10,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private const string GamePlaySceneName = "GamePlay";
         private const string EndingSceneName = "Ending Scene";
         private bool _inLevel = true;
+        [SerializeField] private GameObject winConditionObject;
+        
 
         private void Awake()
         {
@@ -26,6 +28,11 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             GameEvents.EndScene -= EndGame;
             GameEvents.BeginGamePlay -= LoadGamePlay;
+        }
+        
+        private void Start()
+        {
+            WinLoseManager.Instance.ResetState(winConditionObject);
         }
         private void Update()
         {

@@ -26,6 +26,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _isFirstMinLevel = true;
 
         private TrailRenderer _trailRenderer;
+        [SerializeField] private float minTrailWidth = 3f;
+        [SerializeField] private float trailWidthPerSize = 10f;
+
+        [SerializeField] private float minTrailTime = 0.1f;
+        [SerializeField] private float trailTimePerSize = 0.1f;
+        
         private PlayerGravityMotor _motor;
         private int _currentSizeLevel;
         private bool _isShieldActive;
@@ -154,8 +160,11 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 GetComponent<PlayerDualSenseFeedback>()?
                     .TriggerSizeChangeRumble(_currentSizeLevel - previousSize);
             }
-            _trailRenderer.widthMultiplier = _currentSizeLevel * 10;
-            _trailRenderer.time = (_currentSizeLevel * 0.1f);
+            float targetWidth = _currentSizeLevel * trailWidthPerSize;
+            _trailRenderer.widthMultiplier = Mathf.Max(minTrailWidth, targetWidth);
+
+            float targetTime = _currentSizeLevel * trailTimePerSize;
+            _trailRenderer.time = Mathf.Max(minTrailTime, targetTime);
             ApplyScale();
             if (_motor != null)
             {
