@@ -15,7 +15,10 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action RestartLevel;
         public static Action<float> AddTime;
         public static Action EndScene;
+        
         public static Action PlayerDefeated;
+        public static Action PlayerWon;
+
         public static Action PlanetEnemyEndedDeath;
         public static Action<GameState, int> GameOverUI;
 

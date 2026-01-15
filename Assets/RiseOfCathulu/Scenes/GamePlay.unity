@@ -529,6 +529,19 @@ MonoBehaviour:
   snitchPrefab: {fileID: 5491977127738029680, guid: d07c51a84f5d9ce438d5bb093bc4c01d, type: 3}
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
   gameArea: {fileID: 1623845477}
+--- !u!114 &252538943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252538935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73d5839b1f19554db649ee7054fdd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinLoseManager
+  endSceneName: Ending Scene
 --- !u!1001 &280039188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1978,6 +1991,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8618363181324428778, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 252538939}
+    - targetCorrespondingSourceObject: {fileID: 8618363181324428778, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 252538943}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa0256b4dab32644a793bc8d60c5af3, type: 3}
 --- !u!1001 &1348191728
 PrefabInstance:

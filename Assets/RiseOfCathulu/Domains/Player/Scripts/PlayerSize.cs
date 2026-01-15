@@ -135,7 +135,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             GameEvents.ShakeCamera?.Invoke();
             SoundManager.Instance.PlaySound("Shield Hit", transform);
             GameEvents.PlayerLostLife?.Invoke(_currentSizeLevel);
-            if (_currentSizeLevel < growthConfig.minLevel)
+            if (_currentSizeLevel == growthConfig.minLevel)
             {
                 GameEvents.PlayerDefeated?.Invoke();
                 SoundManager.Instance.PlaySound("Lost Life", transform);
