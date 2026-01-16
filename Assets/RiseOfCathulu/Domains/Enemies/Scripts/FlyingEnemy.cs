@@ -197,87 +197,87 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         }
         
 
-private Vector3 ApplyTetherConstraint(Vector3 moveDir)
-{
-    if (!_isTethered || _tetherTransform == null)
-        return moveDir;
-
-    Vector3 toCenter = _tetherTransform.position - transform.position;
-    float currentDistance = toCenter.magnitude;
-
-    Vector3 toCenterDir = toCenter.normalized;
-    Vector3 fromCenterDir = -toCenterDir;
-
-    // -----------------------------
-    // EATABLE BEHAVIOR (SOFT ZONE)
-    // -----------------------------
-    if (_isCurrentlyEatable)
+    private Vector3 ApplyTetherConstraint(Vector3 moveDir)
     {
-        float softRadius = _eatableMaxTetherDistance * eatableSoftRadiusFactor;
-
-        // Inside soft zone → no constraint at all
-        if (currentDistance < softRadius)
+        if (!_isTethered || _tetherTransform == null)
             return moveDir;
 
-        // Between soft zone and hard leash → gentle pull inward
-        if (currentDistance < _eatableMaxTetherDistance)
+        Vector3 toCenter = _tetherTransform.position - transform.position;
+        float currentDistance = toCenter.magnitude;
+
+        Vector3 toCenterDir = toCenter.normalized;
+        Vector3 fromCenterDir = -toCenterDir;
+
+        // -----------------------------
+        // EATABLE BEHAVIOR (SOFT ZONE)
+        // -----------------------------
+        if (_isCurrentlyEatable)
         {
-            float t = Mathf.InverseLerp(
-                softRadius,
-                _eatableMaxTetherDistance,
-                currentDistance
+            float softRadius = _eatableMaxTetherDistance * eatableSoftRadiusFactor;
+
+            // Inside soft zone → no constraint at all
+            if (currentDistance < softRadius)
+                return moveDir;
+
+            // Between soft zone and hard leash → gentle pull inward
+            if (currentDistance < _eatableMaxTetherDistance)
+            {
+                float t = Mathf.InverseLerp(
+                    softRadius,
+                    _eatableMaxTetherDistance,
+                    currentDistance
+                );
+
+                return Vector3.Lerp(
+                    moveDir,
+                    toCenterDir,
+                    t * 0.6f
+                ).normalized;
+            }
+
+            // Outside hard leash → strong pull
+            float hardPull = Mathf.Clamp01(
+                (currentDistance - _eatableMaxTetherDistance) / 2f
             );
 
             return Vector3.Lerp(
                 moveDir,
                 toCenterDir,
-                t * 0.6f
+                hardPull + 0.6f
             ).normalized;
         }
 
-        // Outside hard leash → strong pull
-        float hardPull = Mathf.Clamp01(
-            (currentDistance - _eatableMaxTetherDistance) / 2f
-        );
+        // --------------------------------
+        // NON-EATABLE (ORIGINAL BEHAVIOR)
+        // --------------------------------
+        if (currentDistance < _eatableMaxTetherDistance)
+        {
+            float pushStrength = Mathf.Clamp01(
+                (_eatableMaxTetherDistance - currentDistance) / 2f
+            );
 
-        return Vector3.Lerp(
-            moveDir,
-            toCenterDir,
-            hardPull + 0.6f
-        ).normalized;
+            return Vector3.Lerp(
+                moveDir,
+                fromCenterDir,
+                pushStrength + 0.5f
+            ).normalized;
+        }
+
+        if (currentDistance > _maxTetherDistance)
+        {
+            float pullStrength = Mathf.Clamp01(
+                (currentDistance - _maxTetherDistance) / 2f
+            );
+
+            return Vector3.Lerp(
+                moveDir,
+                toCenterDir,
+                pullStrength + 0.5f
+            ).normalized;
+        }
+
+        return moveDir;
     }
-
-    // --------------------------------
-    // NON-EATABLE (ORIGINAL BEHAVIOR)
-    // --------------------------------
-    if (currentDistance < _eatableMaxTetherDistance)
-    {
-        float pushStrength = Mathf.Clamp01(
-            (_eatableMaxTetherDistance - currentDistance) / 2f
-        );
-
-        return Vector3.Lerp(
-            moveDir,
-            fromCenterDir,
-            pushStrength + 0.5f
-        ).normalized;
-    }
-
-    if (currentDistance > _maxTetherDistance)
-    {
-        float pullStrength = Mathf.Clamp01(
-            (currentDistance - _maxTetherDistance) / 2f
-        );
-
-        return Vector3.Lerp(
-            moveDir,
-            toCenterDir,
-            pullStrength + 0.5f
-        ).normalized;
-    }
-
-    return moveDir;
-}
 
 
         private void UpdateFacing(Vector3 dir)
@@ -296,40 +296,42 @@ private Vector3 ApplyTetherConstraint(Vector3 moveDir)
         private Vector3 CalculateDirection()
         {
             // --- Random (Perlin noise) direction ---
-            var timeOffset = Time.time * noiseTimeScale + GetInstanceID();
-            float noiseX = Mathf.PerlinNoise(timeOffset, 0f) - 0.5f;
-            float noiseY = Mathf.PerlinNoise(0f, timeOffset) - 0.5f;
-            var randomDir = new Vector3(noiseX, noiseY, 0f).normalized;
+            float timeOffset = Time.time * noiseTimeScale + GetInstanceID();
+            Vector3 randomDir = new Vector3(
+                Mathf.PerlinNoise(timeOffset, 0f) - 0.5f,
+                Mathf.PerlinNoise(0f, timeOffset) - 0.5f,
+                0f
+            ).normalized;
 
-            // Safety
             if (!_isTethered || _tetherTransform == null || !_playerTransform)
                 return randomDir;
-            
 
-            // --- Player awareness zone check (CENTER-based) ---
+            // --- Awareness zone check ---
             float playerToCenterDist = Vector3.Distance(
                 _playerTransform.position,
                 _tetherTransform.position
             );
 
-            bool playerInAwarenessZone =
+            bool playerInZone =
                 playerToCenterDist >= _eatableMaxTetherDistance &&
                 playerToCenterDist <= _maxTetherDistance;
 
-            // Outside zone → pure random movement
-            if (!playerInAwarenessZone)
+            if (!playerInZone)
                 return randomDir;
 
-            // --- Inside zone → attraction allowed ---
-            var toPlayer = _playerTransform.position - transform.position;
-            var playerDir = toPlayer.normalized;
-            var modifiedPlayerDir = playerDir * _currentAttractionSign;
+            // --- Attraction / Repulsion (SIGNED) ---
+            Vector3 toPlayerDir =
+                (_playerTransform.position - transform.position).normalized;
+
+            float signedAttraction =
+                _playerAttractionWeight * _currentAttractionSign;
 
             return (
-                randomDir * (1f - _playerAttractionWeight) +
-                modifiedPlayerDir * _playerAttractionWeight
+                randomDir * (1f - Mathf.Abs(signedAttraction)) +
+                toPlayerDir * signedAttraction
             ).normalized;
         }
+
 
         private Vector3 HandleObstacleAvoidance(Vector3 moveDir)
         {
