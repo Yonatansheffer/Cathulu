@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3730162615867089998, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: maxDistanceFromPlanet
-      value: 4500
+      value: 6400
       objectReference: {fileID: 0}
     - target: {fileID: 3730162615867089998, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: eatableMaxDistanceFromPlanet
-      value: 2000
+      value: 2900
       objectReference: {fileID: 0}
     - target: {fileID: 4665896077926337747, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: initialPoolSize
@@ -50,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6087757965096235578, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.x
-      value: 400
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 6087757965096235578, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.y
-      value: 400
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7246226354467762915, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: bulletForce
-      value: 500
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 7350649719469579750, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: orbitRadius
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5124
+      value: -12150.756
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5603
+      value: -6101.25
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.z
@@ -82,15 +82,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -14,7 +14,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         [Header("Texts")]
         [SerializeField, Tooltip("Shown when player is defeated by damage")] private TextMeshProUGUI defeatedText;
-        [SerializeField, Tooltip("Shown when time runs out")] private TextMeshProUGUI timeOverText;
         [SerializeField, Tooltip("Blinking 'press again' text on win")] private TextMeshProUGUI winPressAgainText;
         [SerializeField, Tooltip("Blinking 'press again' text on lose")] private TextMeshProUGUI losePressAgainText;
         [SerializeField, Tooltip("Final score text")] private TextMeshProUGUI scoreText;
@@ -54,18 +53,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
                     SoundManager.Instance.PlaySound("Win", transform);
                     break;
                 }
-                case GameState.TimeOver:
-                {
-                    if (loseBoard) loseBoard.SetActive(true);
-                    if (timeOverText) timeOverText.gameObject.SetActive(true);
-                    if (losePressAgainText)
-                    {
-                        losePressAgainText.enabled = true;
-                        _loseBlinkCo = StartCoroutine(BlinkText(losePressAgainText, blinkInterval));
-                    }
-                    SoundManager.Instance.PlaySound("Lose", transform);
-                    break;
-                }
                 case GameState.Defeated:
                 {
                     if (loseBoard) loseBoard.SetActive(true);
@@ -84,13 +71,9 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         private void ResetUI()
         {
             StopAllBlinking();
-
             if (winBoard) winBoard.SetActive(false);
             if (loseBoard) loseBoard.SetActive(false);
-
             if (defeatedText) defeatedText.gameObject.SetActive(false);
-            if (timeOverText) timeOverText.gameObject.SetActive(false);
-
             if (winPressAgainText)
             {
                 winPressAgainText.gameObject.SetActive(true);

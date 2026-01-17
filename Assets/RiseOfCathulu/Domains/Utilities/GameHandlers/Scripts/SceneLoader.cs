@@ -7,12 +7,11 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 {
     public class SceneLoader : MonoBehaviour
     {
-        private const string GamePlaySceneName = "GamePlay";
+        private const string GamePlaySceneName = "GamePlay 3";
         private const string EndingSceneName = "Ending Scene";
         private bool _inLevel = true;
         [SerializeField] private GameObject winConditionObject;
         
-
         private void Awake()
         {
             DontDestroyOnLoad(this);
@@ -30,10 +29,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.BeginGamePlay -= LoadGamePlay;
         }
         
-        private void Start()
-        {
-            WinLoseManager.Instance.ResetState(winConditionObject);
-        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape)) OnExit();

@@ -257,7 +257,7 @@ MonoBehaviour:
   maxPlayerAttraction: 0.9
   noiseTimeScale: 0.3
   eatableSoftRadiusFactor: 0.75
-  pointsForKill: 0
+  pointsForKill: 25
   detectionDistance: 4
   sideClearanceDistance: 1
   avoidanceLerpWeight: 2

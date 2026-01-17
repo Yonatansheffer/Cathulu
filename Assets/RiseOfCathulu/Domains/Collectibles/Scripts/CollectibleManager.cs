@@ -45,7 +45,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         {
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.WeaponCollected += UpdateWeapon;
-            GameEvents.BeginGameLoop += DestroyAllCollectibles;
+            GameEvents.BeginGamePlay += DestroyAllCollectibles;
             GameEvents.PlayerDefeated += StopCollectiblesMovement;
             GameEvents.PlayerLostLife += UpdatePlayerHealth;
             GameEvents.EnemyDestroyed += DropCollectible;
@@ -56,7 +56,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         {
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.WeaponCollected -= UpdateWeapon;
-            GameEvents.BeginGameLoop -= DestroyAllCollectibles;
+            GameEvents.BeginGamePlay -= DestroyAllCollectibles;
             GameEvents.PlayerDefeated -= StopCollectiblesMovement;
             GameEvents.PlayerLostLife -= UpdatePlayerHealth;
             GameEvents.EnemyDestroyed -= DropCollectible;

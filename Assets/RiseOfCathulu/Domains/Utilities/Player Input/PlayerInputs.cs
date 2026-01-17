@@ -118,6 +118,33 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Grow"",
+                    ""type"": ""Button"",
+                    ""id"": ""248e2c79-857e-4aa0-b14c-8370f4e40573"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shrink"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5ffcbc6-b0f6-4f93-8bc2-865373a22ea5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""508342f8-0fde-4f8f-b55e-f4890d6f38f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,6 +312,39 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c488de05-266a-4c13-a74e-33ab15136172"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""443ac969-dbad-4554-98a5-f85db69c55f0"",
+                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shrink"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e73d1acb-6c9a-4989-9603-a25c534758f5"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -296,6 +356,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Movement_Steer = m_Movement.FindAction("Steer", throwIfNotFound: true);
         m_Movement_Shoot = m_Movement.FindAction("Shoot", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
+        m_Movement_Grow = m_Movement.FindAction("Grow", throwIfNotFound: true);
+        m_Movement_Shrink = m_Movement.FindAction("Shrink", throwIfNotFound: true);
+        m_Movement_Start = m_Movement.FindAction("Start", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -379,6 +442,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Steer;
     private readonly InputAction m_Movement_Shoot;
     private readonly InputAction m_Movement_Move;
+    private readonly InputAction m_Movement_Grow;
+    private readonly InputAction m_Movement_Shrink;
+    private readonly InputAction m_Movement_Start;
     /// <summary>
     /// Provides access to input actions defined in input action map "Movement".
     /// </summary>
@@ -402,6 +468,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Movement/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Movement_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Movement/Grow".
+        /// </summary>
+        public InputAction @Grow => m_Wrapper.m_Movement_Grow;
+        /// <summary>
+        /// Provides access to the underlying input action "Movement/Shrink".
+        /// </summary>
+        public InputAction @Shrink => m_Wrapper.m_Movement_Shrink;
+        /// <summary>
+        /// Provides access to the underlying input action "Movement/Start".
+        /// </summary>
+        public InputAction @Start => m_Wrapper.m_Movement_Start;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -437,6 +515,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Grow.started += instance.OnGrow;
+            @Grow.performed += instance.OnGrow;
+            @Grow.canceled += instance.OnGrow;
+            @Shrink.started += instance.OnShrink;
+            @Shrink.performed += instance.OnShrink;
+            @Shrink.canceled += instance.OnShrink;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
         }
 
         /// <summary>
@@ -457,6 +544,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Grow.started -= instance.OnGrow;
+            @Grow.performed -= instance.OnGrow;
+            @Grow.canceled -= instance.OnGrow;
+            @Shrink.started -= instance.OnShrink;
+            @Shrink.performed -= instance.OnShrink;
+            @Shrink.canceled -= instance.OnShrink;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
         }
 
         /// <summary>
@@ -518,5 +614,26 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Grow" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGrow(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shrink" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShrink(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Start" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStart(InputAction.CallbackContext context);
     }
 }

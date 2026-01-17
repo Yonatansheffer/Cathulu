@@ -866,7 +866,7 @@ MonoBehaviour:
   maxDistanceFromPlanet: 2200
   eatableMaxDistanceFromPlanet: 475
   maxActiveEnemies: 10
-  maxEatableEnemies: 3
+  maxEatableEnemies: 2
   levelStandardDeviation: 1.2
   levelOffset: 1
   showDebugOverlay: 0

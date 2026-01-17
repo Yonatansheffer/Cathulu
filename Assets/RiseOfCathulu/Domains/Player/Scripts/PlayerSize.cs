@@ -55,11 +55,15 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void OnEnable()
         {
             GameEvents.ShieldUpdated += UpdateShield;
+            GameEvents.PlayerRequestedSizeDecrease += TryTakeHit;
+            GameEvents.PlayerGrow += AdjustSize;
         }
 
         private void OnDisable()
         {
             GameEvents.ShieldUpdated -= UpdateShield;
+            GameEvents.PlayerRequestedSizeDecrease -= TryTakeHit;
+            GameEvents.PlayerGrow -= AdjustSize;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -100,6 +104,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             CheatSize();
             UpdateLight();
+        }
+        
+        private void TryTakeHit()
+        {
+            if (_currentSizeLevel == growthConfig.minLevel) return;
+            TakeHit();
         }
         
         private void UpdateLight()
@@ -151,10 +161,17 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void AdjustSize(int delta)
         {
-            GameEvents.PlayerChangeSize.Invoke();
+           //GameEvents.PlayerChangeSize.Invoke();
+           int previousSize = _currentSizeLevel;
+           int newSize = _currentSizeLevel + delta;
+           print("current size: " + newSize +  "min size: " + growthConfig.minLevel);
 
-            int previousSize = _currentSizeLevel;
-            _currentSizeLevel = Mathf.Clamp(_currentSizeLevel + delta, growthConfig.minLevel, growthConfig.maxLevel);
+           if (newSize < growthConfig.minLevel)
+           {
+               GameEvents.PlayerDefeated?.Invoke();
+               return;
+           }
+           _currentSizeLevel = Mathf.Clamp(newSize, growthConfig.minLevel, growthConfig.maxLevel);
             if (_currentSizeLevel != previousSize)
             {
                 GetComponent<PlayerDualSenseFeedback>()?
@@ -168,7 +185,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ApplyScale();
             if (_motor != null)
             {
-                print("hello");
                 _motor.ApplySizeStats(
                     growthConfig.GetMaxSpeed(_currentSizeLevel),
                     growthConfig.GetConvergence(_currentSizeLevel)

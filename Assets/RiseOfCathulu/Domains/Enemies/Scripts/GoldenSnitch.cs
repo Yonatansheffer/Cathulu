@@ -19,7 +19,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [Header("Distance Behavior")]
         [SerializeField] private float teaseDistance = 8f;
         [SerializeField] private float neutralDistance = 4f;
-        [SerializeField] private float panicDistance = 2.5f;
+        //[SerializeField] private float panicDistance = 2.5f;
 
         [Header("Attraction")]
         [SerializeField] private float teaseAttraction = 0.75f;

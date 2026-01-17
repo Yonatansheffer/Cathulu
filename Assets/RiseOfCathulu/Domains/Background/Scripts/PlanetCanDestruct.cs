@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlanetCanDestruct : MonoBehaviour
 {
-    [SerializeField] private Transform Player;
+    /*[SerializeField] private Transform Player;
     [SerializeField] private GameObject destructibleLight;
     
     private const string NORMAL_PLANET_TAG = "Planet";
@@ -145,5 +145,5 @@ public class PlanetCanDestruct : MonoBehaviour
     private void DestroyPlanet()
     {
         Destroy(gameObject);
-    }
+    }*/
 }

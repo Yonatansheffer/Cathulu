@@ -4,23 +4,14 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 {
-    public enum GameState { Playing, Defeated, InFreeze, TimeOver, PlayerWon }
+    public enum GameState { Playing, Defeated, InFreeze, PlayerWon }
 
     public class GameLoopManager : MonoBehaviour
     {
-        [Header("Timer")]
-        [SerializeField, Tooltip("Starting countdown time (seconds)")]
-        private float initialCountDownTime = 200f;
-
-        [Header("Freeze Power-Up")]
-        [SerializeField, Tooltip("Duration of stage freeze (seconds)")]
-        private int freezeDuration = 6;
-
+        [SerializeField, Tooltip("Duration of stage freeze (seconds)")] private int freezeDuration = 6;
+        [SerializeField, Tooltip("Amount of points to Grow")] private int growPrice = 100;
         private float _countDownTime;
         private int _currentScore;
-        private int _timeBonus;
-        private bool _isCountingDown;
-        private bool _isTimeOver;
         private GameState _currentGameState;
 
         private void Start()
@@ -31,56 +22,43 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 
         private void OnEnable()
         {
-            GameEvents.AddTime += AddTime;
             GameEvents.FreezeCollected += OnFreeze;
             GameEvents.RestartLevel += OnLevelStart;
             GameEvents.DestroyedSun += UpdatePlayerWin;
             GameEvents.PlanetEnemyEndedDeath += PlayerWon;
             GameEvents.PlayerDefeated += UpdateDefeatedGameState;
+            GameEvents.PlayerRequestedSizeIncrease += TryIncreaseSize;
             GameEvents.AddPoints += AddPoints;
         }
 
         private void OnDisable()
         {
-            GameEvents.AddTime -= AddTime;
             GameEvents.FreezeCollected -= OnFreeze;
             GameEvents.RestartLevel -= OnLevelStart;
             GameEvents.DestroyedSun -= UpdatePlayerWin;
             GameEvents.PlanetEnemyEndedDeath -= PlayerWon;
             GameEvents.PlayerDefeated -= UpdateDefeatedGameState;
+            GameEvents.PlayerRequestedSizeIncrease -= TryIncreaseSize;
             GameEvents.AddPoints -= AddPoints;
-        }
-
-        private void Update()
-        {
-            if (!_isCountingDown) return;
-            UpdateCountdown();
-            GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
         }
 
         private void OnLevelStart()
         {
             _currentGameState = GameState.Playing;
-            ResetStats();
-            ResetCountDown();
-            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
-            GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
-        }
-
-        private void ResetStats()
-        {
             _currentScore = 0;
-            _timeBonus = 0;
+            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
         }
 
-        private void ResetCountDown()
+       
+        private void TryIncreaseSize()
         {
-            _isCountingDown = false;
-            _countDownTime = initialCountDownTime;
-            _isCountingDown = true;
-            _isTimeOver = false;
+            if (_currentGameState is not (GameState.Playing or GameState.InFreeze)) return;
+            if(_currentScore < growPrice) return;
+            _currentScore -= growPrice;
+            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
+            GameEvents.PlayerGrow?.Invoke(1);
         }
-
+        
         private void AddPoints(int pointsToAdd)
         {
             _currentScore += pointsToAdd;
@@ -90,8 +68,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private void UpdatePlayerWin()
         {
             GameEvents.FreezeLevel?.Invoke();
-            _timeBonus = Mathf.FloorToInt(_countDownTime) * 10;
-            AddPoints(_timeBonus);
             _currentGameState = GameState.PlayerWon;
         }
 
@@ -104,43 +80,17 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 
         private IEnumerator FreezeCoroutine()
         {
-            _isCountingDown = false;
             GameEvents.FreezeLevel?.Invoke();
             GameEvents.FreezeUI?.Invoke(freezeDuration);
             SoundManager.Instance.PlaySound("Freeze", transform);
             yield return new WaitForSeconds(freezeDuration);
             GameEvents.UnFreezeLevel?.Invoke();
-            _isCountingDown = true;
             _currentGameState = GameState.Playing;
-        }
-
-        private void AddTime(float timeToAdd)
-        {
-            _countDownTime = Mathf.Max(0f, _countDownTime + timeToAdd);
-        }
-
-        private void AddTime(int timeToAdd)
-        {
-            _countDownTime = Mathf.Max(0f, _countDownTime + timeToAdd);
-        }
-
-        private void UpdateCountdown()
-        {
-            if (_countDownTime > 0f)
-            {
-                _countDownTime = Mathf.Max(0f, _countDownTime - Time.deltaTime);
-                GameEvents.UpdateTimeUI?.Invoke(Mathf.FloorToInt(_countDownTime));
-                return;
-            }
-
-            _isCountingDown = false;
-            _isTimeOver = true;
-            GameEvents.PlayerDefeated?.Invoke();
         }
 
         private void UpdateDefeatedGameState()
         {
-            _currentGameState = _isTimeOver ? GameState.TimeOver : GameState.Defeated;
+            _currentGameState = GameState.Defeated;
             GameEvents.FreezeLevel?.Invoke();
             StartCoroutine(EndScene());
         }

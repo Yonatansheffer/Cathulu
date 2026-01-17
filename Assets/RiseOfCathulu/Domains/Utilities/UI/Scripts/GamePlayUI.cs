@@ -14,9 +14,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         [Header("Player UI")]
         [SerializeField] private TextMeshProUGUI pointsText;
-        [SerializeField] private TextMeshProUGUI timeCountText;
-        [SerializeField] private Image[] lifeImages;
-        [SerializeField] private Image[] noLifeImages;
 
         [Header("Power-Up UI")]
         [SerializeField] private Image freezeImage;
@@ -50,10 +47,7 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         private void OnEnable()
         {
-            GameEvents.UpdatePlayerLivesUI += UpdatePlayerHealth;
             GameEvents.UpdateScoreUI += UpdateScore;
-            GameEvents.UpdateTimeUI += UpdateTimeCount;
-            GameEvents.AddTime += UpdateTime;
             GameEvents.WeaponCollected += AddWeaponCollected;
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.FreezeUI += UpdateFreeze;
@@ -62,9 +56,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         private void OnDisable()
         {
             GameEvents.UpdateScoreUI -= UpdateScore;
-            GameEvents.UpdatePlayerLivesUI -= UpdatePlayerHealth;
-            GameEvents.UpdateTimeUI -= UpdateTimeCount;
-            GameEvents.AddTime -= UpdateTime;
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.FreezeUI -= UpdateFreeze;        }
@@ -127,39 +118,9 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
                     duration - blinkDuration, blinkDuration));
         }
 
-        private void UpdateTime(float _)
-        {
-            ShowTimeAddedParticles();
-            if (gameObject.activeInHierarchy)
-                StartCoroutine(HandlePowerUpDisplay(timeImage, timeLight.gameObject,
-                    1f, 0f));
-        }
-
-        private void ShowTimeAddedParticles()
-        {
-            var particles = Instantiate(orangeStarsParticles, timeImage.transform.position, Quaternion.identity, canvas.transform);
-            particles.transform.localScale = Vector3.one * 0.5f;
-            Destroy(particles, 0.8f);
-        }
-
-        private void UpdatePlayerHealth(int amount)
-        {
-            for (var i = 0; i < lifeImages.Length; i++)
-            {
-                var isActive = i < amount;
-                lifeImages[i].gameObject.SetActive(isActive);
-                noLifeImages[i].gameObject.SetActive(!isActive);
-            }
-        }
-
         private void UpdateScore(int points)
         {
             pointsText.text = points.ToString();
-        }
-
-        private void UpdateTimeCount(int time)
-        {
-            timeCountText.text = time.ToString();
         }
 
         private void AddWeaponCollected(WeaponType weaponType)

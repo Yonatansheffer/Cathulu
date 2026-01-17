@@ -7,13 +7,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Camera
     {
         private const float RatioChangeThreshold = 0.01f;
         [SerializeField] private UnityEngine.Camera cam;
-
-        [Header("Desired world units visible horizontally")] [SerializeField]
-        private float targetWidth = 10f;
-
-        [Header("Desired world units visible vertically")] [SerializeField]
-        private float targetHeight = 5f;
-
+        [Header("Desired world units visible horizontally")] [SerializeField] private float targetWidth = 10f;
+        [Header("Desired world units visible vertically")] [SerializeField] private float targetHeight = 5f;
         private float _currentAspectRatio;
 
         private void Start()

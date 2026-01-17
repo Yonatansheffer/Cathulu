@@ -7,7 +7,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     public static class GameEvents 
     {
         // GameLoop events
-        public static Action BeginGameLoop;
         public static Action BeginGamePlay;
         public static Action FreezeCollected;
         public static Action FreezeLevel;
@@ -24,8 +23,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 
         // UI Events
         public static Action<int> UpdateScoreUI;
-        public static Action<int> UpdatePlayerLivesUI;
-        public static Action<int> UpdateTimeUI;
+        public static Action StartUI;
         public static Action<int> FreezeUI;
     
         // GamePlay Events
@@ -48,7 +46,10 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action OnExitedGravityZone;
         public static Action DestroyedSun;
         public static Action SnitchCaught;
-        public static Action PlayerChangeSize;
+        public static Action PlayerRequestedSizeDecrease;
+        public static Action PlayerRequestedSizeIncrease;
+        public static Action<int> PlayerGrow;
+
 
         
     

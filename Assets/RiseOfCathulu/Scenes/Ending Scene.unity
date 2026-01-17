@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73670be65ea01a842bf62f6ef16c1f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 39754367}
   targetWidth: 10
   targetHeight: 5
 --- !u!1001 &196125935
@@ -1003,17 +1003,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 700603225754845809, guid: b6d850ea87971a848bfba6ca6b9401ed, type: 3}
   m_PrefabInstance: {fileID: 1508213163}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1508213165 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4507998993025721177, guid: b6d850ea87971a848bfba6ca6b9401ed, type: 3}
-  m_PrefabInstance: {fileID: 1508213163}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1726380141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1035,6 @@ MonoBehaviour:
   winBoard: {fileID: 203127916}
   loseBoard: {fileID: 739274151}
   defeatedText: {fileID: 2018755802}
-  timeOverText: {fileID: 1508213165}
   winPressAgainText: {fileID: 720809828}
   losePressAgainText: {fileID: 196125937}
   scoreText: {fileID: 2046051727}

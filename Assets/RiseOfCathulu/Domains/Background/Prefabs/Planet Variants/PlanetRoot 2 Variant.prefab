@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: eatableMaxDistanceFromPlanet
-      value: 715
+      value: 860
       objectReference: {fileID: 0}
     - target: {fileID: 3589031018713209510, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Sprite
@@ -50,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4762634754837135003, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.x
-      value: 150
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4762634754837135003, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.y
-      value: 150
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6073010980597029259, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.x
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: bulletForce
-      value: 450
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
