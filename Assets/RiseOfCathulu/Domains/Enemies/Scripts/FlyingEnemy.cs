@@ -13,7 +13,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         [Header("Movement")]
         [SerializeField, Tooltip("Speed of enemy movement")] private float moveSpeed = 3f;
-        [SerializeField, Tooltip("Randomness factor for speed")] private float speedVariation = 0.4f;
+
         
         [Header("Player Attraction")]
         [SerializeField, Tooltip("Minimum of player attraction (0-1)")] private float minPlayerAttraction = 0.55f;
@@ -74,18 +74,13 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             sizeLevel = level;
             float targetScale = config.GetScale(level);
             transform.localScale = Vector3.one * targetScale;
-            float baseSpeed = config.GetSpeed(level);
-
-            // Calculate a random multiplier (e.g., if variation is 0.15, range is 0.85 to 1.15)
-            float randomMultiplier = Random.Range(1f - speedVariation, 1f + speedVariation);
-            // Inside InitializeLevel
+            float playerSpeed = config.GetMaxSpeed(_player.CurrentSizeLevel);
+            float speedMultiplier = Random.Range(0.1f, 0.6f);  
+            moveSpeed = playerSpeed * speedMultiplier;
             if (_animator != null)
             {
-                // If they move 20% faster, their animation plays 20% faster
-                _animator.speed = randomMultiplier; 
+                _animator.speed = speedMultiplier; 
             }
-    
-            moveSpeed = baseSpeed * randomMultiplier;
             _playerAttractionWeight = Random.Range(minPlayerAttraction,maxPlayerAttraction);
             _currentAttractionSign = 1f;
         }   

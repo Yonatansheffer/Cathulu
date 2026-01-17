@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8453762233107320825, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: spawnActivationRange
-      value: 3000
+      value: 6466
       objectReference: {fileID: 0}
     - target: {fileID: 8662421764484142562, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.x

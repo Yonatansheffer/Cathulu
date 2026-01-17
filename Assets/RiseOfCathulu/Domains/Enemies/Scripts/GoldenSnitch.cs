@@ -35,7 +35,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             float scale = config.GetScale(level);
             transform.localScale = Vector3.one * scale;
-            _moveSpeed = baseMoveSpeed + config.GetSpeed(level) * 0.5f;
+            _moveSpeed = baseMoveSpeed + config.GetMaxSpeed(level) * 0.5f;
         }
 
         private void Awake()

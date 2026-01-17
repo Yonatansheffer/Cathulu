@@ -9,8 +9,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public int maxLevel = 20;
         public float minScale = 0.5f;
         public float maxScale = 3.5f;
-        public float minSpeed = 2f;
-        public float maxSpeed = 6f;
 
         [Header("Movement – Absolute Max Speed")]
         public float minMaxSpeed = 8f;
@@ -26,24 +24,23 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public AnimationCurve scaleCurve = AnimationCurve.Linear(0, 0.5f, 1, 3.5f);
         public float GetScale(int level) {
             float t = Mathf.InverseLerp(minLevel, maxLevel, level);
-            float curvedValue = scaleCurve.Evaluate(t); // Returns 0 to 1
+            float curvedValue = scaleCurve.Evaluate(t); 
             return Mathf.Lerp(minScale, maxScale, curvedValue);
         }
 
         public float GetMaxSpeed(int level)
         {
             float t = Mathf.InverseLerp(minLevel, maxLevel, level);
-            return Mathf.Lerp(minMaxSpeed, maxMaxSpeed, t);
+            float curvedValue = scaleCurve.Evaluate(t);
+            return Mathf.Lerp(minMaxSpeed, maxMaxSpeed, curvedValue);
         }
 
         public float GetConvergence(int level)
         {
             float t = Mathf.InverseLerp(minLevel, maxLevel, level);
-            return Mathf.Lerp(minConvergence, maxConvergence, t);
+            float curvedValue = scaleCurve.Evaluate(t);
+            return Mathf.Lerp(minConvergence, maxConvergence, curvedValue);
         }
-        public float GetSpeed(int level) {
-            float t = Mathf.InverseLerp(minLevel, maxLevel, level);
-            return Mathf.Lerp(minSpeed, maxSpeed, t);
-        }
+
     }
 }

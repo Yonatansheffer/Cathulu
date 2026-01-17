@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Background.Scripts.PlanetDestruction
   orangeStarsParticles: {fileID: 2307528430244752201, guid: c6e34865eac9a462ebae0a9a63fd7495, type: 3}
-  particlesSize: 10
+  particlesSize: 100
   requiredSizeLevel: 3
   destructibleLight: {fileID: 4995285711368852371}
   planetEnemies:
@@ -753,6 +753,10 @@ PrefabInstance:
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: ballShootDistance
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
+      propertyPath: bulletForceFactor
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: enemyTargetPositions.Array.size

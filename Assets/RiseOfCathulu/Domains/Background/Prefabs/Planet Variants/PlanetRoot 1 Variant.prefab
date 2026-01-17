@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1145222240560599387, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: spawnActivationRange
-      value: 2000
+      value: 2442
       objectReference: {fileID: 0}
     - target: {fileID: 1535607352704848349, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_Radius

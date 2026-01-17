@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 20b7494bee427254e86c46bf8f998a87
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5957602298776533700
+    second: Screenshot_2026-01-17_202033-removebg-preview_0
+  - first:
+      213: -1571830492607336720
+    second: Screenshot_2026-01-17_202033-removebg-preview_1
+  - first:
+      213: 6891256360434221575
+    second: Screenshot_2026-01-17_202033-removebg-preview_2
+  - first:
+      213: -1196730932936014760
+    second: Screenshot_2026-01-17_202033-removebg-preview_3
+  - first:
+      213: -7877560905915645193
+    second: Screenshot_2026-01-17_202033-removebg-preview_4
+  - first:
+      213: 1892539892104502599
+    second: Screenshot_2026-01-17_202033-removebg-preview_5
+  - first:
+      213: -3437732535594593820
+    second: Screenshot_2026-01-17_202033-removebg-preview_6
+  - first:
+      213: -6177539378398606537
+    second: Screenshot_2026-01-17_202033-removebg-preview_7
+  - first:
+      213: 2089091648902463532
+    second: Screenshot_2026-01-17_202033-removebg-preview_8
+  - first:
+      213: 3922592820485206023
+    second: Screenshot_2026-01-17_202033-removebg-preview_9
+  - first:
+      213: -5168305166696640824
+    second: Screenshot_2026-01-17_202033-removebg-preview_10
+  - first:
+      213: -9129368054516125519
+    second: Screenshot_2026-01-17_202033-removebg-preview_11
+  - first:
+      213: 8216029204919358090
+    second: Screenshot_2026-01-17_202033-removebg-preview_12
+  - first:
+      213: 2861021525624237966
+    second: Screenshot_2026-01-17_202033-removebg-preview_13
+  - first:
+      213: 7303664765349847254
+    second: Screenshot_2026-01-17_202033-removebg-preview_14
+  - first:
+      213: -373981074420274606
+    second: Screenshot_2026-01-17_202033-removebg-preview_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Screenshot_2026-01-17_202033-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 55
+        width: 997
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c35cf542648525da0800000000000000
+      internalID: -5957602298776533700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1b1480373a9185f41a826456c3dc8e74
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Screenshot_2026-01-17_202033-removebg-preview_0: -5957602298776533700
+      Screenshot_2026-01-17_202033-removebg-preview_1: -1571830492607336720
+      Screenshot_2026-01-17_202033-removebg-preview_10: -5168305166696640824
+      Screenshot_2026-01-17_202033-removebg-preview_11: -9129368054516125519
+      Screenshot_2026-01-17_202033-removebg-preview_12: 8216029204919358090
+      Screenshot_2026-01-17_202033-removebg-preview_13: 2861021525624237966
+      Screenshot_2026-01-17_202033-removebg-preview_14: 7303664765349847254
+      Screenshot_2026-01-17_202033-removebg-preview_15: -373981074420274606
+      Screenshot_2026-01-17_202033-removebg-preview_2: 6891256360434221575
+      Screenshot_2026-01-17_202033-removebg-preview_3: -1196730932936014760
+      Screenshot_2026-01-17_202033-removebg-preview_4: -7877560905915645193
+      Screenshot_2026-01-17_202033-removebg-preview_5: 1892539892104502599
+      Screenshot_2026-01-17_202033-removebg-preview_6: -3437732535594593820
+      Screenshot_2026-01-17_202033-removebg-preview_7: -6177539378398606537
+      Screenshot_2026-01-17_202033-removebg-preview_8: 2089091648902463532
+      Screenshot_2026-01-17_202033-removebg-preview_9: 3922592820485206023
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

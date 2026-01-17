@@ -2,6 +2,7 @@
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
@@ -11,7 +12,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [SerializeField, Tooltip("Delay before the enemy starts shooting")] private float startShootDelay = 6f;
         [SerializeField, Tooltip("Distance threshold for ball shot")] private float ballShootDistance = 120f;
         [SerializeField, Tooltip("Cooldown for ball shot")] private float ballShootCooldown = 3f;
-        [SerializeField, Tooltip("Bullet launch force")] private float bulletForce = 20f;
+
+        [SerializeField, Tooltip("Bullet force factor")] private float bulletForceFactor = 1f;
         [SerializeField] private float sizeFactor = 5f;
         [SerializeField] private GrowthConfig growthConfig;
 
@@ -83,7 +85,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             bullet.transform.position = transform.position;
             var dir = (_player.transform.position - transform.position).normalized;
             var rb = bullet.GetComponent<Rigidbody2D>();
-            rb.linearVelocity = dir * bulletForce;
+            rb.linearVelocity = dir * (growthConfig.GetMaxSpeed(_playerSize.CurrentSizeLevel) * bulletForceFactor);
             SoundManager.Instance.PlaySound("Planet Enemy Bullet", transform);
         }
     }

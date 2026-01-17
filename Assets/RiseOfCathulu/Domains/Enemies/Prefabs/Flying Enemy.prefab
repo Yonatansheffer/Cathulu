@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeLevel: 0
   moveSpeed: 70
-  speedVariation: 0.4
+  speedVariation: 0.15
   minPlayerAttraction: 0.55
   maxPlayerAttraction: 0.9
   noiseTimeScale: 0.3
