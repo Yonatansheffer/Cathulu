@@ -7,8 +7,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 {
     public class PlanetEnemyAnimations : MonoBehaviour
     {
+        [Header("Particles")]
         [SerializeField, Tooltip("Stars particle prefab on death")] private GameObject orangeStarsParticles;
         [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
+        
+        
         private static readonly int Shoot = Animator.StringToHash("shoot");
         private static readonly int Spawn = Animator.StringToHash("spawn");
         private static readonly int Damage = Animator.StringToHash("damage");

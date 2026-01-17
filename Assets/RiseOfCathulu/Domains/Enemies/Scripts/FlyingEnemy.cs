@@ -19,7 +19,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Minimum of player attraction (0-1)")] private float minPlayerAttraction = 0.55f;
         [SerializeField, Tooltip("Maximum of player attraction (0-1)")] private float maxPlayerAttraction = 0.9f;
         [SerializeField, Tooltip("Time scale for Perlin noise randomness")] private float noiseTimeScale = 0.3f;
-        [SerializeField] private float eatableSoftRadiusFactor = 0.75f; // 75% of eatable radius
+        [SerializeField] private float eatableSoftRadiusFactor = 0.75f; 
 
         private PlayerSize _player;
         private float _playerAttractionWeight;

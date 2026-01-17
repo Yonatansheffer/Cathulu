@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GrowthConfig
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts.GrowthConfig
   minLevel: 0
-  maxLevel: 50
-  minScale: 4
-  maxScale: 1200
+  maxLevel: 40
+  minScale: 6
+  maxScale: 1300
   minSpeed: 180
   maxSpeed: 800
   minMaxSpeed: 700

@@ -1230,7 +1230,7 @@ MonoBehaviour:
   yUpperBound: 18586
   baseZoomSize: 10
   zoomMultiplier: 30
-  minZoomSize: 600
+  minZoomSize: 500
   maxZoomSize: 8000
   zoomSmoothing: 2
   startZoomSize: 12500
@@ -4605,7 +4605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17570.656
+      value: -16753
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.y
