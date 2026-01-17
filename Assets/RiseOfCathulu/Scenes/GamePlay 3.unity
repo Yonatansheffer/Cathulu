@@ -181,6 +181,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+--- !u!1 &10367261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10367262}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &10367262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10367261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 191.6385, y: -167.15096, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &13812910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
@@ -1199,7 +1230,7 @@ MonoBehaviour:
   yUpperBound: 18586
   baseZoomSize: 10
   zoomMultiplier: 30
-  minZoomSize: 400
+  minZoomSize: 600
   maxZoomSize: 8000
   zoomSmoothing: 2
   startZoomSize: 12500
@@ -3326,6 +3357,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
   m_PrefabInstance: {fileID: 6339728}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1767796601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
+  m_PrefabInstance: {fileID: 479017902739429248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1767796605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767796601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122ef9abf55549fd8a1f69f2876afafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts.SceneLoaderPlaytest
 --- !u!58 &1789943178 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 4769061525840831124, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
@@ -4169,16 +4217,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_Name
-      value: Sound Manager
+      value: 'PlayTest '
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1767796605}
   m_SourcePrefab: {fileID: 100100000, guid: c3105706d788ae9428b624eb189fa359, type: 3}
 --- !u!1001 &5679415044458585225
 PrefabInstance:
@@ -4667,7 +4718,8 @@ SceneRoots:
   - {fileID: 5679415044458585225}
   - {fileID: 1158484392}
   - {fileID: 6787893120177761530}
-  - {fileID: 479017902739429248}
   - {fileID: 1348191728}
   - {fileID: 686934011}
   - {fileID: 2019154129}
+  - {fileID: 10367262}
+  - {fileID: 479017902739429248}

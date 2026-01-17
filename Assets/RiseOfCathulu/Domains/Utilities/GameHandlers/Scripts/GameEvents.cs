@@ -48,6 +48,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action PlayerRequestedSizeDecrease;
         public static Action PlayerRequestedSizeIncrease;
         public static Action<int> PlayerGrow;
+        public static Action<Transform> PlanetDestroyed;
 
 
         

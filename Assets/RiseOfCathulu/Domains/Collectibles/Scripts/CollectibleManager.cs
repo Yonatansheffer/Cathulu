@@ -23,16 +23,13 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         [Header("Planets")]
         [SerializeField] private CircleCollider2D[] gravityAreas;
         
+        private readonly Dictionary<Transform, Coroutine> _planetSpawnRoutines = new();
         private readonly List<Collectible> _activeCollectibles = new();
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
-        private int _currentPlayerHealth;
-        private int _initialPlayerHealth;
-        private Coroutine _spawnRoutine;
 
         private void Awake()
         {
-            _currentPlayerHealth = _initialPlayerHealth;
             _activeWeapon =  settings.defaultWeapon;
         }
 
@@ -47,9 +44,8 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.WeaponCollected += UpdateWeapon;
             GameEvents.PlayerDefeated += StopCollectiblesMovement;
-            GameEvents.PlayerLostLife += UpdatePlayerHealth;
-            GameEvents.EnemyDestroyed += DropCollectible;
             GameEvents.RestartLevel += StartSpawningCollectibles;
+            GameEvents.PlanetDestroyed += StopSpawningForPlanet;
         }
 
         private void OnDisable()
@@ -57,85 +53,95 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.WeaponCollected -= UpdateWeapon;
             GameEvents.PlayerDefeated -= StopCollectiblesMovement;
-            GameEvents.PlayerLostLife -= UpdatePlayerHealth;
-            GameEvents.EnemyDestroyed -= DropCollectible;
             GameEvents.RestartLevel -= StartSpawningCollectibles;
-
-            if (_spawnRoutine != null)
-            {
-                StopCoroutine(_spawnRoutine);
-                _spawnRoutine = null;
-            }
+            GameEvents.PlanetDestroyed -= StopSpawningForPlanet;
         }
 
-        private void UpdatePlayerHealth(int health) => _currentPlayerHealth = health;
         private void UpdateWeapon(WeaponType weaponType) => _activeWeapon = weaponType;
         private void UpdateShield(bool isActive) => _isShieldActive = isActive;
 
         private void StartSpawningCollectibles()
         {
-            if (_spawnRoutine != null) StopCoroutine(_spawnRoutine);
-            _spawnRoutine = StartCoroutine(SpawnCollectiblesRoutine());
+            StopAllPlanetRoutines();
+            foreach (var gravityArea in gravityAreas)
+            {
+                if (gravityArea == null) continue;
+                var planet = gravityArea.transform;
+                var routine = StartCoroutine(SpawnCollectiblesForPlanet(gravityArea));
+                _planetSpawnRoutines[planet] = routine;
+            }
         }
-
-        private IEnumerator SpawnCollectiblesRoutine()
+        
+        private IEnumerator SpawnCollectiblesForPlanet(CircleCollider2D gravityArea)
         {
+            var planetTransform = gravityArea.transform;
+            float radius = gravityArea.radius * gravityArea.transform.lossyScale.x;
             while (true)
             {
                 yield return new WaitForSeconds(dropInterval);
-                DropCollectible(Vector3.zero);
+
+                if (gravityArea == null || planetTransform == null)
+                    yield break;
+
+                DropCollectibleAtPlanet(planetTransform, radius);
             }
         }
-
-        private void DropCollectible(Vector3 position)
+        
+        private void StopSpawningForPlanet(Transform destroyedPlanet)
         {
-            if (Random.value > dropChance) return;
-            var roll = Random.Range(0f, 100f);
-            var isRandomPlanet = position == Vector3.zero;
-            if (roll < powerUpToPointPercentRatio) 
-                DropPowerUpCollectible(isRandomPlanet);
-            else 
-                DropPointCollectible(isRandomPlanet);
+            if (!_planetSpawnRoutines.TryGetValue(destroyedPlanet, out var routine))
+                return;
+
+            StopCoroutine(routine);
+            _planetSpawnRoutines.Remove(destroyedPlanet);
         }
 
-        private void DropPowerUpCollectible(bool isRandomPlanet)
+        
+        private void DropCollectibleAtPlanet(Transform planet, float radius)
+        {
+            if (Random.value > dropChance) return;
+
+            float roll = Random.Range(0f, 100f);
+
+            if (roll < powerUpToPointPercentRatio)
+                DropPowerUpCollectible(planet, radius);
+            else
+                DropPointCollectible(planet, radius);
+        }
+        
+        private void DropPowerUpCollectible(Transform planet, float radius)
         {
             if (powerUpCollectibles == null || powerUpCollectibles.Length == 0) return;
+
             var selected = powerUpCollectibles[Random.Range(0, powerUpCollectibles.Length)];
             if (IsRedundantCollectible(selected)) return;
+
             var spawned = Instantiate(selected, Vector3.zero, Quaternion.identity);
             var collectible = spawned.GetComponent<Collectible>();
+
             if (collectible != null)
             {
-                if (isRandomPlanet)
-                {
-                    var gravityArea = gravityAreas[Random.Range(0, gravityAreas.Length)];
-                    collectible.InitializeFallTowardsPlanet(gravityArea.transform,
-                        gravityArea.radius * gravityArea.transform.lossyScale.x
-                    );
-                }
+                collectible.InitializeFallTowardsPlanet(planet, radius);
                 _activeCollectibles.Add(collectible);
             }
         }
 
-        private void DropPointCollectible(bool isRandomPlanet)
+
+        private void DropPointCollectible(Transform planet, float radius)
         {
             if (pointCollectibles == null || pointCollectibles.Length == 0) return;
+
             var selected = pointCollectibles[Random.Range(0, pointCollectibles.Length)];
             var spawned = Instantiate(selected, Vector3.zero, Quaternion.identity);
             var collectible = spawned.GetComponent<Collectible>();
+
             if (collectible != null)
             {
-                if (isRandomPlanet)
-                {
-                    var gravityArea = gravityAreas[Random.Range(0, gravityAreas.Length)];
-                    collectible.InitializeFallTowardsPlanet(gravityArea.transform,
-                        gravityArea.radius * gravityArea.transform.lossyScale.x
-                    );
-                }
+                collectible.InitializeFallTowardsPlanet(planet, radius);
                 _activeCollectibles.Add(collectible);
             }
         }
+
 
         private bool IsRedundantCollectible(GameObject prefab)
         {
@@ -145,29 +151,21 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             if (prefab.TryGetComponent(out ShieldCollectible _))
                 return _isShieldActive;
 
-            if (prefab.TryGetComponent(out SizeCollectible _))
-                return _currentPlayerHealth >= _initialPlayerHealth;
-
             return false;
         }
 
         private void StopCollectiblesMovement()
         {
-            if (_spawnRoutine != null)
-            {
-                StopCoroutine(_spawnRoutine);
-                _spawnRoutine = null;
-            }
+            StopAllPlanetRoutines(); 
             foreach (var c in _activeCollectibles.Where(c => c != null))
             {
                 c.StopMovement();
                 var animator = c.GetComponent<Animator>();
                 if (animator != null)
-                {
                     animator.speed = 0f;
-                }
             }
         }
+
 
         private void DestroyAllCollectibles()
         {
@@ -177,5 +175,17 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             }
             _activeCollectibles.Clear();
         }
+        
+        
+        private void StopAllPlanetRoutines()
+        {
+            foreach (var routine in _planetSpawnRoutines.Values)
+            {
+                if (routine != null)
+                    StopCoroutine(routine);
+            }
+            _planetSpawnRoutines.Clear();
+        }
+
     }
 }
