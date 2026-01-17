@@ -25,8 +25,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private int _currentEatableEnemies = 0;
         private int _currentActiveEnemies = 0;
 
-
-        //[SerializeField, Tooltip("Walking enemies target positions")] private Transform[] enemyTargetPositions;
         [Header("Normal Distribution (Leveling)")]
         [SerializeField, Tooltip("1=Tight range, 3=High variety")] private float levelStandardDeviation = 1.5f;
         [SerializeField, Tooltip("Shift average enemy level (-1=slightly easier)")] private int levelOffset = 0;
@@ -114,32 +112,15 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 
                 var flyingEnemy = FlyingEnemyPool.Instance.Get();
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
-                int spawnedLevel;
-                bool needEatableEnemy =
-                    _currentActiveEnemies > 0 &&
-                    _currentEatableEnemies == 0;
-
-                if (needEatableEnemy)
-                {
-                    spawnedLevel = GetForcedEatableLevel();
-                }
-                else
-                {
-                    spawnedLevel = GetNormalDistributedLevel();
-                }
-
+                int spawnedLevel = GetNormalDistributedLevel();;
                 enemy.InitializeLevel(spawnedLevel, growthConfig);
-
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
                 enemy.SetOwnerSpawner(this);
                 _currentActiveEnemies++;
-                
-                // --- Debug Tracking ---
                 _lastSpawnedLevel = spawnedLevel;
                 _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
-                //Debug.Log($"<color=cyan>Spawned Enemy:</color> Level {spawnedLevel} | Player Level: {_playerSize.CurrentSizeLevel}");
             }
         }
         
@@ -183,8 +164,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private void OnGUI()
         {
             if (!showDebugOverlay) return;
-
-            // Simple box in the top-left corner
             GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
             GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {_playerSize.CurrentSizeLevel}");
             GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {_playerSize.CurrentSizeLevel + levelOffset}");
@@ -193,74 +172,3 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         }
     }
 }
-
-/*
- 
-        
-         private void SpawnWalkingEnemy(Transform targetTransform)
-        {
-            var walkingEnemy = WalkingEnemyPool.Instance.Get();
-            walkingEnemy.transform.position = GetRandomPointInCollider();
-            ApplyRandomForce(walkingEnemy);
-            var target = targetTransform.parent
-                ? targetTransform.parent.TransformPoint(targetTransform.localPosition)
-                : targetTransform.position;
-            walkingEnemy.ToTarget(target);
-        }
-        
-        
-        
-         [SerializeField] private Collider2D gameAreaCollider;
-
-        
-        private Vector2 GetRandomPointInCollider()
-        {
-            Bounds bounds = gameAreaCollider.bounds;
-            for (int i = 0; i < 10; i++) // safety loop
-            {
-                float x = Random.Range(bounds.min.x, bounds.max.x);
-                float y = Random.Range(bounds.min.y, bounds.max.y);
-                Vector2 point = new Vector2(x, y);
-
-                if (gameAreaCollider.OverlapPoint(point))
-                    return point;
-            }
-            return gameAreaCollider.bounds.center;  // fallback (should almost never happen)
-        }
- 
- private void BossHealthWaves(int currentHealth)
-{
-    switch (currentHealth)
-    {
-        case 15:
-            SpawnFlyingEnemies(3);
-            GameEvents.EnemySpawned?.Invoke();
-            break;
-        case 10:
-            GameEvents.SpawnAllWalkingEnemies?.Invoke();
-            SpawnFlyingEnemies(4);
-            break;
-        case 7:
-            SpawnFlyingEnemies(5);
-            GameEvents.EnemySpawned?.Invoke();
-            break;
-        case 5:
-            SpawnFlyingEnemies(5);
-            GameEvents.EnemySpawned?.Invoke();
-            break;
-        case 3:
-            GameEvents.SpawnAllWalkingEnemies?.Invoke();
-            SpawnFlyingEnemies(5);
-            break;
-        case 1:
-            SpawnFlyingEnemies(8);
-            GameEvents.EnemySpawned?.Invoke();
-            break;
-    }
-}
-
-private void SpawnAllWalkingEnemies()
-{
-    if (enemyTargetPositions == null || enemyTargetPositions.Length == 0) return;
-    foreach (var targetTransform in enemyTargetPositions) SpawnWalkingEnemy(targetTransform);
-}*/

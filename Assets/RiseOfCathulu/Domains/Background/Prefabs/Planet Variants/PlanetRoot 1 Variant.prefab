@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: initialPoolSize
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4995285711368852371, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5292113685441379052, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: maxActiveEnemies
       value: 15
@@ -699,28 +703,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 6908956405829748485, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8331400270794985523, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7909827949863036732}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
---- !u!1 &2255796061378626096 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8331400270794985523, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
-  m_PrefabInstance: {fileID: 7841091270581080579}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7909827949863036732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255796061378626096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e06d48b032154f42bbbcfaa62daaf0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetCanDestruct
 --- !u!4 &8752399172440395277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1560464679327587342, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}

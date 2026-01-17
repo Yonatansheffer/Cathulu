@@ -139,7 +139,7 @@ MonoBehaviour:
   blinkDuration: 3
   blinkInterval: 0.1
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
-  pointsValue: 150
+  pointsValue: 30
 --- !u!95 &1876323008386049408
 Animator:
   serializedVersion: 7

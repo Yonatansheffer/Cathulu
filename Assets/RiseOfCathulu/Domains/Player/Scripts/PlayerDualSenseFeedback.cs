@@ -179,6 +179,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void ResetTriggers()
         {
+            if (_dualSense == null)
+                return;
             _outputState.LeftTriggerEffect.InitializeNoResistanceEffect();
             _outputState.RightTriggerEffect.InitializeNoResistanceEffect();
             _dualSense.SetOutputState(_outputState);
