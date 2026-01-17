@@ -7,7 +7,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     public static class GameEvents 
     {
         // GameLoop events
-        public static Action BeginGamePlay;
         public static Action FreezeCollected;
         public static Action FreezeLevel;
         public static Action UnFreezeLevel;
@@ -23,7 +22,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 
         // UI Events
         public static Action<int> UpdateScoreUI;
-        public static Action StartUI;
+        public static Action ContinueUI;
         public static Action<int> FreezeUI;
     
         // GamePlay Events

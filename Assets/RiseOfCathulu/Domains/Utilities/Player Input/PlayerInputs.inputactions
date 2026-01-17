@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Start",
+                    "name": "Continue",
                     "type": "Button",
                     "id": "508342f8-0fde-4f8f-b55e-f4890d6f38f7",
                     "expectedControlType": "",
@@ -256,7 +256,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

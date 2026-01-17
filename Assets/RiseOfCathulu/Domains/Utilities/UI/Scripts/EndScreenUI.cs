@@ -38,7 +38,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         private void HandleGameOverScreen(GameState gameState, int score)
         {
             ResetUI();
-
             switch (gameState)
             {
                 case GameState.PlayerWon:

@@ -9,36 +9,63 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     {
         private const string GamePlaySceneName = "GamePlay 3";
         private const string EndingSceneName = "Ending Scene";
-        private bool _inLevel = true;
-        [SerializeField] private GameObject winConditionObject;
-        
+
+        private PlayerInputs _inputActions;
+
+        private enum GameState
+        {
+            StartScreen,
+            TutorialScreen,
+            InLevel,
+            EndingScene
+        }
+
+        private GameState _state = GameState.StartScreen;
+
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
+
+            _inputActions = new PlayerInputs();
+            _inputActions.Movement.Continue.performed += OnContinue;
         }
-        
+
         private void OnEnable()
         {
+            _inputActions.Enable();
             GameEvents.EndScene += EndGame;
-            GameEvents.BeginGamePlay += LoadGamePlay;
         }
-        
+
         private void OnDisable()
         {
+            _inputActions.Disable();
             GameEvents.EndScene -= EndGame;
-            GameEvents.BeginGamePlay -= LoadGamePlay;
         }
-        
+
+        private void OnContinue(UnityEngine.InputSystem.InputAction.CallbackContext _)
+        {
+            if (_state == GameState.InLevel)
+                return;
+
+            if (_state == GameState.StartScreen)
+            {
+                GameEvents.ContinueUI?.Invoke();
+                _state = GameState.TutorialScreen;
+                return;
+            }
+
+            LoadGamePlay();
+        }
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) OnExit();
-            if(_inLevel) return;
-            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) LoadGamePlay();
+            if (Input.GetKeyDown(KeyCode.Escape))
+                OnExit();
         }
 
         private void LoadGamePlay()
         {
-            _inLevel = true;
+            _state = GameState.InLevel;
             GameEvents.StopMusic?.Invoke();
             GameEvents.RestartLevel?.Invoke();
             SceneManager.LoadScene(GamePlaySceneName);
@@ -52,11 +79,11 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 
         private IEnumerator DelayedGameOver()
         {
-            yield return new WaitForSeconds(0.1f); 
+            yield return new WaitForSeconds(0.1f);
             SceneManager.LoadScene(EndingSceneName);
-            _inLevel = false;
+            _state = GameState.EndingScene;
         }
-        
+
         private void OnExit()
         {
 #if UNITY_EDITOR

@@ -151,11 +151,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             GameEvents.ShakeCamera?.Invoke();
             SoundManager.Instance.PlaySound("Shield Hit", transform);
             GameEvents.PlayerLostLife?.Invoke(_currentSizeLevel);
-            if (_currentSizeLevel == growthConfig.minLevel)
-            {
-                GameEvents.PlayerDefeated?.Invoke();
-                SoundManager.Instance.PlaySound("Lost Life", transform);
-            }
             StartCoroutine(HitCooldown());
         }
 
@@ -164,11 +159,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
            //GameEvents.PlayerChangeSize.Invoke();
            int previousSize = _currentSizeLevel;
            int newSize = _currentSizeLevel + delta;
-           print("current size: " + newSize +  "min size: " + growthConfig.minLevel);
-
            if (newSize < growthConfig.minLevel)
            {
                GameEvents.PlayerDefeated?.Invoke();
+               SoundManager.Instance.PlaySound("Lost Life", transform);
                return;
            }
            _currentSizeLevel = Mathf.Clamp(newSize, growthConfig.minLevel, growthConfig.maxLevel);

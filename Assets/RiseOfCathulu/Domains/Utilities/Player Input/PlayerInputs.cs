@@ -138,7 +138,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Start"",
+                    ""name"": ""Continue"",
                     ""type"": ""Button"",
                     ""id"": ""508342f8-0fde-4f8f-b55e-f4890d6f38f7"",
                     ""expectedControlType"": """",
@@ -342,7 +342,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Start"",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -358,7 +358,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Grow = m_Movement.FindAction("Grow", throwIfNotFound: true);
         m_Movement_Shrink = m_Movement.FindAction("Shrink", throwIfNotFound: true);
-        m_Movement_Start = m_Movement.FindAction("Start", throwIfNotFound: true);
+        m_Movement_Continue = m_Movement.FindAction("Continue", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -444,7 +444,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Grow;
     private readonly InputAction m_Movement_Shrink;
-    private readonly InputAction m_Movement_Start;
+    private readonly InputAction m_Movement_Continue;
     /// <summary>
     /// Provides access to input actions defined in input action map "Movement".
     /// </summary>
@@ -477,9 +477,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Shrink => m_Wrapper.m_Movement_Shrink;
         /// <summary>
-        /// Provides access to the underlying input action "Movement/Start".
+        /// Provides access to the underlying input action "Movement/Continue".
         /// </summary>
-        public InputAction @Start => m_Wrapper.m_Movement_Start;
+        public InputAction @Continue => m_Wrapper.m_Movement_Continue;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -521,9 +521,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Shrink.started += instance.OnShrink;
             @Shrink.performed += instance.OnShrink;
             @Shrink.canceled += instance.OnShrink;
-            @Start.started += instance.OnStart;
-            @Start.performed += instance.OnStart;
-            @Start.canceled += instance.OnStart;
+            @Continue.started += instance.OnContinue;
+            @Continue.performed += instance.OnContinue;
+            @Continue.canceled += instance.OnContinue;
         }
 
         /// <summary>
@@ -550,9 +550,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Shrink.started -= instance.OnShrink;
             @Shrink.performed -= instance.OnShrink;
             @Shrink.canceled -= instance.OnShrink;
-            @Start.started -= instance.OnStart;
-            @Start.performed -= instance.OnStart;
-            @Start.canceled -= instance.OnStart;
+            @Continue.started -= instance.OnContinue;
+            @Continue.performed -= instance.OnContinue;
+            @Continue.canceled -= instance.OnContinue;
         }
 
         /// <summary>
@@ -629,11 +629,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShrink(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Start" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Continue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnStart(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }

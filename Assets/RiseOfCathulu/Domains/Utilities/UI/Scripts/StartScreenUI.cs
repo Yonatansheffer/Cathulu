@@ -15,13 +15,6 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         [Header("Behavior")]
         [SerializeField, Tooltip("Seconds between blink toggles")] private float blinkInterval = 0.2f;
         private Coroutine _blinkRoutine;
-        private enum StartState
-        {
-            None,
-            FirstPress,
-            Started
-        }
-        private StartState _state = StartState.None;
         
         private void Start()
         {
@@ -30,28 +23,18 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         private void OnEnable()
         {
-            GameEvents.StartUI += OnStartUI;
+            GameEvents.ContinueUI += OnStart;
         }
 
         private void OnDisable()
         {
-            GameEvents.StartUI -= OnStartUI;
+            GameEvents.ContinueUI -= OnStart;
             if (_blinkRoutine != null) { StopCoroutine(_blinkRoutine); _blinkRoutine = null; }
         }
         
-        private void OnStartUI()
+        private void OnStart()
         {
-            switch (_state)
-            {
-                case StartState.None:
-                    openingScreen?.SetActive(false);
-                    _state = StartState.FirstPress;
-                    break;
-                case StartState.FirstPress:
-                    _state = StartState.Started;
-                    GameEvents.BeginGamePlay?.Invoke();
-                    break;
-            }
+            openingScreen?.SetActive(false);
         }
         
         private void StartBlink()

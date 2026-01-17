@@ -122,7 +122,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
             _inputActions.Movement.Shoot.performed += _ => _isShooting = true;
             _inputActions.Movement.Shoot.canceled += _ => _isShooting = false;
-            _inputActions.Movement.Start.performed += _ => GameEvents.StartUI?.Invoke();
             _inputActions.Movement.Grow.performed += _ => GameEvents.PlayerRequestedSizeIncrease?.Invoke();
             _inputActions.Movement.Shrink.performed += _ => GameEvents.PlayerRequestedSizeDecrease?.Invoke();
             _inputActions.Movement.Move.performed += _ => Dash();
