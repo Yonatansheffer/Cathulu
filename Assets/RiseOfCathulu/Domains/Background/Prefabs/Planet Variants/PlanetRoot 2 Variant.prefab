@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852966193461448551, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: gravityStrength
-      value: 650
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7852966193461448551, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: levelForCollectibles

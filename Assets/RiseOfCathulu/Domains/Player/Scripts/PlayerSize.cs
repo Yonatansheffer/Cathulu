@@ -175,7 +175,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _trailRenderer.widthMultiplier = Mathf.Max(minTrailWidth, targetWidth);
 
             float targetTime = _currentSizeLevel * trailTimePerSize;
-            _trailRenderer.time = Mathf.Max(minTrailTime, targetTime);
+            _trailRenderer.time = Mathf.Clamp(targetTime, minTrailTime, 1f);
             ApplyScale();
             if (_motor != null)
             {

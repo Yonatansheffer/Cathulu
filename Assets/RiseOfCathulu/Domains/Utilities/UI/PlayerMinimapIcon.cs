@@ -2,24 +2,43 @@ using UnityEngine;
 
 public class PlayerMinimapIconScaler2D : MonoBehaviour
 {
-    public Vector2 targetWorldScale = new Vector2(100f,100f);
+    public Vector2 targetWorldScale = new Vector2(2000f, 2000f);
+    public float maxScaleMultiplier = 2f;
 
-    void Start()
+    private Vector3 _initialLocalScale;
+
+    void Awake()
+    {
+        _initialLocalScale = transform.localScale;
+    }
+
+    void LateUpdate()
     {
         if (transform.parent == null)
             return;
 
         Vector3 parentScale = transform.parent.lossyScale;
 
-        if (parentScale.x == 0 || parentScale.y == 0)
+        if (parentScale.x == 0f || parentScale.y == 0f)
             return;
 
-        transform.localScale = new Vector3(
+        Vector3 desiredLocalScale = new Vector3(
             targetWorldScale.x / parentScale.x,
             targetWorldScale.y / parentScale.y,
-            1f
+            _initialLocalScale.z
         );
+
+        // Clamp to max 2× starting scale
+        desiredLocalScale.x = Mathf.Min(
+            desiredLocalScale.x,
+            _initialLocalScale.x * maxScaleMultiplier
+        );
+
+        desiredLocalScale.y = Mathf.Min(
+            desiredLocalScale.y,
+            _initialLocalScale.y * maxScaleMultiplier
+        );
+
+        transform.localScale = desiredLocalScale;
     }
-
-
 }
