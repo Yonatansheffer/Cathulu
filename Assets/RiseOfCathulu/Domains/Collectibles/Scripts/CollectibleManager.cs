@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RiseOfCathulu.Domains.Background.Scripts;
+using RiseOfCathulu.Domains.Player.Scripts;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Weapons.Scripts;
 using UnityEngine;
@@ -10,26 +12,34 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
 {
     public class CollectibleManager : MonoBehaviour
     {
+        [System.Serializable]
+        public class PlanetDropGroup
+        {
+            public float dropInterval;
+            public PlanetGravity [] gravityAreas;
+        }
+        
         [Header("Config")]
         [SerializeField, Tooltip("Global weapon settings (for default weapon etc.)")] private WeaponSettings settings;
         [SerializeField, Tooltip("Prefabs for power-up collectibles")] private GameObject[] powerUpCollectibles;
         [SerializeField, Tooltip("Prefabs for point collectibles")] private GameObject[] pointCollectibles;
 
         [Header("Spawning")]
-        [SerializeField, Tooltip("Interval between automatic collectible drops")] private float dropInterval = 6f;
         [SerializeField, Tooltip("Chance to drop on enemy destruction (0-1)")] private float dropChance = 0.35f;
         [SerializeField, Tooltip("Chance (0-100) for power-up ")] private float powerUpToPointPercentRatio = 35f;
-        
-        [Header("Planets")]
-        [SerializeField] private CircleCollider2D[] gravityAreas;
-        
+       
+        [Header("Planet Groups")]
+        [SerializeField] private PlanetDropGroup[] planetGroups;
+
         private readonly Dictionary<Transform, Coroutine> _planetSpawnRoutines = new();
         private readonly List<Collectible> _activeCollectibles = new();
         private WeaponType _activeWeapon;
         private bool _isShieldActive;
+        private PlayerSize _playerSize;
 
         private void Awake()
         {
+            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();    
             _activeWeapon =  settings.defaultWeapon;
         }
 
@@ -63,29 +73,52 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         private void StartSpawningCollectibles()
         {
             StopAllPlanetRoutines();
-            foreach (var gravityArea in gravityAreas)
+
+            foreach (var group in planetGroups)
             {
-                if (gravityArea == null) continue;
-                var planet = gravityArea.transform;
-                var routine = StartCoroutine(SpawnCollectiblesForPlanet(gravityArea));
-                _planetSpawnRoutines[planet] = routine;
+                if (group.gravityAreas == null) continue;
+
+                foreach (var gravityArea in group.gravityAreas)
+                {
+                    if (gravityArea == null) continue;
+
+                    Transform planet = gravityArea.transform;
+
+                    Coroutine routine = StartCoroutine(
+                        SpawnCollectiblesForPlanet(gravityArea, group.dropInterval)
+                    );
+
+                    _planetSpawnRoutines[planet] = routine;
+                }
             }
         }
-        
-        private IEnumerator SpawnCollectiblesForPlanet(CircleCollider2D gravityArea)
+
+        private IEnumerator SpawnCollectiblesForPlanet(
+            PlanetGravity gravityArea,
+            float interval
+        )
         {
-            var planetTransform = gravityArea.transform;
-            float radius = gravityArea.radius * gravityArea.transform.lossyScale.x;
+            var areaCollider = gravityArea.GetComponent<CircleCollider2D>();
+            Transform planetTransform = gravityArea.transform;
+            float radius = areaCollider.radius * gravityArea.transform.lossyScale.x;
+
             while (true)
             {
-                yield return new WaitForSeconds(dropInterval);
+                yield return new WaitForSeconds(interval);
 
+                // Planet destroyed → stop forever
                 if (gravityArea == null || planetTransform == null)
                     yield break;
+
+                // Player too big → skip this cycle
+                if (_playerSize.CurrentSizeLevel > gravityArea.levelForCollectibles)
+                    continue;
 
                 DropCollectibleAtPlanet(planetTransform, radius);
             }
         }
+
+
         
         private void StopSpawningForPlanet(Transform destroyedPlanet)
         {
@@ -141,8 +174,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
                 _activeCollectibles.Add(collectible);
             }
         }
-
-
+        
         private bool IsRedundantCollectible(GameObject prefab)
         {
             if (prefab.TryGetComponent(out WeaponCollectible weapon))
@@ -165,8 +197,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
                     animator.speed = 0f;
             }
         }
-
-
+        
         private void DestroyAllCollectibles()
         {
             foreach (var c in _activeCollectibles.Where(c => c != null))

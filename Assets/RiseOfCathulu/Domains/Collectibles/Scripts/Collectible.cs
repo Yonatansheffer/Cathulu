@@ -44,6 +44,7 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
         public void InitializeFallTowardsPlanet(Transform target, float radius)
         {
             _isInPlanet = true;
+            fallSpeed *= _playerSize.CurrentSizeLevel;
             Vector2 randomDir = Random.insideUnitCircle.normalized;
             transform.position = target.position + (Vector3)(randomDir * radius);
             _fallDirection = (target.position - transform.position).normalized;

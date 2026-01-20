@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: gravityStrength
       value: 500000
       objectReference: {fileID: 0}
+    - target: {fileID: 11947096048213348, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: levelForCollectibles
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 596914304636474287, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: initialPoolSize
       value: 15

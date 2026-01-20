@@ -12,6 +12,8 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         public float gravityStrength = 30f;
         public float maxOrbitSpeed = 25f;
         public float vortexGrip = 2f;
+        public int levelForCollectibles = 1;
+
 
         private void Reset()
         {

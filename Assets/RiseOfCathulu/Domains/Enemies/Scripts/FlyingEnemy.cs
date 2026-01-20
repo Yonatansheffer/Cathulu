@@ -77,10 +77,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             float playerSpeed = config.GetMaxSpeed(_player.CurrentSizeLevel);
             float speedMultiplier = Random.Range(0.1f, 0.6f);  
             moveSpeed = playerSpeed * speedMultiplier;
-            if (_animator != null)
-            {
-                _animator.speed = speedMultiplier; 
-            }
             _playerAttractionWeight = Random.Range(minPlayerAttraction,maxPlayerAttraction);
             _currentAttractionSign = 1f;
         }   

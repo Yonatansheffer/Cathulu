@@ -13,8 +13,9 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
         [Header("Weapon Settings")]
         [SerializeField, Tooltip("Weapon settings configuration")] private WeaponSettings settings;
         [SerializeField, Tooltip("Shooting light effect GameObject")] private ShootingLight shootingLight;
-        [SerializeField, Tooltip("Offset for projectile spawn position")] private Vector3 adding;
-       
+        [SerializeField, Tooltip("Offset for projectile spawn position")] private Vector3 adding; 
+        [SerializeField] private GrowthConfig growthConfig;
+        [SerializeField] private float shotSpeedMultiplier = 1f;
         private static readonly int Idle = Animator.StringToHash("Idle");
         private WeaponConfig _currentWeaponConfig;
         private float _lastShotTime = -Mathf.Infinity;
@@ -98,13 +99,11 @@ namespace RiseOfCathulu.Domains.Weapons.Scripts
         private void SpawnProjectile(Transform t)
         {
             Vector2 shootDirection = t.up;
-            var projectileInstance = Instantiate(
-                _currentWeaponConfig.projectilePrefab,
-                t.position + t.TransformDirection(adding),
-                t.rotation
-            ).GetComponent<Projectile>();
+            var projectileInstance = Instantiate(_currentWeaponConfig.projectilePrefab,
+                t.position + t.TransformDirection(adding), t.rotation).GetComponent<Projectile>();
             projectileInstance.Initialize(_playerSize.CurrentScale);
-            projectileInstance.Launch(shootDirection * _currentWeaponConfig.shotSpeed);
+            projectileInstance.Launch(shootDirection * (_currentWeaponConfig.shotSpeed *
+                                                        growthConfig.GetMaxSpeed(_playerSize.CurrentSizeLevel)));
             _dualSenseFeedback?.TriggerGunWall();
             RegisterProjectile(projectileInstance);
         }
