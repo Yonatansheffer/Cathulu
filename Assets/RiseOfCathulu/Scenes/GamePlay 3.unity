@@ -1124,6 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMinimapIconScaler2D
   targetWorldScale: {x: 2000, y: 2000}
+  maxScaleMultiplier: 2
 --- !u!4 &414787285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
@@ -3263,7 +3264,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 275634927742636471, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: gravityStrength
-      value: 1100
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 1611957748429885661, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_LocalPosition.x
