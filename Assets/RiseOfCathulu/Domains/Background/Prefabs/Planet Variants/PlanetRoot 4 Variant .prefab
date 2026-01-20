@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: bulletForce
       value: 900
       objectReference: {fileID: 0}
+    - target: {fileID: 7246226354467762915, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: ballShootDistance
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 7350649719469579750, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: orbitRadius
       value: 1250

@@ -80,8 +80,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void ShootBallBullet()
         {
             var bullet = EnemyBulletPool.Instance.Get();
-            bullet.transform.localScale =  growthConfig.GetScale(_playerSize.CurrentSizeLevel) * 
-                                           (transform.localScale / sizeFactor);
+            var size = sizeFactor * growthConfig.GetScale(_playerSize.CurrentSizeLevel);
+            bullet.transform.localScale = new Vector3(size, size, size);
             bullet.transform.position = transform.position;
             var dir = (_player.transform.position - transform.position).normalized;
             var rb = bullet.GetComponent<Rigidbody2D>();

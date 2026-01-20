@@ -17,29 +17,29 @@ MonoBehaviour:
   minScale: 6
   maxScale: 400
   minMaxSpeed: 700
-  maxMaxSpeed: 18500
+  maxMaxSpeed: 15000
   minConvergence: 6
   maxConvergence: 2.5
   scaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0000006677583
-      value: 0.0015876396
-      inSlope: -0.021979624
-      outSlope: -0.021979624
+      time: -0.002003273
+      value: 0.0062516844
+      inSlope: 0.1111706
+      outSlope: 0.1111706
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.21727075
+      outWeight: 0.08745082
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1.7639782
-      outSlope: 1.7639782
+      time: 1.5015129
+      value: 1.0011272
+      inSlope: 1.7207528
+      outSlope: 1.7207528
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.06388874
+      inWeight: 0.06950893
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -109,10 +109,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8752399172440395277}
     - target: {fileID: 2178240300967504961, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
-      propertyPath: sizeFactor
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178240300967504961, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: bulletForce
       value: 400
       objectReference: {fileID: 0}
@@ -120,6 +116,10 @@ PrefabInstance:
       propertyPath: growthConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 2178240300967504961, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: ballShootDistance
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 2529995809540959969, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: initialHealth
       value: 8

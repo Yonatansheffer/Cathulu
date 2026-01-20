@@ -543,20 +543,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: sizeFactor
-      value: 10
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: growthConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: ballShootDistance
+      value: 7000
+      objectReference: {fileID: 0}
     - target: {fileID: 1226654190249582154, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: sizeFactor
-      value: 10
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1226654190249582154, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: growthConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 1226654190249582154, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: ballShootDistance
+      value: 7000
+      objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: planetEnemies.Array.size
       value: 3
@@ -627,7 +635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: sizeFactor
-      value: 10
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: ballShootDistance
+      value: 7000
       objectReference: {fileID: 0}
     - target: {fileID: 6188783967659767817, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalScale.x

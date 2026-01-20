@@ -184,9 +184,9 @@ MonoBehaviour:
   startShootDelay: 6
   ballShootDistance: 120
   ballShootCooldown: 3
-  bulletForce: 20
-  sizeFactor: 5
-  growthConfig: {fileID: 0}
+  bulletForceFactor: 1
+  sizeFactor: 1.5
+  growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
 --- !u!114 &2149393485863936391
 MonoBehaviour:
   m_ObjectHideFlags: 0
