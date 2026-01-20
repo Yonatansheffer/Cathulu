@@ -75,7 +75,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             float targetScale = config.GetScale(level);
             transform.localScale = Vector3.one * targetScale;
             float playerSpeed = config.GetMaxSpeed(_player.CurrentSizeLevel);
-            float speedMultiplier = Random.Range(0.1f, 0.6f);  
+            float speedMultiplier = Random.Range(0.1f, 0.5f);  
             moveSpeed = playerSpeed * speedMultiplier;
             _playerAttractionWeight = Random.Range(minPlayerAttraction,maxPlayerAttraction);
             _currentAttractionSign = 1f;
@@ -150,21 +150,25 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private void CheckTooSmall()
         {
             if (_player == null) return;
-            if (_player.CurrentSizeLevel > sizeLevel + 4)
+            if (_player.CurrentSizeLevel > sizeLevel +5)
+            {
                 ReturnToPool();
+            }
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void UpdateEatable()
         {
             bool nowEatable = _player.CurrentSizeLevel >= sizeLevel;
 
             if (nowEatable && !_isCurrentlyEatable)
             {
-                if (_ownerSpawner != null && !_ownerSpawner.CanBecomeEatable())
+                if (_ownerSpawner != null && !_ownerSpawner.CanBecomeEatable() && IsInsideEatableTether())
                 {
                     ReturnToPool();
                     return;
                 }
+
                 _isCurrentlyEatable = true;
                 _currentAttractionSign = -1f;
                 _ownerSpawner?.NotifyEnemyBecameEatable();
@@ -176,6 +180,17 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 _ownerSpawner?.NotifyEnemyStoppedBeingEatable();
             }
         }
+
+        
+        private bool IsInsideEatableTether()
+        {
+            if (!_isTethered || _tetherTransform == null)
+                return false;
+
+            float distance = Vector3.Distance(transform.position, _tetherTransform.position);
+            return distance <= _eatableMaxTetherDistance;
+        }
+
 
         private void Move()
         {

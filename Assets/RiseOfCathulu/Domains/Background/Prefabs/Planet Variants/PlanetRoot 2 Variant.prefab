@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetRoot 2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: maxDistanceFromPlanet
       value: 2500
@@ -32,17 +36,21 @@ PrefabInstance:
       propertyPath: eatableMaxDistanceFromPlanet
       value: 860
       objectReference: {fileID: 0}
+    - target: {fileID: 2898029929104864454, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3589031018713209510, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5099292496197868168, guid: 8a91f21c63561ec4fb79d3c1c2f3f211, type: 3}
     - target: {fileID: 4494430320793936905, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4494430320793936905, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4494430320793936905, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
@@ -86,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7852966193461448551, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: gravityStrength
-      value: 580000
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 7852966193461448551, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: levelForCollectibles

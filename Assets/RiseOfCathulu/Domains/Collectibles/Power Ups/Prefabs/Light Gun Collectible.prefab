@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 120
-  inPlanetFallSpeed: 35
+  inPlanetFallSpeed: 60
   timeForDestroy: 20
   blinkDuration: 3
   blinkInterval: 0.1

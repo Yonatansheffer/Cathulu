@@ -23,6 +23,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private bool _isDestroyed;
         private bool _isFrozen;
         private float _shootStartTime;
+        private float _remainingShootDelay;
+        private float _remainingCooldown;
 
         
         private void Awake()
@@ -53,8 +55,24 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         }
 
 
-        private void OnFreeze() => _isFrozen = true;
-        private void OnUnFreeze() => _isFrozen = false;
+        private void OnFreeze()
+        {
+            if (_isFrozen) return;
+            _isFrozen = true;
+
+            _remainingShootDelay = Mathf.Max(0f, _shootStartTime - Time.time);
+            _remainingCooldown = Mathf.Max(0f, ballShootCooldown - (Time.time - _lastBallShootTime));
+        }
+
+        private void OnUnFreeze()
+        {
+            if (!_isFrozen) return;
+            _isFrozen = false;
+
+            _shootStartTime = Time.time + _remainingShootDelay;
+            _lastBallShootTime = Time.time - (ballShootCooldown - _remainingCooldown);
+        }
+
 
         private void Update()
         {
@@ -79,6 +97,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
 
         private void ShootBallBullet()
         {
+            if (_isFrozen || _isDestroyed) return;
             var bullet = EnemyBulletPool.Instance.Get();
             var size = sizeFactor * growthConfig.GetScale(_playerSize.CurrentSizeLevel);
             bullet.transform.localScale = new Vector3(size, size, size);

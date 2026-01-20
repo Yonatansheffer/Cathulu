@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 6894999169920593895, guid: a32e3872b37a96940a7fc9155fca646c, type: 3}
     - target: {fileID: 2898950498193795240, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2898950498193795240, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.y
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2898950498193795240, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 3730162615867089998, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: eatableMaxDistanceFromPlanet
       value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491098539335383143, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4665896077926337747, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: initialPoolSize
@@ -138,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835815815145669574, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: gravityStrength
-      value: 800000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 8835815815145669574, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: levelForCollectibles

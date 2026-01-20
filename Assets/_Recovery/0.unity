@@ -556,11 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180386548376132842, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: initialHealth
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: maxEatableEnemies
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3901082786836395466, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: initialHealth
@@ -652,11 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8393820442055450024, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: initialHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8884002670987401478, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: maxEatableEnemies
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
@@ -3257,10 +3249,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
-    - target: {fileID: 275634927742636471, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
-      propertyPath: gravityStrength
-      value: 3000000
-      objectReference: {fileID: 0}
     - target: {fileID: 1611957748429885661, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13388
@@ -3362,6 +3350,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: growthConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22827
@@ -3620,10 +3612,6 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 3 Variant (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3474594849951855157, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4674,10 +4662,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2969918064380344786, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
-      propertyPath: groundCheckRadius
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 937176178784988943, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_Name
       value: Player

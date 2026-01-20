@@ -84,17 +84,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             StopAllCoroutines();
         }
         
-        private int GetForcedEatableLevel()
-        {
-            // Smallest level that is eatable by the player
-            // (equal size is eatable in your logic)
-            return Mathf.Clamp(
-                _playerSize.CurrentSizeLevel,
-                growthConfig.minLevel,
-                growthConfig.maxLevel
-            );
-        }
-
         private void EnemySpawnRoutine() => StartCoroutine(EnemySpawn());
 
         private IEnumerator EnemySpawn()
@@ -127,9 +116,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private int GetNormalDistributedLevel()
         {
             int meanLevel = _playerSize.CurrentSizeLevel + levelOffset;
-            return LevelDistribution.GetNormalDistributedLevel(
-                meanLevel,
-                levelStandardDeviation,
+            return LevelDistribution.GetNormalDistributedLevel(meanLevel,  levelStandardDeviation,
                 growthConfig.minLevel,
                 growthConfig.maxLevel
             );

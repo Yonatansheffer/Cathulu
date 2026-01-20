@@ -52,7 +52,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void FixedUpdate()  
         {
-            Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
+//            Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
         }
         
         public void ApplySizeStats( float maxSpeed, float convergence)
@@ -85,7 +85,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
         {
             _gravityCenter = gravityCenter;
-            _inwardGravity = inwardGravity;
+            _inwardGravity = inwardGravity * absoluteMaxSpeed;
             _maxVortexSpeed = maxVortexSpeed;
             _vortexGrip = vortexGrip;
             _gravityFade = 1f;

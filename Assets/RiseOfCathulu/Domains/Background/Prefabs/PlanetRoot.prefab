@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: bulletForceFactor
-      value: 0.75
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7424182012075156277, guid: 8a20d3f300db31e4cbf510348ae7bfd2, type: 3}
       propertyPath: enemyTargetPositions.Array.size
@@ -894,7 +894,7 @@ MonoBehaviour:
   maxDistanceFromPlanet: 2200
   eatableMaxDistanceFromPlanet: 475
   maxActiveEnemies: 10
-  maxEatableEnemies: 2
+  maxEatableEnemies: 1
   levelStandardDeviation: 1.2
   levelOffset: 1
   showDebugOverlay: 0
