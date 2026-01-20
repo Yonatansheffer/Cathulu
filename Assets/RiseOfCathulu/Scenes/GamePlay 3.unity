@@ -1866,7 +1866,6 @@ Transform:
   - {fileID: 150719727429849846}
   - {fileID: 1598957249}
   - {fileID: 13812910}
-  - {fileID: 1588131951}
   - {fileID: 907379006}
   - {fileID: 1594623940}
   - {fileID: 1714289513}
@@ -2112,9 +2111,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetRoot 2 Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2898950498193795240, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -569
+      objectReference: {fileID: 0}
+    - target: {fileID: 2898950498193795240, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 78
+      objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24732
+      value: -25033
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3072,11 +3079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effd2644f124405b81cfe0b2c1dd839b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
---- !u!58 &1408930424 stripped
-CircleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 8763640073998926814, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-  m_PrefabInstance: {fileID: 1930875904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1434452145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3381,11 +3383,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19416
+      value: -22827
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8722
+      value: -12371
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3509,11 +3511,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
---- !u!4 &1588131951 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-  m_PrefabInstance: {fileID: 1930875904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1594623940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
@@ -3627,17 +3624,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1611957748429885661, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
   m_PrefabInstance: {fileID: 8146019073126706099}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1671784704 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7852966193461448551, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-  m_PrefabInstance: {fileID: 1930875904}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: effd2644f124405b81cfe0b2c1dd839b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
 --- !u!1001 &1708061864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3656,11 +3642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23640
+      value: -18710
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14533
+      value: -9090
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4009,81 +3995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effd2644f124405b81cfe0b2c1dd839b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
---- !u!1001 &1930875904
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 688850435}
-    m_Modifications:
-    - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_Name
-      value: PlanetRoot 1 Variant (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: 'planetEnemies.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2898029929104864454, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: requiredSizeLevel
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5833201859934235314, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: growthConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -21889
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -11217
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 831360107104441215, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-    - {fileID: 1399587219271205008, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
 --- !u!58 &1937633701 stripped
 CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 4769061525840831124, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
@@ -4792,11 +4703,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21756
+      value: -24614
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8825
+      value: -14620
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4918,7 +4829,7 @@ PrefabInstance:
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'gravityAreas.Array.data[6]'
       value: 
-      objectReference: {fileID: 1408930424}
+      objectReference: {fileID: 0}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'gravityAreas.Array.data[7]'
       value: 
@@ -5078,7 +4989,7 @@ PrefabInstance:
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'planetGroups.Array.data[1].gravityAreas.Array.data[3]'
       value: 
-      objectReference: {fileID: 1671784704}
+      objectReference: {fileID: 0}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'planetGroups.Array.data[1].gravityAreas.Array.data[4]'
       value: 
@@ -5230,7 +5141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4419
+      value: -3625
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5293,7 +5204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1689666438965498824, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6556
+      value: -4666
       objectReference: {fileID: 0}
     - target: {fileID: 1689666438965498824, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.y
