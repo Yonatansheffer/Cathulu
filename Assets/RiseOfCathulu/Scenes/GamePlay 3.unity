@@ -567,24 +567,52 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: isSun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: planetEnemies.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: 'planetEnemies.Array.data[1]'
       value: 
-      objectReference: {fileID: 1292649265}
+      objectReference: {fileID: 1973857065}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: 'planetEnemies.Array.data[2]'
       value: 
-      objectReference: {fileID: 1550981734}
+      objectReference: {fileID: 1115893126}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: 'planetEnemies.Array.data[3]'
       value: 
       objectReference: {fileID: 1550981734}
+    - target: {fileID: 2166745628485192101, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: maxDistanceFromPlanet
+      value: 12500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166745628485192101, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: eatableMaxDistanceFromPlanet
+      value: 6767
+      objectReference: {fileID: 0}
     - target: {fileID: 2666019479596491642, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 4 Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Radius
+      value: 1517.9092
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Offset.x
+      value: -14.867676
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: m_Offset.y
+      value: 86.75293
       objectReference: {fileID: 0}
     - target: {fileID: 3180386548376132842, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: initialHealth
@@ -593,6 +621,14 @@ PrefabInstance:
     - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: maxEatableEnemies
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: maxDistanceFromPlanet
+      value: 12500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: eatableMaxDistanceFromPlanet
+      value: 6767
       objectReference: {fileID: 0}
     - target: {fileID: 3901082786836395466, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: initialHealth
@@ -644,7 +680,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: ballShootDistance
-      value: 7000
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335874301795026744, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: innerDangerRange
+      value: 2400.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335874301795026744, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: spawnActivationRange
+      value: 6750
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347716259504987358, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: innerDangerRange
+      value: 2400.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347716259504987358, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: spawnActivationRange
+      value: 6750
       objectReference: {fileID: 0}
     - target: {fileID: 5465577009844425934, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: requiredSizeLevel
@@ -669,6 +721,14 @@ PrefabInstance:
     - target: {fileID: 6290120355026038317, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: levelForCollectibles
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378270799387107858, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: innerDangerRange
+      value: 2400.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378270799387107858, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: spawnActivationRange
+      value: 6750
       objectReference: {fileID: 0}
     - target: {fileID: 6656061667159487940, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_Radius
@@ -698,8 +758,15 @@ PrefabInstance:
       propertyPath: maxEatableEnemies
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
+    - target: {fileID: 8884002670987401478, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: maxDistanceFromPlanet
+      value: 12500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884002670987401478, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: eatableMaxDistanceFromPlanet
+      value: 6767
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2605,6 +2672,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4811934209974710087, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
   m_PrefabInstance: {fileID: 1270774215}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1115893126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8243703342445795927, guid: faf660f5736257744bee72fdd7636044, type: 3}
+  m_PrefabInstance: {fileID: 174525532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128831884
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,11 +3055,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
---- !u!1 &1292649265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1779331525873345623, guid: faf660f5736257744bee72fdd7636044, type: 3}
-  m_PrefabInstance: {fileID: 174525532}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1301440029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
@@ -4196,6 +4263,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effd2644f124405b81cfe0b2c1dd839b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
+--- !u!1 &1973857065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7523239075315938167, guid: faf660f5736257744bee72fdd7636044, type: 3}
+  m_PrefabInstance: {fileID: 174525532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019154126
 GameObject:
   m_ObjectHideFlags: 0

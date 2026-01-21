@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using RiseOfCathulu.Domains.Player.Scripts;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,6 +17,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [SerializeField] private float requiredSizeLevel;
         [SerializeField] private SpriteRenderer destructibleLight;
         [SerializeField] private GameObject[] planetEnemies;
+        [SerializeField] private bool isSun;
         
         private PlayerSize _playerSize;
         public bool isDestructable = false;
@@ -52,6 +54,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
                 Vector3.Scale(particles.transform.localScale, parentWorldScale * particlesSize);
             Destroy(particles, 2f);
             SoundManager.Instance.PlaySound("Explosion", transform);
+            if (isSun) GameEvents.DestroyedSun?.Invoke();
             Destroy(gameObject);
         }
     }

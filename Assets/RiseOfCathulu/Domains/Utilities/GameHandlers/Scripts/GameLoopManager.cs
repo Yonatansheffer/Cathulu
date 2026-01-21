@@ -29,7 +29,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.FreezeCollected += OnFreeze;
             GameEvents.RestartLevel += OnLevelStart;
             GameEvents.DestroyedSun += UpdatePlayerWin;
-            GameEvents.PlanetEnemyEndedDeath += PlayerWon;
             GameEvents.PlayerDefeated += UpdateDefeatedGameState;
             GameEvents.PlayerRequestedSizeIncrease += TryIncreaseSize;
             GameEvents.AddPoints += AddPoints;
@@ -40,7 +39,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.FreezeCollected -= OnFreeze;
             GameEvents.RestartLevel -= OnLevelStart;
             GameEvents.DestroyedSun -= UpdatePlayerWin;
-            GameEvents.PlanetEnemyEndedDeath -= PlayerWon;
             GameEvents.PlayerDefeated -= UpdateDefeatedGameState;
             GameEvents.PlayerRequestedSizeIncrease -= TryIncreaseSize;
             GameEvents.AddPoints -= AddPoints;
@@ -73,6 +71,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             GameEvents.FreezeLevel?.Invoke();
             _currentGameState = GameState.PlayerWon;
+            StartCoroutine(EndScene());
         }
 
         private void OnFreeze()
@@ -98,12 +97,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.FreezeLevel?.Invoke();
             StartCoroutine(EndScene());
         }
-
-        private void PlayerWon()
-        {
-            _currentGameState = GameState.PlayerWon;
-            StartCoroutine(EndScene());
-        }
+        
 
         private IEnumerator EndScene()
         {

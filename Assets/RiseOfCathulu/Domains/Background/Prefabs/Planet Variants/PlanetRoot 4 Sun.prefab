@@ -198,7 +198,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Radius
-      value: 2344.046
+      value: 2428.8423
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
@@ -206,7 +206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Offset.x
-      value: -17.824219
+      value: -45.336426
+      objectReference: {fileID: 0}
+    - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Offset.y
+      value: 98.85449
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -349,7 +353,7 @@ PrefabInstance:
       value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+    - {fileID: 8181620347761334319, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
