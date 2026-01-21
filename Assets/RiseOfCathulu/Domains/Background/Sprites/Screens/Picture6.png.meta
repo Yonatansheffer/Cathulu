@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 0bb8bd57d81773f4bbd0aee20d738173
+guid: b7ca27c41e066344e983144fdbac9c42
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5589298310281058741
-    second: fall_0_0
-  - first:
-      213: 6992489829141061100
-    second: fall_0_1
+      213: 9206112716341336289
+    second: Picture6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fall_0_0
+      name: Picture6_0
       rect:
         serializedVersion: 2
-        x: 798
-        y: 287
-        width: 440
-        height: 661
+        x: 0
+        y: 97
+        width: 4400
+        height: 2479
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b46a108dcc2de62b0800000000000000
-      internalID: -5589298310281058741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fall_0_1
-      rect:
-        serializedVersion: 2
-        x: 927
-        y: 262
-        width: 93
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ced1c79a3705a0160800000000000000
-      internalID: 6992489829141061100
+      spriteID: 1e85bbb4dbea2cf70800000000000000
+      internalID: 9206112716341336289
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fall_0_0: -5589298310281058741
-      fall_0_1: 6992489829141061100
+      Picture6_0: 9206112716341336289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
