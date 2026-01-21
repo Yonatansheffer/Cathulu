@@ -562,6 +562,10 @@ PrefabInstance:
       propertyPath: ballShootDistance
       value: 7000
       objectReference: {fileID: 0}
+    - target: {fileID: 1406942613232342412, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: planetEnemies.Array.size
       value: 3
@@ -641,6 +645,14 @@ PrefabInstance:
     - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: ballShootDistance
       value: 7000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465577009844425934, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897973619970309614, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6188783967659767817, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalScale.x
@@ -2914,6 +2926,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4164744761163438241, guid: 64a525c203d387f4695cb2ecadf81700, type: 3}
+    - target: {fileID: 1406942613232342412, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2666019479596491642, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 4 Variant  (1)
@@ -3409,6 +3429,10 @@ PrefabInstance:
     - target: {fileID: 4282849489467328347, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_LocalScale.y
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -4615,6 +4639,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8389134475083476877, guid: 492b333bea64435478f5822bbe70eeb2, type: 3}
+    - target: {fileID: 1406942613232342412, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 2666019479596491642, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 4 Variant  (3)
@@ -4851,6 +4883,18 @@ PrefabInstance:
       propertyPath: groundCheckRadius
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 201304407404567706, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 201304407404567706, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.427451
+      objectReference: {fileID: 0}
+    - target: {fileID: 201304407404567706, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8705883
+      objectReference: {fileID: 0}
     - target: {fileID: 937176178784988943, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4865,7 +4909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24614
+      value: -24124
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5476,6 +5520,14 @@ PrefabInstance:
     - target: {fileID: 1611957748429885661, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125036424397023766, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6838393975634904182, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_Sprite
