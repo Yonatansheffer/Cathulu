@@ -10,13 +10,17 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     {
         [SerializeField, Tooltip("Duration of stage freeze (seconds)")] private int freezeDuration = 6;
         [SerializeField, Tooltip("Amount of points to Grow")] private int growPrice = 100;
+        [SerializeField] private bool isOpening;
         private float _countDownTime;
         private int _currentScore;
         private GameState _currentGameState = GameState.Opening;
 
         private void Start()
         {
-            DontDestroyOnLoad(this);
+            if (!isOpening)
+            {
+                DontDestroyOnLoad(this);
+            }
             OnLevelStart();
         }
 
@@ -45,7 +49,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private void OnLevelStart()
         {
             _currentGameState = GameState.Playing;
-            _currentScore = 0;
+            _currentScore = isOpening ? 500 : 0;
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);
         }
 
