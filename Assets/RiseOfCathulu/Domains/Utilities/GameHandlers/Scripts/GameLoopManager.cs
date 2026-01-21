@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
 {
-    public enum GameState { Playing, Defeated, InFreeze, PlayerWon }
+    public enum GameState { Opening, Playing, Defeated, InFreeze, PlayerWon }
 
     public class GameLoopManager : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         [SerializeField, Tooltip("Amount of points to Grow")] private int growPrice = 100;
         private float _countDownTime;
         private int _currentScore;
-        private GameState _currentGameState;
+        private GameState _currentGameState = GameState.Opening;
 
         private void Start()
         {
@@ -52,7 +52,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
        
         private void TryIncreaseSize()
         {
-            if (_currentGameState is not (GameState.Playing or GameState.InFreeze)) return;
+            if (_currentGameState is not (GameState.Playing or GameState.InFreeze or GameState.Opening)) return;
             if(_currentScore < growPrice) return;
             _currentScore -= growPrice;
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);

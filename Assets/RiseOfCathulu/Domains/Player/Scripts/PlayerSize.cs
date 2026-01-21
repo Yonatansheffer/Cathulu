@@ -36,7 +36,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private int _currentSizeLevel;
         private bool _isShieldActive;
         private bool _isOnHitCooldown;
-
         public int CurrentSizeLevel => _currentSizeLevel;
         public float CurrentScale => transform.localScale.x;
 

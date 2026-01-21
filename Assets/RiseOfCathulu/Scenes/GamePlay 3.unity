@@ -3475,6 +3475,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7148764535461708632, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: waveConfig.startDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148764535461708632, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: waveConfig.initialSpawnDuration
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099311026394992967, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: orbitRadius
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22827

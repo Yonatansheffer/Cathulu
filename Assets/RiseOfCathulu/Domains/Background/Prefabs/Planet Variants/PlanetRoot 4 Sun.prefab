@@ -348,7 +348,8 @@ PrefabInstance:
       propertyPath: gravityStrength
       value: 4000
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}

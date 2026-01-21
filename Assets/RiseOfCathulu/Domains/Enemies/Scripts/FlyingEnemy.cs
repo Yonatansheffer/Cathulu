@@ -161,25 +161,32 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             bool nowEatable = _player.CurrentSizeLevel >= sizeLevel;
 
+            // Transition: NOT eatable → eatable
             if (nowEatable && !_isCurrentlyEatable)
             {
-                if (_ownerSpawner != null && !_ownerSpawner.CanBecomeEatable() && IsInsideEatableTether())
-                {
-                    ReturnToPool();
-                    return;
-                }
-
                 _isCurrentlyEatable = true;
                 _currentAttractionSign = -1f;
                 _ownerSpawner?.NotifyEnemyBecameEatable();
             }
+            // Transition: eatable → NOT eatable
             else if (!nowEatable && _isCurrentlyEatable)
             {
                 _isCurrentlyEatable = false;
                 _currentAttractionSign = 1f;
                 _ownerSpawner?.NotifyEnemyStoppedBeingEatable();
+                return;
+            }
+
+            // 🔴 Continuous rule enforcement (THIS WAS MISSING)
+            if (_isCurrentlyEatable
+                && _ownerSpawner != null
+                && !_ownerSpawner.CanBecomeEatable()
+                && IsInsideEatableTether())
+            {
+                ReturnToPool();
             }
         }
+
 
         
         private bool IsInsideEatableTether()

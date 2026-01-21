@@ -1,4 +1,5 @@
-﻿using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+﻿using RiseOfCathulu.Domains.Player.Scripts;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
 
 namespace RiseOfCathulu.Domains.Enemies.Scripts
@@ -8,13 +9,14 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
     {
 
         [Header("Movement")]
+        [SerializeField] private GrowthConfig growthConfig;
         [SerializeField] private BoxCollider2D gameArea;
         [SerializeField] private float baseMoveSpeed = 6f;
         [SerializeField] private float panicSpeedMultiplier = 1.8f;
         [SerializeField] private float noiseTimeScale = 0.35f;
         [SerializeField] private float boundaryPadding = 1.5f;
         [SerializeField] private float boundaryForce = 1.2f;
-
+        private Vector2 _lastMoveDir;
 
         [Header("Distance Behavior")]
         [SerializeField] private float teaseDistance = 8f;
@@ -26,10 +28,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField] private float neutralAttraction = 0.25f;
         [SerializeField] private float fleeStrength = 1.1f;
 
+        private SpriteRenderer _sr;
         private Transform _player;
-        private Rigidbody2D _rb;
         private float _moveSpeed;
         private bool _isFrozen;
+        private PlayerSize _playerSize;
 
         public void InitializeLevel(int level, GrowthConfig config)
         {
@@ -40,37 +43,40 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
             _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _playerSize = _player.GetComponent<PlayerSize>();
+        }
+        
+        
+        private void Flip()
+        {
+            if (_lastMoveDir.x < -0.01f)
+                _sr.flipX = false;
+            else if (_lastMoveDir.x > 0.01f)
+                _sr.flipX = true;
         }
 
-        private void OnEnable()
+        
+        private void UpdateSizeAndSpeed()
         {
-            GameEvents.FreezeLevel += Freeze;
-            GameEvents.UnFreezeLevel += UnFreeze;
+            if (!_playerSize) return;
+            float targetScale = _playerSize.CurrentScale * 0.65f;
+            transform.localScale = Vector3.Lerp(
+                transform.localScale,
+                Vector3.one * targetScale,
+                Time.deltaTime * 2f
+            );
+            _moveSpeed = growthConfig.GetMaxSpeed(_playerSize.CurrentSizeLevel) * 0.9f;
         }
-
-        private void OnDisable()
-        {
-            GameEvents.FreezeLevel -= Freeze;
-            GameEvents.UnFreezeLevel -= UnFreeze;
-        }
-
-        private void Freeze()
-        {
-            _isFrozen = true;
-            if (_rb) _rb.linearVelocity = Vector2.zero;
-        }
-
-        private void UnFreeze()
-        {
-            _isFrozen = false;
-        }
+        
 
         private void Update()
         {
-            if (_isFrozen || !_player) return;
+            if (!_player) return;
             Move();
+            Flip();
+            UpdateSizeAndSpeed();
         }
 
         private void Move()
@@ -105,6 +111,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 boundaryDir * boundaryForce;
 
             finalDir.Normalize();
+            _lastMoveDir = finalDir;
 
             transform.position +=
                 (Vector3)(finalDir * _moveSpeed * speedMultiplier * Time.deltaTime);
