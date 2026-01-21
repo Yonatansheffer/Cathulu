@@ -1335,7 +1335,7 @@ MonoBehaviour:
   minZoomSize: 500
   maxZoomSize: 8000
   zoomSmoothing: 2
-  startZoomSize: 12500
+  startZoomSize: 15000
   startZoomDuration: 6
   zoomOutExtraSize: 30
   zoomOutLerpDuration: 1
@@ -4829,7 +4829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
