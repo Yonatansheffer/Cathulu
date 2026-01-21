@@ -16,6 +16,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [SerializeField, Tooltip("Bullet force factor")] private float bulletForceFactor = 1f;
         [SerializeField] private float sizeFactor = 5f;
         [SerializeField] private GrowthConfig growthConfig;
+        [SerializeField] private float requiredLevel = 5f;
+
 
         private GameObject _player;
         private PlayerSize _playerSize;
@@ -25,6 +27,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private float _shootStartTime;
         private float _remainingShootDelay;
         private float _remainingCooldown;
+        
 
         
         private void Awake()
@@ -77,7 +80,16 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void Update()
         {
             if (_isFrozen || _isDestroyed || Time.time < _shootStartTime) return;
+            CheckTooBig();
             CheckProximityAttack();
+        }
+        
+        private void CheckTooBig()
+        {
+            if (_playerSize.CurrentSizeLevel >= requiredLevel + 11)
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void CheckProximityAttack()
