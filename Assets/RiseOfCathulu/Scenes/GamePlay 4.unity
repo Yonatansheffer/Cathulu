@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMinimapIconScaler2D
   targetWorldScale: {x: 2000, y: 2000}
+  maxScaleMultiplier: 2
 --- !u!4 &414787285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
@@ -2857,6 +2858,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1726017909791332859, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394979297355235434, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -72.813126
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439276203636447934, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.9
+      objectReference: {fileID: 0}
     - target: {fileID: 3469458833890359047, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_Name
       value: UI Manager
@@ -3187,11 +3200,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19416
+      value: -22240
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8722
+      value: -13811
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3440,7 +3453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23640
+      value: -10572
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4287,6 +4300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetRoot 2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2858242307669415431, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2966200626249415253, guid: f2ae568e34365b247ad54e4fca7952a2, type: 3}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'PlanetRoot 4 Variant '
       objectReference: {fileID: 0}
+    - target: {fileID: 1228890746227289922, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2858242307669415431, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -42,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4765903251430888746, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.x
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4765903251430888746, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.y
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6087757965096235578, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalScale.x

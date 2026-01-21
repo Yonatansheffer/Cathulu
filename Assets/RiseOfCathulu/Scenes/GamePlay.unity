@@ -423,6 +423,10 @@ PrefabInstance:
       propertyPath: growthConfig
       value: 
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
+    - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
+      propertyPath: destructibleLight
+      value: 
+      objectReference: {fileID: 174525533}
     - target: {fileID: 2666019479596491642, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 4 Sun
@@ -500,10 +504,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1311214979184287962, guid: faf660f5736257744bee72fdd7636044, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf660f5736257744bee72fdd7636044, type: 3}
+--- !u!212 &174525533 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4384259833418400425, guid: faf660f5736257744bee72fdd7636044, type: 3}
+  m_PrefabInstance: {fileID: 174525532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &239235347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4811934209974710087, guid: faf660f5736257744bee72fdd7636044, type: 3}
@@ -849,6 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMinimapIconScaler2D
   targetWorldScale: {x: 2000, y: 2000}
+  maxScaleMultiplier: 2
 --- !u!1001 &461420100
 PrefabInstance:
   m_ObjectHideFlags: 0

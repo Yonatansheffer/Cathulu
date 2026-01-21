@@ -4914,7 +4914,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1576313571
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8259653, g: 0.8049523, b: 0.9308176, a: 0.09803922}
   m_FlipX: 0
@@ -5122,6 +5122,10 @@ PrefabInstance:
       propertyPath: eatableMaxDistanceFromPlanet
       value: 420
       objectReference: {fileID: 0}
+    - target: {fileID: 5613013327361777578, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: destructibleLight
+      value: 
+      objectReference: {fileID: 534148321296966627}
     - target: {fileID: 5948773964192691722, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_LocalScale.x
       value: 35
@@ -5637,6 +5641,7 @@ PrefabInstance:
     - {fileID: 8085253424543435640, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6908956405829748485, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+    - {fileID: 4995285711368852371, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3371333428188933272, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       insertIndex: -1

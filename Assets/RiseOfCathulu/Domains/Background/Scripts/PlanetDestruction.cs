@@ -3,6 +3,7 @@ using System.Linq;
 using RiseOfCathulu.Domains.Player.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Background.Scripts
 {
@@ -13,10 +14,11 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
 
         [SerializeField] private float requiredSizeLevel;
-        [SerializeField] private GameObject destructibleLight;
+        [SerializeField] private SpriteRenderer destructibleLight;
         [SerializeField] private GameObject[] planetEnemies;
+        
         private PlayerSize _playerSize;
-        private bool _isDestructable = false;
+        public bool isDestructable = false;
         
         private void Awake()
         {
@@ -36,14 +38,14 @@ namespace RiseOfCathulu.Domains.Background.Scripts
                 {
                     return;
                 }
-                destructibleLight.SetActive(true);
-                _isDestructable = true;
+                destructibleLight.color = Color.green;
+                isDestructable = true;
             }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if(!_isDestructable || !other.gameObject.CompareTag("Player")) return;
+            if(!isDestructable || !other.gameObject.CompareTag("Player")) return;
             var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
             Vector3 parentWorldScale = transform.lossyScale;
             particles.transform.localScale = 
