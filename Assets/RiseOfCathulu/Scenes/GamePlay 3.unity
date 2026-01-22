@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7157561037332017152, guid: 8c4ffcd13fae7c14097b48c06388f56f, type: 3}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
@@ -210,6 +214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (12)
@@ -217,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -835,6 +847,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (5)
@@ -842,6 +858,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -923,6 +943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (15)
@@ -930,6 +954,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -1198,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -1212,6 +1240,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4130640169021434097, guid: d32961ad90cd14e43afb1b934cc8299b, type: 3}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
@@ -2067,7 +2099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -2081,6 +2113,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2014771838305702419, guid: f0ad652fae29a274894f6ddb8a0e3ec1, type: 3}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
@@ -2181,6 +2217,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (7)
@@ -2188,6 +2228,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -2370,6 +2414,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -2380,6 +2428,10 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2649,6 +2701,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (9)
@@ -2656,6 +2712,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -2947,6 +3007,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (10)
@@ -2954,6 +3018,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -3169,6 +3237,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (8)
@@ -3176,6 +3248,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -3342,6 +3418,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -3352,6 +3432,10 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3413,7 +3497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -3422,6 +3506,10 @@ PrefabInstance:
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -3595,6 +3683,10 @@ PrefabInstance:
       value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -3625,6 +3717,10 @@ PrefabInstance:
     - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_Radius
       value: 649.6709
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_Offset.x
@@ -3772,6 +3868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1423927264034553044, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_Name
       value: PlanetRoot 1 Variant (13)
@@ -3779,6 +3879,10 @@ PrefabInstance:
     - target: {fileID: 2255796061378626096, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
@@ -3968,6 +4072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
+    - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2166745628485192101, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: maxDistanceFromPlanet
       value: 3826
@@ -4119,6 +4227,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -4129,6 +4241,10 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4201,6 +4317,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -4211,6 +4331,10 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4520,7 +4644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -4534,6 +4658,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -30749221642623036, guid: fb97983a34a3a85488fbc8877c4b8296, type: 3}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
@@ -4989,7 +5117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407160990516867189, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 660474568738098833, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_Name
@@ -5003,6 +5131,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7028616704906629411, guid: c0e48aab3bc1019488c9096b0e2c32aa, type: 3}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
@@ -5112,7 +5244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5589,6 +5721,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -5599,6 +5735,10 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5759,6 +5899,14 @@ PrefabInstance:
     - target: {fileID: 5125036424397023766, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: requiredSizeLevel
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870296105707338457, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3042
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870296105707338457, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 6838393975634904182, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_Sprite

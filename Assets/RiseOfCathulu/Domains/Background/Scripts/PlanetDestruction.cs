@@ -35,15 +35,9 @@ namespace RiseOfCathulu.Domains.Background.Scripts
 
         private void CheckPlayerSize()
         {
-            if (_playerSize.CurrentSizeLevel >= requiredSizeLevel)
-            {
-                if (planetEnemies.Any(enemy => enemy))
-                {
-                    return;
-                }
-                destructibleLight.color = Color.green;
-                isDestructable = true;
-            }
+            if (planetEnemies.Any(enemy => enemy)) return;
+            destructibleLight.color = Color.green;
+            isDestructable = true;
         }
 
         private void OnCollisionEnter2D(Collision2D other)
