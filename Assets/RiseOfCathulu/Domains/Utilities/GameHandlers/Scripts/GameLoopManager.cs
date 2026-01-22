@@ -97,7 +97,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.FreezeLevel?.Invoke();
             StartCoroutine(EndScene());
         }
-        
 
         private IEnumerator EndScene()
         {

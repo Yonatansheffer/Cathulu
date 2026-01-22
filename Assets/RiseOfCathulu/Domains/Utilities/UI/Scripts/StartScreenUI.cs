@@ -12,7 +12,6 @@
             [SerializeField, Tooltip("Blinking 'Press Enter' text GameObject")] private GameObject pressXText;
             [SerializeField, Tooltip("Opening screen root GameObject")] private GameObject openingScreen;
             [SerializeField, Tooltip("Instructions screen root GameObject")] private GameObject instructionsScreen;
-
             [SerializeField, Tooltip("Player root GameObject to enable on start")] private GameObject player;
 
             [Header("Behavior")]

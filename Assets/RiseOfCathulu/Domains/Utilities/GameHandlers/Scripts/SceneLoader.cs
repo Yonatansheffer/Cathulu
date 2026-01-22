@@ -35,12 +35,15 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             _inputActions.Enable();
             GameEvents.EndScene += EndGame;
+            GameEvents.TutorialFinished += LoadGamePlay;
+
         }
 
         private void OnDisable()
         {
             _inputActions.Disable();
             GameEvents.EndScene -= EndGame;
+            GameEvents.TutorialFinished -= LoadGamePlay;
         }
 
         private void OnContinue(UnityEngine.InputSystem.InputAction.CallbackContext _)
@@ -61,8 +64,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
                 _state = GameState.TutorialScreen;
                 return;
             }
-
-            LoadGamePlay();
         }
 
         private void Update()
