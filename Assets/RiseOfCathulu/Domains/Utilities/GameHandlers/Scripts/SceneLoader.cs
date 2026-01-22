@@ -15,6 +15,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private enum GameState
         {
             StartScreen,
+            InstructionScreen,
             TutorialScreen,
             InLevel,
             EndingScene
@@ -46,8 +47,15 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             if (_state == GameState.InLevel)
                 return;
-
+            
             if (_state == GameState.StartScreen)
+            {
+                GameEvents.ContinueUI?.Invoke();
+                _state = GameState.InstructionScreen;
+                return;
+            }
+
+            if (_state == GameState.InstructionScreen)
             {
                 GameEvents.ContinueUI?.Invoke();
                 _state = GameState.TutorialScreen;
