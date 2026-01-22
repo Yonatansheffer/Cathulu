@@ -40,6 +40,14 @@ PrefabInstance:
       propertyPath: eatableMaxDistanceFromPlanet
       value: 2900
       objectReference: {fileID: 0}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: pointsForKill
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 4665896077926337747, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: initialPoolSize
       value: 15

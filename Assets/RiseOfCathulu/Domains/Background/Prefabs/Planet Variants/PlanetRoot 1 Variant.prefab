@@ -4966,6 +4966,14 @@ PrefabInstance:
       propertyPath: spawnActivationRange
       value: 2442
       objectReference: {fileID: 0}
+    - target: {fileID: 1333164785052453317, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333164785052453317, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1535607352704848349, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: m_Radius
       value: 5.711479
@@ -5121,6 +5129,10 @@ PrefabInstance:
     - target: {fileID: 5292113685441379052, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: eatableMaxDistanceFromPlanet
       value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613013327361777578, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: pointsForKill
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5613013327361777578, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: destructibleLight

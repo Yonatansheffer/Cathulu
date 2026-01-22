@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2166745628485192101, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: maxDistanceFromPlanet
       value: 7475

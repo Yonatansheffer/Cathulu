@@ -550,14 +550,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
-    - target: {fileID: 558285446907482862, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 558285446907482862, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 794214545109809002, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: sizeFactor
       value: 1.5
@@ -618,14 +610,6 @@ PrefabInstance:
       propertyPath: 'planetEnemies.Array.data[3]'
       value: 
       objectReference: {fileID: 1550981734}
-    - target: {fileID: 2143435456213498830, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143435456213498830, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 2166745628485192101, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: maxDistanceFromPlanet
       value: 12500
@@ -641,18 +625,6 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_TagString
       value: Planet
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710254151835392120, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_Radius
-      value: 3.097345
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710254151835392120, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.038265627
-      objectReference: {fileID: 0}
-    - target: {fileID: 2710254151835392120, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.025510743
       objectReference: {fileID: 0}
     - target: {fileID: 2914785855734930846, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_Radius
@@ -1297,6 +1269,47 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
   m_PrefabInstance: {fileID: 15808666}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &491712083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5240922544645591691, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+  m_PrefabInstance: {fileID: 1518659852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &491712086
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491712083}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.605
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,19 +3080,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688850435}
     m_Modifications:
-    - target: {fileID: 427495171543188803, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2410
-      objectReference: {fileID: 0}
-    - target: {fileID: 427495171543188803, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -484
-      objectReference: {fileID: 0}
     - target: {fileID: 756433993925032940, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4164744761163438241, guid: 64a525c203d387f4695cb2ecadf81700, type: 3}
     - target: {fileID: 1406942613232342412, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: requiredSizeLevel
       value: 20
       objectReference: {fileID: 0}
@@ -3595,6 +3604,10 @@ PrefabInstance:
       value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: 'planetEnemies.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
@@ -3614,14 +3627,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Planet
       objectReference: {fileID: 0}
-    - target: {fileID: 8144054494550861794, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
-      propertyPath: m_Radius
-      value: 1.1000562
-      objectReference: {fileID: 0}
-    - target: {fileID: 8144054494550861794, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.008558757
-      objectReference: {fileID: 0}
     - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_Radius
       value: 649.6709
@@ -3633,8 +3638,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7251220052371148207, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
-    - {fileID: 8954355136058613312, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
-    - {fileID: 4625497129090292155, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
@@ -3676,14 +3679,6 @@ PrefabInstance:
     - target: {fileID: 2991506243108946320, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494430320793936905, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 372
-      objectReference: {fileID: 0}
-    - target: {fileID: 4494430320793936905, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 87
       objectReference: {fileID: 0}
     - target: {fileID: 5750392210944998626, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: initialHealth
@@ -3752,7 +3747,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5240922544645591691, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 491712086}
   m_SourcePrefab: {fileID: 100100000, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
 --- !u!4 &1518659853 stripped
 Transform:
@@ -5112,7 +5110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5160,11 +5158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23811
+      value: -24124
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14020
+      value: -14620
       objectReference: {fileID: 0}
     - target: {fileID: 2942531795785300564, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5655,9 +5653,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 674870647}
     m_Modifications:
+    - target: {fileID: 128020687354730863, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 128020687354730863, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 128020687354730863, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27744
+      objectReference: {fileID: 0}
+    - target: {fileID: 128020687354730863, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11314
+      objectReference: {fileID: 0}
     - target: {fileID: 353981206961806292, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_Name
       value: Wormhole
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689666438965498824, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689666438965498824, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4771
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5757,6 +5779,10 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5125036424397023766, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: requiredSizeLevel
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628475555678114681, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: requiredSizeLevel
       value: 24
       objectReference: {fileID: 0}

@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: eatableMaxDistanceFromPlanet
       value: 1600
       objectReference: {fileID: 0}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: pointsForKill
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4491098539335383143, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: requiredSizeLevel
       value: 10

@@ -25,6 +25,10 @@ PrefabInstance:
       value: PlanetRoot 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: pointsForKill
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392619862628781481, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: requiredSizeLevel
       value: 7
       objectReference: {fileID: 0}
@@ -162,7 +166,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7909827949863036732, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3393750962511644523, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}

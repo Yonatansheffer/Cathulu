@@ -13,11 +13,12 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [Header("Particles")]
         [SerializeField, Tooltip("Stars particle prefab on death")] private GameObject orangeStarsParticles;
         [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
+        [SerializeField, Tooltip("Points awarded for destroying this enemy")] private int pointsForKill = 1;
 
         [SerializeField] private float requiredSizeLevel;
         [SerializeField] private SpriteRenderer destructibleLight;
         [SerializeField] private GameObject[] planetEnemies;
-        [SerializeField] private bool isSun;
+        [SerializeField] private bool isSun;   
         
         private PlayerSize _playerSize;
         public bool isDestructable = false;
@@ -54,6 +55,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
                 Vector3.Scale(particles.transform.localScale, parentWorldScale * particlesSize);
             Destroy(particles, 2f);
             SoundManager.Instance.PlaySound("Explosion", transform);
+            GameEvents.AddPoints?.Invoke(pointsForKill);
             if (isSun) GameEvents.DestroyedSun?.Invoke();
             Destroy(gameObject);
         }
