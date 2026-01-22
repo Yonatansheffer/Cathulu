@@ -35,7 +35,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             _inputActions.Enable();
             GameEvents.EndScene += EndGame;
-            GameEvents.TutorialFinished += LoadGamePlay;
+            GameEvents.TutorialFinished += EndTutorial;
 
         }
 
@@ -43,26 +43,23 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             _inputActions.Disable();
             GameEvents.EndScene -= EndGame;
-            GameEvents.TutorialFinished -= LoadGamePlay;
+            GameEvents.TutorialFinished -= EndTutorial;
         }
 
         private void OnContinue(UnityEngine.InputSystem.InputAction.CallbackContext _)
         {
-            if (_state == GameState.InLevel)
-                return;
-            
-            if (_state == GameState.StartScreen)
+            switch (_state)
             {
-                GameEvents.ContinueUI?.Invoke();
-                _state = GameState.InstructionScreen;
-                return;
-            }
-
-            if (_state == GameState.InstructionScreen)
-            {
-                GameEvents.ContinueUI?.Invoke();
-                _state = GameState.TutorialScreen;
-                return;
+                case GameState.InLevel:
+                    return;
+                case GameState.StartScreen:
+                    GameEvents.ContinueUI?.Invoke();
+                    _state = GameState.InstructionScreen;
+                    return;
+                case GameState.InstructionScreen:
+                    GameEvents.ContinueUI?.Invoke();
+                    _state = GameState.TutorialScreen;
+                    break;
             }
         }
 
@@ -71,11 +68,17 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             if (Input.GetKeyDown(KeyCode.Escape))
                 OnExit();
         }
+        
+        private void EndTutorial()
+        {
+            StartCoroutine(LoadGamePlay());
+        }
 
-        private void LoadGamePlay()
+        private IEnumerator LoadGamePlay()
         {
             _state = GameState.InLevel;
             GameEvents.StopMusic?.Invoke();
+            yield return new WaitForSeconds(1f);
             GameEvents.RestartLevel?.Invoke();
             SceneManager.LoadScene(GamePlaySceneName);
         }

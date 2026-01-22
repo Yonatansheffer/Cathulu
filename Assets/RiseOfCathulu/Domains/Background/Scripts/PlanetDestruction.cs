@@ -53,15 +53,9 @@ namespace RiseOfCathulu.Domains.Background.Scripts
             Destroy(particles, 2f);
             SoundManager.Instance.PlaySound("Explosion", transform);
             GameEvents.AddPoints?.Invoke(pointsForKill);
-            if (isTutorial) StartCoroutine(EndTutorial());
+            if(isTutorial) GameEvents.TutorialFinished?.Invoke();
             if (isSun) GameEvents.DestroyedSun?.Invoke();
             Destroy(gameObject);
-        }
-        
-        private IEnumerator EndTutorial()
-        {
-            yield return new WaitForSeconds(1f);
-            GameEvents.TutorialFinished?.Invoke();
         }
     }
 }
