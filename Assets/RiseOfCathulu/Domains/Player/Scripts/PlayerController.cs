@@ -46,6 +46,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _dualSenseFeedback = GetComponent<PlayerDualSenseFeedback>();
             _motor = GetComponent<PlayerGravityMotor>();
             InitializeInputCallbacks();
+            _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
         }
 
         private void OnEnable()
@@ -84,9 +85,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void FixedUpdate()
         {
             if (!_rb.simulated) return;
+
             _motor.Tick(_steeringInput, _thrustInput);
             Flip();
+            RotateToFacingDirection(); // ← move here
         }
+
 
         private void Flip()
         {
@@ -100,21 +104,16 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             }
         }
         
-        private void LateUpdate()
-        {
-            if (!_rb.simulated) return;
-            RotateToFacingDirection();
-        }   
-
-        
         private void RotateToFacingDirection()
         {
             Vector2 dir = _motor.FacingDirection;
             if (dir.sqrMagnitude < 0.001f)
                 return;
+
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 91f;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            _rb.MoveRotation(angle);
         }
+
 
         private void InitializeInputCallbacks()
         {
