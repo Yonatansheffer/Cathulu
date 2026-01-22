@@ -1169,7 +1169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: ballShootDistance
-      value: 40
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalScale.x

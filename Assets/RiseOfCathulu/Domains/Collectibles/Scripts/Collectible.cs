@@ -64,6 +64,19 @@ namespace RiseOfCathulu.Domains.Collectibles.Scripts
             }
         }
         
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Planet"))
+            {
+                StopMovement();
+                StartCoroutine(StartDestroyTimer());
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                HandlePickup();
+            }
+        }
+        
         protected abstract void HandlePickup();
         
         private IEnumerator StartDestroyTimer()
