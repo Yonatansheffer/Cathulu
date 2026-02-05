@@ -60,6 +60,9 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
                     GameEvents.ContinueUI?.Invoke();
                     _state = GameState.TutorialScreen;
                     break;
+                case GameState.EndingScene:
+                    EndTutorial();
+                    break;
             }
         }
 
@@ -67,6 +70,15 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 OnExit();
+            CheckRestart();
+        }
+        
+        private void CheckRestart()
+        {
+            if (Input.GetKeyDown(KeyCode.R) && _state == GameState.InLevel)
+            {
+                StartCoroutine(LoadGamePlay());
+            }
         }
         
         private void EndTutorial()
@@ -92,8 +104,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private IEnumerator DelayedGameOver()
         {
             yield return new WaitForSeconds(0.1f);
-            SceneManager.LoadScene(EndingSceneName);
             _state = GameState.EndingScene;
+            SceneManager.LoadScene(EndingSceneName);
         }
 
         private void OnExit()
