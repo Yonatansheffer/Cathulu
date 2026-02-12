@@ -391,6 +391,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (!collision.gameObject.CompareTag("Player")) return;
+            if(IsEatable) SoundManager.Instance.PlaySound("eat", transform);
             ReturnToPool();
         }
 
