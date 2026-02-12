@@ -85,3 +85,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 83d854e734358464da138af18b7ccffd, type: 3}
     volume: 0.1
     loop: 0
+  - name: eat
+    clip: {fileID: 8300000, guid: 8038cd42f686edd478899f1e1970e7b4, type: 3}
+    volume: 0.1
+    loop: 0
