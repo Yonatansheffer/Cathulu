@@ -41,8 +41,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
             if(!isDestructable || !other.gameObject.CompareTag("Player")) return;
             var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
             Vector3 parentWorldScale = transform.lossyScale;
-            particles.transform.localScale = 
-                Vector3.Scale(particles.transform.localScale, parentWorldScale * particlesSize);
+            particles.transform.localScale = parentWorldScale * particlesSize;
             Destroy(particles, 2f);
             SoundManager.Instance.PlaySound("Explosion", transform);
             GameEvents.AddPoints?.Invoke(pointsForKill);

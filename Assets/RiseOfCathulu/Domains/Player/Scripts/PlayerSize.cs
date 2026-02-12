@@ -170,8 +170,21 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ApplyScale();
             if (_motor != null)
             {
+                float speed = growthConfig.GetMaxSpeed(_currentSizeLevel);
+                if (_currentSizeLevel >= 10 && _currentSizeLevel < 20)
+                {
+                    speed *= _currentSizeLevel/4f; // Scale speed up significantly at higher levels
+                }
+                if (_currentSizeLevel >= 20 && _currentSizeLevel < 30)
+                {
+                    speed *= _currentSizeLevel/2f; // Scale speed up significantly at higher levels
+                }
+                if (_currentSizeLevel >= 30 && _currentSizeLevel < 40)
+                {
+                    speed *= _currentSizeLevel/1.2f; // Scale speed up significantly at higher levels
+                }
                 _motor.ApplySizeStats(
-                    growthConfig.GetMaxSpeed(_currentSizeLevel),
+                    speed,
                     growthConfig.GetConvergence(_currentSizeLevel)
                 );
             }

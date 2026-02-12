@@ -206,4 +206,4 @@ MonoBehaviour:
   bossParticlesLifetime: 0.8
   enemyParticlesLifetime: 1
   lifetime: 4
-  baseScale: 1
+  baseScale: 1.1

@@ -37,9 +37,9 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
                 print("Adding 1 life");
                 GameEvents.ChangePlayerSize?.Invoke(1);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha8))
+            if (Input.GetKeyDown(KeyCode.B))
             {
-                GameEvents.PlanetEnemyShoots?.Invoke();
+                GameEvents.PlayerGrow?.Invoke(1);
             }
             if (Input.GetKeyDown(KeyCode.Alpha9))
             {

@@ -160,7 +160,7 @@ MonoBehaviour:
   bossParticlesLifetime: 0.8
   enemyParticlesLifetime: 1
   lifetime: 8
-  baseScale: 1.5
+  baseScale: 2
 --- !u!61 &4382210117089188642
 BoxCollider2D:
   m_ObjectHideFlags: 0

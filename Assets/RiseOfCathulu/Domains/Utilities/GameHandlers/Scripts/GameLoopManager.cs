@@ -13,6 +13,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         [SerializeField] private bool isOpening;
         private float _countDownTime;
         private int _currentScore;
+        private int _totalScore;
         private GameState _currentGameState = GameState.Opening;
         
 
@@ -53,7 +54,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         {
             if (isOpening) _currentScore += pointsToAdd;
             _currentScore += pointsToAdd;
-    
+            _totalScore += pointsToAdd;
             // Check if we hit the threshold
             if (_currentScore >= growPrice)
             {
@@ -106,7 +107,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             yield return new WaitForSeconds(1.7f);
             GameEvents.EndScene?.Invoke();
             yield return new WaitForSeconds(0.3f);
-            GameEvents.GameOverUI?.Invoke(_currentGameState, _currentScore);
+            GameEvents.GameOverUI?.Invoke(_currentGameState, _totalScore);
         }
     }
 }
