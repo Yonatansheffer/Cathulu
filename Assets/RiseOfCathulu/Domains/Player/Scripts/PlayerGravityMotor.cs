@@ -15,7 +15,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private float thrustReleaseThreshold = 0.15f;
         private bool _thrustHeld;
         private bool _cruiseLocked;
-        private float _maximumSpeed;
+        //private float _maximumSpeed;
 
         [Header("Gravity Defaults")]
         private float _defaultInwardGravity = 30f;
@@ -59,7 +59,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         public void ApplySizeStats( float maxSpeed, float convergence)
         {
-            _maximumSpeed = maxSpeed;
+            //_maximumSpeed = maxSpeed;
+            absoluteMaxSpeed = maxSpeed;
             speed = maxSpeed; 
             convergenceRate = convergence;
         }
