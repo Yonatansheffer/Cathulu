@@ -112,18 +112,15 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 int spawnedLevel = GetNormalDistributedLevel();
                 if (spawnedLevel <= _playerSize.CurrentSizeLevel && !CanBecomeEatable())
                 {
-                    // Force it to be uneatable (Player Level + 1 or higher)
                     spawnedLevel = _playerSize.CurrentSizeLevel + 1;
                 }
                 var flyingEnemy = flyingEnemyPool.Get();
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
-                
-                
                 enemy.SetOwnerSpawner(this);
                 enemy.InitializeLevel(spawnedLevel, growthConfig);
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
-                ApplyRandomForce(flyingEnemy);
+                //ApplyRandomForce(flyingEnemy);
                 _currentActiveEnemies++;
                 _lastSpawnedLevel = spawnedLevel;
                 _lastSpawnedScale = flyingEnemy.transform.localScale.x; 

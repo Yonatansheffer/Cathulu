@@ -380,7 +380,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         {
             if (!other.CompareTag("Weapon")) return;
             SoundManager.Instance.PlaySound("Explosion", transform);
-            GameEvents.AddPoints?.Invoke(pointsForKill);
+            if(!IsEatable) GameEvents.AddPoints?.Invoke(pointsForKill);
             GameEvents.EnemyDestroyed?.Invoke(transform.position);
             var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
             particles.transform.localScale *= _baseScale * particlesSize;
