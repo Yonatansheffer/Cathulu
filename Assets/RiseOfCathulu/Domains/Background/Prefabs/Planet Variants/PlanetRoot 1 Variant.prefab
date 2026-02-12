@@ -5131,6 +5131,10 @@ PrefabInstance:
       value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 5613013327361777578, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
+      propertyPath: particlesSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613013327361777578, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: pointsForKill
       value: 15
       objectReference: {fileID: 0}

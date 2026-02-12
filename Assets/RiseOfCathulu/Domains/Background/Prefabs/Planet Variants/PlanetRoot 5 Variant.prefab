@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: particlesSize
-      value: 500
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: requiredSizeLevel
