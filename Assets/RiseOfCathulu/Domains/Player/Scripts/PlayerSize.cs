@@ -38,6 +38,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _isOnHitCooldown;
         public int CurrentSizeLevel => _currentSizeLevel;
         public float CurrentScale => transform.localScale.x;
+        [SerializeField] private bool isOpening;
 
       
         private void Awake()
@@ -54,14 +55,12 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void OnEnable()
         {
             GameEvents.ShieldUpdated += UpdateShield;
-            GameEvents.PlayerRequestedSizeDecrease += TryTakeHit;
             GameEvents.PlayerGrow += AdjustSize;
         }
 
         private void OnDisable()
         {
             GameEvents.ShieldUpdated -= UpdateShield;
-            GameEvents.PlayerRequestedSizeDecrease -= TryTakeHit;
             GameEvents.PlayerGrow -= AdjustSize;
         }
 
@@ -103,12 +102,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             CheatSize();
             UpdateLight();
-        }
-        
-        private void TryTakeHit()
-        {
-            if (_currentSizeLevel == growthConfig.minLevel) return;
-            TakeHit();
         }
         
         private void UpdateLight()
@@ -155,10 +148,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         private void AdjustSize(int delta)
         {
-           //GameEvents.PlayerChangeSize.Invoke();
            int previousSize = _currentSizeLevel;
            int newSize = _currentSizeLevel + delta;
-           if (newSize < growthConfig.minLevel)
+           if (newSize < growthConfig.minLevel && !isOpening)
            {
                GameEvents.PlayerDefeated?.Invoke();
                SoundManager.Instance.PlaySound("Lost Life", transform);

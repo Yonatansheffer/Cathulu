@@ -136,32 +136,5 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         private void OnFreeze() => _isFrozen = true;
         private void OnUnFreeze() => _isFrozen = false;
         
-        /*private void OnGUI()
-        {
-            // Only show in the editor or development builds
-            if (!Debug.isDebugBuild) return;
-
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 18;
-            style.normal.textColor = Color.white;
-
-            float dist = playerTransform ? Vector3.Distance(transform.position, playerTransform.position) : 0;
-            float currentInterval = GetDynamicInterval();
-
-            GUILayout.BeginArea(new Rect(20, 20, 350, 200));
-            GUILayout.Label($"--- WAVE MANAGER DEBUG ---", style);
-            GUILayout.Label($"Player Distance: {dist:F2}", style);
-            GUILayout.Label($"Current Interval: {currentInterval:F2}s", style);
-            GUILayout.Label($"Wave Time Left: {waveConfig.currentSpawnDuration:F2}s", style);
-    
-            if (!IsPlayerInRange()) 
-                GUILayout.Label($"STATUS: <color=yellow>PLAYER OUT OF RANGE</color>", style);
-            else if (_isFrozen)
-                GUILayout.Label($"STATUS: <color=cyan>FROZEN</color>", style);
-            else
-                GUILayout.Label($"STATUS: <color=red>ACTIVE & SPAWNING</color>", style);
-
-            GUILayout.EndArea();
-        }*/
     }
 }

@@ -14,6 +14,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private float _countDownTime;
         private int _currentScore;
         private GameState _currentGameState = GameState.Opening;
+        
 
         private void Start()
         {
@@ -30,7 +31,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.RestartLevel += OnLevelStart;
             GameEvents.DestroyedSun += UpdatePlayerWin;
             GameEvents.PlayerDefeated += UpdateDefeatedGameState;
-            GameEvents.PlayerRequestedSizeIncrease += TryIncreaseSize;
             GameEvents.AddPoints += AddPoints;
         }
 
@@ -40,30 +40,33 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             GameEvents.RestartLevel -= OnLevelStart;
             GameEvents.DestroyedSun -= UpdatePlayerWin;
             GameEvents.PlayerDefeated -= UpdateDefeatedGameState;
-            GameEvents.PlayerRequestedSizeIncrease -= TryIncreaseSize;
             GameEvents.AddPoints -= AddPoints;
         }
 
         private void OnLevelStart()
         {
             _currentGameState = GameState.Playing;
-            _currentScore = isOpening ? 500 : 0;
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);
-        }
-
-       
-        private void TryIncreaseSize()
-        {
-            if (_currentGameState is not (GameState.Playing or GameState.InFreeze or GameState.Opening)) return;
-            if(_currentScore < growPrice) return;
-            _currentScore -= growPrice;
-            GameEvents.UpdateScoreUI?.Invoke(_currentScore);
-            GameEvents.PlayerGrow?.Invoke(1);
         }
         
         private void AddPoints(int pointsToAdd)
         {
+            if (isOpening) _currentScore += pointsToAdd;
             _currentScore += pointsToAdd;
+    
+            // Check if we hit the threshold
+            if (_currentScore >= growPrice)
+            {
+                // Trigger the growth effect
+                GameEvents.PlayerGrow?.Invoke(1);
+        
+                // Subtract the price. If score was 105, it is now 5.
+                _currentScore -= growPrice;
+        
+                // Optional: Play a "Level Up" sound here
+            }
+
+            // Send the final calculated score to the UI
             GameEvents.UpdateScoreUI?.Invoke(_currentScore);
         }
 

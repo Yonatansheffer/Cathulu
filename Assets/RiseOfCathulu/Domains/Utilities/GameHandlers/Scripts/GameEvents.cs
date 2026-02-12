@@ -43,12 +43,10 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<int> AddPoints;
         public static Action ShakeCamera;
         public static Action StopMusic;
-        public static Action<Vector2, float,float,float> OnEnteredGravityZone;
+        public static Action<Vector2, float,float,float,bool> OnEnteredGravityZone;
         public static Action OnExitedGravityZone;
         public static Action DestroyedSun;
         public static Action SnitchCaught;
-        public static Action PlayerRequestedSizeDecrease;
-        public static Action PlayerRequestedSizeIncrease;
         public static Action<int> PlayerGrow;
         public static Action<Transform> PlanetDestroyed;
 

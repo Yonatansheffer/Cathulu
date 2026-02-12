@@ -48,6 +48,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rb;
         private bool _isFrozen;
+        private float _baseMoveSpeed;
         private int _facing = 1;
         private float _lastFlipTime = -999f;
         private float _currentAttractionSign = 1f; 
@@ -74,10 +75,14 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             sizeLevel = level;
             float targetScale = config.GetScale(level);
             transform.localScale = Vector3.one * targetScale;
+            if (_ownerSpawner != null && _ownerSpawner.isOpening) transform.localScale *= 1.9f;
             float playerSpeed = config.GetMaxSpeed(_player.CurrentSizeLevel);
-            float speedMultiplier = Random.Range(0.1f, 0.45f);  
+            float speedMultiplier = Random.Range(0.1f, 0.40f);
+            if (_ownerSpawner != null && _ownerSpawner.isOpening) speedMultiplier /= 2.3f;
+            _baseMoveSpeed = playerSpeed * speedMultiplier;
             moveSpeed = playerSpeed * speedMultiplier;
             _playerAttractionWeight = Random.Range(minPlayerAttraction,maxPlayerAttraction);
+            if (_ownerSpawner != null && _ownerSpawner.isOpening) _playerAttractionWeight = 0.85f;
             _currentAttractionSign = 1f;
         }   
 
@@ -166,6 +171,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             {
                 _isCurrentlyEatable = true;
                 _currentAttractionSign = -1f;
+                moveSpeed = _baseMoveSpeed * 0.82f;
                 _ownerSpawner?.NotifyEnemyBecameEatable();
             }
             // Transition: eatable → NOT eatable
@@ -173,21 +179,20 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             {
                 _isCurrentlyEatable = false;
                 _currentAttractionSign = 1f;
+                moveSpeed = _baseMoveSpeed;
                 _ownerSpawner?.NotifyEnemyStoppedBeingEatable();
                 return;
             }
 
             // 🔴 Continuous rule enforcement (THIS WAS MISSING)
-            if (_isCurrentlyEatable
-                && _ownerSpawner != null
-                && !_ownerSpawner.CanBecomeEatable()
-                && IsInsideEatableTether())
+            if (_isCurrentlyEatable && _ownerSpawner != null
+                                    && !_ownerSpawner.CanBecomeEatable() && IsInsideEatableTether())
             {
+                if(_ownerSpawner.showDebugOverlay)
+                    Debug.LogWarning("Enemy despawned for being inside eatable tether when spawner is at eatable capacity");
                 ReturnToPool();
             }
         }
-
-
         
         private bool IsInsideEatableTether()
         {

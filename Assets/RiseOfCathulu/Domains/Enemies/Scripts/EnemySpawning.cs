@@ -18,6 +18,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Maximum distance of enemy from planet")] private float maxDistanceFromPlanet = 10f;
         [SerializeField, Tooltip("Maximum distance of eatable enemy from planet")]
         private float eatableMaxDistanceFromPlanet = 10f;
+        [SerializeField] private FlyingEnemyPool flyingEnemyPool;
+
         
         [Header("Spawn Limits")]
         [SerializeField] private int maxActiveEnemies = 10;
@@ -31,10 +33,11 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         
                 
         [Header("Debug Settings")]
-        [SerializeField] private bool showDebugOverlay = true;
+        [SerializeField] public bool showDebugOverlay = true;
         [SerializeField] private Color debugCircleColor = new Color(1, 0, 0, 0.2f);
         private int _lastSpawnedLevel;
         private float _lastSpawnedScale;
+        [SerializeField] public bool isOpening;
 
         public bool CanBecomeEatable()
         {
@@ -43,6 +46,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
 
         public void NotifyEnemyReturned(bool wasEatable)
         {
+
             _currentActiveEnemies = Mathf.Max(0, _currentActiveEnemies - 1);
 
             if (wasEatable)
@@ -89,7 +93,14 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private IEnumerator EnemySpawn()
         {
             yield return new WaitForSeconds(0.5f);
-            SpawnFlyingEnemies(1);
+            if (isOpening)
+            {
+                SpawnOpeningEnemies(1);
+            }
+            else
+            {
+                SpawnFlyingEnemies(1);
+            }
         }
 
         private void SpawnFlyingEnemies(int amount)
@@ -99,14 +110,34 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
                 if (_currentActiveEnemies >= maxActiveEnemies)
                     break;
                 
-                var flyingEnemy = FlyingEnemyPool.Instance.Get();
+                var flyingEnemy = flyingEnemyPool.Get();
                 var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
                 int spawnedLevel = GetNormalDistributedLevel();;
+                enemy.SetOwnerSpawner(this);
                 enemy.InitializeLevel(spawnedLevel, growthConfig);
                 enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
                 flyingEnemy.transform.position = transform.position + spawnOffset;
                 ApplyRandomForce(flyingEnemy);
+                _currentActiveEnemies++;
+                _lastSpawnedLevel = spawnedLevel;
+                _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
+            }
+        }
+        
+        private void SpawnOpeningEnemies(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                if (_currentActiveEnemies >= maxActiveEnemies)
+                    break;
+                
+                var flyingEnemy = flyingEnemyPool.Get();
+                var enemy = flyingEnemy.GetComponent<FlyingEnemy>();
+                int spawnedLevel =_playerSize.CurrentSizeLevel+1;
                 enemy.SetOwnerSpawner(this);
+                enemy.InitializeLevel(spawnedLevel, growthConfig);
+                enemy.SetTether(transform.parent, maxDistanceFromPlanet, eatableMaxDistanceFromPlanet);
+                flyingEnemy.transform.position = transform.position + spawnOffset;
                 _currentActiveEnemies++;
                 _lastSpawnedLevel = spawnedLevel;
                 _lastSpawnedScale = flyingEnemy.transform.localScale.x; 
@@ -151,11 +182,22 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         private void OnGUI()
         {
             if (!showDebugOverlay) return;
-            GUI.Box(new Rect(10, 10, 250, 110), "Spawner Debug Tool");
+
+            // Increased height from 110 to 180 to fit the extra lines
+            GUI.Box(new Rect(10, 10, 260, 180), "Spawner Debug Tool");
+    
+            // Original Stats
             GUI.Label(new Rect(20, 30, 230, 20), $"Player Level: {_playerSize.CurrentSizeLevel}");
             GUI.Label(new Rect(20, 50, 230, 20), $"Target Mean Level: {_playerSize.CurrentSizeLevel + levelOffset}");
             GUI.Label(new Rect(20, 70, 230, 20), $"Last Enemy Level: {_lastSpawnedLevel}");
             GUI.Label(new Rect(20, 90, 230, 20), $"Last Enemy Scale: {_lastSpawnedScale:F2}");
+
+            // --- New Population Stats ---
+            GUI.Label(new Rect(20, 120, 230, 20), $"<b>Total:</b> {_currentActiveEnemies} / {maxActiveEnemies}");
+    
+            // Color coding the eatable count can be helpful for debugging limits
+            string eatableColor = _currentEatableEnemies >= maxEatableEnemies ? "red" : "white";
+            GUI.Label(new Rect(20, 140, 230, 20), $"<b>Eatables:</b> <color={eatableColor}>{_currentEatableEnemies} / {maxEatableEnemies}</color>");
         }
     }
 }

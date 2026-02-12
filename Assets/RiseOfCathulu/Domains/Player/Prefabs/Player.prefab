@@ -247,6 +247,7 @@ MonoBehaviour:
   trailWidthPerSize: 10
   minTrailTime: 0.1
   trailTimePerSize: 0.1
+  isOpening: 0
 --- !u!114 &1395897156840073585
 MonoBehaviour:
   m_ObjectHideFlags: 0

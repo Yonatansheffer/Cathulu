@@ -50,7 +50,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
                 planetCenter.position,
                 gravityStrength,
                 maxOrbitSpeed,
-                vortexGrip
+                vortexGrip, planetDestruction.isDestructable
             );
         }
 

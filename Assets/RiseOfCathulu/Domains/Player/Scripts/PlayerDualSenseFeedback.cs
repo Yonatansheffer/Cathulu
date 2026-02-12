@@ -186,7 +186,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _dualSense.SetOutputState(_outputState);
         }
 #endif
-        private void OnEnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
+        private void OnEnterGravity(Vector2 center, float strength, float maxSpeed, float grip, bool isDestruct)
         {
             _inGravity = true;
 

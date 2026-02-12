@@ -156,10 +156,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2718995755764774571}
-  - component: {fileID: 596914304636474287}
   - component: {fileID: 4212547605499236977}
   m_Layer: 8
-  m_Name: Enemy Pools
+  m_Name: Flying Enemy Pool
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,20 +179,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6277592542918145710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &596914304636474287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2269794440385768862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9493df3a467648ad950440f5c457dbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialPoolSize: 25
-  prefab: {fileID: 834314629388991528, guid: c84dc1f87bc965c4da6e7338a3a4415a, type: 3}
 --- !u!114 &4212547605499236977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34df038542248f99fe014e8c6f62630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Enemies.Scripts.FlyingEnemyPool
-  initialPoolSize: 25
+  initialPoolSize: 20
   prefab: {fileID: 8074282756354523846, guid: e34df86720dc7c74cb0e5570f7216dbd, type: 3}
 --- !u!1 &2624008405786361992
 GameObject:
@@ -549,11 +534,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Background.Scripts.PlanetDestruction
   orangeStarsParticles: {fileID: 2307528430244752201, guid: c6e34865eac9a462ebae0a9a63fd7495, type: 3}
   particlesSize: 100
-  requiredSizeLevel: 3
+  pointsForKill: 1
   destructibleLight: {fileID: 3979726231615237011}
   planetEnemies:
   - {fileID: 7446899258718077308}
   isSun: 0
+  isTutorial: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   isDestructable: 0
 --- !u!1 &9204640612457943699
 GameObject:
@@ -934,6 +921,7 @@ MonoBehaviour:
   spawnOffset: {x: 0.8, y: 0, z: 0}
   maxDistanceFromPlanet: 2200
   eatableMaxDistanceFromPlanet: 475
+  flyingEnemyPool: {fileID: 4212547605499236977}
   maxActiveEnemies: 10
   maxEatableEnemies: 1
   levelStandardDeviation: 1.2

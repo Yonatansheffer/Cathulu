@@ -326,6 +326,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 718208905}
+  - {fileID: 1580010924}
   m_Father: {fileID: 500232677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
@@ -646,10 +647,6 @@ PrefabInstance:
       propertyPath: requiredSizeLevel
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 1748538294267778258, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_Name
-      value: Flying Enemy Pool
-      objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: isSun
       value: 1
@@ -727,10 +724,6 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: flyingEnemyPool
-      value: 
-      objectReference: {fileID: 881989736}
-    - target: {fileID: 3265346526187858364, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: maxEatableEnemies
       value: 1
       objectReference: {fileID: 0}
@@ -785,10 +778,6 @@ PrefabInstance:
     - target: {fileID: 4811934209974710087, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4825775721281828818, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: m_Name
-      value: Flying Enemy Pool
       objectReference: {fileID: 0}
     - target: {fileID: 5285577741810360072, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: requiredLevel
@@ -879,10 +868,6 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8884002670987401478, guid: faf660f5736257744bee72fdd7636044, type: 3}
-      propertyPath: flyingEnemyPool
-      value: 
-      objectReference: {fileID: 806427742}
-    - target: {fileID: 8884002670987401478, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: maxEatableEnemies
       value: 1
       objectReference: {fileID: 0}
@@ -894,9 +879,7 @@ PrefabInstance:
       propertyPath: eatableMaxDistanceFromPlanet
       value: 6767
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8435302184500094417, guid: faf660f5736257744bee72fdd7636044, type: 3}
-    - {fileID: 2888175288127481192, guid: faf660f5736257744bee72fdd7636044, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1446,7 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.69411767, b: 0.73333335, a: 0.6313726}
+  m_Color: {r: 0.8553459, g: 0.8553459, b: 0.8553459, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1482,7 +1465,7 @@ GameObject:
   - component: {fileID: 500232677}
   - component: {fileID: 500232678}
   m_Layer: 5
-  m_Name: Score Slider
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1511,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.8705883, g: 0.427451, b: 0.5176471, a: 1}
     m_HighlightedColor: {r: 0.8705883, g: 0.427451, b: 0.5176471, a: 1}
@@ -2042,6 +2025,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2309,7 +2316,6 @@ Transform:
   - {fileID: 1301440029}
   - {fileID: 818527070}
   - {fileID: 983896765}
-  - {fileID: 2146001810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &692973256 stripped
@@ -2454,7 +2460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8705883, g: 0.427451, b: 0.5176471, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.51170117, a: 0.6039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2462,11 +2468,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2613,33 +2619,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
   m_PrefabInstance: {fileID: 771917572}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &806427742 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1054498389191760508, guid: faf660f5736257744bee72fdd7636044, type: 3}
-  m_PrefabInstance: {fileID: 174525532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34df038542248f99fe014e8c6f62630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Enemies.Scripts.FlyingEnemyPool
 --- !u!4 &818527070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1611957748429885661, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
   m_PrefabInstance: {fileID: 1505859643}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &881989736 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 392601576422484540, guid: faf660f5736257744bee72fdd7636044, type: 3}
-  m_PrefabInstance: {fileID: 174525532}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34df038542248f99fe014e8c6f62630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Enemies.Scripts.FlyingEnemyPool
 --- !u!4 &883841347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
@@ -4236,12 +4220,8 @@ PrefabInstance:
       value: Planet
       objectReference: {fileID: 0}
     - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
-      propertyPath: showDebugOverlay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: maxEatableEnemies
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2898029929104864454, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: requiredSizeLevel
@@ -4429,6 +4409,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+--- !u!1 &1580010923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580010924}
+  - component: {fileID: 1580010926}
+  - component: {fileID: 1580010925}
+  m_Layer: 5
+  m_Name: Fill (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1580010924
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580010923}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 22245401}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1580010925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580010923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1580010926
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580010923}
+  m_CullTransparentMesh: 1
 --- !u!4 &1594623940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
@@ -5312,10 +5367,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6290120355026038317, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
-      propertyPath: planetDestruction
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6656061667159487940, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_Radius
       value: 1.5895313
@@ -5614,52 +5665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effd2644f124405b81cfe0b2c1dd839b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::B.O.S.S.Domains.Background.Scripts.PlanetGravity
---- !u!1 &2146001809
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2146001810}
-  - component: {fileID: 2146001811}
-  m_Layer: 0
-  m_Name: Planet Enemy Bullet Pool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2146001810
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146001809}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 688850435}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2146001811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146001809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9493df3a467648ad950440f5c457dbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy.EnemyBulletPool
-  initialPoolSize: 50
-  prefab: {fileID: 834314629388991528, guid: c84dc1f87bc965c4da6e7338a3a4415a, type: 3}
 --- !u!1001 &150719727429849845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6394,6 +6399,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773930105991125062, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554895702796108859, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

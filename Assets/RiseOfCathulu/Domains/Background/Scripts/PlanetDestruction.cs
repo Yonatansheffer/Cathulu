@@ -22,15 +22,8 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [SerializeField] private bool isTutorial;
 
         [SerializeField] private Color color;
-        
-        private PlayerSize _playerSize;
         public bool isDestructable = false;
         
-        private void Awake()
-        {
-            _playerSize = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSize>();
-        }
-
         private void Update()
         {
             CheckPlayerSize();

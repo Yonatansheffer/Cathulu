@@ -63,9 +63,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             GameEvents.OnExitedGravityZone -= ExitGravity;
         }
 
-        private void EnterGravity(Vector2 center, float strength, float maxSpeed, float grip)
+        private void EnterGravity(Vector2 center, float strength, float maxSpeed, float grip, bool isDestruct)
         {
-            _motor.EnterGravity(center, strength, maxSpeed, grip);
+            _motor.EnterGravity(center, strength, maxSpeed, grip, isDestruct);
         }
 
         private void ExitGravity()
@@ -85,7 +85,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private void FixedUpdate()
         {
             if (!_rb.simulated) return;
-
             _motor.Tick(_steeringInput, _thrustInput);
             Flip();
             RotateToFacingDirection(); // ← move here
@@ -121,8 +120,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _inputActions.Movement.Steer.canceled += _ => _steeringInput = Vector2.zero;
             _inputActions.Movement.Shoot.performed += _ => _isShooting = true;
             _inputActions.Movement.Shoot.canceled += _ => _isShooting = false;
-            _inputActions.Movement.Grow.performed += _ => GameEvents.PlayerRequestedSizeIncrease?.Invoke();
-            _inputActions.Movement.Shrink.performed += _ => GameEvents.PlayerRequestedSizeDecrease?.Invoke();
             _inputActions.Movement.Move.performed += _ => Dash();
             _inputActions.Movement.Move.performed += ctx =>
             {

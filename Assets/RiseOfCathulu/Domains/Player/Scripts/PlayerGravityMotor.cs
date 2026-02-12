@@ -15,6 +15,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private float thrustReleaseThreshold = 0.15f;
         private bool _thrustHeld;
         private bool _cruiseLocked;
+        private float _maximumSpeed;
 
         [Header("Gravity Defaults")]
         private float _defaultInwardGravity = 30f;
@@ -29,6 +30,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _suspendMovement;
         private Vector2 _lastMoveDir;
         private float _gravityFade;
+        private bool _isInDestructableGravityZone;
         
 
         [Header("Trigger Curves")]
@@ -57,7 +59,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         public void ApplySizeStats( float maxSpeed, float convergence)
         {
-            absoluteMaxSpeed = maxSpeed;
+            _maximumSpeed = maxSpeed;
             speed = maxSpeed; 
             convergenceRate = convergence;
         }
@@ -82,8 +84,9 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ClampAbsoluteSpeed();
         }
 
-        public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip)
+        public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip, bool isDestructable)
         {
+            _isInDestructableGravityZone = isDestructable;
             _gravityCenter = gravityCenter;
             _inwardGravity = inwardGravity * absoluteMaxSpeed;
             _maxVortexSpeed = maxVortexSpeed;
@@ -91,11 +94,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             _gravityFade = 1f;
             _isInGravityZone = true;
         }
+        
         public void ExitGravity()
         {
             _isInGravityZone = false;
             _gravityFade = 0f;
             _rb.linearVelocity += _rb.linearVelocity.normalized * slingshotBonus;
+            _isInDestructableGravityZone = false;
             ResetGravityToDefaults();
         }
 
@@ -216,8 +221,15 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
             if (!_isInGravityZone)
                 return;
-
             Vector2 vel = _rb.linearVelocity;
+            /*if (_isInDestructableGravityZone)
+            {
+                absoluteMaxSpeed = _maximumSpeed * 100f;
+            }
+            else
+            {
+                absoluteMaxSpeed = _maximumSpeed;
+            }*/
 
             // Direction & distance to gravity center
             Vector2 toCenter = _gravityCenter - _rb.position;
