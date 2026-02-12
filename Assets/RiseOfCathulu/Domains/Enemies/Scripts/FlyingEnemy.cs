@@ -188,8 +188,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             if (_isCurrentlyEatable && _ownerSpawner != null
                                     && !_ownerSpawner.CanBecomeEatable() && IsInsideEatableTether())
             {
-                if(_ownerSpawner.showDebugOverlay)
-                    Debug.LogWarning("Enemy despawned for being inside eatable tether when spawner is at eatable capacity");
                 ReturnToPool();
             }
         }
