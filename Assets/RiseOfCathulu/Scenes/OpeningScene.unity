@@ -691,6 +691,10 @@ PrefabInstance:
       propertyPath: idleSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1395897156840073585, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
+      propertyPath: isOpening
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1643540819036384994, guid: 85d9f0fa1da73224fbfcee469ccb47b8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2634593

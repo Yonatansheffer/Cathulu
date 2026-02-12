@@ -113,12 +113,13 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ClampAbsoluteSpeed();
         }
 
-        public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip, bool isDestructable)
+        public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip,
+            bool isDestructable)
         {
-            if (isDestructable)
+            /*if (isDestructable)
             {
                 absoluteMaxSpeed *= 2;
-            }
+            }*/
             _gravityCenter = gravityCenter;
             _inwardGravity = inwardGravity * absoluteMaxSpeed;
             _maxVortexSpeed = maxVortexSpeed;
@@ -129,7 +130,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         public void ExitGravity()
         {
-            absoluteMaxSpeed = _maximumSpeed;
             _isInGravityZone = false;
             _gravityFade = 0f;
             _rb.linearVelocity += _rb.linearVelocity.normalized * slingshotBonus;
@@ -137,7 +137,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         }
 
         public void SuspendMovement(bool suspend)
-        {
+        {   
             _suspendMovement = suspend;
         }
         
