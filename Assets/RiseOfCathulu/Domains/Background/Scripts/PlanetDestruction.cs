@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using RiseOfCathulu.Domains.Player.Scripts;
+﻿using System.Linq;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using RiseOfCathulu.Domains.Utilities.Sound.Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Background.Scripts
 {
@@ -15,14 +11,11 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [SerializeField, Tooltip("Stars particle prefab on death")] private GameObject orangeStarsParticles;
         [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
         [SerializeField, Tooltip("Points awarded for destroying this planet")] private int pointsForKill = 1;
-
         [SerializeField] private SpriteRenderer destructibleLight;
         [SerializeField] private GameObject[] planetEnemies;
         [SerializeField] private bool isSun;
         [SerializeField] private bool isTutorial;
-
-        [SerializeField] private Color color;
-        public bool isDestructable = false;
+        public bool isDestructable;
         
         private void Update()
         {

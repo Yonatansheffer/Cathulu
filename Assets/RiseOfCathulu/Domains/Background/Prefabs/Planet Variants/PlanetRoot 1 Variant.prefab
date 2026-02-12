@@ -5056,7 +5056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2178240300967504961, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: bulletForceFactor
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2529995809540959969, guid: b5405832e48e8264ea3141ba6fd1fad9, type: 3}
       propertyPath: initialHealth

@@ -10,7 +10,7 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
         [Serializable]
         public class WaveConfig
         {
-            [Tooltip("Delay before the first wave starts")] public float startDelay = 0f;
+            [Tooltip("Delay before the first wave starts")] public float startDelay;
             [Header("Duration (Wave Length)")]
             public float initialSpawnDuration = 20f;
             public float minSpawnDuration = 5f;

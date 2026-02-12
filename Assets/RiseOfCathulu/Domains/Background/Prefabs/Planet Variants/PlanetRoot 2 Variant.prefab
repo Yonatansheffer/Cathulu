@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: ballShootDistance
       value: 2500
       objectReference: {fileID: 0}
+    - target: {fileID: 8280867320339725890, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: bulletForceFactor
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3141
