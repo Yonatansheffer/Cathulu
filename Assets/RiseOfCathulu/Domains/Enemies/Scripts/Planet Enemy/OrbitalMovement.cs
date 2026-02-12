@@ -56,7 +56,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             // Completely stop the physics body
             _rb.linearVelocity = Vector2.zero;
             _rb.angularVelocity = 0f;
-            _rb.simulated = false; // This prevents ANY physics movement or collisions
         }
 
         private void OnUnFreeze()
@@ -65,7 +64,6 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts.Planet_Enemy
             _isFrozen = false;
 
             // Restore the physics body
-            _rb.simulated = true;
             _rb.linearVelocity = _savedVelocity;
             _rb.angularVelocity = _savedAngularVelocity;
         }
