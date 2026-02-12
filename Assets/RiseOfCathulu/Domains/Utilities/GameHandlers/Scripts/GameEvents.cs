@@ -11,7 +11,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action FreezeLevel;
         public static Action UnFreezeLevel;
         public static Action RestartLevel;
-        public static Action<float> AddTime;
+        public static Action<float, float> AddSpeed;
         public static Action EndScene;
         public static Action TutorialFinished;
 

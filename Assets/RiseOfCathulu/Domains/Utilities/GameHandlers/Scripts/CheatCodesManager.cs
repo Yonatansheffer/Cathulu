@@ -29,13 +29,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
             }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                print("Adding 10 seconds to time");
-                GameEvents.AddTime?.Invoke(10);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                print("SpawnAllWalkingEnemies");
-                GameEvents.SpawnAllWalkingEnemies?.Invoke();
+                print("Adding speed for 8 seconds ");
+                GameEvents.AddSpeed?.Invoke(1.5f,8f);
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
