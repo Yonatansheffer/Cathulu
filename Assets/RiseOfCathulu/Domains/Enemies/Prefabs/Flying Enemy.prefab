@@ -263,6 +263,8 @@ MonoBehaviour:
   minFlipSpeed: 0.4
   flipHysteresis: 0.18
   flipCooldown: 0.25
+  orangeStarsParticles: {fileID: 2307528430244752201, guid: b909d23e48c66b141a74d29d0fb72247, type: 3}
+  particlesSize: 1.4
 --- !u!50 &7392207242760527386
 Rigidbody2D:
   serializedVersion: 5

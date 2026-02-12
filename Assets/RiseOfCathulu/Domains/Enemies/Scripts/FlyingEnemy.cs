@@ -37,12 +37,16 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         [SerializeField, Tooltip("Horizontal X threshold to trigger flip")] private float flipHysteresis = 0.18f;
         [SerializeField, Tooltip("Min time between flips")] private float flipCooldown = 0.25f;
         
+        [Header("Particles")]
+        [SerializeField, Tooltip("Stars particle prefab on death")] private GameObject orangeStarsParticles;
+        [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
+        
         [Header("Tether Settings")]
         private Transform _tetherTransform;
         private float _maxTetherDistance;
         private float _eatableMaxTetherDistance;
         private bool _isTethered;
-        
+        private float _baseScale;
         private Transform _playerTransform;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
@@ -73,8 +77,8 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
         public void InitializeLevel(int level, GrowthConfig config)
         {
             sizeLevel = level;
-            float targetScale = config.GetScale(level);
-            transform.localScale = Vector3.one * targetScale;
+            _baseScale = config.GetScale(level);
+            transform.localScale = Vector3.one * _baseScale;
             if (_ownerSpawner != null && _ownerSpawner.isOpening) transform.localScale *= 1.9f;
             float playerSpeed = config.GetMaxSpeed(_player.CurrentSizeLevel);
             float speedMultiplier = Random.Range(0.1f, 0.40f);
@@ -378,6 +382,9 @@ namespace RiseOfCathulu.Domains.Enemies.Scripts
             SoundManager.Instance.PlaySound("Explosion", transform);
             GameEvents.AddPoints?.Invoke(pointsForKill);
             GameEvents.EnemyDestroyed?.Invoke(transform.position);
+            var particles = Instantiate(orangeStarsParticles, transform.position, Quaternion.identity);
+            particles.transform.localScale *= _baseScale * particlesSize;
+            Destroy(particles, 2f);
             ReturnToPool();
         }
         

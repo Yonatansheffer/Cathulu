@@ -14,7 +14,7 @@ namespace RiseOfCathulu.Domains.Background.Scripts
         [Header("Particles")]
         [SerializeField, Tooltip("Stars particle prefab on death")] private GameObject orangeStarsParticles;
         [SerializeField, Tooltip("Stars particle size")] private float particlesSize;
-        [SerializeField, Tooltip("Points awarded for destroying this enemy")] private int pointsForKill = 1;
+        [SerializeField, Tooltip("Points awarded for destroying this planet")] private int pointsForKill = 1;
 
         [SerializeField] private SpriteRenderer destructibleLight;
         [SerializeField] private GameObject[] planetEnemies;
