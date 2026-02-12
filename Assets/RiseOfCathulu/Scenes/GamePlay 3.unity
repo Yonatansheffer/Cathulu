@@ -4249,11 +4249,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: showDebugOverlay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: maxEatableEnemies
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711302957861808367, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
+      propertyPath: eatableMaxDistanceFromPlanet
+      value: 500.8
       objectReference: {fileID: 0}
     - target: {fileID: 2898029929104864454, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: requiredSizeLevel
@@ -5833,7 +5837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
