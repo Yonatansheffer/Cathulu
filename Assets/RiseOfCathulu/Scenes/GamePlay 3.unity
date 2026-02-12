@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: particlesSize
-      value: 100000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1911183279632182499, guid: faf660f5736257744bee72fdd7636044, type: 3}
       propertyPath: requiredSizeLevel
@@ -971,11 +971,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20383
+      value: -19082
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10817
+      value: -11588
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2725,6 +2725,10 @@ PrefabInstance:
       propertyPath: maxEatableEnemies
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3985689624720359688, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
+      propertyPath: particlesSize
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6460756376547110979, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: initialHealth
       value: 4
@@ -2735,11 +2739,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21849
+      value: -20307
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7906
+      value: -7569
       objectReference: {fileID: 0}
     - target: {fileID: 8003613568892732076, guid: 72b1f24323607134fa3d6297a81be713, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3623,6 +3627,14 @@ PrefabInstance:
     - target: {fileID: 2666019479596491642, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: m_Radius
+      value: 640.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914785855734930846, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
+      propertyPath: m_Offset.x
+      value: 11.219971
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: 05dbdea267a33044c8aa19ebbe97e133, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4541,11 +4553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22827
+      value: -22249
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12718
+      value: -11706
       objectReference: {fileID: 0}
     - target: {fileID: 8752399172440395277, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4832,7 +4844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13276
+      value: -13778
       objectReference: {fileID: 0}
     - target: {fileID: 4811934209974710087, guid: f0cadc8f93b44f64c8de3322ab881a33, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6650,7 +6662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16753
+      value: -17255
       objectReference: {fileID: 0}
     - target: {fileID: 4394214267596678016, guid: 93c67ec7013a58b4b8f3ca209b58acc8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6769,6 +6781,10 @@ PrefabInstance:
       propertyPath: requiredLevel
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 2255916194698366871, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: orbitRadius
+      value: 1869
+      objectReference: {fileID: 0}
     - target: {fileID: 5125036424397023766, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: requiredSizeLevel
       value: 24
@@ -6784,6 +6800,14 @@ PrefabInstance:
     - target: {fileID: 5370661337664861759, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: eatableMaxDistanceFromPlanet
       value: 4317
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870296105707338457, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870296105707338457, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 5870296105707338457, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6804,6 +6828,14 @@ PrefabInstance:
     - target: {fileID: 8099201885771357408, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
       propertyPath: m_TagString
       value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_Radius
+      value: 969.084
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001246402946556420, guid: 817552fee4714734db98d422d8d7dad8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.23535156
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

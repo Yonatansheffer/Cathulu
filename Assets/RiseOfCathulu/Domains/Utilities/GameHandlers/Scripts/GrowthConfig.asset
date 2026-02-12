@@ -17,7 +17,7 @@ MonoBehaviour:
   minScale: 6
   maxScale: 400
   minMaxSpeed: 700
-  maxMaxSpeed: 15000
+  maxMaxSpeed: 15500
   minConvergence: 6
   maxConvergence: 2.5
   scaleCurve:
