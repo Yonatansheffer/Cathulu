@@ -26,6 +26,8 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         public static Action<int> UpdateScoreUI;
         public static Action ContinueUI;
         public static Action<int> FreezeUI;
+        public static Action<float> SpeedUI;
+
     
         // GamePlay Events
         public static Action PlayerFirstMoved;

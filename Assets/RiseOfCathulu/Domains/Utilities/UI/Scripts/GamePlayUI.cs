@@ -18,8 +18,7 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
 
         [Header("Power-Up UI")]
         [SerializeField] private Image freezeImage;
-        [SerializeField] private Image timeImage;
-        [SerializeField] private Image timeLight;
+        [SerializeField] private Image speedImage;
         [SerializeField] private Image spellGunImage;
         [SerializeField] private Image lightGunImage;
         [SerializeField] private Image fireGunImage;
@@ -47,6 +46,7 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             GameEvents.WeaponCollected += AddWeaponCollected;
             GameEvents.ShieldUpdated += UpdateShield;
             GameEvents.FreezeUI += UpdateFreeze;
+            GameEvents.SpeedUI += UpdateSpeed;
         }
 
         private void OnDisable()
@@ -55,6 +55,7 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             GameEvents.WeaponCollected -= AddWeaponCollected;
             GameEvents.ShieldUpdated -= UpdateShield;
             GameEvents.FreezeUI -= UpdateFreeze;
+            GameEvents.SpeedUI -= UpdateSpeed;
         }
 
         private void InitializeUI()
@@ -68,7 +69,7 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             DeactivateAllWeapons();
             freezeImage.gameObject.SetActive(false);
             shieldImage.gameObject.SetActive(false);
-            //timeImage.gameObject.SetActive(false);
+            speedImage.gameObject.SetActive(false);
         }
 
         private void DeactivateAllWeapons()
@@ -102,6 +103,12 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
         {
             if (gameObject.activeInHierarchy)
                 StartCoroutine(HandlePowerUpDisplay(freezeImage, duration - blinkDuration, blinkDuration));
+        }
+        
+        private void UpdateSpeed(float duration)
+        {
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(HandlePowerUpDisplay(speedImage, duration - blinkDuration, blinkDuration));
         }
         
         private void UpdateScore(int totalPoints)

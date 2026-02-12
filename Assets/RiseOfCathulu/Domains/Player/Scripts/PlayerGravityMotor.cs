@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Player.Scripts
@@ -39,7 +42,8 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 new Keyframe(0.15f, 1f),
                 new Keyframe(1f, 1f)
             );
-        
+
+        private bool _isInSpeedBoost;
         private float _gravityMultiplier = 1f;
         [SerializeField] private float steeringFactor =20f;
         [SerializeField] private float orbitBiasStrength = 1.2f;
@@ -56,7 +60,39 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         {
 //            Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
         }
+
+        private void OnEnable()
+        {
+            GameEvents.AddSpeed += UpgradeSpeed;
+        }
         
+        private void OnDisable()
+        {
+            GameEvents.AddSpeed -= UpgradeSpeed;
+        }
+        
+        private void UpgradeSpeed(float factor, float duration)
+        {
+            if(_isInSpeedBoost) return; // Prevent stacking boosts
+            _isInSpeedBoost = true;
+            GameEvents.SpeedUI?.Invoke(duration);
+            StartCoroutine(AddSpeed(factor, duration));
+        }
+        
+        private IEnumerator AddSpeed(float factor, float duration)
+        {
+            // Apply boost to both the target cruising speed and the hard cap
+            speed *= factor;
+            absoluteMaxSpeed *= factor;
+
+            yield return new WaitForSeconds(duration);
+
+            // Revert boost
+            speed /= factor;
+            absoluteMaxSpeed /= factor;
+            _isInSpeedBoost = false;
+        }
+
         public void ApplySizeStats( float maxSpeed, float convergence)
         {
             //_maximumSpeed = maxSpeed;

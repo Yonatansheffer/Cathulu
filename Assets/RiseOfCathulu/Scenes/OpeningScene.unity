@@ -1478,7 +1478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5750392210944998626, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: initialHealth
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7148764535461708632, guid: 1f0b7e200ba1e324b8c962f7c0992585, type: 3}
       propertyPath: innerDangerRange

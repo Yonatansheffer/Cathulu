@@ -3718,7 +3718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1314092593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4008,6 +4008,10 @@ PrefabInstance:
       propertyPath: scoreMeter
       value: 
       objectReference: {fileID: 500232678}
+    - target: {fileID: 6010253519386414944, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
+      propertyPath: speedImage
+      value: 
+      objectReference: {fileID: 931666215}
     - target: {fileID: 6067965021463666217, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 8.782816
@@ -4038,7 +4042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591664556586824368, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8357803862819182913, guid: 5a9c4425c415c6b40ada3edb914d3e09, type: 3}
       propertyPath: m_IsActive
@@ -6089,7 +6093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732007448759605626, guid: c3105706d788ae9428b624eb189fa359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6229,6 +6233,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: dropChance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: gravityAreas.Array.size
       value: 31
       objectReference: {fileID: 0}
@@ -6362,7 +6370,7 @@ PrefabInstance:
       objectReference: {fileID: 1254629991}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: powerUpCollectibles.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'powerUpCollectibles.Array.data[1]'
@@ -6376,6 +6384,38 @@ PrefabInstance:
       propertyPath: 'powerUpCollectibles.Array.data[3]'
       value: 
       objectReference: {fileID: 6673358238260429499, guid: 23828fe697650914bbf7709b9519b8e2, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[4]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[5]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[6]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[7]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[8]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[9]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[10]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'powerUpCollectibles.Array.data[11]'
+      value: 
+      objectReference: {fileID: 6673358238260429499, guid: 74d402cb18ae4ce41a8ddb66c4838aa3, type: 3}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: planetGroups.Array.data[0].dropInterval
       value: 5
@@ -6422,6 +6462,10 @@ PrefabInstance:
       objectReference: {fileID: 1474896605}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
       propertyPath: 'planetGroups.Array.data[0].gravityAreas.Array.data[7]'
+      value: 
+      objectReference: {fileID: 366077874}
+    - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}
+      propertyPath: 'planetGroups.Array.data[0].gravityAreas.Array.data[8]'
       value: 
       objectReference: {fileID: 366077874}
     - target: {fileID: 1271057456357602677, guid: 32cc4a4fa341c664d8fd550c26b42bc5, type: 3}

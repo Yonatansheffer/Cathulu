@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6527568202390861360}
   - component: {fileID: 4291877743179740799}
   m_Layer: 10
-  m_Name: Time Adding
+  m_Name: Speed Boost
   m_TagString: WeaponCollectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   blinkDuration: 3
   blinkInterval: 0.1
   growthConfig: {fileID: 11400000, guid: 6fcfa5c2e9c09c44b8ffb16e16d32fa9, type: 2}
-  speedFactor: 1.5
+  speedFactor: 1.8
   speedDuration: 8
 --- !u!58 &4291877743179740799
 CircleCollider2D:
