@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace RiseOfCathulu.Domains.Player.Scripts
 {
@@ -18,7 +16,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         [SerializeField] private float thrustReleaseThreshold = 0.15f;
         private bool _thrustHeld;
         private bool _cruiseLocked;
-        //private float _maximumSpeed;
+        private float _maximumSpeed;
 
         [Header("Gravity Defaults")]
         private float _defaultInwardGravity = 30f;
@@ -33,8 +31,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         private bool _suspendMovement;
         private Vector2 _lastMoveDir;
         private float _gravityFade;
-        private bool _isInDestructableGravityZone;
-        
+      
 
         [Header("Trigger Curves")]
         [SerializeField] private AnimationCurve accelerationTriggerCurve = new AnimationCurve(
@@ -44,7 +41,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             );
 
         private bool _isInSpeedBoost;
-        private float _gravityMultiplier = 1f;
+        private readonly float _gravityMultiplier = 1f;
         [SerializeField] private float steeringFactor =20f;
         [SerializeField] private float orbitBiasStrength = 1.2f;
         [SerializeField] private float slingshotBonus = 2.5f;
@@ -55,11 +52,6 @@ namespace RiseOfCathulu.Domains.Player.Scripts
             ResetGravityToDefaults();
         }
         
-
-        private void FixedUpdate()  
-        {
-//            Debug.Log($"Current Speed: {_rb.linearVelocity.magnitude:F2} | In Gravity: {_isInGravityZone} ");
-        }
 
         private void OnEnable()
         {
@@ -95,7 +87,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         public void ApplySizeStats( float maxSpeed, float convergence)
         {
-            //_maximumSpeed = maxSpeed;
+            _maximumSpeed = maxSpeed;
             absoluteMaxSpeed = maxSpeed;
             speed = maxSpeed; 
             convergenceRate = convergence;
@@ -123,7 +115,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
 
         public void EnterGravity(Vector2 gravityCenter, float inwardGravity, float maxVortexSpeed, float vortexGrip, bool isDestructable)
         {
-            _isInDestructableGravityZone = isDestructable;
+            if (isDestructable)
+            {
+                absoluteMaxSpeed *= 2;
+            }
             _gravityCenter = gravityCenter;
             _inwardGravity = inwardGravity * absoluteMaxSpeed;
             _maxVortexSpeed = maxVortexSpeed;
@@ -134,10 +129,10 @@ namespace RiseOfCathulu.Domains.Player.Scripts
         
         public void ExitGravity()
         {
+            absoluteMaxSpeed = _maximumSpeed;
             _isInGravityZone = false;
             _gravityFade = 0f;
             _rb.linearVelocity += _rb.linearVelocity.normalized * slingshotBonus;
-            _isInDestructableGravityZone = false;
             ResetGravityToDefaults();
         }
 
@@ -287,7 +282,7 @@ namespace RiseOfCathulu.Domains.Player.Scripts
                 (_inwardGravity * _gravityMultiplier * _gravityFade) /
                 (distance + 2f);
 
-            vel += radialDir * gravityForce * Time.fixedDeltaTime;
+            vel += radialDir * (gravityForce * Time.fixedDeltaTime);
 
             // ----------------------------
             // TANGENTIAL ORBIT (FLOW)

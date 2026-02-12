@@ -167,20 +167,21 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             switch (weaponType)
             {
                 case WeaponType.SpellGun: _weaponCoroutine =
-                        StartCoroutine(HandlePowerUpDisplay(spellGunImage,  duration, blinkDuration));
+                        StartCoroutine(HandlePowerUpDisplay(spellGunImage,  duration, blinkDuration, true));
                     break;
                 case WeaponType.LightGun: _weaponCoroutine = 
-                        StartCoroutine(HandlePowerUpDisplay(lightGunImage, duration, blinkDuration));
+                        StartCoroutine(HandlePowerUpDisplay(lightGunImage, duration, blinkDuration, true));
                     break;
                 case WeaponType.FireGun: _weaponCoroutine = 
-                        StartCoroutine(HandlePowerUpDisplay(fireGunImage, duration, blinkDuration));
+                        StartCoroutine(HandlePowerUpDisplay(fireGunImage, duration, blinkDuration, true));
                     break;
             }
         }
-
-        private IEnumerator HandlePowerUpDisplay(Image image,  float activeDuration, float blinkingDuration)
+        private IEnumerator HandlePowerUpDisplay(Image image, float activeDuration, float blinkingDuration,
+            bool isWeapon = false)
         {
             image.gameObject.SetActive(true);
+            image.color = Color.white; // Ensure it starts fully visible
             yield return new WaitForSeconds(activeDuration);
 
             float blinkInterval = 0.3f;
@@ -190,13 +191,18 @@ namespace RiseOfCathulu.Domains.Utilities.UI.Scripts
             while (blinkTime < blinkingDuration)
             {
                 visible = !visible;
-                image.color = visible ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.1f);
+                image.color = visible ? Color.white : new Color(1f, 1f, 1f, 0.2f);
                 yield return new WaitForSeconds(blinkInterval);
                 blinkTime += blinkInterval;
             }
 
             image.gameObject.SetActive(false);
-            ActivateDefaultWeapon(settings.defaultWeapon);
+    
+            // Only go back to default weapon if this power-up was actually a weapon
+            if (isWeapon)
+            {
+                ActivateDefaultWeapon(settings.defaultWeapon);
+            }
         }
     }
 }
