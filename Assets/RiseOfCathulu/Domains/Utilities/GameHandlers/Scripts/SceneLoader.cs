@@ -9,6 +9,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
     {
         private const string GamePlaySceneName = "GamePlay 3";
         private const string EndingSceneName = "Ending Scene";
+        private const string OpeningSceneName = "OpeningScene";
 
         private PlayerInputs _inputActions;
 
@@ -26,7 +27,6 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-
             _inputActions = new PlayerInputs();
             _inputActions.Movement.Continue.performed += OnContinue;
         }
@@ -53,7 +53,7 @@ namespace RiseOfCathulu.Domains.Utilities.GameHandlers.Scripts
                 case GameState.InLevel:
                     return;
                 case GameState.StartScreen:
-                    GameEvents.ContinueUI?.Invoke();
+                    SceneManager.LoadScene(OpeningSceneName);
                     _state = GameState.InstructionScreen;
                     return;
                 case GameState.InstructionScreen:

@@ -11,7 +11,6 @@
         {
             [Header("References")]
             [SerializeField, Tooltip("Blinking 'Press Enter' text GameObject")] private GameObject pressXText;
-            [SerializeField, Tooltip("Opening screen root GameObject")] private GameObject openingScreen;
             [SerializeField, Tooltip("Instructions screen root GameObject")] private GameObject instructionsScreen;
             [SerializeField, Tooltip("Player root GameObject to enable on start")] private GameObject player;
 
@@ -88,17 +87,9 @@
             
 
             private void OnStart()
-            {
-                if (_isInOpening)
-                {
-                    openingScreen?.SetActive(false);
-                    _isInOpening = false;
-                }
-                else
-                {
-                    instructionsScreen?.SetActive(false);
-                    if (canvas) canvas.gameObject.SetActive(true);
-                }
+            { 
+                instructionsScreen?.SetActive(false);
+                if (canvas) canvas.gameObject.SetActive(true);
             }
             
             private void StartBlink()
